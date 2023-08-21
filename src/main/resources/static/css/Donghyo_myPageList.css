@@ -15,9 +15,8 @@
 
 
 .myPage-list-wrap{
-    background-color: turquoise;
     margin: 0 auto;
-    width: 300px;
+    width: 240px;
 }
 li{
     list-style-type: none;
@@ -26,12 +25,13 @@ button{
     background-color: #fff;
     border: none;
     text-align: left;
-    width: 300px;
-    height: 60px;
-    line-height: 60px;
-    font-size: 1.2em;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.0em;
     padding-left: 30px;
     cursor: pointer;
+    border-radius: 3px;
 }
 .button:hover, .button.active{
     background-color: #1C8394;
