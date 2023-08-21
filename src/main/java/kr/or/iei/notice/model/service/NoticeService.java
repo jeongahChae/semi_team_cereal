@@ -1,5 +1,8 @@
 package kr.or.iei.notice.model.service;
 
-public class NoticeService {
+import org.springframework.stereotype.Service;
 
+@Service
+public class NoticeService {
+	
 }
