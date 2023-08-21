@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문취소/교환/반품</title>
+    <link rel="stylesheet" href="CSS/Donghyo_orderCancel-change-return 1.css">
+    <script src="JAVASCRIPT/jquery-3.7.0.js"></script>
+</head>
+<body>
+    
+    <!---------------------------------------------------------------------------->
+
+    <div class="orderCancel-change-return-wrap">
+        
+        <h3>주문취소/교환/반품</h3>
+        
+        <div class="select-tap-container">
+            <input type="radio" name="orderCancel-change-return-tap" id="orderCancel-change-return-register" checked><label for="orderCancel-change-return-register">주문취소/교환/반품 접수</label>
+            <input type="radio" name="orderCancel-change-return-tap" id="select-change-return-list"><label for="select-change-return-list">교환/반품 내역 조회</label>
+        </div> <!--<div class="select-tap-container">-->
+
+        <div class="orderCancel-change-return-register-table">
+            <table id="tableId">
+                <thead>
+                    <tr>
+                        <th width="40px"></th><th width="150px">주문번호</th><th width="460px">상품정보</th><th width="50px">수량</th><th width="100px">배송현황</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div class="check">
+                                <input type="checkbox" namd="order-info" id="check1">
+                                <label for="check1"></label>
+                            </div>
+                        </td>
+                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>배송완료</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!--<div class="orderCancel-change-return-regiter-table">-->
+
+        <div class="registerBtn-wrap">
+            <button type="button" class="registerBtn">접수</button>
+        </div> <!--<div class="moreBtn-wrap">-->
+        
+    </div> <!--<div class="orderCancel-change-return-wrap">-->
+
+    <!---------------------------------------------------------------------------->
+    
+    <script src="JAVASCRIPT/Donghyo_orderCancel-change-return 1.js"></script>
+
+</body>
+</html>
