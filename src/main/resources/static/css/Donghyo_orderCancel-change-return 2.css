@@ -1,8 +1,16 @@
 /*주문취소/교환/반품 2*/
 /*Donghyo_orderCancel-change-return 2*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
 *{
     padding: 0;
     margin: 0;  
+    color: #333333;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .orderCancel-change-return-wrap{
