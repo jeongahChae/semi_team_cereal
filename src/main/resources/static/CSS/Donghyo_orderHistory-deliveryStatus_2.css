@@ -1,0 +1,107 @@
+/*주문내역 / 배송현황 2*/
+/*Donghyo_orderHistory-deliveryStatus_2*/
+*{
+    padding: 0;
+    margin: 0;  
+}
+
+.orderHistory-deliveryStatus-wrap{
+    width: 800px;
+}
+
+h3{
+    padding-bottom: 10px;
+}
+
+
+.order-no-wrap{
+    overflow: hidden;
+}
+.order-no{
+    color: #1C8394;
+    font-weight: bold;
+    font-size: 1.1em;
+    float: left;
+    padding-bottom: 10px;
+}
+.one-on-one-inquiry-wrap{
+    float: right;
+    font-size: 0.8em;
+    color: rgb(155, 155, 155);
+    font-weight: bold;
+}
+.one-on-one-inquiry-wrap>span>a{
+    text-decoration: none;
+    color: #1C8394;
+}
+.one-on-one-inquiry-wrap>span>a:hover{
+    text-decoration: underline;
+}
+
+
+.order-list-wrap{
+    clear: both;
+}
+table{
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-bottom: 1em;
+    width: 800px;
+}
+th {
+    height: 50px;
+    text-align: center;
+    border-top: 1.5px solid rgb(148,148,148);
+    border-bottom: 1.5px solid rgb(148,148,148);
+}
+thead>tr>:first-child{
+    width: 560px;
+}
+thead>tr>:last-child{
+    width: 220px;
+    text-align: left;
+    padding-left: 22.5px;
+}
+td {
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+    height: 164px;
+}
+.img-container{
+    width: 180px;
+    padding-top: 3px;
+}
+.product-info{
+    width: 380px;
+    cursor: pointer;
+}
+.product-info:hover{
+    text-decoration: underline;
+}
+.delivery-status{
+    color: #A52502;
+    width: 100px;
+}
+.button-container{
+    width: 120px;
+}
+.reviewBtn{
+    width: 100px;
+    height: 35px;
+    color: #fff;
+    border: none;
+    background-color: #1C8394;
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 2.5px;
+}
+.cartBtn{
+    width: 100px;
+    height: 35px;
+    color: #1C8394;
+    border: 1px solid #1C8394;
+    background-color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 2.5px;
+}
