@@ -21,44 +21,44 @@
 
 
         <div class="orderCancel-change-return-register-table">
-            <table border="1">
+            <table>
                 <thead>
                     <tr>
                         <th>유형 선택</th>
-                        <th colspan="2">
-                            <input type="radio" name="selectTap" id="orderCancel"><label for="orderCancel">주문취소</label>
+                        <th colspan="2" class="select-tap">
+                            <input type="radio" name="selectTap" id="orderCancel" checked><label for="orderCancel">주문취소</label>
                             <input type="radio" name="selectTap" id="change"><label for="change">교환</label>
                             <input type="radio" name="selectTap" id="return"><label for="return">반품</label>
                         </th>
                         <th></th>
                     </tr>
                     <tr>
-                        <th>주문번호</th><th colspan="2">상품정보</th><th>수량</th>
+                        <th>주문번호</th><th colspan="2" class="product-info">상품정보</th><th class="product-amount">수량</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>0123245678910</td>
-                        <td><img src="/target/classes/static/img/sample-img.jpg"></td>
-                        <td>[ESSENTIAL#]유리 보틀</td>
-                        <td>1</td>
+                        <td class="img-container"><img src="/target/classes/static/img/sample-img.jpg" width="150px"></td>
+                        <td class="product-info-text">[ESSENTIAL#]유리 보틀</td>
+                        <td class="product-amount-text">1</td>
                     </tr>
                 </tbody>
             </table>
         </div> <!--<div class="orderCancel-change-return-register-table">-->
 
-        <div class="writeReason-wrap">
-            <table border="1">
+        <div class="writeReason-table">
+            <table>
                 <thead>
                     <tr>
-                        <th>사유</th>
-                        <th><button type="button">첨부파일</button></th>
+                        <th class="reason">사유</th>
+                        <th class="insert-file"><button type="button" class="insertFile-btn">첨부파일</button></th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="2">
-                            <textarea>주문취소/교환/반품 사유 작성</textarea>
+                        <td colspan="2" class="reason-detail">
+                            <textarea class="reason-detail-text">주문취소/교환/반품 사유 작성</textarea>
                         </td>
                     </tr>
                 </tbody>
