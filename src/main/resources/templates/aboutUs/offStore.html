@@ -2,9 +2,45 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ESSENTIAL#</title>
 </head>
+<link rel="stylesheet" href="/css/aboutUs.css">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=x40vg9gigd&submodules=geocoder"></script>
+<script src="/javascript/jquery-3.7.0.js"></script>
 <body>
-<h1>오프라인매장으로 이동</h1>
+	<div class="us-wrap">
+        <div class="us-title">
+			<br>
+			<h1>오프라인 매장</h1>
+			<br>
+		</div>
+        <div class="area">
+            <ul>
+                <li><a href="#">마포</a></li>
+                <li><a href="#">강남</a></li>
+                <li><a href="#">경기</a></li>
+                <li><a href="#">인천</a></li>
+                <li><a href="#">충청</a></li>
+                <li><a href="#">전라</a></li>
+                <li><a href="#">강원</a></li>
+                <li><a href="#">경상</a></li>
+                <li><a href="#">제주</a></li>
+            </ul>
+        </div>
+        <div class="area-img">
+            <img src="/img/mapo.jpg">
+            <div id="map"></div>
+        </div>
+        <div class="area-detail">
+            <div class="area-title">
+                <h3 class="value-title">마포점</h3>
+                <p>서울특별시 마포구 토정로 299 (용강동)</p>
+            </div>
+            <div class="area-content"></div>
+        </div>
+    </div>
+
+<script src="/javascript/offStore.js"></script>
 </body>
 </html>

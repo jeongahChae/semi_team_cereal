@@ -2,15 +2,17 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>회원가입</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/yeojeong_signUp.css">
+    <script src="/src/main/resources/static/javascript/jquery-3.7.0.js"></script>
 </head>
 <body>
     <div class="join-all-wrap">
         <div class="join-wrap">
             <div class="join-title">
                 <h1>회원가입</h1>
-                <h3>필수입력사항<span class="star">*</span></h3>
+                <h3><sup class="star">*</sup>필수입력사항</h3>
                 <hr>
             </div>
             <div class="join-content">
@@ -18,84 +20,127 @@
                     <input type="hidden" name="checkId">
                 </form>
                 <form action="/member/signup" method="post" id="signupFrm">
-                    <div class="input-wrap">
-                        <label for="memberId">아이디<sup>*</sup></label>
-                        <div class="id-wrap">
-                            <input type="text" name="memberId" id="memberId" class="input-form" placeholder="아이디를 입력해주세요" required>
-                            <button type="button" id="idChkBtn" class="dup-btn">중복확인</button>
-                        </div>
+                    <div class="input-wrap">                      
+                            <span class="label-wrap">
+                                <label for="memberId">아이디<sup class="star">*</sup></label>
+                            </span>
+                            <input type="text" name="inputForm" id="memberId" class="input-form" placeholder="아이디를 입력해주세요" required>
+                            <span class="button-wrap">
+                                <button type="button" id="idChkBtn" class="dup-btn">중복확인</button>
+                            </span>
+                            
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberPw">비밀번호<sup>*</sup></label>
-                        <div class="pw-wrap">
-                            <input type="password" name="memberPw" id="memberPw" class="input-form" placeholder="비밀번호를 입력해주세요" required>
-                        </div>
+                    <div class="input-wrap">    
+                        <span class="label-wrap">
+                            <label for="memberPw">비밀번호<sup class="star">*</sup></label>
+                        </span>
+                            <input type="password" name="inputForm" id="memberPw" class="input-form" placeholder="비밀번호를 입력해주세요" required>
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberPwre">비밀번호 확인<sup>*</sup></label>
-                        <div class="pwre-wrap">
-                            <input type="password" name="memberPwre" id="memberPwre" class="input-form" placeholder="비밀번호를 한번 더 입력해주세요" required>
-                        </div>
+                    <div class="input-wrap">                        
+                        <span class="label-wrap">
+                            <label for="memberPwre">비밀번호 확인<sup class="star">*</sup></label>
+                        </span>
+                            <input type="password" name="inputForm" id="memberPwre" class="input-form" placeholder="비밀번호를 한번 더 입력해주세요" required>
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberName">이름<sup>*</sup></label>
-                        <div class="name-wrap">
-                            <input type="text" name="memberName" id="memberName" class="input-form" placeholder="이름을 입력해주세요" required>
-                        </div>
+                    <div class="input-wrap">                        
+                        <span class="label-wrap">
+                            <label for="memberName">이름<sup class="star">*</sup></label>
+                        </span>
+                            <input type="text" name="inputForm" id="memberName" class="input-form" placeholder="이름을 입력해주세요" required>
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberPhone">휴대폰<sup>*</sup></label>
-                        <div class="phone-wrap">
-                            <input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)" required>
-                        </div>
+                    <div class="input-wrap">                        
+                        <span class="label-wrap">
+                            <label for="memberPhone">휴대폰<sup class="star">*</sup></label>
+                        </span>
+                            <input type="text" name="inputForm" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)" required>
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberEmail">이메일<sup>*</sup></label>
-                        <div class="email-wrap">
-                            <input type="text" name="memberEmail" id="memberEmail" class="input-form" placeholder="예: essential@essential.com" required>
-                            <button type="button" id="emailChkBtn" class="dup-btn">중복확인</button>
-                        </div>
+                    <div class="input-wrap">                        
+                        <span class="label-wrap">
+                            <label for="memberEmail">이메일<sup class="star">*</sup></label>
+                        </span>
+                            <input type="text" name="inputForm" id="memberEmail" class="input-form" placeholder="예: essential@essential.com" required>
+                            <span class="button-wrap">
+                                <button type="button" id="emailChkBtn" class="dup-btn">중복확인</button>
+                            </span>
+                            
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberEmailre">이메일 확인<sup>*</sup></label>
-                        <div class="emailre-wrap">
-                            <input type="text" name="memberEmailre" id="memberEmailre" class="input-form" placeholder="이메일을 입력해주세요" required>
-                            <button type="button" id="emailauthBtn" class="auth-btn">인증번호 받기</button>
-                            <input type="text" id="authCode" placeholder="인증번호입력">
-                            <button type="button" id="authBtn">인증하기</button>
-                        </div>
+                    <div class="input-wrap">                        
+                        <span class="label-wrap">
+                            <label for="memberEmailre">이메일 확인<sup class="star">*</sup></label>
+                        </span>
+                            <input type="text" name="inputForm" id="memberEmailre" class="input-form" placeholder="이메일을 입력해주세요" required>
+                            <span class="button-wrap">
+                                <button type="button" id="emailauthBtn" class="auth-btn">인증번호 받기</button>
+                            </span>
+                            <input type="text" name="inputForm" placeholder="인증번호입력">
+                            <span class="button-wrap">
+                                <button type="button" id="authBtn">인증하기</button>
+                            </span>
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberAddr">배송지<sup>*</sup></label>
-                        <div class="addr-wrap">
-                            <input type="text" name="memberAddr" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요" required>
-                            <button type="button" id="addrBtn" class="addr-btn">배송지 등록</button>
-                            <div class="addr-info">배송지에 따라 정보가 달라질 수 있습니다.</div>
-                        </div>
+                    <div class="input-wrap">                        
+                        <span class="label-wrap">
+                            <label for="memberAddr">배송지<sup class="star">*</sup></label>
+                        </span>
+                            <input type="text" name="inputForm" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요" required>
+                            <span class="button-wrap">
+                                <button type="button" id="addrBtn" class="addr-btn">배송지 등록</button>
+                            </span>
+                            <div class="addr-info">배송지에 따라 정보가 달라질 수 있습니다.</div>                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberGender">성별</label>
-                        <div class="gender-wrap">
+                    <div class="input-wrap">                        
+                        <span class="label-wrap">
+                            <label for="memberGender">성별</label>
+                        </span>
                             <input type="radio" name="gender" id="m" value="m">
                             <label for="m">남자</label>
                             <input type="radio" name="gender" id="f" value="f">
                             <label for="f">여자</label>
                             <input type="radio" name="gender" id="ns" value="ns">
                             <label for="ns">선택안함</label>
-                        </div>
+                        
                     </div>
-                    <div class="input-wrap">
-                        <label for="memberBirthdate"></label>
-                        <div class="birthdate-wrap">
-                            <input type="text" name="memberBirthdate" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
-                        </div>
+                    <div class="input-wrap">               
+                        <span class="label-wrap">
+                            <label for="memberBirthdate">생년월일</label>
+                        </span>
+                            <input type="text" name="inputForm" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
+                        
                     </div>
                     <hr>
-                    <div class="input-wrap">
-                        <label for="agreement">이용약관 동의<sup>*</sup></label>
-                        <div class="agreeBox">
-                            <input type="checkbox" id="allA">
+                    <div class="input-wrap">  
+                        <span class="label-wrap">                   
+                            <label for="agreement">이용약관 동의<sup class="star">*</sup></label>
+                        </span>  
+                        <div class="agreeBox">                            
+                            <input type="checkbox" id="allAgreement" class="agreeCheck">
+                            <label for="allAgreement">전체 동의합니다.</label>
                         </div>
+                        <div class="agreeBox">
+                            <input type="checkbox" id="mustAgreement" class="agreeCheck">
+                            <label for="mustAgreement">이용약관 동의<span class="must">(필수)</span><span class="showAgree">약관보기></span></label>
+                        </div>
+                        <div class="agreeBox">
+                            <input type="checkbox" id="privacyAgreement" class="agreeCheck">
+                            <label for="privacyAgreement">개인정보 수집 및 이용 동의<span class="must">(필수)</span><span class="showAgree">약관보기></span></label>
+                        </div>
+                        <div class="agreeBox">
+                            <input type="checkbox" id="optionalAgreement" class="agreeCheck">
+                            <label for="optionalAgreement">개인정보 수집 및 이용 동의<span class="must">(선택)</span><span class="showAgree">약관보기></span></label>
+                        </div>
+                        <div class="agreeBox">
+                            <input type="checkbox" id="ageAgreement" class="agreeCheck">
+                            <label for="ageAgreement">본인은 만 14세 이상입니다.<span class="must">(필수)</span></label>
+                        </div>
+                    </div>
+                    <div class="submit-btn">
+                        <button type="submit" id="joinBtn">회원가입</button>                        
                     </div>
                 </form>
             </div>
