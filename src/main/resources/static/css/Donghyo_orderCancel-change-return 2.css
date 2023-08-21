@@ -1,8 +1,16 @@
 /*주문취소/교환/반품 2*/
 /*Donghyo_orderCancel-change-return 2*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
 *{
     padding: 0;
     margin: 0;  
+    color: #333333;
+    font-family: 'Noto Sans KR', sans-serif;
 }
 
 .orderCancel-change-return-wrap{
@@ -39,6 +47,90 @@ input[name=orderCancel-change-return-tap]{
 }
 
 
+table{
+    border-collapse: collapse;
+    width: 800px;
+    margin: 0 auto;
+    margin-bottom: 10px; 
+}
+th {
+    height: 50px;
+    text-align: center;
+    border-top: 1.5px solid rgb(148,148,148);
+    border-bottom: 1.5px solid rgb(148,148,148);
+}
+td {
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+.orderCancel-change-return-register-table>table>thead>tr>:first-child{
+    width: 150px;
+}
+.select-tap{
+    overflow: hidden;
+}
+.orderCancel-change-return-register-table>table>thead>tr>:last-child{
+    clear: both;
+}
+.orderCancel-change-return-register-table>table>tbody>tr>:first-child{
+    width: 150px;
+}
+.img-container{
+    width: 180px;
+    padding-top: 4px;
+}
+.orderCancel-change-return-register-table>table{
+    margin-bottom: 30px;
+}
+
+
+
+.reason{
+    width: 100px;
+}
+.insertFile-btn{
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    color: #686868;
+    background-color: #e0e0e0;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.reason-detail{
+    padding-top: 4px;
+}
+.reason-detail-text{
+    width: 770px;
+    height: 400px;
+    font-size: 1.2em;
+    padding: 10px;
+    resize: none;
+    border: 1px solid rgb(148, 148, 148);
+    outline: none;
+}
+
+
+
+input[name=selectTap]+label{
+    display: block;
+    border: 1px solid black;
+    width: 100px;
+    height: 30px;
+    line-height: 30px;
+    float: left;
+    cursor: pointer;
+}
+input[name=selectTap]:checked+label{
+    background-color: #1C8394;
+    border: 1px solid #1C8394;
+    color: #fff;
+}
+input[name=selectTap]{
+    display: none;
+}
 
 
 
