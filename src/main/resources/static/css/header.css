@@ -60,7 +60,6 @@
     margin: 0 auto;
     line-height: 48px;
     float: left;
-
 }
 
 .header-search-box>input{
@@ -78,12 +77,13 @@
 
 .header-menu{
     width: 20%;
-    float: right;
+    overflow: hidden;
 }
 
-.header-menu li{
-    list-style-type: none;
-    display: inline-block;
+.header-menu>a>img{
+    width: 30px;
+    height: 30px;
     float: right;
     margin-left: 20px;
+    margin-top: 10px;
 }
