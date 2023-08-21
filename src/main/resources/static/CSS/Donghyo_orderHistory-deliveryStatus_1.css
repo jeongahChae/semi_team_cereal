@@ -1,0 +1,94 @@
+/*주문내역 / 배송현황 1*/
+/*Donghyo_orderHistory-deliveryStatus_1.html*/
+*{
+    padding: 0;
+    margin: 0;  
+}
+
+.orderHistory-deliveryStatus-wrap{
+    width: 800px;
+}
+
+h3{
+    padding-bottom: 10px;
+}
+
+
+.input-date-wrap{
+    border-top: 1.5px solid rgb(148, 148, 148);
+    border-bottom: 1.5px solid rgb(148, 148, 148);
+    padding: 20px;
+}
+.input-date-wrap>:first-child{
+    font-weight: bold;
+}
+input[name=select-date]{
+    width: 120px;
+    height: 26px;
+}
+.dateBtn{
+    width: 100px;
+    height: 30px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    background-color: #1C8394;
+    cursor: pointer;
+}
+
+
+.date-message{
+    padding: 10px;
+    font-size: 0.8em;
+}
+.date-message>:first-child{
+    float: left;
+    font-weight: bold;
+}
+p{
+    color: rgb(155, 155, 155);
+    font-weight: bold;
+}
+.guide-ment{
+    text-decoration: underline;
+}
+
+
+table{
+    border-collapse: collapse;
+    margin: 0 auto;
+    margin-bottom: 1em;
+}
+th {
+    height: 50px;
+    text-align: center;
+    border-top: 1.5px solid rgb(148,148,148);
+    border-bottom: 1.5px solid rgb(148,148,148);
+}
+td {
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+    text-align: center;
+}
+tbody>tr>:last-child{
+    color: #A52502;
+}
+tbody tr:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+
+.moreBtn-wrap{
+    text-align: center;
+}
+.moreBtn{
+    width: 300px;
+    height: 40px;
+    color: #fff;
+    border: none;
+    font-weight: bold;
+    font-size: 1.1em;
+    background-color: #1C8394;
+    cursor: pointer;
+}
