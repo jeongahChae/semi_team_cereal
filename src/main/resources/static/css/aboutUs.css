@@ -64,3 +64,53 @@
 .us-value>div>a{
     text-decoration: none;
 }
+/****************************************/
+.area>ul{
+    list-style: none;
+    overflow: hidden;
+}
+.area>ul li{
+    display: block;
+    float: left;
+    width: calc(1200px / 9);
+    box-sizing: border-box;
+}
+.area>ul>li a{
+    text-decoration: none;
+    width: calc(1200px / 9);
+    height: 50px;
+    text-align: center;
+    line-height: 50px;
+    display: block;
+    border-bottom: 2px solid transparent;
+    transition-duration: 0.5s;
+}
+.area>ul>li a:hover{
+    font-weight: 900;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-bottom: 2px solid #1C8394;
+    color: #1C8394;
+}
+.area-img{
+    overflow: hidden;
+    margin: 50px 0;
+}
+.area-img>img{
+    width: 40%;
+    display: block;
+    float: left;
+    margin-left: 120px;
+}
+#map{
+    float: left;
+    width:40%;
+    height:360px;
+}
+.area-detail{
+    overflow: hidden;
+    margin: 50px 120px;
+}
+.area-detail>div{
+    float: left;
+}
