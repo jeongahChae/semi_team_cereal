@@ -14,30 +14,34 @@
 
 }
 .join-all-wrap{
-    width:800px;
-    
+    width:800px;    
 }
 h1{
     padding-bottom:10px;
+    text-align: center;
 }
 h3{
     color :#390D02;
     text-align: right;
 }
+
 .join-content{
     padding-top: 20px;
 }
+.join-content>:nth-child(2)>div>span>label{
+    padding-left: 10px;
+}
 .input-wrap{
     width: 800px;
-    background-color: aqua;
+    padding: 10px;
     
 }
 .label-wrap{
-    display: inline-block;
-    background-color: yellow;
-    width: 200px;
-    
-    
+    display: inline-block;    
+    width: 200px;    
+}
+input::placeholder{
+    padding-left: 10px;
 }
 .button-wrap{
     padding-left: 20px;
@@ -48,19 +52,25 @@ h3{
     width:150px;
     height: 50px;
     border-radius: 5px;
-    background-color: #1C8394;
+    background-color: #fff;
+    border: 1px solid #1C8394;
+    color:#1C8394;  
+    font-weight: 900; 
+    font-size: medium; 
 }
 .input-form{
     width: 50%;
     height: 50px;
     padding: 0;
-    border-radius: 5px;
-    background-color: #A52502;
+    border-radius: 5px;   
     outline: none;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
-
+.addrInfo{
+    font-size: small;
+    padding-top: 0;
+}
 .star{
     color: #A52502;
 }
