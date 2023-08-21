@@ -21,17 +21,49 @@
 
 
         <div class="orderCancel-change-return-register-table">
-            <table>
+            <table border="1">
                 <thead>
                     <tr>
-                        <th></th><th></th><th></th>
+                        <th>유형 선택</th>
+                        <th colspan="2">
+                            <input type="radio" name="selectTap" id="orderCancel"><label for="orderCancel">주문취소</label>
+                            <input type="radio" name="selectTap" id="change"><label for="change">교환</label>
+                            <input type="radio" name="selectTap" id="return"><label for="return">반품</label>
+                        </th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>주문번호</th><th colspan="2">상품정보</th><th>수량</th>
                     </tr>
                 </thead>
                 <tbody>
-
+                    <tr>
+                        <td>0123245678910</td>
+                        <td><img src="/target/classes/static/img/sample-img.jpg"></td>
+                        <td>[ESSENTIAL#]유리 보틀</td>
+                        <td>1</td>
+                    </tr>
                 </tbody>
             </table>
         </div> <!--<div class="orderCancel-change-return-register-table">-->
+
+        <div class="writeReason-wrap">
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>사유</th>
+                        <th><button type="button">첨부파일</button></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="2">
+                            <textarea>주문취소/교환/반품 사유 작성</textarea>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!--<div class="writeReason-wrap">-->   
         
 
         <div class="registerBtn-wrap">
