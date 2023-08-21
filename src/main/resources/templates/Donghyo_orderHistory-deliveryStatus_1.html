@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문내역 / 배송현황</title>
+    <link rel="stylesheet" href="CSS/Donghyo_orderHistory-deliveryStatus_1.css">
+</head>
+<body>
+    
+    <!---------------------------------------------------------------------------->
+
+    <div class="orderHistory-deliveryStatus-wrap">
+        
+        <h3>주문내역 / 배송현황</h3>
+        
+        <div class="input-date-wrap">
+            <div>직접입력 조회</div>
+            <div>
+                <input type="date" name="select-date"> ~ <input type="date" name="select-date">
+                <button type="button" class="dateBtn">조회하기</button>
+            </div>
+        </div> <!--<div class="input-date-wrap">-->
+
+        <div class="date-message">
+            <div>날짜</div>
+            <p>
+                간 구매하신 내역입니다.<br>
+                <span class="guide-ment">주문번호를 클릭하시면 주문내역을 확인하실 수 있습니다.</span>
+            </p>
+        </div> <!--<div class="date-message">-->
+
+        <div class="order-table">
+            <table>
+                <thead height="40px">
+                    <tr>
+                        <th width="150px">주문번호</th><th width="400px">상품정보</th><th width="50px">수량</th><th width="100px">결제금액</th><th width="100px">배송현황</th>
+                    </tr>
+                </thead>
+                <!--테스트 삽입 <td>-->
+                <tbody>
+                    <tr height="40px">
+                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>45,000</td><td>배송완료</td>
+                    </tr> 
+                </tbody>   
+            </table>
+        </div> <!--<div class="order-table">-->
+
+        <div class="moreBtn-wrap">
+            <button type="button" class="moreBtn">더보기</button>
+        </div> <!--<div class="moreBtn-wrap">-->
+
+    </div> <!--<div class="orderHistory&deliveryStatus-wrap">-->
+
+    <!---------------------------------------------------------------------------->
+    
+</body>
+</html>
