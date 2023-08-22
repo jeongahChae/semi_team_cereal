@@ -1,5 +1,6 @@
 const checkArr = [false,false,false, false,false,false,false,false];
 const memberArr = ['user011','user0222','user033'];
+
 const allAgreement = document.querySelector("#allAgreement");
 allAgreement.addEventListener("change",function(){
     const must = document.querySelector("#mustAgreement");
@@ -29,7 +30,7 @@ $("#memberId").on("change",function(){
             $("#idChkBtn").on("click",function(){
                 $(".modal-wrap").css("display","flex");
             });
-            $(".input-wrap>input[type=button]").on("click",function(){
+            $(".inputWrap>input[type=button]").on("click",function(){
                 $(".modal-wrap").css("display","none");
             });
         }else{

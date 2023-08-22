@@ -149,3 +149,25 @@ input::placeholder{
 .comment-wrap{
     background-color: #A52502;
 }
+/* 모달 */
+body{
+    margin: 0;
+}
+.modal-wrap{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.idChk-modal{
+    width: 500px;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 30px;
+}
