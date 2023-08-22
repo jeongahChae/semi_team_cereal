@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>주문 현황 관리</title>
+    <link rel="stylesheet" href="/css/Donghyo_orderStatusManagement.css">
+</head>
+<body>
+    
+    <!---------------------------------------------------------------------------->
+
+    <div class="orderStatusManagement-wrap">
+        
+        <h3>주문 현황 관리</h3>
+        
+        <div class="guide-ment-wrap">
+            <p>배송 정보 선택시, 주문내역으로 이동</p>
+        </div>
+
+        <div class="orderStatusManagement-table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="order-no">주문번호</th>
+                        <th class="produnt-name">상품명</th>
+                        <th class="memberName">회원명</th>
+                        <th class="memberAddr">배송지</th>
+                        <th class="orderStatus">주문 현황</th>
+                        <th class="change-orderStatus">상태 변경</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>012345678910</td>
+                        <td>[ESSENTIAL#]유리 보틀</td>
+                        <td>손동효</td>
+                        <td>서울시 영등포구 영중로6길 12 포레스트힐시티 1001호</td>
+                        <td>
+                            <select name="selectOrderStatus" class="selectOrderStatus">
+                                <option value="waitPayment">결제 대기</option>
+                                <option value="donePayment">결제 완료</option>
+                                <option value="orderCancel">주문 취소</option>
+                                <option value="prepareDelivery">배송 준비 중</option>
+                                <option value="deliveryNow">배송 중</option>
+                                <option value="deliveryDone">배송 완료</option>
+                            </select>
+                        </td>
+                        <td>
+                            <button type="button" class="change-btn">변경</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <!--<div class="orderStatusManagement-table-wrap">-->
+
+        <div class="moreBtn-wrap">
+            <button type="button" class="moreBtn">더보기</button>
+        </div> <!--<div class="moreBtn-wrap">-->
+
+    </div> <!--<div class="orderStatusManagement-wrap">-->
+
+    <!---------------------------------------------------------------------------->
+
+</body>
+</html>
