@@ -2,12 +2,37 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항view</title>
 </head>
 <body>
     <th:block th:include="common/header"></th:block>
-    <div>
+    <div class="all-wrap">
+        <div class="view-top-wrap">
+            <div class="view-title">공지사항</div>
+            <div class="view-slogan">새로운 소식을 한곳에서 확인하세요!</div>
+            <div class="btn-line">
+                <a href="/notice/list?reqpage=1" class="basic-btn">목록</a>
+            </div>
+        </div>
+        <div class="view-mid-wrap">
+            <div class="line-wrap">
+                <div class="title-line">제목</div>
+                <div class="content-line">글 제목 나오는 곳입니다.</div>
+            </div>
+            <div class="line-wrap">
+                <div class="title-line">작성자</div>
+                <div class="content-line">홍길동</div>
+            </div>
+            <div class="line-wrap">
+                <div class="title-line">작성일</div>
+                <div class="content-line">2020.02.02</div>
+            </div>
+            <div class="view-content-wrap">
+                <p class="view-content">내용내용</p>
+            </div>
+        </div>
     </div>
     <th:block th:include="common/footer"></th:block>
 </body>
+<link rel="stylesheet" href="/css/notice.css">
 </html>

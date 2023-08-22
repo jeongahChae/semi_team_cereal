@@ -144,3 +144,79 @@ button:visited{
     background-color: rgb(28, 131, 148);
     color: #fff;
 }
+
+
+
+/**********************************/
+/* noticeView */
+.all-wrap{
+    width: 1200px;
+    margin: 0 auto;
+}
+/* top-wrap */
+.view-top-wrap{
+    width: 100%;
+    padding-top: 50px;
+}
+.view-title{
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 35px;
+    text-align: center;
+    letter-spacing: -1px;
+}
+.view-slogan{
+    margin-top: 7px;
+    color: rgb(153, 153, 153);
+    line-height: 20px;
+    letter-spacing: -0.1px;
+    text-align: center;
+}
+.btn-line{
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    -webkit-box-pack: end;
+    justify-content: flex-end;
+}
+
+/* basic-btn 버튼 기본 디자인 */
+.basic-btn{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 130px;
+    height: 42px;
+    color: #fff;
+    background-color: #1C8394;
+    border: 0px none;
+    line-height: 40px;
+}
+
+/* view-mid-wrap */
+.view-mid-wrap{
+    margin-top: 20px;
+    border-top: 2px solid rgb(51, 51, 51);
+}
+.line-wrap{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+.title-line{
+    width: 130px;
+    padding: 13px 0px 13px 20px;
+    background-color: rgb(247, 245, 248);
+    border-top: 1px solid rgb(244, 244, 244);
+    text-align: left;
+    font-weight: 500;
+}
+.content-line{
+    padding-left: 25px;
+    align-self: center;
+}
+.view-content-wrap{
+    padding: 30px 10px 100px;
+    border-bottom: 1px solid rgb(128, 128, 128);
+}
