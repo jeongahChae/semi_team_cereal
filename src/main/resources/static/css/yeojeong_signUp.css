@@ -14,7 +14,8 @@
 
 }
 .join-all-wrap{
-    width:800px;    
+    width:800px; 
+    margin: 0 auto;   
 }
 h1{
     padding-bottom:10px;
@@ -74,12 +75,16 @@ input::placeholder{
 .star{
     color: #A52502;
 }
+.join-content>:nth-child(2)>:nth-child(12){
+    overflow: hidden;
+}
 .join-content>:nth-child(2)>:nth-child(12)>div{
     float: left;
     
 }
 .gender-wrap{
     width: 50%;
+    overflow: hidden;
     
 }
 .gender-wrap>div{

@@ -12,7 +12,8 @@ public class AdminPageController {
     public String cssTest() {
 //        return "adminPage/Donghyo_adminPageList";
 //        return "adminPage/Donghyo_allMemberList";
-        return "adminPage/Donghyo_allProductList;
+//        return "adminPage/Donghyo_allProductList";
+    	return "member/yeojeong_signUp";
     }//cssTest()
     
 }//AdminPageController
