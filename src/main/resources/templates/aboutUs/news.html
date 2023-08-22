@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ESSENTIAL#</title>
+<link rel="stylesheet" href="/css/aboutUs.css">
+<script src="/javascript/jquery-3.7.0.js"></script>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<div class="us-wrap">
+		<div class="us-title">
+			<br>
+			<h1>미디어 센터</h1>
+		</div>
+		<a th:href="@{/news/view(newsNo=${news.newsNo})}" th:each="news : ${newsList}">
+			<div class="news-list">
+				<h3 th:text="${news.newsTitle}"></h3>
+				<span th:text="${news.regDate}"></span>
+				<span>|</span>
+				<span th:text="${news.press}"></span>
+			</div>
+		</a>
+	</div>
+	<div id="pageNavi" th:utext="${pageNavi}"></div>
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>
