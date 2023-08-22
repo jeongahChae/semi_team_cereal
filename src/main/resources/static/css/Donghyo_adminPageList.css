@@ -33,7 +33,7 @@ li{
     list-style-type: none;
 }
 button{
-    background-color: yellow;
+    background-color: #fff;
     border: none;
     text-align: left;
     width: 200px;
@@ -58,11 +58,11 @@ button:visited{
     background-color: #A52502;
     display: inline-block;
     color: #fff;
-    margin-left: 10px;
+    margin-left: 70px;
     font-size: 0.8em;
     text-align: center;
-    width: 35px;
+    width: 45px;
     height: 20px;
     line-height: 20px;
-    border-radius: 10px;
+    border-radius: 8px;
 }
