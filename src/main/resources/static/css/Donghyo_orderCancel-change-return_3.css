@@ -67,6 +67,11 @@ td {
 tbody>tr>:last-child{
     color: #A52502;
 }
+.product-info-text:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 
 
 .moreBtn-wrap{

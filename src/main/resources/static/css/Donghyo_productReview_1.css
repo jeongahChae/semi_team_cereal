@@ -85,6 +85,10 @@ tbody>tr>:last-child{
     font-size: 1.01em;
     cursor: pointer;
 }
+.product-info-text:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
 
 
 

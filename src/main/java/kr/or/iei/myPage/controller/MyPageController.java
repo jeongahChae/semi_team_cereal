@@ -10,7 +10,19 @@ public class MyPageController {
 	
 	@GetMapping(value="/cssTest")
 	public String orderHistoryDeliveryStatus1() {
-		return "myPage/Donghyo_productReview_3";
+//      return "myPage/Donghyo_orderHistory_deliveryStatus_1";
+//      return "myPage/Donghyo_orderHistory_deliveryStatus_2";
+//      return "myPage/Donghyo_orderCancel-change-return_1";
+//      return "myPage/Donghyo_orderCancel-change-return_2";
+//      return "myPage/Donghyo_orderCancel-change-return_3";
+//      return "myPage/Donghyo_productReview_1";
+//      return "myPage/Donghyo_productReview(modal)_2";
+//      return "myPage/Donghyo_productReview_3";
+//      return "myPage/Donghyo_productReview_4";
+//      return "myPage/Donghyo_productInquiry_1";
+        return "myPage/Donghyo_productInquiry_2";
+//      return "myPage/Donghyo_likeItList";
+//      return "myPage/Donghyo_myPageList";
 	}//orderHistoryDeliveryStatus1()
 	
 }//MyPageController

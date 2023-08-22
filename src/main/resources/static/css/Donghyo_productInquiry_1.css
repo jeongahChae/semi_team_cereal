@@ -61,6 +61,25 @@ tbody tr:hover{
 
 
 
+
+.registerBtn-wrap{
+    text-align: right;
+}
+.reWriteBtn, .closeBtn{
+    background-color: #1C8394;
+    border: none;
+    width: 150px;
+    height: 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+
+
 .moreBtn-wrap{
     text-align: center;
 }
