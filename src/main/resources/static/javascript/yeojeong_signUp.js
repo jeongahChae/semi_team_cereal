@@ -1,0 +1,1 @@
+const allAgreement = document.quer

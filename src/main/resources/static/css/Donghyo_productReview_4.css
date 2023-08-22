@@ -1,5 +1,5 @@
-/*상품후기 3*/
-/*Donghyo_productReview_3.html*/
+/*상품후기 4*/
+/*Donghyo_productReview_4.html*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 
 .notosanskr * { 
@@ -49,6 +49,7 @@ input[name=product-review-tap]{
 
 
 
+
 .guide-ment-wrap{
     margin-bottom: 10px;
 }
@@ -78,42 +79,35 @@ td {
     text-align: center;
     cursor: pointer;
 }
-tr>td:hover{
-    text-decoration: underline;
-}
-.order-no{
-    width: 150px;
-}
 .img-container{
     padding-top: 3px;
     width: 160px;
 }
-.review-text{
-    background-color: #fafafa;
+.review-container{
     padding: 10px;
-    width: 200px;
-    height: 100px;
+}
+.review-detail{
+    background-color: #fafafa;
+    padding: 15px;
+    width: 750px;
+    height: 500px;
+    font-size: 1.1em;
     border: none;
     resize: none;
-    overflow: hidden;
-    cursor: pointer;
-}
-.review-text:focus{
-    outline: none;
 }
 
 
 
-.moreBtn-wrap{
-    text-align: center;
+.registerBtn-wrap{
+    text-align: right;
 }
-.moreBtn{
-    width: 300px;
-    height: 40px;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    font-size: 1.1em;
+.reWriteBtn, .closeBtn{
     background-color: #1C8394;
+    border: none;
+    width: 150px;
+    height: 40px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
     cursor: pointer;
 }
