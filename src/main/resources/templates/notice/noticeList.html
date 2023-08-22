@@ -12,7 +12,7 @@
             <div class="wrap-title">고객센터</div>
             <div class="myPage-list-wrap">
                 <ul>
-                    <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">공지사항</button></li>
+                    <li><button type="button" class="button active" id="myPageBtn" onclick="changeBtn(event)">공지사항</button></li>
                     <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">자주하는 질문</button></li>
                     <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">1:1 문의</button></li>
                     <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">Furniture Access Check</button></li>
@@ -31,23 +31,22 @@
                     <th style="width: 15%;">작성자</th>
                     <th style="width: 15%;">작성일</th>
                 </tr>
-                <tr th:each="notice : ${noticeList}">
+                <tr th:each="notice : ${noticeList}" th:onclick="noticeView([[${notice.noticeNo}]])" style="cursor: pointer;">
                     <td th:text="${notice.noticeNo}"></td>
                     <td th:text="${notice.noticeTitle}"></td>
                     <td th:text="${notice.noticeWriter}"></td>
                     <td th:text="${notice.regDate}"></td>
-                </tr>
-                <tr>
-                    <td>글번호</td>
-                    <td>글제목</td>
-                    <td>작성자 이름</td>
-                    <td>2020.02.02</td>
                 </tr>
             </table>
             <div id="pageNavi" th:utext="${pageNavi}"></div>
         </div>
     </div>
     <th:block th:include="common/footer"></th:block>
+    <script>
+        function noticeView(noticeNo){
+            location.href="/notice/view?noticeNo="+noticeNo;
+        }
+    </script>
 </body>
 <link rel="stylesheet" href="/css/noticeList.css">
 </html>
