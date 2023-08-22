@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,33 +8,44 @@
 </head>
 <body>
     
+    <th:block th:include="common/header"></th:block>
+    
     <!---------------------------------------------------------------------------->
+	<div class="content-wrap">
 
-    <div class="allProductList-wrap">
-        
-        <h3>등록 상품 현황</h3>
 
-        <div class="allProductList-table-wrap">
-            <table>
-                <thead>
-                    <tr>
-                        <th class="productNo">상품번호</th><th class="productName">상품명</th><th class="productOption">옵션</th><th class="productAmount">재고수량</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>XZS123456789</td><td>[ESSENTIAL#]유리 보틀</td><td>블루</td><td>50</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div> <!--<div class="allMemberList-table-wrap">-->
+		<th:block th:include="adminPage/Donghyo_adminPageList"></th:block>
 
-        <div class="moreBtn-wrap">
-            <button type="button" class="moreBtn">더보기</button>
-        </div> <!--<div class="moreBtn-wrap">-->
 
-    </div> <!--<div class="allMemberList-wrap">-->
-        
+	    <div class="allProductList-wrap">
+	        
+	        <h2>등록 상품 현황</h2>
+	
+	        <div class="allProductList-table-wrap">
+	            <table>
+	                <thead>
+	                    <tr>
+	                        <th class="productNo">상품번호</th><th class="productName">상품명</th><th class="productOption">옵션</th><th class="productAmount">재고수량</th>
+	                    </tr>
+	                </thead>
+	                <tbody>
+	                    <tr>
+	                        <td>XZS123456789</td><td>[ESSENTIAL#]유리 보틀</td><td>블루</td><td>50</td>
+	                    </tr>
+	                </tbody>
+	            </table>
+	        </div> <!--<div class="allMemberList-table-wrap">-->
+	
+	        <div class="moreBtn-wrap">
+	            <button type="button" class="moreBtn">더보기</button>
+	        </div> <!--<div class="moreBtn-wrap">-->
+	
+	    </div> <!--<div class="allMemberList-wrap">-->
+ 
+	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->
+    
+    <th:block th:include="common/footer"></th:block>
+    
 </body>
 </html>

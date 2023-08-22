@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,39 +8,49 @@
 </head>
 <body>
     
+    <th:block th:include="common/header"></th:block>
+    
     <!---------------------------------------------------------------------------->
+	<div class="content-wrap">
 
-    <div class="like-it-wrap">
 
-        <h3>찜한 상품</h3>
-        
-        <div><span class="guide-ment">찜한 상품은 최대 50개까지 저장됩니다.</span></div>
+		<th:block th:include="myPage/Donghyo_myPageList"></th:block>
 
-        <div class="like-it-list-wrap">
-            <table>
-                <tbody>
-                    <td class="img-container">
-                        <img src="/img/sample-img.jpg" width="150px">
-                    </td>
-                    <td class="product-info">
-                        <span>[ESSENTIAL#]유리 보틀</span><br>
-                        <span>45,000원</span> | <span>1개</span>
-                    </td>
-                    <td class="button-container">
-                        <button type="button" class="removeBtn">삭제</button><br>
-                        <button type="button" class="cartBtn">장바구니 담기 </button>
-                    </td>
-                </tbody>
-            </table>
-        </div> <!--<div class="like-it-list-wrap">-->
 
-        <div class="moreBtn-wrap">
-            <button type="button" class="moreBtn">더보기</button>
-        </div> <!--<div class="moreBtn-wrap">-->
+	    <div class="like-it-wrap">
+	
+	        <h2>찜한 상품</h2>
+	        
+	        <div><span class="guide-ment">찜한 상품은 최대 50개까지 저장됩니다.</span></div>
+	
+	        <div class="like-it-list-wrap">
+	            <table>
+	                <tbody>
+	                    <td class="img-container">
+	                        <img src="/img/sample-img.jpg" width="150px">
+	                    </td>
+	                    <td class="product-info">
+	                        <span>[ESSENTIAL#]유리 보틀</span><br>
+	                        <span>45,000원</span> | <span>1개</span>
+	                    </td>
+	                    <td class="button-container">
+	                        <button type="button" class="removeBtn">삭제</button><br>
+	                        <button type="button" class="cartBtn">장바구니 담기 </button>
+	                    </td>
+	                </tbody>
+	            </table>
+	        </div> <!--<div class="like-it-list-wrap">-->
+	
+	        <div class="moreBtn-wrap">
+	            <button type="button" class="moreBtn">더보기</button>
+	        </div> <!--<div class="moreBtn-wrap">-->
+	
+	    </div> <!--<div class="like-it-wrap">-->
 
-    </div> <!--<div class="like-it-wrap">-->
-
+	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->
-
+    
+    <th:block th:include="common/footer"></th:block>
+    
 </body>
 </html>

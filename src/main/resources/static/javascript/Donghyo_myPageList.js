@@ -2,7 +2,7 @@
 //Donghyo_myPageList.html
 
 function changeBtn(event){
-    var btns = document.querySelectorAll(".button");
+    var btns = document.querySelectorAll(".sideButton");
     btns.forEach(function(btn, i){
         if(event.currentTarget == btn){
             btn.classList.add("active");

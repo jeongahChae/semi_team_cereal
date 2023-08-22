@@ -44,7 +44,7 @@ li{
     padding-left: 15px;
     cursor: pointer;
 }
-.sideButton:hover, .button.active{
+.sideButton:hover, .sideButton.active{
     background-color: #1C8394;
     color: #fff;
 }

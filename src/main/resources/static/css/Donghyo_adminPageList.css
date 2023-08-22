@@ -32,7 +32,7 @@
 li{
     list-style-type: none;
 }
-button{
+.sideButton{
     background-color: #fff;
     border: none;
     text-align: left;
@@ -43,11 +43,11 @@ button{
     padding-left: 15px;
     cursor: pointer;
 }
-.button:hover, .button.active{
+.sideButton:hover, .sideButton.active{
     background-color: #1C8394;
     color: #fff;
 }
-button:visited{
+.sideButton:visited{
     background-color: #1C8394;
     color: #fff;
 }
