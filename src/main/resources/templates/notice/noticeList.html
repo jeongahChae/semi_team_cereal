@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <script src="/javascript/jquery-3.7.0.js"></script>
-<link rel="stylesheet" href="/css/noticeList.css">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항</title>
 </head>
 <body>
 	<th:block th:include="common/header"></th:block>
@@ -21,7 +20,10 @@
             </div>
         </div>
         <div class="page-content">
-            <div class="page-title"><div class="content-title">공지사항</div><span class="page-slogan">새로운 소식을 한곳에서 확인하세요!</span></div>
+            <div class="page-title">
+                <div class="content-title">공지사항</div>
+                <span class="page-slogan">새로운 소식을 한곳에서 확인하세요!</span>
+            </div>
             <table class="tbl notice-tbl">
                 <tr>
                     <th style="width: 10%">번호</th>
@@ -29,11 +31,11 @@
                     <th style="width: 15%;">작성자</th>
                     <th style="width: 15%;">작성일</th>
                 </tr>
-                <tr>
-                    <td>글번호</td>
-                    <td>글제목</td>
-                    <td>작성자 이름</td>
-                    <td>2020.02.02</td>
+                <tr th:each="notice : ${noticeList}">
+                    <td th:text="${notice.noticeNo}"></td>
+                    <td th:text="${notice.noticeTitle}"></td>
+                    <td th:text="${notice.noticeWriter}"></td>
+                    <td th:text="${notice.regDate}"></td>
                 </tr>
                 <tr>
                     <td>글번호</td>
@@ -42,8 +44,10 @@
                     <td>2020.02.02</td>
                 </tr>
             </table>
+            <div id="pageNavi" th:utext="${pageNavi}"></div>
         </div>
     </div>
     <th:block th:include="common/footer"></th:block>
 </body>
+<link rel="stylesheet" href="/css/noticeList.css">
 </html>
