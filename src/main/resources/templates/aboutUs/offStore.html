@@ -9,6 +9,7 @@
 <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=x40vg9gigd&submodules=geocoder"></script>
 <script src="/javascript/jquery-3.7.0.js"></script>
 <body>
+	<th:block th:include="common/header"></th:block>
 	<div class="us-wrap">
         <div class="us-title">
 			<br>
@@ -20,23 +21,23 @@
 		</div>
         <div class="area">
             <ul>
-                <li value="마포">마포</li>
+                <li>마포</li>
                 <li>논현</li>
-                <li>경기</li>
-                <li>인천</li>
-                <li>충청</li>
-                <li>전라</li>
-                <li>강원</li>
-                <li>경상</li>
+                <li>분당</li>
+                <li>송도</li>
+                <li>광주</li>
+                <li>대구</li>
+                <li>대전</li>
                 <li>제주</li>
+                <li>춘천</li>
             </ul>
         </div>
         <div class="area-detail">
         <div class="area-img">
-            <img src="/img/mapo.jpg">
+            <img>
             <div id="map"></div>
         </div>
-                <h3 class="value-title">마포점</h3>
+            <h3 class="value-title">마포점</h3>
             <div class="area-content">
                 <b>운영시간</b>
                 <p>월-금: 오전10:30 ~ 오후8:00</p>
@@ -51,7 +52,7 @@
             </div>
         </div>
     </div>
-
+	<th:block th:include="common/footer"></th:block>
 <script src="/javascript/offStore.js"></script>
 </body>
 </html>
