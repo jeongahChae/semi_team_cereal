@@ -16,4 +16,5 @@ public class Product {
 	private String productBrand;
 	private String productDelfree;
 	private String productCategory;
+	private String productContent;
 }
