@@ -39,8 +39,8 @@ table{
     width: 800px;
 }
 td {
-    border-top: 1.5px solid rgb(148,148,148);
-    border-bottom: 1px solid #ddd;
+    border-top: 2px solid #333;
+    border-bottom: 1px solid rgb(244, 244, 244);
     text-align: center;
     height: 164px;
 }

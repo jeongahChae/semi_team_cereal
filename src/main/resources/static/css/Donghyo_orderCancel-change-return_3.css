@@ -1,27 +1,27 @@
 /*주문취소/교환/반품 3*/
 /*Donghyo_orderCancel-change-return_3.html*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
-​
+
 .notosanskr * { 
     font-family: 'Noto Sans KR', sans-serif;
 }
-​
+
 *{
     padding: 0;
     margin: 0;  
     color: #333333;
     font-family: 'Noto Sans KR', sans-serif;
 }
-​
+
 .orderCancel-change-return-wrap{
     width: 800px;
 }
-​
+
 h3{
     padding-bottom: 10px;
 }
-​
-​
+
+
 .select-tap-container{
     overflow: hidden;
     padding-bottom: 10px;
@@ -45,9 +45,8 @@ input[name=orderCancel-change-return-tap]:checked+label{
 input[name=orderCancel-change-return-tap]{
     display: none;
 }
-​
-​
-​
+
+
 table{
     border-collapse: collapse;
     width: 800px;
@@ -68,9 +67,8 @@ td {
 tbody>tr>:last-child{
     color: #A52502;
 }
-​
-​
-​
+
+
 .moreBtn-wrap{
     text-align: center;
 }

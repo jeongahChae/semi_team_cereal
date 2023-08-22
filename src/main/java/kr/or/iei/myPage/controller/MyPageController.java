@@ -10,7 +10,7 @@ public class MyPageController {
 	
 	@GetMapping(value="/cssTest")
 	public String orderHistoryDeliveryStatus1() {
-		return "myPage/Donghyo_orderCancel-change-return_3";
+		return "myPage/Donghyo_productReview(modal)_2";
 	}//orderHistoryDeliveryStatus1()
 	
 }//MyPageController
