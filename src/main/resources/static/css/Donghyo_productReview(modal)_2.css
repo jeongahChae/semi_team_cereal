@@ -62,7 +62,7 @@ h3{
     width: 720px;
     height: 280px;
     resize: none;
-    border: 1px solid rgb(244, 244, 244);
+    border: 1.5px solid #9e9e9e;
     outline: none;
 }
 .registerBtn-wrap{
