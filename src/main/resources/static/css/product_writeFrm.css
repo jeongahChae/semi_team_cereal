@@ -97,6 +97,11 @@
     font-size: 18px;
     line-height: 50px;
 }
+
+#sub-category{
+    display: none;
+}
+
 /* 파일 첨부 버튼 바꾸기 */
 .filebox .upload-name {
     display: inline-block;

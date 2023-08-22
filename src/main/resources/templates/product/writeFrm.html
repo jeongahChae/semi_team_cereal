@@ -1,110 +1,101 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>상품 등록</title>
+    <link rel="stylesheet" href="/css/product_writeFrm.css"> 
 </head>
 <body>
-    <!DOCTYPE html>
-    <html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <title>상품 등록</title>
-        <link rel="stylesheet" href="/css/product_writeFrm.css"> 
-    </head>
-    <body>
-        <div class="product-writeFrm">
-            <div class="product-writeFrm-title">상품 등록</div>
+    <div class="product-writeFrm">
+        <div class="product-writeFrm-title">상품 등록</div>
+        <hr>
+        <form action="/product/write" method="post" enctype="multipart/form-data">
+            <table class="product-writeFrm-tbl">
+                <tr>
+                    <th>상품명</th>
+                    <td>
+                        <input type="text" class="input-form" placeholder="상품명을 입력하세요.">
+                    </td>
+                </tr>
+                <tr>
+                    <th>상품 카테고리</th>
+                    <td>
+                        <select id="main-category">
+                            <option value="">대분류</option>
+                            <option value="furniture">가구</option>
+                            <option value="light">조명</option>
+                            <option value="acc">악세사리</option>
+                            <option value="fabric">패브릭</option>
+                        </select>
+                        <select id="sub-category">
+                            <option value="">소분류</option>
+                            <option value="chair">의자</option>
+                            <option value="table">책상</option>
+                            <option value="bed">침대</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <th>상품 옵션</th>
+                    <td>
+                        <input type="text" class="input-form" placeholder="색">
+                        <input type="text" class="input-form" placeholder="재고">
+                        <button type="button" class="option-addBtn">추가</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th>상품 가격</th>
+                    <td>
+                        <input type="text" class="input-form" name="productPrice" placeholder="상품 원 가격을 입력하세요.">
+                    </td>
+                </tr>
+                <tr>
+                    <th>할인율</th>
+                    <td>
+                        <input type="text" class="input-form" name="productPercent" placeholder="할인율 % 숫자만 입력하세요.">
+                    </td>
+                </tr>
+                <tr>
+                    <th>상품 이미지</th>
+                    <td>
+                        <div class="filebox">
+                            <input class="upload-name" placeholder="이미지는 최대 4개까지 가능합니다." readonly>
+                            <label for="file">파일첨부</label> 
+                            <input type="file" name="upfile" id="file" multiple>
+                        </div>
+                    </td>
+                </tr>
+                <tr></tr>
+                <tr></tr>
+                <tr class="product-detail">
+                    <th>상품 상세정보</th>
+                    <td>
+                        <textarea class="text-form" name="productContent"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <div class="filebox">
+                            <input class="upload-name" placeholder="이미지는 최대 5개까지 가능합니다." readonly>
+                            <label for="file">파일첨부</label> 
+                            <input type="file" name="upfile" id="file" multiple>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <p>· 30MB 이하의 이미지만 업로드 가능합니다.</p>
+                        <p>· 사진은 최대 5개까지 등록 가능합니다.</p> 
+                    </td>
+                </tr>
+            </table>
             <hr>
-            <form action="/product/write" method="post" enctype="multipart/form-data">
-                <table class="product-writeFrm-tbl">
-                    <tr>
-                        <th>상품명</th>
-                        <td>
-                            <input type="text" class="input-form" placeholder="상품명을 입력하세요.">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>상품 카테고리</th>
-                        <td>
-                            <select id="main-category">
-                                <option value="">대분류</option>
-                                <option value="furniture">가구</option>
-                                <option value="light">조명</option>
-                                <option value="acc">악세사리</option>
-                                <option value="fabric">패브릭</option>
-                            </select>
-                            <select id="sub-category">
-                                <option value="">소분류</option>
-                                <option value="chair">의자</option>
-                                <option value="table">책상</option>
-                                <option value="bed">침대</option>
-                            </select>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>상품 옵션</th>
-                        <td>
-                            <input type="text" class="input-form" placeholder="색">
-                            <input type="text" class="input-form" placeholder="재고">
-                            <button type="button" class="option-addBtn">추가</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>상품 가격</th>
-                        <td>
-                            <input type="text" class="input-form" name="productPrice" placeholder="상품 원 가격을 입력하세요.">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>할인율</th>
-                        <td>
-                            <input type="text" class="input-form" name="productPercent" placeholder="할인율 % 숫자만 입력하세요.">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>상품 이미지</th>
-                        <td>
-                            <div class="filebox">
-                                <input class="upload-name" placeholder="이미지는 최대 4개까지 가능합니다." readonly>
-                                <label for="file">파일첨부</label> 
-                                <input type="file" name="upfile" id="file" multiple>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr></tr>
-                    <tr></tr>
-                    <tr class="product-detail">
-                        <th>상품 상세정보</th>
-                        <td>
-                            <textarea class="text-form" name="productContent"></textarea>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>
-                            <div class="filebox">
-                                <input class="upload-name" placeholder="이미지는 최대 5개까지 가능합니다." readonly>
-                                <label for="file">파일첨부</label> 
-                                <input type="file" name="upfile" id="file" multiple>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>
-                            <p>· 30MB 이하의 이미지만 업로드 가능합니다.</p>
-                            <p>· 사진은 최대 5개까지 등록 가능합니다.</p> 
-                        </td>
-                    </tr>
-                </table>
-                <hr>
-                <div class="product-writeFrm-sumbitBtn">
-                    <button>상품 등록</button>
-                </div>
-            </form>
-        </div>
-    </body>
-    </html>
+            <div class="product-writeFrm-sumbitBtn">
+                <button>상품 등록</button>
+            </div>
+        </form>
+    </div>
 </body>
 </html>
