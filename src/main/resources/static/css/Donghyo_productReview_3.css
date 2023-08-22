@@ -13,8 +13,21 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
+
+
+.content-wrap{
+    display: flex;
+    width: 1200px;
+    padding: 50px 0 80px 0;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
 .product-review-wrap{
-    width: 800px;
+    width: 1200px;
 }
 
 h3{
@@ -63,7 +76,7 @@ p{
 
 table{
     border-collapse: collapse;
-    width: 800px;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 10px; 
 }
@@ -82,11 +95,14 @@ tbody tr:hover{
     text-decoration: underline;
 }
 .order-no{
-    width: 150px;
+	width: 200px;
 }
 .img-container{
     padding-top: 3px;
     width: 160px;
+}
+.review-container{
+	width: 250px;
 }
 .review-text{
     background-color: #fafafa;

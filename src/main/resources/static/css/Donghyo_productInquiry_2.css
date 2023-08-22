@@ -10,8 +10,22 @@
     color: #333333;
     font-family: 'Noto Sans KR', sans-serif;
 }
+
+
+
+.content-wrap{
+    display: flex;
+    width: 1200px;
+    padding: 50px 0 80px 0;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
 .product-inquiry-wrap{
-    width: 800px;
+    width: 1200px;
 }
 h3{
     padding-bottom: 10px;
@@ -26,7 +40,7 @@ p{
 }
 table{
     border-collapse: collapse;
-    width: 800px;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 10px; 
 }
@@ -49,39 +63,42 @@ tbody tr:hover{
     cursor: pointer;
 }
 .inquiry-answer-wrap{
-    width: 780px;
-    padding: 10px;
+    width: 100%;
     margin-bottom: 10px;
     border-bottom: 1.5px solid #333;
 }
 .inquiry-text{
     background-color: #fafafa;
-    width: 750px;
+    width: 100%;
     height: 500px;
     border: none;
     resize: none;
     font-size: 1em;
-    padding: 15px;
-    margin-bottom: 10px;
+    margin: 0 auto;
+    margin-bottom: 5px;
     outline: none;
+    box-sizing: border-box;
+    padding: 15px;
 }
 .inquiry-answer{
     border-top: 1.5px solid #333;
     border-bottom: 1.5px solid #333;
 }
 .answer-text{
-    margin-top: 10px;
-    margin-bottom: 5px;
-    width: 750px;
-    height: 170px;
-    padding: 15px;
+	margin-top: 10px;
+	margin-bottom: 5px;
+    width: 100%;
+    height: 175px;
     border: none;
     resize: none;
     font-size: 1em;
     outline: none;
+    box-sizing: border-box;
+    padding: 15px;
 }
 .registerBtn-wrap{
     margin-top: 10px;
+    margin-bottom: 10px;
     text-align: right;
 }
 .reWriteBtn, .closeBtn{
