@@ -17,7 +17,7 @@ public class AboutUsDao {
 	private StoreRowMapper storeRowMapper;
 
 	public List selectAllStore() {
-		String query = "select * from store";
+		String query = "select * from store order by store_no";
 		List storeList = jdbc.query(query, storeRowMapper);
 		return storeList;
 	}	

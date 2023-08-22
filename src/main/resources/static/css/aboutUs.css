@@ -19,14 +19,13 @@
 }
 .us-wrap{
 	width: 1200px;
-    margin: 150px auto;
-    position: relative;
+    margin: 0 auto;
+
 }
 #us-bgc{
     min-width: 100%;
     min-height: 100%;
-    top: 0;
-    left: 0;
+    margin-top: 100px;
 }
 .us-title{
 	margin: 100px 0;
