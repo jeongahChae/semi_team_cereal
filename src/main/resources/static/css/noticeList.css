@@ -50,7 +50,6 @@ button{
     font-size: 1.0em;
     padding-left: 15px;
     cursor: pointer;
-    border-radius: 3px;
 }
 .button:hover, .button.active{
     background-color: #1C8394;
@@ -116,6 +115,7 @@ button:visited{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 20px;
 }
 
 .page-design > li {
