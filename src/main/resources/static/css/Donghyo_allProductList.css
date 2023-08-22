@@ -1,5 +1,5 @@
-/*회원목록*/
-/*Donghyo_allMemberList.html*/
+/*등록 상품 현황*/
+/*Donghyo_allProductList.html*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 .notosanskr * { 
     font-family: 'Noto Sans KR', sans-serif;
@@ -12,7 +12,7 @@
     font-family: 'Noto Sans KR', sans-serif;
 }
 
-.allMemberList-wrap{
+.allProductList-wrap{
     width: 800px;
 }
 
@@ -38,6 +38,15 @@ td {
     border-bottom: 1px solid rgb(244, 244, 244);
     text-align: center;
     height: 50px;
+}
+.productNo{
+    width: 150px;
+}
+.productOption{
+    width: 100px;
+}
+.productAmount{
+    width: 120px;
 }
 
 

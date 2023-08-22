@@ -10,7 +10,9 @@ public class AdminPageController {
     
     @GetMapping(value="/cssTest")
     public String cssTest() {
-        return "adminPage/Donghyo_adminPageList";
+//        return "adminPage/Donghyo_adminPageList";
+//        return "adminPage/Donghyo_allMemberList";
+        return "adminPage/Donghyo_allProductList;
     }//cssTest()
     
 }//AdminPageController
