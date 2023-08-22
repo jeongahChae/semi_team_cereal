@@ -143,6 +143,7 @@
     text-decoration: none;
     font-size: 14px;
 }
+
 #login-modal .input-box {
     width: 80%;
     margin: 0 auto;
@@ -161,7 +162,7 @@
   }
   .modal-bg {
     background-color: rgba(0, 0, 0, 0.3);
-    position: fixed;
+    position: flex;
     width: 100%;
     height: 100vh;
     display: none;
@@ -170,7 +171,7 @@
   }
   .modal-wrap {
     margin-top: 150px;
-    width: 600px;
+    width: 400px;
     background: #fff;
     height: auto;
   }
@@ -181,7 +182,7 @@
     border-bottom: 1px solid #ccc;
   }
   .modal-wrap .modal-foot {
-    text-align: right;
+    
   }
   .modal-wrap div.modal-head {
     position: relative;
@@ -194,4 +195,38 @@
   }
   .close-icon:hover {
     cursor: pointer;
+  }
+  .btn {
+    border: none;
+    padding: 1rem;
+    display: inline-block;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+    font-size: 16px;
+    
+  }
+  .bc1 {
+    background-color: rgba(37, 42, 52, 0.9);
+    color: #fff;
+    border: 2px solid rgba(37, 42, 52, 0.9);
+  }
+  .bc11 {
+    color: rgba(37, 42, 52, 1);
+    background-color: #fff;
+    border: 2px solid rgba(37, 42, 52, 1);
+  }
+  .bc11:hover {
+    background-color: rgba(37, 42, 52, 1);
+    cursor: pointer;
+    color: #fff;
+  }
+  .input-form {
+    width: 100%;
+    display: block;
+    padding: 0.8rem;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid #ccc;
+  
+    box-sizing: border-box;
   }
