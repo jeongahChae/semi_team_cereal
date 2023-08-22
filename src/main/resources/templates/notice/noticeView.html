@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<script src="/javascript/jquery-3.7.0.js"></script>
 <head>
 <meta charset="UTF-8">
 <title>공지사항view</title>
@@ -11,25 +12,29 @@
             <div class="view-title">공지사항</div>
             <div class="view-slogan">새로운 소식을 한곳에서 확인하세요!</div>
             <div class="btn-line">
-                <a href="/notice/list?reqpage=1" class="basic-btn">목록</a>
+                <a href="/notice/list?reqPage=1" class="basic-btn">목록</a>
             </div>
         </div>
         <div class="view-mid-wrap">
             <div class="line-wrap">
                 <div class="title-line">제목</div>
-                <div class="content-line">글 제목 나오는 곳입니다.</div>
+                <div class="content-line" th:text="${n.noticeTitle}"></div>
             </div>
             <div class="line-wrap">
                 <div class="title-line">작성자</div>
-                <div class="content-line">홍길동</div>
+                <div class="content-line" th:text="${n.noticeWriter}"></div>
             </div>
             <div class="line-wrap">
                 <div class="title-line">작성일</div>
-                <div class="content-line">2020.02.02</div>
+                <div class="content-line" th:text="${n.regDate}"></div>
             </div>
             <div class="view-content-wrap">
-                <p class="view-content">내용내용</p>
+                <p class="view-content" th:text="${n.noticeContent}"></p>
             </div>
+        </div>
+        <div class="btn-line2">
+            <a class="basic-btn" href="@{/notice/updateFrm(noticeNo=${n.noticeNo})}">수정</a>
+            <button class="cancel-btn" th:onclick="noticeDelete([[${n.noticeNo}]])">삭제</button>
         </div>
     </div>
     <th:block th:include="common/footer"></th:block>

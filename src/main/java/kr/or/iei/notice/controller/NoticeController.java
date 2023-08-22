@@ -30,4 +30,5 @@ public class NoticeController {
 		model.addAttribute("n", n);
 		return "notice/noticeView";
 	}
+	
 }
