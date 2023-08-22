@@ -20,7 +20,7 @@
 
 .header-top li{
     list-style-type: none;
-    display: inline-block;
+    display: block;
     float: right;
     margin-left: 15px;
     font-size: 14px;
@@ -47,7 +47,7 @@
     height: 48px;
     float: left;
     text-align: center;
-    padding-left: 140px;
+    padding-left: 100px;
     box-sizing: border-box;
 }
 
@@ -70,7 +70,6 @@
     border-bottom: 1px solid black;
     height: 30px;
     padding-left: 15px;
-    margin-right:10px;
 }
 
 .header-search-box>input:focus{
@@ -92,6 +91,7 @@
 
 .header-bottom{
     margin: 50px 0;
+    height: 60px;
 }
 
 .main-category, .sub-category{
@@ -114,7 +114,7 @@
     width: 20%;
 }
 
-.main-category ul>li>a{
+.main-category>ul>li>a{
     display: block;
     height: 50px;
     line-height: 50px;
@@ -133,6 +133,15 @@
 
 .sub-category{
     display: none;
+}
+
+.sub-category>li>a{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
 }
 
 

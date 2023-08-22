@@ -1,0 +1,90 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    color: #333333;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.footer-left>img{
+    width: 200px;
+    height: 32px;
+}
+
+#footer{
+    overflow: hidden;
+}
+
+#footer div{
+    display: block;
+    float: left;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.footer-left{
+    width: 20%;
+}
+
+.footer-middle{
+    width: 60%;
+    overflow: hidden;
+}
+
+.footer-right{
+    width: 20%;
+}
+
+.footer-menu{
+    margin-bottom: 100px;
+    padding-left: 50px;
+}
+
+.footer-menu>li{
+    list-style-type: none;
+    display: block;
+    float: left;
+    margin-right: 80px;
+}
+
+.footer-menu>li>a{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.footer-middle>span{
+    display: block;
+    font-size: 13px;
+    margin-bottom: 15px;
+    padding-left: 50px;
+}
+
+#copyright{
+    padding-top: 30px;
+    font-size: 11px;
+}
+
+.footer-right>span{
+    display: block;
+    margin-bottom: 10px;
+    padding-left: 75px;
+}
+
+.footer-right-title{
+    font-size: 18px;
+}
+
+.footer-right-phone{
+    font-size: 45px;
+    font-weight: 900;
+    color: #1C8394;
+}
+
+.footer-right-time{
+    font-size: 14px;
+}
