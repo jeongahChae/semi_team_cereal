@@ -9,9 +9,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.or.iei.FileUtil;
 import kr.or.iei.aboutUs.service.AboutUsService;
+import kr.or.iei.aboutUs.vo.News;
+import kr.or.iei.aboutUs.vo.NewsListData;
 
 @Controller
 public class AboutUsController {
@@ -30,7 +33,7 @@ public class AboutUsController {
 	}
 	
 	@GetMapping(value="/offlineStore")
-	public String offlineStore(Model model) {
+	public String offlineStore() {
 		return "aboutUs/offStore";
 	}
 	
@@ -41,5 +44,22 @@ public class AboutUsController {
 		return list;
 	}
 	
+	@GetMapping(value = "/news/list")
+	public String newsList(Model model, int reqPage) {
+		NewsListData nld = aboutUsService.selectNewsList(reqPage);
+		model.addAttribute("newsList", nld.getNewsList());
+		model.addAttribute("pageNavi", nld.getPageNavi());
+		return "aboutUs/news";
+	}
 	
+	@GetMapping(value="/news/view")
+	public String newsView(int newsNo, Model model) {
+		News n = aboutUsService.selectOneNotice(newsNo);// 삭제됐으면 null 아니면 조회결과
+		if (n != null) {
+			model.addAttribute("n", n);
+			return "aboutUs/newsView";
+		}else {
+			return "/";//스윗얼럿 만들고 수정할 것
+		}
+	}
 }
