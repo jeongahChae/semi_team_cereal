@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.iei.notice.model.dao.NoticeDao;
+import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeListData;
 
 
@@ -76,6 +77,11 @@ public class NoticeService {
 		
 		NoticeListData nld = new NoticeListData(noticeList,pageNavi);
 		return nld;
+	}
+
+	public Notice selectOneNotice(int noticeNo) {
+		Notice n = noticeDao.selectOneNotice(noticeNo);
+		return n;
 	}
 	
 }
