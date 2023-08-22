@@ -4,11 +4,10 @@
  font-family: 'Noto Sans KR', sans-serif;
 }
 *{
-    margin: 0 auto;
+	margin:0;
     padding: 0;
     font-family: 'Noto Sans KR', sans-serif;
     color: #333333;
-    width: 1200px;
     font-size: 18px;
 }
 .essential{
@@ -19,12 +18,11 @@
     font-weight: 900;
 }
 .us-wrap{
-    margin: 150px 0;
-    min-height: 500px;
+	width: 1200px;
+    margin: 150px auto;
     position: relative;
 }
 #us-bgc{
-    margin-left: -30%;
     min-width: 100%;
     min-height: 100%;
     top: 0;
@@ -74,10 +72,6 @@
     float: left;
     width: calc(1200px / 9);
     box-sizing: border-box;
-}
-.area>ul>li a{
-    text-decoration: none;
-    width: calc(1200px / 9);
     height: 50px;
     text-align: center;
     line-height: 50px;
@@ -85,7 +79,14 @@
     border-bottom: 2px solid transparent;
     transition-duration: 0.5s;
 }
-.area>ul>li a:hover{
+.area>ul>li:hover{
+    font-weight: 900;
+    font-size: 1.1em;
+    cursor: pointer;
+    border-bottom: 2px solid #1C8394;
+    color: #1C8394;
+}
+.active-tab{
     font-weight: 900;
     font-size: 1.1em;
     cursor: pointer;
@@ -97,20 +98,26 @@
     margin: 50px 0;
 }
 .area-img>img{
-    width: 40%;
+    width: 480px;
     display: block;
     float: left;
-    margin-left: 120px;
+    box-sizing: border-box;
+    height: 360px;
 }
 #map{
     float: left;
-    width:40%;
+    width:480px;
     height:360px;
 }
 .area-detail{
     overflow: hidden;
     margin: 50px 120px;
 }
-.area-detail>div{
+.area-content{
     float: left;
+    width: 480px;
+}
+.area-detail b{
+	display: block;
+	margin-top: 20px;
 }

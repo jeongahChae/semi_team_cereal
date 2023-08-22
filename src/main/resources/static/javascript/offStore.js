@@ -1,3 +1,28 @@
+const tabs = $(".area>ul>li");
+const details = $(".area-detail");
+
+tabs.on("click", function(){
+    const index = tabs.index(this);
+    const storeName = tabs.val(this);
+    tabs.removeClass("active-tab");
+    tabs.eq(index).addClass("active-tab");
+    $.ajax({
+        url : "/store/detail",
+        type:"get",
+        success : function(data){
+            console.log(data);
+            $(".area-img").attr("src","/img/"+data[index].filepath);
+            $(".value-title").text(data[index].storeName);
+            $(".store-addr").next().text(data[index].storeAddr);
+            $(".store-phone").next().text(data[index].storePhone);
+        }
+    });
+    
+});
+
+
+
+
 const map = new naver.maps.Map("map",{
     center : new naver.maps.LatLng(37.5338151, 126.8969784),
     zoom : 18,
