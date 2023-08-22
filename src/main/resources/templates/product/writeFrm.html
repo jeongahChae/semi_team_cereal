@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>상품 등록</title>
+</head>
+<body>
+	<div class="product-writeFrm">
+		<div class="product-writeFrm-title">상품 등록</div>
+		<hr>
+		<div class="product-writeFrm-info">
+			<div class="product-writeFrm-classification">상품명</div>
+			<div class="product-writeFrm-input"><input type="text" placeholder="상품명을 입력하세요."></div>
+		</div>
+		<div class="product-writeFrm-info">
+			<div class="product-writeFrm-classification">상품 카테고리</div>
+			<div class="product-writeFrm-select">
+				<select id="main-category">
+					<option value="">대분류</option>
+					<option value="furniture">가구</option>
+					<option value="light">조명</option>
+					<option value="acc">악세사리</option>
+					<option value="fabric">패브릭</option>
+				</select>
+				<select id="sub-category">
+					<option value="">소분류</option>
+					<option value="chair">의자</option>
+					<option value="table">책상</option>
+					<option value="bed">침대</option>
+				</select>
+			</div>
+		</div>
+		<div class="product-writeFrm-info">
+			<div class="product-writeFrm-classification">상품 옵션</div>
+			<input type="text" class="input-form" placeholder="색">
+			<input type="text" class="input-form" placeholder="재고">
+		</div>
+		<div class="product-writeFrm-info">
+			<div class="product-writeFrm-classification">상품 가격</div>
+			<input type="text" class="input-form" name="productPrice" placeholder="상품 원 가격을 입력하세요.">
+		</div>
+		<div class="product-writeFrm-info">
+			<div class="product-writeFrm-classification">할인율</div>
+			<input type="text" class="input-form" name="productPercent" placeholder="할인율 % 숫자만 입력하세요.">
+		</div>
+		<div class="product-writeFrm-info">
+			<div class="product-writeFrm-classification">상품 이미지</div>
+			<input type="file" name="upfile" multiple>
+		</div>
+		<hr>
+		<div class="product-writeFrm-info">
+			<div class="product-writeFrm-classification">상세 정보</div>
+			<textarea class="input-form" name="productDetail"></textarea>
+		</div>
+
+	</div>
+</body>
+</html>
