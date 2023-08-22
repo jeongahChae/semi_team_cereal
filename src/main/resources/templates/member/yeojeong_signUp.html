@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>회원가입</title>
     <link rel="stylesheet" href="/semi_team_cereal/src/main/resources/static/css/yeojeong_signUp.css">
-    <script src="/src/main/resources/static/javascript/jquery-3.7.0.js"></script>
+    <script src="/semi_team_cereal/src/main/resources/static/javascript/jquery-3.7.0.js"></script>
 </head>
 <body>
     <div class="join-all-wrap">
@@ -27,8 +27,11 @@
                             <input type="text" name="memberId" id="memberId" class="input-form" placeholder="아이디를 입력해주세요" required>
                             <span class="button-wrap">
                                 <button type="button" id="idChkBtn" class="dup-btn">중복확인</button>
-                            </span>                      
+                            </span>                                                                                          
                     </div>
+                    <div class="comment-wrap">
+                        <span class="comment"></span> 
+                    </div>                       
                     <div class="input-wrap">    
                         <div class="label-wrap">
                             <label for="memberPw">비밀번호<sup class="star">*</sup></label>
@@ -159,5 +162,6 @@
             </div>
         </div>
     </div>
+    <script src="/semi_team_cereal/src/main/resources/static/javascript/yeojeong_signUp.js"></script>
 </body>
 </html>
