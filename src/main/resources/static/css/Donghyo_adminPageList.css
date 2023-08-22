@@ -1,0 +1,68 @@
+/*관리자페이지 리스트*/
+/*Donghyo_adminPageList.html*/
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+*{
+    padding: 0;
+    margin: 0;  
+    color: #333333;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+
+
+.wrap-title {
+    height: 30px;
+    padding: 5px 0 15px 1px;
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 40px;
+    letter-spacing: -1px;
+}
+
+
+
+.myPage-list-wrap{
+    width: 240px;
+}
+li{
+    list-style-type: none;
+}
+button{
+    background-color: yellow;
+    border: none;
+    text-align: left;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 1.0em;
+    padding-left: 15px;
+    cursor: pointer;
+}
+.button:hover, .button.active{
+    background-color: #1C8394;
+    color: #fff;
+}
+button:visited{
+    background-color: #1C8394;
+    color: #fff;
+}
+
+
+
+.beta{
+    background-color: #A52502;
+    display: inline-block;
+    color: #fff;
+    margin-left: 10px;
+    font-size: 0.8em;
+    text-align: center;
+    width: 35px;
+    height: 20px;
+    line-height: 20px;
+    border-radius: 10px;
+}
