@@ -1,30 +1,12 @@
+
 const tabs = $(".area>ul>li");
 const details = $(".area-detail");
-
-tabs.on("click", function(){
-    const index = tabs.index(this);
-    const storeName = tabs.val(this);
-    tabs.removeClass("active-tab");
-    tabs.eq(index).addClass("active-tab");
-    $.ajax({
-        url : "/store/detail",
-        type:"get",
-        success : function(data){
-            console.log(data);
-            $(".area-img").attr("src","/img/"+data[index].filepath);
-            $(".value-title").text(data[index].storeName);
-            $(".store-addr").next().text(data[index].storeAddr);
-            $(".store-phone").next().text(data[index].storePhone);
-        }
-    });
-    
+$(function(){
+    tabs.eq(0).click();
 });
-
-
-
-
 const map = new naver.maps.Map("map",{
     center : new naver.maps.LatLng(37.5338151, 126.8969784),
+    format: "jpg",
     zoom : 18,
     zoomControl : true,
     zoomControlOptions : {
@@ -36,6 +18,46 @@ const marker = new naver.maps.Marker({
     position : new naver.maps.LatLng(37.5338151, 126.8969784),
     map : map//왼쪽map (속성이름), 오른쪽 map (위에 선언된 변수map)
 });
+
+
+
+tabs.on("click", function(){
+    const index = tabs.index(this);
+    const storeName = tabs.val(this);
+    tabs.removeClass("active-tab");
+    tabs.eq(index).addClass("active-tab");
+    $.ajax({
+        url : "/store/detail",
+        type:"get",
+        success : function(data){
+            $(".area-img").children("img").attr("src","/img/"+data[index].storeImage);
+            $(".value-title").text(data[index].storeName);
+            $(".store-addr").next().text(data[index].storeAddr);
+            $(".store-phone").next().text(data[index].storePhone);
+                naver.maps.Service.geocode({
+                    query: data[index].storeAddr
+                }, function(status, response) {
+                    if (status === naver.maps.Service.Status.ERROR) {
+                        return alert('Something Wrong!');
+                    }
+                    if (response.v2.meta.totalCount === 0) {
+                        return alert('올바른 주소를 입력해주세요.');
+                    }
+                    var htmlAddresses = [],
+                        item = response.v2.addresses[0],
+                        point = new naver.maps.Point(item.x, item.y);
+                        map.setCenter(point);
+                        marker.setPosition(point);
+                });
+            }
+    });
+    
+});
+
+
+
+
+
 
 let infoWindow = new naver.maps.InfoWindow();
 let contentString = [
