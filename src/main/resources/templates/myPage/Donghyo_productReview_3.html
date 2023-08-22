@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상품후기</title>
+    <link rel="stylesheet" href="/css/Donghyo_productReview_3.css">
+</head>
+<body>
+
+    <!---------------------------------------------------------------------------->
+
+    <div class="product-review-wrap">
+
+        <h3>상품후기</h3>
+
+            <div class="select-tap-container">
+                <input type="radio" name="product-review-tap" id="product-review-register"><label for="product-review-register">작성 가능 후기</label>
+                <input type="radio" name="product-review-tap" id="product-review-list" checked><label for="product-review-list">작성한 후기</label>
+            </div> <!--<div class="select-tap-container">-->
+
+            <div class="guide-ment-wrap">
+                <p>
+                    ㆍ주간 베스트 후기로 선정 시 5,000원 추가 적립<br>
+                    ㆍ사진후기 100원, 글후기 50원 적립<br>
+                    ㆍ동일 삼품의 후기는 월 1회만 적립금을 지급해드립니다.<br>
+                    ㆍ후기 작성 후 차주 첫 영업일에 적립금이 지급됩니다.
+                </p>
+            </div> <!--<div class="guide-ment-wrap">-->
+
+
+            <div class="product-review-list-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="order-no">주문번호</th><th class="product-info" colspan="2">상품정보</th><th class="review">후기</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="order-no-text">012345678910</td>
+                            <td class="img-container"><img src="/src/main/resources/static/img/sample-img.jpg" width="150px"></td>
+                            <td class="product-info-text">[ESSENTIAL#]유리 보틀</td>
+                            <td class="review-container"><textarea class="review-text"readonly>작성한 후기 내용</textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div> <!--<div class="product-review-list-wrap">-->
+
+            <div class="moreBtn-wrap">
+                <button type="button" class="moreBtn">더보기</button>
+            </div> <!--<div class="moreBtn-wrap">-->
+
+        </div> <!--<div class="product-review-wrap">-->
+
+    <!---------------------------------------------------------------------------->
+
+</body>
+</html>
