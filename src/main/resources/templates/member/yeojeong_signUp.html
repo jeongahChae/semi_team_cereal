@@ -58,16 +58,15 @@
                             <label for="memberPhone">휴대폰<sup class="star">*</sup></label>
                         </div>
                             <input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)" required>
-                        
                     </div>
                     <div class="input-wrap">                        
                         <div class="label-wrap">
                             <label for="memberEmail">이메일<sup class="star">*</sup></label>
                         </div>
                             <input type="text" name="memberEmail" id="memberEmail" class="input-form" placeholder="예: essential@essential.com" required>
-                            <span class="button-wrap">
-                                <button type="button" id="emailChkBtn" class="dup-btn">중복확인</button>
-                            </span>                
+                        <span class="button-wrap">
+                            <button type="button" id="emailChkBtn" class="dup-btn">중복확인</button>
+                        </span>                
                         
                     </div>
                     <div class="input-wrap">                        
@@ -124,7 +123,7 @@
                         <div class="label-wrap">
                             <label for="memberBirthdate">생년월일</label>
                         </div>
-                            <input type="text" name="inputForm" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
+                            <input type="text" name="memberBirthdate" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
                         
                     </div>
                     <hr>
@@ -160,6 +159,27 @@
                     </div>
                 </form>
             </div>
+        </div>
+    </div>
+    <div class="modal-wrap">
+        <div class="idChk-modal">            
+            <div class="modal-content">
+                <form action="login.html" method="post">
+                    <div class="input-wrap">
+                        <label for="id">아이디</label>
+                        <input type="text" name="id" id="id">
+                    </div>
+                    <div class="input-wrap">
+                        <label for="pw">비밀번호</label>
+                        <input type="password" name="pw" id="pw">
+                    </div>
+                    <div class="input-wrap">
+                        <input type="submit" value="로그인">                        
+                        <input type="button" value="닫기">
+                    </div>
+                </form>
+            </div>
+
         </div>
     </div>
     <script src="/semi_team_cereal/src/main/resources/static/javascript/yeojeong_signUp.js"></script>

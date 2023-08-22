@@ -33,8 +33,6 @@ a{
 
 /* list-wrap */
 .myPage-list-wrap{
-
-    margin: 0 auto;
     width: 240px;
 }
 li{
