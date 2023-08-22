@@ -1,0 +1,142 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    color: #333333;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.product-writeFrm{
+    width: 800px;
+    overflow: hidden;
+}
+
+.product-writeFrm-title{
+    font-size: 25px;
+    font-weight: bold;
+    padding: 10px 0;
+}
+
+.product-writeFrm-tbl{
+    border-collapse: separate;
+    border-spacing: 0 30px;
+}
+
+.product-writeFrm-tbl th{
+    width: 35%;
+}
+
+.product-writeFrm-tbl td{
+    width: 65%;
+}
+
+.input-form{
+    height: 30px;
+    padding-left: 5px;
+    border: none;
+    border-bottom: 1px solid #333333;
+}
+
+.input-form:focus{
+    outline: none;
+}
+
+.product-writeFrm-tbl select{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #333333;
+}
+
+.option-addBtn{
+    border: 0;
+    width: 40px;
+    height: 32px;
+    background-color: #1C8394;
+    color: white;
+}
+
+.product-writeFrm-tbl p{
+    font-size: 15px;
+    color: #b1b1b1;
+}
+
+.product-detail{
+    border-bottom: 20px solid #fff;
+    border-top: 20px solid #fff;
+}
+
+.text-form{
+    padding: 10px;
+    width: 100%;
+    height: 300px;
+    resize: none;
+}
+
+.text-form:focus{
+    outline: none;
+}
+
+.product-writeFrm-sumbitBtn{
+    text-align: center;
+    margin: 30px;
+}
+
+.product-writeFrm-sumbitBtn>button{
+    text-align: center;
+    width: 150px;
+    height: 50px;
+    border: none;
+    background-color: #1C8394;
+    color: white;
+    font-size: 18px;
+    line-height: 50px;
+}
+
+#sub-category{
+    display: none;
+}
+
+/* 파일 첨부 버튼 바꾸기 */
+.filebox .upload-name {
+    display: inline-block;
+    height: 30px;
+    padding-left: 5px;
+    vertical-align: middle;
+    border: none;
+    border-bottom: 1px solid #333333;
+    width: 60%;
+    color: #333333;
+}
+
+.upload-name:focus{
+    outline: none;
+}
+
+.filebox label {
+    display: inline-block;
+    color: #fff;
+    vertical-align: middle;
+    background-color: #1C8394;
+    cursor: pointer;
+    height: 30px;
+    margin-left: 10px;
+    font-size: 14px;
+    line-height: 30px;
+    width: 70px;
+    text-align: center;
+}
+
+.filebox input[type="file"] {
+    position: absolute;
+    width: 0;
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+}
