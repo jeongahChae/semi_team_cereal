@@ -74,13 +74,16 @@ input::placeholder{
 .star{
     color: #A52502;
 }
-.join-content>:nth-child(2)>:nth-child(11)>div{
-    display: inline-block;
+.join-content>:nth-child(2)>:nth-child(12)>div{
+    float: left;
+    
 }
 .gender-wrap{
-    width: 400px;    
+    width: 50%;
+    
 }
 .gender-wrap>div{
+     
     float:left;
     width:33%;
 }
