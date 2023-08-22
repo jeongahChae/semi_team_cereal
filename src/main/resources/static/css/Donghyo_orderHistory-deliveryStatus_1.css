@@ -23,8 +23,8 @@ h3{
 
 
 .input-date-wrap{
-    border-top: 1.5px solid rgb(148, 148, 148);
-    border-bottom: 1.5px solid rgb(148, 148, 148);
+    border-top: 2px solid #333;
+    border-bottom: 1.5px solid #333;
     padding: 20px;
 }
 .input-date-wrap>:first-child{
@@ -58,6 +58,7 @@ p{
     font-weight: bold;
 }
 .guide-ment{
+	color: rgb(155, 155, 155);
     text-decoration: underline;
 }
 
@@ -70,12 +71,12 @@ table{
 th {
     height: 50px;
     text-align: center;
-    border-top: 1.5px solid rgb(148,148,148);
-    border-bottom: 1.5px solid rgb(148,148,148);
+    border-top: 2px solid #333;
+    border-bottom: 1.5px solid #333;
 }
 td {
     height: 50px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(244, 244, 244);
     text-align: center;
 }
 tbody>tr>:last-child{

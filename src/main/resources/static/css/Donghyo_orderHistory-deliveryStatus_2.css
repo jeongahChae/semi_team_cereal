@@ -59,8 +59,8 @@ table{
 th {
     height: 50px;
     text-align: center;
-    border-top: 1.5px solid rgb(148,148,148);
-    border-bottom: 1.5px solid rgb(148,148,148);
+    border-top: 2px solid #333;
+    border-bottom: 1.5px solid #333;
 }
 thead>tr>:first-child{
     width: 560px;
@@ -71,7 +71,7 @@ thead>tr>:last-child{
     padding-left: 22.5px;
 }
 td {
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(244, 244, 244);
     text-align: center;
     height: 164px;
 }

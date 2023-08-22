@@ -1,5 +1,5 @@
 /*주문취소/교환/반품 3*/
-/*Donghyo_orderCancel-change-return 3.html*/
+/*Donghyo_orderCancel-change-return_3.html*/
 @import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
 ​
 .notosanskr * { 
@@ -57,12 +57,12 @@ table{
 th {
     height: 50px;
     text-align: center;
-    border-top: 1.5px solid rgb(148,148,148);
-    border-bottom: 1.5px solid rgb(148,148,148);
+    border-top: 2px solid #333;
+    border-bottom: 1.5px solid #333;
 }
 td {
     height: 50px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 1px solid rgb(244, 244, 244);
     text-align: center;
 }
 tbody>tr>:last-child{
