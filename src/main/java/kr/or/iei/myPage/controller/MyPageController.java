@@ -20,9 +20,10 @@ public class MyPageController {
 //      return "myPage/Donghyo_productReview_3";
 //      return "myPage/Donghyo_productReview_4";
 //      return "myPage/Donghyo_productInquiry_1";
-        return "myPage/Donghyo_productInquiry_2";
+//      return "myPage/Donghyo_productInquiry_2";
 //      return "myPage/Donghyo_likeItList";
-//      return "myPage/Donghyo_myPageList";
+	    return "myPage/Donghyo_myPageList";
+//		return "myPage/Donghyo_accmulated_money";
 	}//orderHistoryDeliveryStatus1()
 	
 }//MyPageController

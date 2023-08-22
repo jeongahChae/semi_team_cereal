@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.iei.notice.model.service.NoticeService;
+import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeListData;
 
 @Controller
@@ -23,5 +24,11 @@ public class NoticeController {
 		return "notice/noticeList";
 	}
 	
+	@GetMapping(value = "/view")
+	public String noticeView(int noticeNo, Model model) {
+		Notice n = noticeService.selectOneNotice(noticeNo);
+		model.addAttribute("n", n);
+		return "notice/noticeView";
+	}
 	
 }

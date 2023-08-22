@@ -14,7 +14,8 @@
 
 }
 .join-all-wrap{
-    width:800px;    
+    width:800px; 
+    margin: 0 auto;   
 }
 h1{
     padding-bottom:10px;
@@ -74,13 +75,20 @@ input::placeholder{
 .star{
     color: #A52502;
 }
-.join-content>:nth-child(2)>:nth-child(11)>div{
-    display: inline-block;
+.join-content>:nth-child(2)>:nth-child(12){
+    overflow: hidden;
+}
+.join-content>:nth-child(2)>:nth-child(12)>div{
+    float: left;
+    
 }
 .gender-wrap{
-    width: 400px;    
+    width: 50%;
+    overflow: hidden;
+    
 }
 .gender-wrap>div{
+     
     float:left;
     width:33%;
 }
@@ -145,4 +153,26 @@ input::placeholder{
 }
 .comment-wrap{
     background-color: #A52502;
+}
+/* 모달 */
+body{
+    margin: 0;
+}
+.modal-wrap{
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+}
+.idChk-modal{
+    width: 500px;
+    background-color: #fff;
+    border-radius: 30px;
+    padding: 30px;
 }
