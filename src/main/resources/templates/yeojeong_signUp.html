@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>회원가입</title>
-    <link rel="stylesheet" href="/src/main/resources/static/css/yeojeong_signUp.css">
+    <link rel="stylesheet" href="/semi_team_cereal/src/main/resources/static/css/yeojeong_signUp.css">
     <script src="/src/main/resources/static/javascript/jquery-3.7.0.js"></script>
 </head>
 <body>
@@ -27,9 +27,7 @@
                             <input type="text" name="memberId" id="memberId" class="input-form" placeholder="아이디를 입력해주세요" required>
                             <span class="button-wrap">
                                 <button type="button" id="idChkBtn" class="dup-btn">중복확인</button>
-                            </span>
-                            
-                        
+                            </span>                      
                     </div>
                     <div class="input-wrap">    
                         <div class="label-wrap">
@@ -104,13 +102,20 @@
                         <div class="label-wrap">
                             <label for="memberGender">성별</label>
                         </div>
-                            <input type="radio" name="gender" id="m" value="m">
-                            <label for="m">남자</label>
-                            <input type="radio" name="gender" id="f" value="f">
-                            <label for="f">여자</label>
-                            <input type="radio" name="gender" id="gn" value="gn">
-                            <label for="ns">선택안함</label>
-                        
+                        <div class="gender-wrap">
+                            <div class="gender-m">
+                                <input type="radio" name="gender" id="m" value="m">
+                                <label for="m">남자</label>
+                            </div>
+                            <div class="gender-f">
+                                <input type="radio" name="gender" id="f" value="f">
+                                <label for="f">여자</label>
+                            </div>
+                            <div class="gender-ns">
+                                <input type="radio" name="gender" id="gn" value="gn">
+                                <label for="ns">선택안함</label>
+                            </div>
+                        </div>                       
                     </div>
                     <div class="input-wrap">               
                         <div class="label-wrap">
@@ -124,26 +129,28 @@
                         <div class="label-wrap">                   
                             <label for="agreement">이용약관 동의<sup class="star">*</sup></label>
                         </div>  
-                        <div class="agreeBox">                            
-                            <input type="checkbox" id="allAgreement" class="agreeCheck">
-                            <label for="allAgreement">전체 동의합니다.</label>
-                        </div>
-                        <div class="agreeBox">
-                            <input type="checkbox" id="mustAgreement" class="agreeCheck">
-                            <label for="mustAgreement">이용약관 동의<span class="must">(필수)</span><a href="#" class="showAgree">약관보기></a></label>
-                        </div>
-                        <div class="agreeBox">
-                            <input type="checkbox" id="privacyAgreement" class="agreeCheck">
-                            <label for="privacyAgreement">개인정보 수집 및 이용 동의<span class="must">(필수)</span><a href="#" class="showAgree">약관보기></a></label>
-                        </div>
-                        <div class="agreeBox">
-                            <input type="checkbox" id="optionalAgreement" class="agreeCheck">
-                            <label for="optionalAgreement">개인정보 수집 및 이용 동의<span class="must">(선택)</span><a href="#" class="showAgree">약관보기></a></label>
-                        </div>
-                        <div class="agreeBox">
-                            <input type="checkbox" id="ageAgreement" class="agreeCheck">
-                            <label for="ageAgreement">본인은 만 14세 이상입니다.<span class="must">(필수)</span></label>
-                        </div>
+                        <div class="agree-wrap">
+                            <div class="agreeBox">                            
+                                <input type="checkbox" id="allAgreement" class="agreeCheck">
+                                <label for="allAgreement">전체 동의합니다.</label>
+                            </div>
+                            <div class="agreeBox">
+                                <input type="checkbox" id="mustAgreement" class="agreeCheck">
+                                <label for="mustAgreement">이용약관 동의<span class="must">(필수)</span><a href="#" class="showAgree">약관보기></a></label>
+                            </div>
+                            <div class="agreeBox">
+                                <input type="checkbox" id="privacyAgreement" class="agreeCheck">
+                                <label for="privacyAgreement">개인정보 수집 및 이용 동의<span class="must">(필수)</span><a href="#" class="showAgree">약관보기></a></label>
+                            </div>
+                            <div class="agreeBox">
+                                <input type="checkbox" id="optionalAgreement" class="agreeCheck">
+                                <label for="optionalAgreement">개인정보 수집 및 이용 동의<span class="must">(선택)</span><a href="#" class="showAgree">약관보기></a></label>
+                            </div>
+                            <div class="agreeBox">
+                                <input type="checkbox" id="ageAgreement" class="agreeCheck">
+                                <label for="ageAgreement">본인은 만 14세 이상입니다.<span class="must">(필수)</span></label>
+                            </div>
+                        </div>                        
                     </div>
                     <div class="submit-btn">
                         <button type="submit" id="joinBtn">회원가입</button>                        
