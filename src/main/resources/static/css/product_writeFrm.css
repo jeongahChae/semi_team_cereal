@@ -53,6 +53,10 @@
     border-bottom: 1px solid #333333;
 }
 
+.product-writeFrm-tbl select:focus{
+    outline: none;
+}
+
 .option-addBtn{
     border: 0;
     width: 40px;
