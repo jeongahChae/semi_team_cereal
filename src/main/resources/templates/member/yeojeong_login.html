@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>로그인</title>
-</head>
-<body>
-    <th:block th:if="${session.m == null}">
+<th:block th:if="${session.m == null}">
 	<div id="login-modal" class="modal-bg">
 		<div class="modal-wrap">
 			<div class="modal-head">
@@ -36,5 +28,3 @@
 		</div>
 	</div>
 </th:block>
-</body>
-</html>
