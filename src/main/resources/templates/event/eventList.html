@@ -14,8 +14,8 @@
 			<h1>이벤트</h1>
 		</div>
 		<ul class="event-tab">
-			<li>진행 중 이벤트</li>
-			<li>당첨자 발표</li>
+			<li><a href="#">진행 중 이벤트</a></li>
+			<li><a href="/event/winnerBoard?reqPage=1">당첨자 발표</a></li>
 		</ul>
 		<!--진행중-->
 		<div class="event-content">
@@ -50,20 +50,19 @@
 		</div>
 		<!--당첨자-->
 		<div class="event-content">
-			<h2>당첨자 발표</h2>
 			<div class="page-content">
 				<table class="tbl notice-tbl">
 					<tr>
 						<th style="width: 10%">번호</th>
-						<th style="width: 60%;">제목</th>
+						<th style="width: 45%;">제목</th>
 						<th style="width: 15%;">작성자</th>
-						<th style="width: 15%;">작성일</th>
+						<th style="width: 30%;">작성일</th>
 					</tr>
-					<tr th:each="notice : ${noticeList}" th:onclick="noticeView([[${notice.noticeNo}]])" style="cursor: pointer;">
-						<td th:text="${notice.noticeNo}"></td>
-						<td th:text="${notice.noticeTitle}"></td>
-						<td th:text="${notice.noticeWriter}"></td>
-						<td th:text="${notice.regDate}"></td>
+					<tr th:each="winnerBoard : ${winnerList}" th:onclick="winnerBoardView([[${winnerBoard.winNo}]])" style="cursor: pointer;">
+						<td th:text="${winnerBoard.winNo}"></td>
+						<td th:text="${winnerBoard.winTitle}"></td>
+						<td th:text="${winnerBoard.winWriter}"></td>
+						<td th:text="${winnerBoard.regDate}"></td>
 					</tr>
 				</table>
 				<div id="pageNavi" th:utext="${pageNavi}"></div>

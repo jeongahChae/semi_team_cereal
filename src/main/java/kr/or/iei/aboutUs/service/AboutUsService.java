@@ -46,13 +46,13 @@ public class AboutUsService {
 		for(int i=0 ; i<pageNaviSize ; i++) {
 			if(pageNo == reqPage) {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item active-page' href='/notice/list?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item active-page' href='/news/list?reqPage="+(pageNo)+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
 			} else {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item' href='/notice/list?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item' href='/news/list?reqPage="+(pageNo)+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
