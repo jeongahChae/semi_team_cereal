@@ -1,10 +1,13 @@
 package kr.or.iei.notice.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.iei.member.model.vo.NoticeFile;
 import kr.or.iei.notice.model.dao.NoticeDao;
 import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeListData;
@@ -84,4 +87,35 @@ public class NoticeService {
 		return n;
 	}
 	
+	@Transactional
+	public int insertNotice(Notice n, ArrayList<NoticeFile> fileList) {
+		int result = noticeDao.insertNotice(n);
+		if(fileList != null) {
+			int noticeNo = noticeDao.getNoticeNo();
+			for(NoticeFile file : fileList) {
+				file.setNoticeNo(noticeNo);
+				result += noticeDao.insertNoticeFile(file);
+			}
+		}
+		return result;
+	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
