@@ -32,6 +32,10 @@
                             <td>
                                 <input type="text" name="noticeTitle" class="input-form">
                             </td>
+                            <td>
+                                <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
+                                <input type="hidden" name="noticeWriter" value="admin">
+                            </td>
                         </tr>
                         <tr></tr>
                         <tr>
@@ -46,9 +50,10 @@
                             <td>
                                 <div class="img-attach-line">
                                     <div class="img-box">
-                                        <button type="button" class="img-btn">
-                                            <span class="material-icons-outlined camera-icon">photo_camera</span>
-                                        </button>
+                                        <label id="photo_picker_label" for="photo_picker">
+                                                <span class="material-icons-outlined camera-icon">photo_camera</span>
+                                                <input type="file" name="upfile" multiple style="display: none;" id="photo_picker">
+                                        </label>
                                     </div>
                                 </div>
                                 <ul class="img-ul">
@@ -59,8 +64,11 @@
                         </tr>
                         <tr>
                             <th></th>
-                            <td></td>
-                            
+                            <td>
+                                <div class="btn-line3">
+                                    <button class="basic-btn" type="submit">등록</button>
+                                </div>
+                            </td>
                         </tr>
                     </table>
                 </form>

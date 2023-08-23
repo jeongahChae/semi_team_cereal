@@ -14,6 +14,10 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	@GetMapping(value="/productList")
+	public String productList() {
+		return "product/productList";
+	}
 	
 	@GetMapping(value="/writeFrm")
 	public String productWriteFrm() {
