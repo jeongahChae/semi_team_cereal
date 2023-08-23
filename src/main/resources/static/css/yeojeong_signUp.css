@@ -67,6 +67,10 @@ input::placeholder{
     outline: none;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    
+}
+input[type=text]{
+    padding-left: 10px;
 }
 .addrInfo{
     font-size: small;
@@ -116,8 +120,7 @@ input::placeholder{
 }
 .agree-wrap>div>label{
     display: inline-block;
-    width: 90%;
-    
+    width: 460px;
     
 }
 .agree-wrap>:first-child{
@@ -125,10 +128,9 @@ input::placeholder{
     font-weight: bold;
     
 }
-.agree-wrap>div>label>a{
+.agree-wrap>div>a{
     text-decoration: none;
     color:#1C8394;
-    
     
 }
 .must{
