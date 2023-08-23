@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src="/javascript/jquery-3.7.0.js"></script>
+<head>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<meta charset="UTF-8">
+<title>공지사항 작성</title>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+    <div class="wrab-content">
+        <div class="side-wrap">
+            <div class="wrap-title">고객센터</div>
+            <div class="myPage-list-wrap">
+                <ul>
+                    <li><button type="button" class="button active" id="myPageBtn" onclick="changeBtn(event)">공지사항</button></li>
+                    <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">자주하는 질문</button></li>
+                    <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">1:1 문의</button></li>
+                    <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">Furniture Access Check</button></li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="page-title">
+                <div class="content-title">공지사항</div>
+            </div>
+            <div class="writeFrm-content">
+                <form action="/notice/write" method="post" enctype="multipart/form-data">
+                    <table class="tbl notice-tbl">
+                        <tr>
+                            <th style="width: 15% ">제목</th>
+                            <td>
+                                <input type="text" name="noticeTitle" class="input-form">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <th style="display: block; margin-bottom: 5px" ><label for="writeFrm-content">내용</label></th>
+                            <td>
+                                <textarea name="noticeContent" id="writeFrm-content" class="input-form"></textarea>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <!-- 사진첨부 -->
+                            <td>
+                                <div class="img-attach-line">
+                                    <div class="img-box">
+                                        <button type="button" class="img-btn">
+                                            <span class="material-icons-outlined camera-icon">photo_camera</span>
+                                        </button>
+                                    </div>
+                                </div>
+                                <ul class="img-ul">
+                                    <li>30MB 이하의 이미지만 업로드 가능합니다.</li>
+                                    <li>사진은 최대 5개까지 등록 가능합니다.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                            
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="common/footer"></th:block>
+</body>
+<link rel="stylesheet" href="/css/notice.css">
+</html>
