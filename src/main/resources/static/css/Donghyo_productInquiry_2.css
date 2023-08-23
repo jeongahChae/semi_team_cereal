@@ -111,16 +111,6 @@ tbody tr:hover{
     color: #fff;
     cursor: pointer;
 }
-.moreBtn-wrap{
-    text-align: center;
-}
-.moreBtn{
-    width: 300px;
-    height: 40px;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    background-color: #1C8394;
-    cursor: pointer;
+form{
+    display: inline;
 }

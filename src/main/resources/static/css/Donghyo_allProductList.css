@@ -47,6 +47,10 @@ th {
     border-top: 2px solid #333;
     border-bottom: 1.5px solid #333;
 }
+tr:hover{
+    cursor: pointer;
+    text-decoration: underline;
+}
 td {
     border-bottom: 1px solid rgb(244, 244, 244);
     text-align: center;
