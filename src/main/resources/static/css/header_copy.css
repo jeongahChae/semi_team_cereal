@@ -1,0 +1,240 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    color: #333333;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.header-top{
+    padding: 10px;
+    overflow: hidden;
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.header-top li{
+    list-style-type: none;
+    display: block;
+    float: right;
+    margin-left: 15px;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.header-middle{
+    width: 1200px;
+    margin: 30px auto; 
+}
+
+.header-logo>a>img{
+    width: 300px;
+    height: 48px;
+}
+
+.header-logo{
+    width: 30%;
+    float:left;
+}
+
+.header-search{
+    width: 50%;
+    height: 48px;
+    float: left;
+    text-align: center;
+    padding-left: 100px;
+    box-sizing: border-box;
+}
+
+.header-search>button{
+    float: left;
+    height: 48px;
+    background-color: transparent;
+    border: none;
+}
+
+.header-search-box{
+    margin: 0 auto;
+    line-height: 48px;
+    float: left;
+}
+
+.header-search-box>input{
+    width: 300px;
+    border: none;
+    border-bottom: 1px solid black;
+    height: 30px;
+    padding-left: 15px;
+}
+
+.header-search-box>input:focus{
+    outline: none;
+}
+
+.header-menu{
+    width: 20%;
+    overflow: hidden;
+}
+
+.header-menu>a>img{
+    width: 30px;
+    height: 30px;
+    float: right;
+    margin-left: 20px;
+    margin-top: 10px;
+}
+
+.header-bottom{
+    margin: 50px 0;
+    height: 60px;
+}
+
+.main-category, .sub-category{
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.main-category ul{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+.main-category>ul>li{
+    float: left;
+}
+
+.main-category ul>li{
+    list-style-type: none;
+    width: 20%;
+}
+
+.main-category>ul>li>a{
+    display: block;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.main-category>ul>li:hover>a{
+    border-bottom: 3px solid #1C8394;
+}
+
+.main-category>ul>li:hover>a+.sub-category{
+    display: block;
+}
+
+.sub-category{
+    display: none;
+}
+
+.sub-category>li>a{
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+
+#login-modal .input-box {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: none;    
+  }
+  
+  
+  #login-modal .input-box > a:hover {
+    text-decoration: underline;
+  }
+  #login-modal .modal-foot {
+    width: 80%;
+    margin: 0 auto;
+  }
+  #login-modal .input-box.link-box {
+    text-align: right;
+  }
+  .modal-bg {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: flex;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+  }
+  .modal-wrap {
+    margin-top: 150px;
+    width: 400px;
+    background: #fff;
+    height: 540px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .modal-wrap div {
+    padding: 1rem;
+  }
+  
+  .modal-wrap .modal-foot {
+    text-align: right;
+  }
+  .modal-wrap div.modal-head {
+    position: relative;
+    text-align: center;
+  }
+  .close-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 30px;
+  }
+  .close-icon:hover {
+    cursor: pointer;
+  }
+  .modal-foot>button {
+    
+    padding: 1rem;
+    display: block;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+    font-size: 16px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    
+  }
+  .login-btn {
+    background-color: #1C8394;
+    color: #fff;
+    border: 2px solid #1C8394;
+    margin-bottom: 10px;
+  }
+  .join-btn {
+    color: #1C8394;
+    background-color: #fff;
+    border: 2px solid #1C8394;
+  }
+  .modal-foot>button:hover {    
+    cursor: pointer;
+   
+  }
+  .input-form {
+    width: 100%;
+    display: block;
+    padding: 0.8rem;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid #ccc;  
+    box-sizing: border-box;
+  }

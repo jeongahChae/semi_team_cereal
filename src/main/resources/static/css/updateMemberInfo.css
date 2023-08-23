@@ -1,0 +1,154 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+*{  
+    /*
+    #1C8394 #154B52 #000B0D #390D02 #A52502
+    */
+    margin:0;
+    padding:0;
+    color:#333333;
+
+}
+.join-all-wrap{
+    width:800px; 
+    margin: 0 auto;   
+}
+h2{
+    padding-bottom:10px;    
+}
+
+
+.join-content{
+    padding-top: 20px;
+}
+.join-content>:nth-child(2)>div>span>label{
+    padding-left: 10px;
+}
+.input-wrap{
+    width: 800px;
+    padding: 10px;
+    
+}
+.label-wrap{
+    display: inline-block;    
+    width: 200px;    
+}
+input::placeholder{
+    padding-left: 10px;
+}
+.button-wrap{
+    padding-left: 20px;
+    text-align: center;
+
+}
+.button-wrap>button{
+    width:150px;
+    height: 50px;
+    border-radius: 5px;
+    background-color: #fff;
+   
+    font-weight: 900; 
+    font-size: medium; 
+}
+#emailChkBtn{
+    border: 1px solid #ccc;
+    color:#ccc;
+}
+#addrBtn{
+    border: 1px solid #1C8394;
+    color:#1C8394;
+}
+.input-form{
+    width: 50%;
+    height: 50px;
+    padding: 0;
+    border-radius: 5px;   
+    outline: none;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+
+.join-content>:nth-child(2)>:nth-child(12){
+    overflow: hidden;
+}
+.join-content>:nth-child(2)>:nth-child(12)>div{
+    float: left;
+    
+}
+.gender-wrap{
+    width: 50%;
+    overflow: hidden;
+    
+}
+.gender-wrap>div{
+     
+    float:left;
+    width:33%;
+}
+.agree-whole-wrap{
+    padding-top: 10px;
+    width:800px;
+    height: 200px;
+}
+.agree-whole-wrap>div{
+    
+    float:left; 
+    
+}
+.agree-whole-wrap>:first-child{
+    padding-left: 10px;
+    width:25%;
+    
+}
+.agree-wrap{
+    width: 70%;      
+}
+.agree-wrap>div{
+    padding-bottom: 10px;
+    width: 560px;
+}
+.agree-wrap>div>label{
+    display: inline-block;
+    width: 90%;
+    
+    
+}
+.agree-wrap>:first-child{
+    font-size:larger;
+    font-weight: bold;
+    
+}
+.agree-wrap>div>label>a{
+    text-decoration: none;
+    color:#1C8394;
+    
+    
+}
+.must{
+    color: #A52502;
+}
+.join-btn{
+    padding: 20px;
+    text-align: center;
+    
+}
+.join-btn>button{
+    width:200px;
+    height: 80px;
+    
+    background-color: #1C8394;
+    border: 1px solid #1C8394;
+    color: #fff;
+    font-weight: 900;
+    font-size: large;
+    border-radius: 5px;
+    
+}
+.comment-wrap{
+    background-color: #A52502;
+}
