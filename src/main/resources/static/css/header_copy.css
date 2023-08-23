@@ -144,11 +144,13 @@
     font-size: 14px;
 }
 
+
 #login-modal .input-box {
     width: 80%;
     margin: 0 auto;
-    border-bottom: none;
+    border-bottom: none;    
   }
+  
   
   #login-modal .input-box > a:hover {
     text-decoration: underline;
@@ -173,19 +175,22 @@
     margin-top: 150px;
     width: 400px;
     background: #fff;
-    height: auto;
+    height: 540px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
   .modal-wrap div {
     padding: 1rem;
   }
-  .modal-wrap div:not(:last-child) {
-    border-bottom: 1px solid #ccc;
-  }
+  
   .modal-wrap .modal-foot {
-    
+    text-align: right;
   }
   .modal-wrap div.modal-head {
     position: relative;
+    text-align: center;
   }
   .close-icon {
     position: absolute;
@@ -196,29 +201,33 @@
   .close-icon:hover {
     cursor: pointer;
   }
-  .btn {
-    border: none;
+  .modal-foot>button {
+    
     padding: 1rem;
-    display: inline-block;
+    display: block;
     box-sizing: border-box;
     transition-duration: 0.5s;
     font-size: 16px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 2px;
     
   }
-  .bc1 {
-    background-color: rgba(37, 42, 52, 0.9);
+  .login-btn {
+    background-color: #1C8394;
     color: #fff;
-    border: 2px solid rgba(37, 42, 52, 0.9);
+    border: 2px solid #1C8394;
+    margin-bottom: 10px;
   }
-  .bc11 {
-    color: rgba(37, 42, 52, 1);
+  .join-btn {
+    color: #1C8394;
     background-color: #fff;
-    border: 2px solid rgba(37, 42, 52, 1);
+    border: 2px solid #1C8394;
   }
-  .bc11:hover {
-    background-color: rgba(37, 42, 52, 1);
+  .modal-foot>button:hover {    
     cursor: pointer;
-    color: #fff;
+   
   }
   .input-form {
     width: 100%;
@@ -226,7 +235,6 @@
     padding: 0.8rem;
     background-color: #fff;
     outline: none;
-    border: 1px solid #ccc;
-  
+    border: 1px solid #ccc;  
     box-sizing: border-box;
   }

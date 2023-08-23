@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <title>개인정보수정</title>
+    <link rel="stylesheet" href="/css/yeojeong_signUp.css">
+<link rel="stylesheet" href="/semi_team_cereal/src/main/resources/static/css/updateMemberInfo.css">
 </head>
 <body>
     
@@ -12,7 +14,115 @@
 	<div class="content-wrap">
 
 		<th:block th:include="myPage/Donghyo_myPageList"></th:block>
-		
+        
+         <!---------------------------------------------------------------------------->
+
+         <div class="join-all-wrap">
+	        <div class="join-wrap">
+	            <div class="join-title">
+	                <h2>개인 정보 수정</h2>	                
+	                <hr>
+	            </div>
+	            <div class="join-content">
+	                <form name="" action="" method="post">
+	                    <input type="hidden" name="checkId">
+	                </form>
+	                <form action="" method="post" id="">
+	                    <div class="input-wrap">                      
+	                            <div class="label-wrap">
+	                                <label for="memberId">아이디</label>
+	                            </div>
+	                            <input type="text" name="memberId" id="memberId" class="input-form" placeholder="아이디를 입력해주세요">	                                                                                                                   
+	                    </div>	                                         
+	                    <div class="input-wrap">    
+	                        <div class="label-wrap">
+	                            <label for="memberPw">비밀번호</label>
+	                        </div>
+	                            <input type="password" name="memberPw" id="memberPw" class="input-form" placeholder="현재 비밀번호를 입력해주세요" required>
+	                        
+	                    </div>
+	                    <div class="input-wrap">                        
+	                        <div class="label-wrap">
+	                            <label for="memberPwnew">새 비밀번호</label>
+	                        </div>
+	                            <input type="password" name="memberPwnew" id="memberPwnew" class="input-form" placeholder="새 비밀번호를 입력해주세요" required>	                        
+	                    </div>
+                        <div class="input-wrap">                        
+	                        <div class="label-wrap">
+	                            <label for="memberPwNewre">새 비밀번호 확인</label>
+	                        </div>
+	                            <input type="password" name="memberPwNewre" id="memberPwNewre" class="input-form" placeholder="새 비밀번호를 다시 입력해주세요" required>	                        
+	                    </div>
+	                    <div class="input-wrap">                        
+	                        <div class="label-wrap">
+	                            <label for="memberName">이름</label>
+	                        </div>
+	                            <input type="text" name="memberName" id="memberName" class="input-form" placeholder="이름을 입력해주세요" required>	                        
+	                    </div>
+	                    <div class="input-wrap">                        
+	                        <div class="label-wrap">
+	                            <label for="memberPhone">연락처</label>
+	                        </div>
+	                            <input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)" required>
+	                    </div>
+	                    <div class="input-wrap">                        
+	                        <div class="label-wrap">
+	                            <label for="memberEmail">이메일</label>
+	                        </div>
+	                            <input type="text" name="memberEmail" id="memberEmail" class="input-form" placeholder="예: essential@essential.com" required>	                        
+                                <span class="button-wrap">
+	                                <button type="button" id="emailChkBtn" class="dup-btn">중복확인</button>
+	                            </span>   
+                        </div>	                   
+	                    
+	                    <div class="input-wrap">                        
+	                        <div class="label-wrap">
+	                            <label for="memberAddr">배송지<sup class="star">*</sup></label>
+	                        </div>
+	                            <input type="text" name="memberAddr" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요" required>
+	                            <span class="button-wrap">
+	                                <button type="button" id="addrBtn" class="addr-btn">배송지 변경</button>
+	                            </span>                            
+	                    </div>
+	                    
+	                    <div class="input-wrap">                        
+	                        <div class="label-wrap">
+	                            <label for="memberGender">성별</label>
+	                        </div>
+	                        <div class="gender-wrap">
+	                            <div class="gender-m">
+	                                <input type="radio" name="gender" id="m" value="m">
+	                                <label for="m">남자</label>
+	                            </div>
+	                            <div class="gender-f">
+	                                <input type="radio" name="gender" id="f" value="f">
+	                                <label for="f">여자</label>
+	                            </div>
+	                            <div class="gender-ns">
+	                                <input type="radio" name="gender" id="gn" value="gn">
+	                                <label for="ns">선택안함</label>
+	                            </div>
+	                        </div>                       
+	                    </div>
+	                    <div class="input-wrap">               
+	                        <div class="label-wrap">
+	                            <label for="memberBirthdate">생년월일</label>
+	                        </div>
+	                            <input type="text" name="memberBirthdate" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
+	                        
+	                    </div>
+	                    <hr>	                    
+	                    <div class="buttonBox">
+	                        <button type="submit" id="signOutBtn">탈퇴하기</button>
+                            <button type="submit" id="updateBtn">회원정보수정</button>                         
+	                    </div>
+	                </form>
+	            </div><!--join-title-->
+	        </div><!--join-wrap-->
+	    </div><!--join-all-wrap-->
+
+         <!---------------------------------------------------------------------------->
+
 		
 	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->

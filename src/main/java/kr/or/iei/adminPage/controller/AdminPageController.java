@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value="adminPage")
 public class AdminPageController {
     
-    @GetMapping(value="/cssTest")
-    public String cssTest() {
+    @GetMapping(value="/allMemberList")
+    public String allMemberListt() {
 //        return "adminPage/Donghyo_adminPageList";
-//        return "adminPage/Donghyo_allMemberList";
+        return "adminPage/Donghyo_allMemberList";
 //        return "adminPage/Donghyo_allProductList";
-    	return "adminPage/Donghyo_orderStatusManagement";
+//    	return "adminPage/Donghyo_orderStatusManagement";
     }//cssTest()
     
 }//AdminPageController

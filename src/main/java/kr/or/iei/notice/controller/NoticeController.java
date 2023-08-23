@@ -31,4 +31,10 @@ public class NoticeController {
 		return "notice/noticeView";
 	}
 	
+	@GetMapping(value = "/writeFrm")
+	public String noticeWriteFrm() {
+		return "notice/writeFrm";
+	}
+	
+	
 }

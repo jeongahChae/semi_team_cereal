@@ -24,8 +24,8 @@ const marker = new naver.maps.Marker({
 tabs.on("click", function(){
     const index = tabs.index(this);
     const storeName = tabs.val(this);
-    tabs.removeClass("active-tab");
-    tabs.eq(index).addClass("active-tab");
+    tabs.removeClass("area-active");
+    tabs.eq(index).addClass("area-active");
     $.ajax({
         url : "/store/detail",
         type:"get",

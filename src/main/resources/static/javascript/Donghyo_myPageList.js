@@ -1,6 +1,8 @@
 //마이페이지 리스트
 //Donghyo_myPageList.html
 
+
+//버튼 활성화
 function changeBtn(event){
     var btns = document.querySelectorAll(".sideButton");
     btns.forEach(function(btn, i){
