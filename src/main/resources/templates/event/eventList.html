@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ESSENTIAL#</title>
+<link rel="stylesheet" href="/css/event.css">
+<script src="/javascript/jquery-3.7.0.js"></script>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<div class="us-wrap">
+		<div class="us-title">
+			<br>
+			<h1>이벤트</h1>
+		</div>
+		<ul class="event-tab">
+			<li>진행 중 이벤트</li>
+			<li>당첨자 발표</li>
+		</ul>
+		<!--진행중-->
+		<div class="event-content">
+			<div class="event-detail">
+				<img src="/img/joinevent.png">
+				<h3>신규가입 이벤트</h3>
+				<span>2016.05.09</span>
+				<span>~</span>
+				<span>2099.12.31</span>
+			</div>
+			<div class="event-detail">
+				<img src="/img/joinevent.png">
+				<h3>신규가입 이벤트</h3>
+				<span>2016.05.09</span>
+				<span>~</span>
+				<span>2099.12.31</span>
+			</div>
+			<div class="event-detail">
+				<img src="/img/joinevent.png">
+				<h3>신규가입 이벤트</h3>
+				<span>2016.05.09</span>
+				<span>~</span>
+				<span>2099.12.31</span>
+			</div>
+			<div class="event-detail">
+				<img src="/img/joinevent.png">
+				<h3>신규가입 이벤트</h3>
+				<span>2016.05.09</span>
+				<span>~</span>
+				<span>2099.12.31</span>
+			</div>
+		</div>
+		<!--당첨자-->
+		<div class="event-content">
+			<h2>당첨자 발표</h2>
+			<div class="page-content">
+				<table class="tbl notice-tbl">
+					<tr>
+						<th style="width: 10%">번호</th>
+						<th style="width: 60%;">제목</th>
+						<th style="width: 15%;">작성자</th>
+						<th style="width: 15%;">작성일</th>
+					</tr>
+					<tr th:each="notice : ${noticeList}" th:onclick="noticeView([[${notice.noticeNo}]])" style="cursor: pointer;">
+						<td th:text="${notice.noticeNo}"></td>
+						<td th:text="${notice.noticeTitle}"></td>
+						<td th:text="${notice.noticeWriter}"></td>
+						<td th:text="${notice.regDate}"></td>
+					</tr>
+				</table>
+				<div id="pageNavi" th:utext="${pageNavi}"></div>
+			</div>
+		</div>
+	</div>
+	<th:block th:include="common/footer"></th:block>
+	<script src="/javascript/eventList.js"></script>
+</body>
+</html>
