@@ -17,4 +17,5 @@ public class Product {
 	private String productDelfree;
 	private String productCategory;
 	private String productContent;
+	private int productFinalPrice;
 }

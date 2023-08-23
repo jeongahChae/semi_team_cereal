@@ -25,14 +25,15 @@
 .product-writeFrm-tbl{
     border-collapse: separate;
     border-spacing: 0 30px;
+    width: 800px;
 }
 
 .product-writeFrm-tbl th{
-    width: 35%;
+    width: 30%;
 }
 
 .product-writeFrm-tbl td{
-    width: 65%;
+    width: 70%;
 }
 
 .input-form{
@@ -40,6 +41,13 @@
     padding-left: 5px;
     border: none;
     border-bottom: 1px solid #333333;
+    margin: 5px;
+    display: block;
+    float: left;
+}
+
+.input-form:not([name="optionName"]):not([name="optionAmount"]){
+    width: 90%;
 }
 
 .input-form:focus{
@@ -63,6 +71,18 @@
     height: 32px;
     background-color: #1C8394;
     color: white;
+    display: block;
+    float: left;
+}
+
+.option-delBtn{
+    border: 0;
+    width: 40px;
+    height: 32px;
+    background-color: #A52502;
+    color: white;
+    display: block;
+    float: left;
 }
 
 .product-writeFrm-tbl p{
@@ -77,8 +97,9 @@
 
 .text-form{
     padding: 10px;
-    width: 100%;
+    width: 500px;
     height: 300px;
+    box-sizing: border-box;
     resize: none;
 }
 
@@ -102,20 +123,29 @@
     line-height: 50px;
 }
 
+#main-category, #sub-category{
+    margin: 5px;
+}
+
 #sub-category{
     display: none;
 }
 
 /* 파일 첨부 버튼 바꾸기 */
-.filebox .upload-name {
-    display: inline-block;
+.filebox{
+    overflow: hidden;
+}
+
+.upload-name {
+    display: block;
+    float: left;
     height: 30px;
     padding-left: 5px;
-    vertical-align: middle;
     border: none;
     border-bottom: 1px solid #333333;
-    width: 60%;
     color: #333333;
+    width: 75%;
+    margin: 5px;
 }
 
 .upload-name:focus{

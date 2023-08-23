@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지 리스트</title>
+
     <link rel="stylesheet" href="/css/Donghyo_myPageList.css">
     <script src="/javascript/jquery-3.7.0.js"></script>
-</head>
-<body>
     
     <!---------------------------------------------------------------------------->
     
@@ -15,13 +10,13 @@
         <div class="wrap-title">마이페이지</div>
         <div class="myPage-list-wrap">
             <ul>
-                <li><a class="sideButton" id="updateMemberInfoBtn" onclick="changeBtn(event)">개인정보수정</a></div></li>
-                <li><a class="sideButton" id="orderHistoryDeliveryStatusBtn" onclick="changeBtn(event)">주문내역 / 배송현황</a></li>
-                <li><a class="sideButton" id="orderCancelChangeReturnBtn" onclick="changeBtn(event)">주문취소/교환/반품</a></li>
-                <li><a class="sideButton" id="likeItBtn" onclick="changeBtn(event)">찜한 상품</a></li>
-                <li><a class="sideButton" id="productReviewBtn" onclick="changeBtn(event)">상품후기</a></li>
-                <li><a class="sideButton" id="productInquiryBtn" onclick="changeBtn(event)">상품문의</a></li>
-                <li><a class="sideButton" id="accumulatedMoneyBtn" onclick="changeBtn(event)">적립금</a></li>
+                <li><a href="/myPage/updateMemberInfo?btn=0" class="sideButton" id="updateMemberInfoBtn" onclick="changeBtn(event)">개인정보수정</a></li>
+                <li><a href="/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1" class="sideButton" id="orderHistoryDeliveryStatusBtn" onclick="changeBtn(event)">주문내역 / 배송현황</a></li>
+                <li><a href="/myPage/Donghyo_orderCancel-change-return_1?btn=2" class="sideButton" id="orderCancelChangeReturnBtn" onclick="changeBtn(event)">주문취소/교환/반품</a></li>
+                <li><a href="/myPage/Donghyo_likeItList?btn=3" class="sideButton" id="likeItListBtn" onclick="changeBtn(event)">찜한 상품</a></li>
+                <li><a href="/myPage/Donghyo_productReview_1?btn=4" class="sideButton" id="productReviewBtn" onclick="changeBtn(event)">상품후기</a></li>
+                <li><a href="/myPage/Donghyo_productInquiry_1?btn=5" class="sideButton" id="productInquiryBtn" onclick="changeBtn(event)">상품문의</a></li>
+                <li><a href="/myPage/Donghyo_accumulated_money?btn=6" class="sideButton" id="accumulatedMoneyBtn" onclick="changeBtn(event)">적립금</a></li>
             </ul>
         </div> <!--<div class="myPage-list-wrap">-->
     </div> <!--<div class="side-wrap">-->
@@ -31,11 +26,29 @@
     <script src="/javascript/Donghyo_myPageList.js"></script>
     <script th:inline="javascript">
         const btnValue = [[${btn}]];
-        console.log(btnValue);
+        //console.log(btnValue);
         if(btnValue == 0){
             const updateMemberInfo = document.querySelector("#updateMemberInfoBtn");
             updateMemberInfo.classList.add("active");
+        }else if(btnValue == 1){
+            const orderHistoryDeliveryStatus = document.querySelector("#orderHistoryDeliveryStatusBtn");
+            orderHistoryDeliveryStatus.classList.add("active");
+        }else if(btnValue == 2){
+            const orderCancelChangeReturn = document.querySelector("#orderCancelChangeReturnBtn");
+            orderCancelChangeReturn.classList.add("active");
+        }else if(btnValue == 3){
+            const likeItList = document.querySelector("#likeItListBtn");
+            likeItList.classList.add("active");
+        }else if(btnValue == 4){
+            const productReview = document.querySelector("#productReviewBtn");
+            productReview.classList.add("active");
+        }else if(btnValue == 5){
+            const productInquiry = document.querySelector("#productInquiryBtn");
+            productInquiry.classList.add("active");
+        }else if(btnValue == 6){
+            const accumulatedMoney = document.querySelector("#accumulatedMoneyBtn");
+            accumulatedMoney.classList.add("active");
         }
     </script>
-</body>
+
 </html>
