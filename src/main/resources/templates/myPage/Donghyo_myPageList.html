@@ -1,13 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이페이지 리스트</title>
+
     <link rel="stylesheet" href="/css/Donghyo_myPageList.css">
     <script src="/javascript/jquery-3.7.0.js"></script>
-</head>
-<body>
     
     <!---------------------------------------------------------------------------->
     
@@ -15,7 +10,7 @@
         <div class="wrap-title">마이페이지</div>
         <div class="myPage-list-wrap">
             <ul>
-                <li><a href="/myPage/updateMemberInfo?btn=0" class="sideButton" id="updateMemberInfoBtn" onclick="changeBtn(event)">개인정보수정</a></div></li>
+                <li><a href="/myPage/updateMemberInfo?btn=0" class="sideButton" id="updateMemberInfoBtn" onclick="changeBtn(event)">개인정보수정</a></li>
                 <li><a href="/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1" class="sideButton" id="orderHistoryDeliveryStatusBtn" onclick="changeBtn(event)">주문내역 / 배송현황</a></li>
                 <li><a href="/myPage/Donghyo_orderCancel-change-return_1?btn=2" class="sideButton" id="orderCancelChangeReturnBtn" onclick="changeBtn(event)">주문취소/교환/반품</a></li>
                 <li><a href="/myPage/Donghyo_likeItList?btn=3" class="sideButton" id="likeItListBtn" onclick="changeBtn(event)">찜한 상품</a></li>
@@ -36,8 +31,8 @@
             const updateMemberInfo = document.querySelector("#updateMemberInfoBtn");
             updateMemberInfo.classList.add("active");
         }else if(btnValue == 1){
-        	const orderHistoryDeliveryStatus = document.querySelector("#orderHistoryDeliveryStatusBtn");
-        	orderHistoryDeliveryStatus.classList.add("active");
+            const orderHistoryDeliveryStatus = document.querySelector("#orderHistoryDeliveryStatusBtn");
+            orderHistoryDeliveryStatus.classList.add("active");
         }else if(btnValue == 2){
             const orderCancelChangeReturn = document.querySelector("#orderCancelChangeReturnBtn");
             orderCancelChangeReturn.classList.add("active");
@@ -55,5 +50,5 @@
             accumulatedMoney.classList.add("active");
         }
     </script>
-</body>
+
 </html>

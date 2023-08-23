@@ -13,13 +13,28 @@
     color:#333333;
 
 }
-.join-all-wrap{
-    width:800px; 
-    margin: 0 auto;   
-}
+
+
+
+.content-wrap{
+    display: flex;
+    width: 1200px;
+    padding: 50px 0 80px 0;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow: hidden;
+}   
+
 h2{
-    padding-bottom:40px;    
+    padding-bottom:20px;    
 }
+
+.join-all-wrap{
+    width:1200px; 
+}
+
+
 
 
 .join-content{
@@ -28,10 +43,13 @@ h2{
 .join-content>:nth-child(2)>div>span>label{
     padding-left: 10px;
 }
+.all-input-wrap>:nth-child(10){
+    padding-bottom: 30px;
+}
 .input-wrap{
     width: 800px;
     padding: 10px;
-    
+    margin: 0 auto;
 }
 .label-wrap{
     display: inline-block;    
@@ -130,3 +148,7 @@ input::placeholder{
     color:  #fff;
     
 }
+
+
+
+
