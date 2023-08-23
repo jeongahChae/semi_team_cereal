@@ -24,7 +24,24 @@ $("#main-category").on("change",function(){
     $("#sub-category").append(fixoption)
 
     for(let i=0; i<subCategory.length; i++){
-        let option = $("<option>"+subCategory[i]+"</option>");
-        $("#sub-category").append(option);
+        let option = $("<option>");
+        let attr = option.attr("value",subCategory[i]);
+        let suboption = attr.text(subCategory[i]);
+        console.log(suboption);
+        $("#sub-category").append(suboption);
     }
 });
+
+$(".option-addBtn").on("click", function(){
+    const optionColor = $("<input type='text' class='input-form' name='color' placeholder='색'>");
+    const optionStock = $("<input type='text' class='input-form' name='stock' placeholder='재고(숫자만)'>");
+    const optionDelbtn = $("<button type='button' class='option-delBtn'>삭제</button>");
+    $(".product-option-frm>td").append(optionColor).append(optionStock).append(optionDelbtn);
+    $(".option-delBtn").on("click", function(){
+        $(this).prev().prev().remove();
+        $(this).prev().remove();
+        $(this).remove();
+    });
+});
+
+
