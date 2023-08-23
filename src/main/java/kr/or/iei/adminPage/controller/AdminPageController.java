@@ -32,4 +32,12 @@ public class AdminPageController {
     	return "adminPage/Donghyo_orderStatusManagement";
     }//orderStatusManagement(int btn, Model model)
     
+    
+    //상품 등록
+    @GetMapping(value="/insertProduct")
+    public String insertProduct(int btn, Model model) {
+    	model.addAttribute("btn", btn);
+    	return "product/writeFrm_copy";
+    }//insertProduct(int btn, Model model)
+    
 }//AdminPageController
