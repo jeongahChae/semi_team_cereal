@@ -255,19 +255,23 @@ button:visited{
     width: 72px;
     height: 72px;
 }
-.img-btn{
+
+.img-ul li{
+    list-style-type: circle;
+    text-align: left;
+    color: rgb(180, 180, 180);
+    margin-left: 20px;
+}
+
+#photo_picker_label{
+    display: block;
     width: 100%;
     height: 100%;
     border: 1px solid rgb(221, 221, 221);
     border-radius: 6px;
     padding: 0;
     text-align: center;
-}
-.img-ul li{
-    list-style-type: circle;
-    text-align: left;
-    color: rgb(180, 180, 180);
-    margin-left: 20px;
+    line-height: 74px;
 }
 
 
