@@ -32,7 +32,7 @@ public class EventService {
 			//이전 버튼 제작
 		if(pageNo != 1) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/event/winnerBoard?reqPage="+(pageNo-1)+"'>";
+			pageNavi += "<a class='page-item' href='javascript:void(0);'>";
 			pageNavi += "<span class='material-icons'>chevron_left</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";
@@ -41,13 +41,13 @@ public class EventService {
 		for(int i=0 ; i<pageNaviSize ; i++) {
 			if(pageNo == reqPage) {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item active-page' href='/event/winnerBoard?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item active-page' href='javascript:void(0);'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
 			} else {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item' href='/event/winnerBoard?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item' href='javascript:void(0);'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
@@ -60,7 +60,7 @@ public class EventService {
 			//다음 버튼 제작
 		if(pageNo <= totalPage) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/event/winnerBoard?reqPage="+(pageNo)+"'>";//페이지 숫자를 만들 때 pageNo++한 상태에서 나오기 때문에
+			pageNavi += "<a class='page-item' href='javascript:void(0);'>";//페이지 숫자를 만들 때 pageNo++한 상태에서 나오기 때문에
 			pageNavi += "<span class='material-icons'>chevron_right</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";
