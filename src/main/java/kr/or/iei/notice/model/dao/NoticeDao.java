@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.iei.member.model.vo.NoticeFile;
 import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeRowMapper;
 
@@ -37,4 +38,45 @@ public class NoticeDao {
 		return (Notice)list.get(0);
 	}
 
+
+	public int insertNotice(Notice n) {
+		String query = "insert into notice values(notice_seq.nextval,?,?,to_char(sysdate,'yyyy-mm-dd'),?)";
+		Object[] params = {n.getNoticeTitle(),n.getNoticeContent(),n.getNoticeWriter()};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
+
+	public int getNoticeNo() {
+		String query = "select max(notice_no) from notice";
+		int noticeNo = jdbc.queryForObject(query, Integer.class);
+		return noticeNo;
+	}
+
+
+	public int insertNoticeFile(NoticeFile file) {
+		String query = "insert into notice_file values(notice_file_seq.nextval,?,?,?)";
+		Object[] params = {file.getNoticeNo(),file.getFilename(),file.getFilepath()};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -32,7 +32,11 @@
 li{
     list-style-type: none;
 }
+a{
+    text-decoration: none;
+}
 .sideButton{
+    display: block; /*<a>태그는 inline속성이므로, block으로 변경하여야 너비, 높이가 적용된다.*/ 
     background-color: #fff;
     border: none;
     text-align: left;

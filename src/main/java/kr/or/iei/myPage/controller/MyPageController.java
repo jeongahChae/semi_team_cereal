@@ -13,7 +13,6 @@ public class MyPageController {
 	@GetMapping(value="/updateMemberInfo")
 	public String updateMemberInfo(int btn, Model model) {
 		model.addAttribute("btn", btn);
-//	    return "myPage/Donghyo_myPageList";
 		return "myPage/updateMemberInfo";
 	}//orderHistoryDeliveryStatus1()
 	
@@ -24,7 +23,7 @@ public class MyPageController {
 		model.addAttribute("btn", btn);
 		return "myPage/Donghyo_orderHistory-deliveryStatus_1";
 //      return "myPage/Donghyo_orderHistory-deliveryStatus_2";
-	}
+	}//orderHistoryDeliveryStatus(int btn, Model model)
 	
 	
 	//주문취소/교환/반품
@@ -34,7 +33,7 @@ public class MyPageController {
 		return "myPage/Donghyo_orderCancel-change-return_1";
 //      return "myPage/Donghyo_orderCancel-change-return_2";
 //      return "myPage/Donghyo_orderCancel-change-return_3";
-	}
+	}//orderCancelChangeReturn(int btn, Model model)
 	
 	
 	//찜한 상품
@@ -42,7 +41,7 @@ public class MyPageController {
 	public String likeItList(int btn, Model model) {
 		model.addAttribute("btn", btn);
 		return "myPage/Donghyo_likeItList";
-	}
+	}//likeItList(int btn, Model model)
 	
 	
 	//상품후기
@@ -53,7 +52,7 @@ public class MyPageController {
 // 	    return "myPage/Donghyo_productReview(modal)_2";
 //      return "myPage/Donghyo_productReview_3";
 //      return "myPage/Donghyo_productReview_4";
-	}
+	}//productReview(int btn, Model model)
 	
 	
 	//상품문의
@@ -62,7 +61,7 @@ public class MyPageController {
 		model.addAttribute("btn", btn);
 		return "myPage/Donghyo_productInquiry_1";
 //      return "myPage/Donghyo_productInquiry_2";
-	}
+	}//productInquiry(int btn, Model model)
 	
 	
 	//적립금
@@ -70,5 +69,6 @@ public class MyPageController {
 	public String accumulatedMoney(int btn, Model model) {
 		model.addAttribute("btn", btn);
 		return "myPage/Donghyo_accmulated_money";
-	}
+	}//accumulatedMoney(int btn, Model model)
+	
 }//MyPageController
