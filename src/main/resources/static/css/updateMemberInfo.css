@@ -18,7 +18,7 @@
     margin: 0 auto;   
 }
 h2{
-    padding-bottom:10px;    
+    padding-bottom:40px;    
 }
 
 
@@ -73,82 +73,60 @@ input::placeholder{
 }
 
 
-.join-content>:nth-child(2)>:nth-child(12){
+.join-content>:nth-child(2)>:nth-child(9){
     overflow: hidden;
+    
 }
-.join-content>:nth-child(2)>:nth-child(12)>div{
+.join-content>:nth-child(2)>:nth-child(9)>div{
     float: left;
     
 }
 .gender-wrap{
     width: 50%;
     overflow: hidden;
-    
+    padding-left: 10px;
 }
 .gender-wrap>div{
      
     float:left;
     width:33%;
+    
 }
 .agree-whole-wrap{
     padding-top: 10px;
     width:800px;
     height: 200px;
 }
-.agree-whole-wrap>div{
-    
-    float:left; 
-    
-}
-.agree-whole-wrap>:first-child{
-    padding-left: 10px;
-    width:25%;
-    
-}
-.agree-wrap{
-    width: 70%;      
-}
-.agree-wrap>div{
-    padding-bottom: 10px;
-    width: 560px;
-}
-.agree-wrap>div>label{
-    display: inline-block;
-    width: 90%;
-    
-    
-}
-.agree-wrap>:first-child{
-    font-size:larger;
-    font-weight: bold;
-    
-}
-.agree-wrap>div>label>a{
-    text-decoration: none;
-    color:#1C8394;
-    
-    
-}
-.must{
-    color: #A52502;
-}
-.join-btn{
+ 
+
+
+.buttonBox{
     padding: 20px;
     text-align: center;
     
 }
-.join-btn>button{
-    width:200px;
-    height: 80px;
-    
-    background-color: #1C8394;
-    border: 1px solid #1C8394;
-    color: #fff;
+.buttonBox>button{
+    width:180px;
+    height: 50px;
     font-weight: 900;
-    font-size: large;
+    font-size: medium;
     border-radius: 5px;
     
 }
-.comment-wrap{
-    background-color: #A52502;
+#signOutBtn{
+    
+    
+    background-color: #fff;
+    border: 1px solid #1C8394;
+    color: #1C8394;
+
+    
+}
+#updateBtn{
+    
+    
+    background-color:#1C8394;
+    border: 1px solid #fff;
+    color:  #fff;
+    
 }
