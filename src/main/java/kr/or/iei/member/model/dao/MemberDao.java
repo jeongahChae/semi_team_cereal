@@ -26,4 +26,13 @@ public class MemberDao {
 		
 	}
 
+	public int insertMember(Member member) {
+		String query = "insert into member_tbl values(member_tbl_seq,?,?,?,?,?,?,?,to_char(sysdate,'yyyy-mm-dd'),to_char(sysdate,'yyyy-mm-dd'),member_level)";
+		Object[] params = {member.getMemberId(),member.getMemberPw(),member.getMemberName(),member.getMemberPhone(),member.getMemberEmail(),member.getMemberAddr(),member.getMemberGender(),member.getBirthDate(),member.getEnrollDate(),member.getMemberLevel()};
+		int result = jdbc.update(query,params);		
+		return result;
+	}
+
+	
+
 }
