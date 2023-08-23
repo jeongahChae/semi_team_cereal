@@ -46,7 +46,7 @@
     float: left;
 }
 
-.input-form:not([name="color"]):not([name="stock"]){
+.input-form:not([name="optionName"]):not([name="optionAmount"]){
     width: 90%;
 }
 
@@ -144,7 +144,8 @@
     border: none;
     border-bottom: 1px solid #333333;
     color: #333333;
-    width: 76%;
+    width: 75%;
+    margin: 5px;
 }
 
 .upload-name:focus{

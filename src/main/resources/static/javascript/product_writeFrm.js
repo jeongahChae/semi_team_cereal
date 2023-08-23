@@ -33,8 +33,8 @@ $("#main-category").on("change",function(){
 });
 
 $(".option-addBtn").on("click", function(){
-    const optionColor = $("<input type='text' class='input-form' name='color' placeholder='색'>");
-    const optionStock = $("<input type='text' class='input-form' name='stock' placeholder='재고(숫자만)'>");
+    const optionColor = $("<input type='text' class='input-form' name='optionName' placeholder='색'>");
+    const optionStock = $("<input type='text' class='input-form' name='optionAmount' placeholder='재고(숫자만)'>");
     const optionDelbtn = $("<button type='button' class='option-delBtn'>삭제</button>");
     $(".product-option-frm>td").append(optionColor).append(optionStock).append(optionDelbtn);
     $(".option-delBtn").on("click", function(){
