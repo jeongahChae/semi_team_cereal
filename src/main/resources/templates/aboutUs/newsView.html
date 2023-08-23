@@ -14,9 +14,11 @@
 		</div>
 		<div class="news-content">
 			<h3 th:text="${n.newsTitle}"></h3>
-			<span th:text="${n.regDate}"></span>
-			<span> | </span>
-			<span th:text="${n.press}"></span>
+			<div class="news-center">
+				<span th:text="${n.regDate}"></span>
+				<span> | </span>
+				<span th:text="${n.press}"></span>
+			</div>
 			<div class="newsContent" th:utext="${n.newsContentBr}"></div>
 		</div>
 	</div>
