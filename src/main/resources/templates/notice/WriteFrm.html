@@ -13,10 +13,10 @@
             <div class="wrap-title">고객센터</div>
             <div class="myPage-list-wrap">
                 <ul>
-                    <li><button type="button" class="button active" id="myPageBtn" onclick="changeBtn(event)">공지사항</button></li>
-                    <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">자주하는 질문</button></li>
-                    <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">1:1 문의</button></li>
-                    <li><button type="button" class="button" id="myPageBtn" onclick="changeBtn(event)">Furniture Access Check</button></li>
+                    <li><a href="#" class="sideButton active" id="myPageBtn" onclick="changeBtn(event)">공지사항</a></li>
+                    <li><a href="#" class="sideButton" id="myPageBtn" onclick="changeBtn(event)">자주하는 질문</a></li>
+                    <li><a href="#" class="sideButton" id="myPageBtn" onclick="changeBtn(event)">1:1 문의</a></li>
+                    <li><a href="#" class="sideButton" id="myPageBtn" onclick="changeBtn(event)">Furniture Access Check</a></li>
                 </ul>
             </div>
         </div>
@@ -49,8 +49,9 @@
                             <!-- 사진첨부 -->
                             <td>
                                 <div class="img-attach-line">
+                                    <!-- 사진이 추가되면 작은 사진이 div.img-box로 추가 되게 만들기.(컬리 1:1문의 사진첨부 참조) -->
                                     <div class="img-box">
-                                        <label id="photo_picker_label" for="photo_picker">
+                                        <label id="photo_picker_label" for="photo_picker" style="cursor: pointer;">
                                                 <span class="material-icons-outlined camera-icon">photo_camera</span>
                                                 <input type="file" name="upfile" multiple style="display: none;" id="photo_picker">
                                         </label>

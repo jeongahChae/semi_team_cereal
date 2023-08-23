@@ -37,22 +37,26 @@ a{
 li{
     list-style-type: none;
 }
-button{
+a{
+    text-decoration: none;
+}
+.sideButton{
+    display: block; /*<a>태그는 inline속성이므로, block으로 변경하여야 너비, 높이가 적용된다.*/
     background-color: #fff;
     border: none;
     text-align: left;
-    width: 200px;
+    width: 190px;
     height: 50px;
     line-height: 50px;
     font-size: 1.0em;
     padding-left: 15px;
     cursor: pointer;
 }
-.button:hover, .button.active{
+.sideButton:hover, .sideButton.active{
     background-color: #1C8394;
     color: #fff;
 }
-button:visited{
+.sideButton:visited{
     background-color: #1C8394;
     color: #fff;
 }
