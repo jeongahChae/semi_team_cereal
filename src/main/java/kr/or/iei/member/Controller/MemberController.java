@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -17,8 +18,13 @@ public class MemberController {
 	@Autowired
 	private MemberService memberService;
 	
-	@PostMapping(value = "/signin")
-	public String signIn(String signId, String signPw, Model model, HttpSession session) {
+	@GetMapping(value="/header")
+	public String header() {
+		
+		return "member/header_copy";
+	}
+	@RequestMapping(value = "/signin")
+	public String logIn(String signId, String signPw, Model model, HttpSession session) {
 		
 		Member m = memberService.selectOneMember(signId, signPw);
 		if (m != null) {
@@ -40,5 +46,7 @@ public class MemberController {
 		return "common/msg";
 
 	}
+	
+	
 }
 
