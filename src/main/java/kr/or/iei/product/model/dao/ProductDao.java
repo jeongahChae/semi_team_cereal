@@ -1,10 +1,15 @@
 package kr.or.iei.product.model.dao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.iei.product.model.vo.Product;
+import kr.or.iei.product.model.vo.ProductCategory;
+import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
 
@@ -12,10 +17,12 @@ import kr.or.iei.product.model.vo.ProductFile;
 public class ProductDao {
 	@Autowired
 	private JdbcTemplate jdbc;
+	@Autowired
+	private ProductCateogryRowMapper productCategoryRowMapper;
 
 	public int insertProduct(Product p) {
 		String query = "insert into product values(product_seq.nextval,?,?,?,?,DEFAULT,DEFAULT,?,?,?)";
-		Object[] params = {p.getProductPrice(),p.getProductName(),p.getProductPercent(),(int)(p.getProductPrice()*0.05),p.getProductContent(),p.getProductCategory(),p.getProductPrice()-(p.getProductPrice()*(p.getProductPercent()/100))};
+		Object[] params = {p.getProductPrice(),p.getProductName(),p.getProductPercent(),p.getProductPoint(),p.getProductContent(),p.getProductFinalPrice()};
 		int result = jdbc.update(query, params);
 		return result;
 	}
@@ -39,6 +46,14 @@ public class ProductDao {
 		int result = jdbc.update(query,params);
 		return result;
 	}
+
+	public List selectCategory() {
+		String query = "select * from product_category";
+		List list = jdbc.query(query, productCategoryRowMapper);
+		return list;
+	}
+
+
 
 	
 	
