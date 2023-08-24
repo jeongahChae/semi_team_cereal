@@ -30,12 +30,12 @@ public class MyPageService {
 		String pageNavi = "<ul class='page-design circle-style'>";
 		if(pageNo != 1) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1&reqPage="+1+"'>";//1번페이지로 
+			pageNavi += "<a class='page-item' href='/myPage/orderHistory-deliveryStatus_1?btn=1&reqPage="+1+"'>";//1번페이지로 
 			pageNavi += "<span class='material-icons'>first_page</span>";//(|<)이렇게 생김
 			pageNavi += "</a>";
 			pageNavi += "</li>";
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1&reqPage="+(pageNo-1)+"'>";
+			pageNavi += "<a class='page-item' href='/myPage/orderHistory-deliveryStatus_1?btn=1&reqPage="+(pageNo-1)+"'>";
 			pageNavi += "<span class='material-icons'>chevron_left</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";
@@ -44,13 +44,13 @@ public class MyPageService {
 		for(int i=0;i<pageNaviSize;i++) {
 			if(pageNo == reqPage) {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item active-page' href='/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1&reqPage="+pageNo+"'>";
+				pageNavi += "<a class='page-item active-page' href='/myPage/orderHistory-deliveryStatus_1?btn=1&reqPage="+pageNo+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
 			}else {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item' href='/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1&reqPage="+pageNo+"'>";
+				pageNavi += "<a class='page-item' href='/myPage/orderHistory-deliveryStatus_1?btn=1&reqPage="+pageNo+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
@@ -63,12 +63,12 @@ public class MyPageService {
 		}
 		if(pageNo <= totalPage) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1&reqPage="+pageNo+"'>";
+			pageNavi += "<a class='page-item' href='/myPage/orderHistory-deliveryStatus_1?btn=1&reqPage="+pageNo+"'>";
 			pageNavi += "<span class='material-icons'>chevron_right</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/myPage/Donghyo_orderHistory-deliveryStatus_1?btn=1&reqPage="+totalPage+"'>";//마지막 페이지로 가기
+			pageNavi += "<a class='page-item' href='/myPage/orderHistory-deliveryStatus_1?btn=1&reqPage="+totalPage+"'>";//마지막 페이지로 가기
 			pageNavi += "<span class='material-icons'>last_page</span>";//마지막 페이지로 가기 icon
 			pageNavi += "</a>";
 			pageNavi += "</li>";
