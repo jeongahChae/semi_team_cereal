@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문내역 / 배송현황</title>
     <link rel="stylesheet" href="/css/orderHistory-deliveryStatus_1.css">
+	<script src="/javascript/jquery-3.7.0.js"></script>
 </head>
 <body>
     
@@ -26,8 +27,10 @@
 		        <div class="input-date-wrap">
 		            <div>직접입력 조회</div>
 		            <div>
-		                <input type="date" name="select-date"> ~ <input type="date" name="select-date">
-		                <button type="button" class="dateBtn">조회하기</button>
+						<form action="/myPage/orderHistory-deliveryStatus_1" method="get">
+							<input type="date" name="select-date" id="firstDate"> ~ <input type="date" name="select-date" id="secondDate">
+							<button type="button" class="dateBtn" onclick="dateBtn()">조회하기</button>
+						</form>
 		            </div>
 		        </div> <!--<div class="input-date-wrap">-->
 		
@@ -52,7 +55,7 @@
 		                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>45,000</td><td>배송완료</td>
 		                    </tr>
 		                    <tr th:each="order:${orderList}">
-		                        <td th:text="${order.orderNo}"></td><td th:text="${order.productName}"></td><td th:text="${order.orderAmount}"></td><td th:text="${order.totalPrice}"></td><td th:text="${order.orderStatus}"></td>
+		                        <a th:href="@{/myPage/orderHistory-deliveryStatus_2(orderNo=${order.orderNo})}"><td th:text="${order.orderNo}"></td><td th:text="${order.productName}"></td><td th:text="${order.orderAmount}"></td><td th:text="${order.totalPrice}"></td><td th:text="${order.orderStatus}"></td></a>		                   
 		                    </tr>  
 		                </tbody>   
 		            </table>
@@ -71,5 +74,23 @@
     
     <th:block th:include="common/footer"></th:block>
     
+	<script>
+		//'조회하기' 클릭 함수
+		function dateBtn() {
+			console.log("조회 버튼");
+		}
+		
+		const firstDate = document.getElementById("firstDate");
+		const secondDate = document.getElementById("secondDate");
+		//첫 번째 날짜 값
+		firstDate.addEventListener("change", function(){
+			console.log(firstDate.value);
+		});
+		//두 번째 날짜 값
+		secondDate.addEventListener("change", function(){
+			console.log(secondDate.value);
+		});
+
+	</script>
 </body>
 </html>

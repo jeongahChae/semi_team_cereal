@@ -36,15 +36,15 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr>
+	                    <tr th:each="order:${orderList}">
 	                        <td class="img-container">
 	                            <img src="/img/sample-img.jpg" width="150px">
 	                        </td>
 	                        <td class="product-info">
-	                            <span>[ESSENTIAL#]유리 보틀</span><br>
-	                            <span>45,000원</span> | <span>1개</span>
+	                            <span th:text="${order.productName}"></span><br>
+	                            <span th:text="${order.totalPrice}"></span> | <span th:text="${order.orderAmount}"></span>
 	                        </td>
-	                        <td class="delivery-status">배송완료</td>
+	                        <td class="delivery-status" th:text="${order.orderStatus}"></td>
 	                        <td  class="button-container">
 	                            <button type="button" class="reviewBtn">후기작성</button><br>
 	                            <button type="button" class="cartBtn">장바구니 담기 </button>

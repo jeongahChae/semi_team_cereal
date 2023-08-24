@@ -13,6 +13,7 @@ public class MyPageService {
 	@Autowired
 	private MyPageDao myPageDao;
 
+	//전체 주문 내역
 	public OrderListData selectAllOrderList(int reqPage) {
 		//게시판 페이지는 가장 마지막에 insert된 요소가 제일 상단에 위치하는 내림차순 정렬로 표기
 		int numPerPage = 10; //한 페이지에 표시되는 게시물 수를 10개로 설정
@@ -79,6 +80,11 @@ public class MyPageService {
 		return old;
 	}//selectAllOrderList()
 
+	//주문 내역 상세
+	public List selectOrderHistory(int orderNo) {
+		List orderDetail = myPageDao.selectOrderHistory(orderNo);
+		return orderDetail;
+	}
 	
 	public int totalCount() {
 		int totalCount = myPageDao.totalCount();
@@ -90,6 +96,8 @@ public class MyPageService {
 		List orderList = myPageDao.selectOneList(start, end);
 		return orderList;
 	}//selectOrderList(int start, int end)
+
+
 
 
 

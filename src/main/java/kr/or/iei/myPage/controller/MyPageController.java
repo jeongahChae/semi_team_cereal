@@ -39,7 +39,9 @@ public class MyPageController {
 	}//orderHistoryDeliveryStatus(int btn, Model model)
 	//주문내역 / 배송현황 2
 	@GetMapping(value="orderHistory-deliveryStatus_2")
-	public String orderHistoryDeliveryStatus2(int btn, Model model) {
+	public String orderHistoryDeliveryStatus2(int btn, int orderNo, Model model) {
+		List orderDetail = myPageService.selectOrderHistory(orderNo);
+		model.addAttribute("orderDetail", orderDetail);
 		model.addAttribute("btn", btn);
 		return "myPage/orderHistory-deliveryStatus_2";
 	}//orderHistoryDeliveryStatus2(int btn, Model model)
