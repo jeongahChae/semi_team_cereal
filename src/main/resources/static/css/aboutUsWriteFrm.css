@@ -6,3 +6,6 @@
     flex-direction: row;
     justify-content: space-between;
 }
+#eventPeriod{
+	width: 40%;
+}

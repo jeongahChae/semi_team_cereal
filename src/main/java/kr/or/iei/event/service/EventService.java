@@ -4,9 +4,11 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.aboutUs.vo.NewsListData;
 import kr.or.iei.event.dao.EventDao;
+import kr.or.iei.event.vo.Event;
 import kr.or.iei.event.vo.WinnerListData;
 
 @Service
@@ -27,5 +29,11 @@ public class EventService {
 		
 		WinnerListData wld = new WinnerListData(winnerBoardList,totalPage); 
 		return wld;
+	}
+
+	@Transactional
+	public int insertEvent(Event e) {
+		int result = eventDao.insertEvent(e);
+		return result;
 	}
 }
