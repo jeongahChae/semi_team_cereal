@@ -20,7 +20,7 @@
                 <li><a href="/adminPage/orderStatusManagement?btn=2" class="sideButton" id="orderStatusManagementBtn" onclick="changeBtn(event)">주문 현황 관리</a></li>
                 <li><a href="/adminPage/insertProduct?btn=3" class="sideButton" id="insertProductBtn" onclick="changeBtn(event)">상품 등록</a></li>
                 <li><a href="/adminPage/insertNews?btn=4"class="sideButton" id="insertNewsBtn" onclick="changeBtn(event)">기사 등록</a></li>
-                <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">이벤트 등록</a></li>
+                <li><a href="/adminPage/insertEvent?btn=5"class="sideButton" id="insertEventBtn" onclick="changeBtn(event)">이벤트 등록</a></li>
                 <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">당첨자 발표 등록</a></li>
                 <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">공지사항 등록</a></li>
                 <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">대시보드<span class="beta">Beta</span></a></li>
@@ -48,6 +48,8 @@
             insertProduct.classList.add("active");
         }else if(btnValue == 4){
             $("#insertNewsBtn").addClass("active");
+        }else if(btnValue == 5){
+            $("#insertEventBtn").addClass("active");
         }
     </script>
 </body>

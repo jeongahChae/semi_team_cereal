@@ -2,7 +2,6 @@ package kr.or.iei.aboutUs.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +17,6 @@ import kr.or.iei.FileUtil;
 import kr.or.iei.aboutUs.service.AboutUsService;
 import kr.or.iei.aboutUs.vo.News;
 import kr.or.iei.aboutUs.vo.NewsListData;
-import kr.or.iei.notice.vo.Notice;
-import kr.or.iei.notice.vo.NoticeFile;
 
 @Controller
 public class AboutUsController {
@@ -64,16 +61,21 @@ public class AboutUsController {
 			model.addAttribute("n", n);
 			return "aboutUs/newsView";
 		}else {
-			return "/";//스윗얼럿 만들고 수정할 것
+			model.addAttribute("title", "목록 불러오기 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+			 model.addAttribute("loc", "/");
+			return "common/msg";
 		}
 	}
 	
 	@ResponseBody
-	@PostMapping(value="/editor", produces="plain/text;charset=utf-8")//produces : 파일명 한글로 받기용
+	@PostMapping(value="/news/editor", produces="plain/text;charset=utf-8")//produces : 파일명 한글로 받기용
 	public String editorUpload(MultipartFile file) {//file은 넘겨준 form.append의 첫번째 "file"과 맞춘 것
 		String savepath = root+"editor/";
 		String filepath = fileUtil.getFilepath(savepath, file.getOriginalFilename());
 		File image = new File(savepath+filepath);
+		System.out.println(image);
 		try {
 			file.transferTo(image);
 		} catch (IllegalStateException | IOException e) {
@@ -83,5 +85,21 @@ public class AboutUsController {
 		return "/editor/"+filepath;
 	}
 	
-
+	@PostMapping(value = "/news/write")
+	public String noticeWrite(News n, Model model) {// 업로드되는 파일을 여러개일수도 있으니까 배열로 받음
+		System.out.println(n.getNewsTitle());
+		int result = aboutUsService.insertNews(n); // fileList가 있는 경우와 없는 경우(null)를 나누어서 고려할 것
+		if(result>0) {
+			model.addAttribute("title", "기사 작성 성공");
+			model.addAttribute("msg", "미디어 센터 페이지로 이동합니다.");
+			model.addAttribute("icon", "success");
+		} else {
+			model.addAttribute("title", "공지사항 작성 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+		}
+		 model.addAttribute("loc", "/news/list?reqPage=1");
+		 
+		 return "common/msg";
+	}
 }
