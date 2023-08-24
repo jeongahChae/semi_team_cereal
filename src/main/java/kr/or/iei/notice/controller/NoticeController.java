@@ -3,6 +3,7 @@ package kr.or.iei.notice.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -80,6 +81,21 @@ public class NoticeController {
 		return "redirect:/notice/list?reqPage=1";
 	}
 	
+	@GetMapping(value = "/delete")
+	public String deleteNotice(int noticeNo, Model model) {
+		List list = noticeService.deleteNotice(noticeNo);
+		if(list != null) {
+			String savepath = root+"notice/";
+			for(Object obj : list) {
+				NoticeFile file = (NoticeFile)obj;
+				File delfile = new File(savepath+file.getFilepath());
+				delfile.delete();
+			}
+			return "redirect:/notice/list?reqPage=1";
+		}else {
+			return "redirect:/notice/view?noticeNo="+noticeNo;
+		}
+	}
 }
 
 

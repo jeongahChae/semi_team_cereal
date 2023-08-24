@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.iei.member.model.vo.NoticeFile;
 import kr.or.iei.notice.model.vo.Notice;
+import kr.or.iei.notice.model.vo.NoticeFileRowMapper;
 import kr.or.iei.notice.model.vo.NoticeRowMapper;
 
 @Repository
@@ -16,6 +17,8 @@ public class NoticeDao {
 	private JdbcTemplate jdbc;
 	@Autowired
 	private NoticeRowMapper noticeRowMapper;
+	@Autowired
+	private NoticeFileRowMapper noticeFileRowMapper;
 	
 
 	public List selectNoticeList(int start, int end) {
@@ -58,6 +61,21 @@ public class NoticeDao {
 		String query = "insert into notice_file values(notice_file_seq.nextval,?,?,?)";
 		Object[] params = {file.getNoticeNo(),file.getFilename(),file.getFilepath()};
 		int result = jdbc.update(query, params);
+		return result;
+	}
+
+
+	public List selectNoticeFile(int noticeNo) {
+		String query = "select * from notice_file where notice_no=?";
+		List list = jdbc.query(query, noticeFileRowMapper,noticeNo);
+		return list;
+	}
+
+
+	public int deleteNotice(int noticeNo) {
+		String query = "delete from notice where notice_no=?";
+		Object[] params = {noticeNo};
+		int result = jdbc.update(query,params);
 		return result;
 	}
 

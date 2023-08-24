@@ -99,6 +99,15 @@ public class NoticeService {
 		}
 		return result;
 	}
+
+	public List deleteNotice(int noticeNo) {
+		List list = noticeDao.selectNoticeFile(noticeNo);
+		int result = noticeDao.deleteNotice(noticeNo);
+		if(result == 0) {
+			return null;
+		}
+		return list;
+	}
 	
 }
 
