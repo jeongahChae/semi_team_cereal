@@ -1,26 +1,57 @@
+
+//noticeView 삭제버튼 -> 시간이 난다면 모달창으로 처리하기
 function noticeDelete(noticeNo){
-    if(confirm("삭제하시겠습니까?")){
+    if(confirm("게시글을 삭제하시겠습니까?")){
         location.href = "/notice/delete?noticeNo="+noticeNo;
     }
 }
 
-//모달제작
-function validateForm() {
-    var noticeTitle = document.getElementsByName("noticeTitle")[0].value;
-    var noticeContent = document.getElementById("writeFrm-content").value;
 
-    if (noticeTitle.trim() === "" || noticeContent.trim() === "") {
-        // 제목이나 내용이 비어있는 경우 모달 창 표시
-        var modal = document.getElementById("myModal");
-        modal.style.display = "block";
-        return false; // 폼 제출 방지
+
+
+//writeFrm.html 등록버튼(모달용)
+function checkValue(){
+    const titleInput = $("#writeFrmTitle").val();
+    const contentInput = $("#writeFrmContent").val();
+    if((titleInput.trim() === "")||(contentInput.trim() === "")){
+        //모달창 띄우기
+        $(".modal").css("display","flex")
+        return false;
+    }
+}
+//모달창 닫는 용도
+$("#closeModal").on("click",function(){
+    $(".modal").css("display","none");
+});
+
+
+
+
+$("#photo-picker").on("change",function(){
+    //첨부파일은 multiple옵션 사용 시 여러개일 수 있으므로 배열로 처리
+    //첨부파일 갯수가 0개가 아니고 && 첫번째 파일이 정상이면
+    if(this.files.length != 0 && this.files[0] != 0){
+        const reader = new FileReader();//파일정보를 얻어올 수 있는 객체
+        //선택한 파일 정보를 읽어옴(비동기처리)
+        reader.readAsDataURL(this.files[0]);
+        //파일리더가 정보를 다 읽어오면 동작할 함수
+        reader.onload = function(e){
+            $(".photo-img").css("background-image", "url('" + e.target.result + "')");
+            $(".img-box-add").css("display","block")
+        }
+    }else{
+        $(".img-box-add").attr("src","");
     }
     
-    return true; // 유효성 검사 통과 시 폼 제출
-}
-
-// 모달 닫기 버튼 처리
-document.getElementsByClassName("close")[0].addEventListener("click", function() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "none";
 });
+
+
+
+
+
+/*
+function checkImg(){
+    const fileInput = document.querySelector("#photo_picker").files;
+    console.log(fileInput);
+}
+*/
