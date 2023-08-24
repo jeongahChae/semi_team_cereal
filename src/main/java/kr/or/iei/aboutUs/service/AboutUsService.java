@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.aboutUs.dao.AboutUsDao;
 import kr.or.iei.aboutUs.vo.News;
@@ -79,5 +80,11 @@ public class AboutUsService {
 	public News selectOneNotice(int newsNo) {
 		News n = aboutUsDao.selectOneNotice(newsNo);
 		return n;
+	}
+
+	@Transactional
+	public int insertNews(News n) {
+		int result = aboutUsDao.insertNews(n);
+		return result;
 	}
 }

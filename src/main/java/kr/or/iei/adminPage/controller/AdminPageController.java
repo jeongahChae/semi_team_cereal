@@ -45,6 +45,6 @@ public class AdminPageController {
     @GetMapping(value="/insertNews")
     public String insertNews(int btn, Model model) {
     	model.addAttribute("btn", btn);
-    	return "event/newsWriteFrm";
+    	return "aboutUs/newsWriteFrm";
     }//insertProduct(int btn, Model model)
 }//AdminPageController
