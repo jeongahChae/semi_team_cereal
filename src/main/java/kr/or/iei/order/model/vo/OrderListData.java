@@ -11,4 +11,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class OrderListData {
 	private List orderList;
+	private String pageNavi;
 }//OrderListData

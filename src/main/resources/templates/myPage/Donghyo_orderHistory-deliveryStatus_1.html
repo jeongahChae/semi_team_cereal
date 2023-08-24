@@ -47,7 +47,7 @@
 		                    </tr>
 		                </thead>
 		                <!--테스트 삽입 <td>-->
-		                <tbody>
+		                <tbody id="js-load">
 		                    <tr onclick="window.location.href='/myPage/Donghyo_orderHistory-deliveryStatus_2?btn=1';">
 		                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>45,000</td><td>배송완료</td>
 		                    </tr>
@@ -58,11 +58,11 @@
 		            </table>
 		        </div> <!--<div class="order-table">-->
 		
-		        <div class="moreBtn-wrap">
-		            <button type="button" class="moreBtn">더보기</button>
-		        </div> <!--<div class="moreBtn-wrap">-->
+		        <!-- <div class="moreBtn-wrap" id="js-btn-wrap">
+		            <button type="button" class="moreBtn" th:totalCount="${totalCount}" currentCount="0" value="1">더보기</button>
+		        </div> <div class="moreBtn-wrap"> -->
 		
-
+				<div id="pageNavi" th:utext="${pageNavi}"></div>	
 		
 	    </div> <!--<div class="orderHistory&deliveryStatus-wrap">-->
 

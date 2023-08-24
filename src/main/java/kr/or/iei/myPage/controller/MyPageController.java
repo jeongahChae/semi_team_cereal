@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.iei.myPage.service.MyPageService;
 import kr.or.iei.order.model.vo.OrderListData;
@@ -30,8 +31,9 @@ public class MyPageController {
 	//주문내역 / 배송현황
 	@GetMapping(value="Donghyo_orderHistory-deliveryStatus_1")
 	public String orderHistoryDeliveryStatus(int btn, int reqPage, Model model) {
-		List orderList = myPageService.selectAllOrderList(reqPage);
-		model.addAttribute("orderList", orderList);
+		OrderListData old = myPageService.selectAllOrderList(reqPage);
+		model.addAttribute("orderList", old.getOrderList());
+		model.addAttribute("pageNavi", old.getPageNavi());
 		model.addAttribute("btn", btn);
 		return "myPage/Donghyo_orderHistory-deliveryStatus_1";
 	}//orderHistoryDeliveryStatus(int btn, Model model)
@@ -112,5 +114,20 @@ public class MyPageController {
 		model.addAttribute("btn", btn);
 		return "myPage/Donghyo_accmulated_money";
 	}//accumulatedMoney(int btn, Model model)
+	
+	//전체 주문 게시물 수 조회
+	@GetMapping(value="/list")
+	public String orderCount(Model model) {
+		int totalCount = myPageService.totalCount();
+		model.addAttribute("totalCount", totalCount);
+		return "myPage/Donghyo_orderHistory-deliveryStatus_1";
+	}//orderList(Model model)
+	//'더보기' 버튼
+	@ResponseBody
+	@PostMapping(value="/more")
+	public List more(int start, int end) {
+		List orderList = myPageService.selectOrderList(start, end);
+		return orderList;
+	}//more(int start, int end)
 	
 }//MyPageController
