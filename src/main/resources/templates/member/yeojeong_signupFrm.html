@@ -23,7 +23,7 @@
 	                <form name="checkIdFrm" action="/member/checkId" method="post">
 	                    <input type="hidden" name="checkId">
 	                </form>
-	                <form action="/member/yeojeong_signup" method="post" id="signupFrm">
+	                <form action="/member/signup" method="post" id="signupFrm">
 	                    <div class="input-wrap">                      
 	                            <div class="label-wrap">
 	                                <label for="memberId">아이디<sup class="star">*</sup></label>
@@ -110,16 +110,16 @@
 	                        </div>
 	                        <div class="gender-wrap">
 	                            <div class="gender-m">
-	                                <input type="radio" name="gender" id="m" value="m">
+	                                <input type="radio" name="memberGender" id="m" value="m">
 	                                <label for="m">남자</label>
 	                            </div>
 	                            <div class="gender-f">
-	                                <input type="radio" name="gender" id="f" value="f">
+	                                <input type="radio" name="memberGender" id="f" value="f">
 	                                <label for="f">여자</label>
 	                            </div>
-	                            <div class="gender-ns">
-	                                <input type="radio" name="gender" id="gn" value="gn">
-	                                <label for="ns">선택안함</label>
+	                            <div class="gender-n">
+	                                <input type="radio" name="memberGender" id="n" value="n">
+	                                <label for="n">선택안함</label>
 	                            </div>
 	                        </div>                       
 	                    </div>
@@ -127,7 +127,7 @@
 	                        <div class="label-wrap">
 	                            <label for="memberBirthdate">생년월일</label>
 	                        </div>
-	                            <input type="text" name="memberBirthdate" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
+	                            <input type="text" name="birthDate" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
 	                        
 	                    </div>
 	                    <hr>
@@ -165,25 +165,25 @@
 	            </div><!--join-title-->
 	        </div><!--join-wrap-->
 	    </div><!--join-all-wrap-->
-	    <div class="modal-wrap">
-	        <div class="idChk-modal">            
-	            <div class="modal-content">
-	                <p class="idCondition">6자 이상 16자 이하의 영문과 숫자를 조합</p>
-	                <p class="idImpossible">사용 불가능한 아이디입니다.</p>
-	                <p class="idPossible">사용할 수 있는 아이디입니다.</p>
-	                <div class="inputWrap">
-	                    <input type="button" value="닫기">
-	                </div>
-	                
-	            </div>
-	
-	        </div>
-	    </div>
+		<div id="idChkModal" class="modal">
+			<div class="modal_body">			
+					<div class="modal-content">
+						<p class="idconditionChk">6자 이상 16자 이하의 영문과 숫자를 조합</p>
+	                	<p class="idImpossible">사용 불가능한 아이디입니다.</p>
+	                	<p class="idPossible">사용할 수 있는 아이디입니다.</p>
+					</div>
+					<div class="modal-foot">						
+						<button type="button" class="chkBtn">확인</button>						
+					</div>			
+			</div>
+		</div>
+	    
 	
 	</div> <!-- <div class="wrab-content"> -->
     
     <th:block th:include="common/footer"></th:block>
-    
+    <script src="/javascript/yeojeong_button.js"></script>
     <script src="/javascript/yeojeong_signUp.js"></script>
+	
 </body>
 </html>

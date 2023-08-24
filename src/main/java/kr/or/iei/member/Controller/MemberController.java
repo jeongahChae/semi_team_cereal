@@ -56,8 +56,9 @@ public class MemberController {
 		
 		return "member/yeojeong_signupFrm";
 	}
-	@PostMapping(value="/yeojeong_signup")
+	@PostMapping(value="/signup")
 	public String signup(Member member, Model model) {
+		System.out.println(member.getMemberGender() + member.getBirthDate());
 		int result = memberService.insertMember(member);
 		if (result > 0) {
 			model.addAttribute("title", "회원가입 성공");
