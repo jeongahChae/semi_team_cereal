@@ -11,12 +11,12 @@ public class ProductDetailFileRowMapper implements RowMapper<ProductDetailFile> 
 
 	@Override
 	public ProductDetailFile mapRow(ResultSet rs, int rowNum) throws SQLException {
-		ProductDetailFile file = new ProductDetailFile();
-		file.setFilename(rs.getString("filename"));
-		file.setFileNo(rs.getInt("file_no"));
-		file.setFilepath(rs.getString("filepath"));
-		file.setProductNo(rs.getInt("product_no"));
-		return file;
+		ProductDetailFile dfile = new ProductDetailFile();
+		dfile.setFilename(rs.getString("filename"));
+		dfile.setFileNo(rs.getInt("file_no"));
+		dfile.setFilepath(rs.getString("filepath"));
+		dfile.setProductNo(rs.getInt("product_no"));
+		return dfile;
 	}
 
 }

@@ -26,7 +26,8 @@ $("#main-category").on("change",function(){
     for(let i=0; i<subCategory.length; i++){
         let option = $("<option>");
         let attr = option.attr("value",subCategory[i]);
-        let suboption = attr.text(subCategory[i]);
+        let attrName = attr.attr("name","cateogryName");
+        let suboption = attrName.text(subCategory[i]);
         console.log(suboption);
         $("#sub-category").append(suboption);
     }
