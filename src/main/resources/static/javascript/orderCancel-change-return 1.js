@@ -1,5 +1,5 @@
 //주문취소/교환/반품 1
-//Donghyo_orderCancel-change-return 1.html
+//orderCancel-change-return 1.html
 
 //tr을 눌러도 체크가 됨(미사용)
 // $("#tableId").on('click', tr, function(e){
@@ -27,7 +27,7 @@
 //3
 function getLink(){
     const registerBtnWrap  = document.getElementsByClassName("registerBtn-wrap")[0];
-    registerBtnWrap.innerHTML = "<button type='button' class='registerBtn' onclick=\"window.location.href=\'/myPage/Donghyo_orderCancel-change-return_2?btn=2\';\">접수</button>";
+    registerBtnWrap.innerHTML = "<button type='button' class='registerBtn' onclick=\"window.location.href=\'/myPage/orderCancel-change-return_2?btn=2\';\">접수</button>";
 }
 function removeLink(){
     const registerBtn = document.querySelector(".registerBtn"); 
