@@ -15,6 +15,7 @@ public class WebConfig implements WebMvcConfigurer {
 		//원래 기본설정 추가(html → /templates, 기본자원들 → /static폴더 사용
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/","classpath:/static/");
 		registry.addResourceHandler("/editor/**").addResourceLocations("file:///C:/Temp/upload/editor/");
+		registry.addResourceHandler("/event/**").addResourceLocations("file:///C:/Temp/upload/event/");
 	}//스프링부트 설정파일
 
 	/*

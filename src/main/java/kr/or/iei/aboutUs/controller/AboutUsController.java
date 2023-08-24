@@ -2,7 +2,6 @@ package kr.or.iei.aboutUs.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,7 +61,11 @@ public class AboutUsController {
 			model.addAttribute("n", n);
 			return "aboutUs/newsView";
 		}else {
-			return "/";//스윗얼럿 만들고 수정할 것
+			model.addAttribute("title", "목록 불러오기 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+			 model.addAttribute("loc", "/");
+			return "common/msg";
 		}
 	}
 	

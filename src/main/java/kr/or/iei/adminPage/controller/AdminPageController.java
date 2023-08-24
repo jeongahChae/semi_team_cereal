@@ -46,5 +46,12 @@ public class AdminPageController {
     public String insertNews(int btn, Model model) {
     	model.addAttribute("btn", btn);
     	return "aboutUs/newsWriteFrm";
-    }//insertProduct(int btn, Model model)
+    }
+    
+    //이벤트등록
+    @GetMapping(value="/insertEvent")
+    public String insertEvent(int btn, Model model) {
+    	model.addAttribute("btn", btn);
+    	return "event/eventWriteFrm";
+    }
 }//AdminPageController
