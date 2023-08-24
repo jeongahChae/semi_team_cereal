@@ -40,4 +40,11 @@ public class AdminPageController {
     	return "product/writeFrm_copy";
     }//insertProduct(int btn, Model model)
     
+    
+    //기사등록
+    @GetMapping(value="/insertNews")
+    public String insertNews(int btn, Model model) {
+    	model.addAttribute("btn", btn);
+    	return "event/newsWriteFrm";
+    }//insertProduct(int btn, Model model)
 }//AdminPageController

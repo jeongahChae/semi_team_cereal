@@ -1,18 +1,36 @@
 package kr.or.iei.product.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+
+import kr.or.iei.FileUtil;
 import kr.or.iei.product.model.service.ProductService;
-import lombok.Value;
+import kr.or.iei.product.model.vo.Product;
+import kr.or.iei.product.model.vo.ProductDetailFile;
+import kr.or.iei.product.model.vo.ProductFile;
 
 @Controller
 @RequestMapping(value="/product")
 public class ProductController {
 	@Autowired
 	private ProductService productService;
+	
+	@Value("${file.root}")
+	private String root;
+	
+	@Autowired
+	private FileUtil fileUtil;
+	
 	
 	@GetMapping(value="/productList")
 	public String productList() {
@@ -22,5 +40,82 @@ public class ProductController {
 	@GetMapping(value="/writeFrm")
 	public String productWriteFrm() {
 		return "product/writeFrm";
+	}
+	
+	@PostMapping(value="/write")
+	public String productWrite(Product p, MultipartFile[] upfile, MultipartFile[] upfile2, Model model) {
+		ArrayList<ProductFile> fileList = null;
+		ArrayList<ProductDetailFile> dfileList = null;
+		System.out.println(p);
+		System.out.println(upfile.length);
+		System.out.println(upfile2.length);
+		if(!upfile[0].isEmpty()) {
+			fileList = new ArrayList<ProductFile>();
+			String savepath = root+"product/";
+			System.out.println("savepath : " + savepath);
+			for(MultipartFile file : upfile) {
+				String filename = file.getOriginalFilename();
+				System.out.println("filename : " + filename);
+				// 중복 파일명 체크
+				String filepath = fileUtil.getFilepath(savepath, filename);
+				System.out.println("filepath : " + filepath);
+				// 실제 폴더에 파일을 업로드
+				File uploadFile = new File(savepath+filepath);
+				try {
+					file.transferTo(uploadFile);
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// 파일 업로드 끝
+				ProductFile pf = new ProductFile();
+				pf.setFilename(filename);
+				pf.setFilepath(filepath);
+				fileList.add(pf);
+			}
+		}
+		
+		if(!upfile2[0].isEmpty()) {
+			dfileList = new ArrayList<ProductDetailFile>();
+			String savepath = root+"product-detail/";
+			System.out.println("savepath : " + savepath);
+			for(MultipartFile file : upfile2) {
+				String filename = file.getOriginalFilename();
+				System.out.println("filename : " + filename);
+				// 중복 파일명 체크
+				String filepath = fileUtil.getFilepath(savepath, filename);
+				System.out.println("filepath : " + filepath);
+				// 실제 폴더에 파일을 업로드
+				File uploadFile = new File(savepath+filepath);
+				try {
+					file.transferTo(uploadFile);
+				} catch (IllegalStateException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				// 파일 업로드 끝
+				ProductDetailFile pdf = new ProductDetailFile();
+				pdf.setFilename(filename);
+				pdf.setFilepath(filepath);
+				dfileList.add(pdf);
+			}
+		}
+		int result = productService.insertProduct(p, fileList, dfileList);
+		if((fileList == null && result == 1) || (fileList != null && result == (fileList.size()+1)) || (fileList == null && result == 1) || (fileList != null && result == (fileList.size()+1))) {
+			model.addAttribute("title", "상품 등록 성공");
+			model.addAttribute("msg", "상품이 등록되었습니다.");
+			model.addAttribute("icon", "success");
+		}else {
+			model.addAttribute("title", "상품 등록 실패");
+			model.addAttribute("msg", "상품 등록 실패");
+			model.addAttribute("icon", "error");
+		}
+		return "common/msg";
 	}
 }

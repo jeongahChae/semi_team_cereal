@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">    
     <title>회원가입</title>
-    <link rel="stylesheet" href="/semi_team_cereal/src/main/resources/static/css/yeojeong_signUp.css">
-    <script src="/semi_team_cereal/src/main/resources/static/javascript/jquery-3.7.0.js"></script>
+    <link rel="stylesheet" href="/css/yeojeong_signUp.css">
+    <script src="/javascript/jquery-3.7.0.js"></script>
 </head>
 <body>
 
@@ -23,18 +23,18 @@
 	                <form name="checkIdFrm" action="/member/checkId" method="post">
 	                    <input type="hidden" name="checkId">
 	                </form>
-	                <form action="/member/signup" method="post" id="signupFrm">
+	                <form action="/member/yeojeong_signup" method="post" id="signupFrm">
 	                    <div class="input-wrap">                      
 	                            <div class="label-wrap">
 	                                <label for="memberId">아이디<sup class="star">*</sup></label>
 	                            </div>
-	                            <input type="text" name="memberId" id="memberId" class="input-form" placeholder="아이디를 입력해주세요" required>
+	                            <input type="text" name="memberId" id="memberId" class="input-form id_confirm" placeholder="아이디를 입력해주세요" required>
 	                            <span class="button-wrap">
 	                                <button type="button" id="idChkBtn" class="dup-btn">중복확인</button>
 	                            </span>                                                                                          
 	                    </div>
 	                    <div class="comment-wrap">
-	                        <span class="comment"></span> 
+	                        <div id="id_comment"></div> 
 	                    </div>                       
 	                    <div class="input-wrap">    
 	                        <div class="label-wrap">
@@ -184,6 +184,6 @@
     
     <th:block th:include="common/footer"></th:block>
     
-    <script src="/semi_team_cereal/src/main/resources/static/javascript/yeojeong_signUp.js"></script>
+    <script src="/javascript/yeojeong_signUp.js"></script>
 </body>
 </html>

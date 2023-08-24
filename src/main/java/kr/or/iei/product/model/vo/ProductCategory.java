@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class ProductCategory {
-	private String categoryMain;
-	private String categorySub;
-	private String categoryRef;
+	private int categoryNo;
+	private String categoryName;
+	private int categoryRef;
 }

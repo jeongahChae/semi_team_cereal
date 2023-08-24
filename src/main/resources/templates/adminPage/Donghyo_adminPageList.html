@@ -19,7 +19,7 @@
                 <li><a href="/adminPage/allProductList?btn=1" class="sideButton" id="allProductListBtn" onclick="changeBtn(event)">등록 상품 현황</a></li>
                 <li><a href="/adminPage/orderStatusManagement?btn=2" class="sideButton" id="orderStatusManagementBtn" onclick="changeBtn(event)">주문 현황 관리</a></li>
                 <li><a href="/adminPage/insertProduct?btn=3" class="sideButton" id="insertProductBtn" onclick="changeBtn(event)">상품 등록</a></li>
-                <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">기사 등록</a></li>
+                <li><a href="/adminPage/insertNews?btn=4"class="sideButton" id="insertNewsBtn" onclick="changeBtn(event)">기사 등록</a></li>
                 <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">이벤트 등록</a></li>
                 <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">당첨자 발표 등록</a></li>
                 <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">공지사항 등록</a></li>
@@ -46,6 +46,8 @@
         }else if(btnValue == 3){
             const insertProduct = document.querySelector("#insertProductBtn");
             insertProduct.classList.add("active");
+        }else if(btnValue == 4){
+            $("#insertNewsBtn").addClass("active");
         }
     </script>
 </body>
