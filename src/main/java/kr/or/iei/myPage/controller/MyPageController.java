@@ -1,5 +1,8 @@
 package kr.or.iei.myPage.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,9 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.or.iei.myPage.service.MyPageService;
+import kr.or.iei.order.model.vo.OrderListData;
+
 @Controller
 @RequestMapping(value="myPage", method = {RequestMethod.GET, RequestMethod.POST}) //마이페이지
 public class MyPageController {
+	@Autowired
+	private MyPageService myPageService;
 	
 	//개인정보수정
 	@GetMapping(value="updateMemberInfo")
@@ -21,7 +29,9 @@ public class MyPageController {
 	
 	//주문내역 / 배송현황
 	@GetMapping(value="Donghyo_orderHistory-deliveryStatus_1")
-	public String orderHistoryDeliveryStatus(int btn, Model model) {
+	public String orderHistoryDeliveryStatus(int btn, int reqPage, Model model) {
+		List orderList = myPageService.selectAllOrderList(reqPage);
+		model.addAttribute("orderList", orderList);
 		model.addAttribute("btn", btn);
 		return "myPage/Donghyo_orderHistory-deliveryStatus_1";
 	}//orderHistoryDeliveryStatus(int btn, Model model)

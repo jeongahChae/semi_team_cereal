@@ -50,7 +50,10 @@
 		                <tbody>
 		                    <tr onclick="window.location.href='/myPage/Donghyo_orderHistory-deliveryStatus_2?btn=1';">
 		                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>45,000</td><td>배송완료</td>
-		                    </tr> 
+		                    </tr>
+		                    <tr th:each="order:${orderList}">
+		                        <td th:text="${order.orderNo}"></td><td th:text="${order.productName}"></td><td th:text="${order.orderAmount}"></td><td th:text="${order.totalPrice}"></td><td th:text="${order.orderStatus}"></td>
+		                    </tr>  
 		                </tbody>   
 		            </table>
 		        </div> <!--<div class="order-table">-->
