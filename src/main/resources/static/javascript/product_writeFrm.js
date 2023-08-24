@@ -1,4 +1,6 @@
 $(function(){
+    let mainCategory = $("<option value=''>대분류</option>");
+    $("#main-category").append(mainCategory);
     $.ajax({
         url : "/product/category",
         type : "get",
@@ -13,6 +15,8 @@ $(function(){
             for(let i=0 ; i<data.length;i++){
                 if(data[i].categoryRef == 0){
                     main.push(data[i]);
+                    let opt = $("<option value='${'data[i].categoryNo'}'>'${'data[i].categoryName'}'</option>");
+                    $("#main-category").append(opt);
                 } else if(data[i].categoryRef == 1){
                     furniture.push(data[i]);
                 } else if(data[i].categoryRef == 2){
@@ -23,13 +27,21 @@ $(function(){
                     fab.push(data[i]);
                 }
             }
-            let mainCategory = $("<option value=''>대분류</option>");
-            $("#main-category").append(mainCategory)
         }
     });
 });
 
+/*
+function com_parent(){
+    let opt = [];
+    parents.forEach(data =>{
+        opt.push(`<option value="${"data.categoryNo"}">${"data.categoryName"}</option>`);
+    });
+    $("#main").append(opt);
+}
 
+function
+*/
 /*
 $("#main-category").on("change",function(){
     $("#sub-category").css("display","inline-block");
