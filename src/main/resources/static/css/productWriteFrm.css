@@ -123,7 +123,9 @@
     text-align: center;
     margin: 30px;
 }
-
+.product-writeFrm-sumbitBtn:hover{
+    cursor: pointer;
+}
 .product-writeFrm-sumbitBtn>button{
     text-align: center;
     width: 150px;

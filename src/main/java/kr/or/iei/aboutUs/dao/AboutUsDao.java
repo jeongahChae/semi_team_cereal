@@ -42,5 +42,12 @@ public class AboutUsDao {
 		String query = "select * from news_tbl where news_no=?";
 		List list = jdbc.query(query, newsRowMapper, newsNo);
 		return (News)list.get(0);
+	}
+
+	public int insertNews(News n) {
+		String query = "insert into news_tbl values (news_seq.nextval, ?, ?, ?, default)";
+		Object[] params = {n.getNewsTitle(), n.getNewsContent(), n.getPress()};
+		int result = jdbc.update(query, params);
+		return result;
 	}	
 }
