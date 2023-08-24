@@ -18,8 +18,6 @@ import kr.or.iei.FileUtil;
 import kr.or.iei.aboutUs.service.AboutUsService;
 import kr.or.iei.aboutUs.vo.News;
 import kr.or.iei.aboutUs.vo.NewsListData;
-import kr.or.iei.notice.vo.Notice;
-import kr.or.iei.notice.vo.NoticeFile;
 
 @Controller
 public class AboutUsController {

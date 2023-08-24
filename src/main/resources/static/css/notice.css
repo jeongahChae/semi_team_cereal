@@ -13,7 +13,7 @@ a{
     text-decoration: none;
 }
 
-.wrab-content{
+.wrap-content{
     display: flex;
     width: 1200px;
     padding: 50px 0 80px 0;

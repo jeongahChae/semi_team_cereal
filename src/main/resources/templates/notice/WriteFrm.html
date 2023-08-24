@@ -8,11 +8,8 @@
 </head>
 <body>
 	<th:block th:include="common/header"></th:block>
-    <div class="wrab-content">
-        <div class="side-wrap">
-            <div class="wrap-title">고객센터</div>
-            <th:block th:include="common/serviceCenterSide"></th:block>
-        </div>
+    <div class="wrap-content">
+        <th:block th:include="common/serviceCenterSide"></th:block>
         <div class="page-content">
             <div class="page-title">
                 <div class="content-title">공지사항</div>
@@ -42,7 +39,8 @@
                             <!-- 사진첨부 -->
                             <td>
                                 <div class="img-attach-line">
-                                    <!-- 사진이 추가되면 작은 사진이 div.img-box로 추가 되게 만들기.(컬리 1:1문의 사진첨부 참조) -->
+                                    <!-- 사진이 추가되면 작은 사진이 div.img-box로 추가 되게 만들기. -->
+                                    <!-- 시간이 된다면 3개까지 가능하도록 구현하자.(마켓컬리 1:1문의 사진넣기 참조.) -->
                                     <div class="img-box-add" style="display: none;">
                                         <div class="photo-img"></div>
                                     </div>
@@ -55,7 +53,7 @@
                                 </div>
                                 <ul class="img-ul">
                                     <li>30MB 이하의 이미지만 업로드 가능합니다.</li>
-                                    <li>사진은 최대 3개까지 등록 가능합니다.</li>
+                                    <li>사진은 최대 1개까지 등록 가능합니다.</li>
                                 </ul>
                             </td>
                         </tr>
