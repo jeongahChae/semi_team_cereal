@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ESSENTIAL#</title>
+<link rel="stylesheet" href="/css/aboutUsWriteFrm.css">
+<link rel="stylesheet" href="/css/productWriteFrm.css">
+
+</head>
+		<th:block th:include="/common/header"></th:block>
+
+		
+		<div class="content-wrap">
+			<th:block th:include="/adminPage/Donghyo_adminPageList"></th:block>
+			<div class="product-writeFrm">
+				<div class="product-writeFrm-title">기사 등록</div>
+				<hr>
+				<form action="/news/write" method="post" enctype="multipart/form-data">
+				<table class="product-writeFrm-tbl">
+					<tr>
+						<th>기사 제목</th>
+						<td>
+							<input type="text" class="input-form" name="newsTitle" placeholder="제목을 입력하세요.">
+						</td>
+					</tr>
+					<tr>
+						<th>언론사</th>
+						<td>
+							<input type="text" class="input-form" name="press" placeholder="기사가 기재된 언론사를 입력하세요.">
+						</td>
+					</tr>
+					<tr class="product-detail">
+						<th>기사 내용</th>
+						<td style="text-align: left;">
+							<textarea class="text-form" name="newsContent" id="newsContent"></textarea>
+						</td>
+					</tr>
+				</table>
+				<hr>
+				<div class="product-writeFrm-sumbitBtn">
+					<button>기사 등록</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	<th:block th:include="/common/footer"></th:block>
+				<!-- 썸머노트 -->
+		<script src="/summernote/summernote-lite.js"></script>
+		<script src="/summernote/lang/summernote-ko-KR.js"></script>
+		<link rel="stylesheet" href="/summernote/summernote-lite.css">
+	<script>
+	
+	$("#newsContent").summernote({
+		//태그를 모두 포함해서 DB에 저장하므로 생각보다 용량을 많이 사용함
+		height : 400,
+		lang : "ko-KR",
+		placeholder : "기사 본문을 입력하세요.",
+		callbacks : {
+			onImageUpload :function(files){
+				//에디터 본문에 이미지를 삽입하면 동작하는 함수
+				uploadImage(files[0],this);//this : 텍스트에디터 자체
+			}
+		}
+	});
+	function uploadImage(file, editor){
+
+		const form = new FormData();//form태그 역할
+		
+		form.append("file", file);	//form태그 내부에 <input type="file" name="file">추가
+		$.ajax({
+			url : "/news/editor",
+			type : "post",
+			data : form,
+			processData : false,	//필수
+			contentType : false,	//필수
+			success : function(data){
+				$(editor).summernote("insertImage",data);
+			}
+
+		});
+	}
+	</script>
+</body>
+</html>
