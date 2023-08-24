@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문취소/교환/반품</title>
-    <link rel="stylesheet" href="/css/Donghyo_orderCancel-change-return_2.css">
+    <link rel="stylesheet" href="/css/orderCancel-change-return_2.css">
 </head>
 <body>
     <th:block th:include="common/header"></th:block>
@@ -13,7 +13,7 @@
 	<div class="content-wrap">
 
 
-		<th:block th:include="myPage/Donghyo_myPageList"></th:block>
+		<th:block th:include="myPage/myPageList"></th:block>
 
 
 		    <div class="orderCancel-change-return-wrap">
@@ -22,7 +22,7 @@
 		        
 		        <div class="select-tap-container">
 		            <input type="radio" name="orderCancel-change-return-tap" id="orderCancel-change-return-register" checked><label for="orderCancel-change-return-register">주문취소/교환/반품 접수</label>
-		            <input type="radio" name="orderCancel-change-return-tap" id="select-change-return-list" onclick="window.location.href='/myPage/Donghyo_orderCancel-change-return_3?btn=2';"><label for="select-change-return-list">교환/반품 내역 조회</label>
+		            <input type="radio" name="orderCancel-change-return-tap" id="select-change-return-list" onclick="window.location.href='/myPage/orderCancel-change-return_3?btn=2';"><label for="select-change-return-list">교환/반품 내역 조회</label>
 		        </div> <!--<div class="select-tap-container">-->
 		
 		
@@ -73,7 +73,7 @@
 		        
 		
 		        <div class="registerBtn-wrap">
-					<button type="submit" class="registerBtn" onclick="window.location.href='/myPage/Donghyo_orderCancel-change-return_1?btn=2';">접수</button>
+					<button type="submit" class="registerBtn" onclick="window.location.href='/myPage/orderCancel-change-return_1?btn=2';">접수</button>
 		        </div> <!--<div class="moreBtn-wrap">-->
 		
 		    </div> <!--<div class="orderCancel-change-return-wrap">-->

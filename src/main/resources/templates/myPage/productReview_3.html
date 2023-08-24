@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품후기</title>
-    <link rel="stylesheet" href="/css/Donghyo_productReview_4.css">
+    <link rel="stylesheet" href="/css/productReview_3.css">
 </head>
 <body>
     
@@ -14,15 +14,15 @@
 	<div class="content-wrap">
 
 
-		<th:block th:include="myPage/Donghyo_myPageList"></th:block>
+		<th:block th:include="myPage/myPageList"></th:block>
 
 
 	    <div class="product-review-wrap">
-	        
+	
 	        <h2>상품후기</h2>
 	
 	            <div class="select-tap-container">
-	                <input type="radio" name="product-review-tap" id="product-review-register"><label for="product-review-register">작성 가능 후기</label>
+	                <input type="radio" name="product-review-tap" id="product-review-register" onclick="window.location.href='/myPage/productReview_1?btn=4';"><label for="product-review-register">작성 가능 후기</label>
 	                <input type="radio" name="product-review-tap" id="product-review-list" checked><label for="product-review-list">작성한 후기</label>
 	            </div> <!--<div class="select-tap-container">-->
 	
@@ -35,37 +35,30 @@
 	                </p>
 	            </div> <!--<div class="guide-ment-wrap">-->
 	
-	            
-	            <div class="review-detail-wrap">
+	
+	            <div class="product-review-list-wrap">
 	                <table>
 	                    <thead>
 	                        <tr>
-	                            <th class="img-container"><img src="/img/sample-img.jpg" width="150px"></th>
-	                            <th class="product-info-text">
-	                                <span class="product-title">[ESSENTIAL#]유리 보틀</span><br>
-	                                <span class="product-option">[color : blue]</span>
-	                            </th>
-	                            <th class="buy-date">2023-08-22 구입</th>
+	                            <th class="order-no">주문번호</th><th class="product-info" colspan="2">상품정보</th><th class="review">후기</th>
 	                        </tr>
 	                    </thead>
-	                    <tbody>
-	                        <tr>
-	                            <td class="review-container" colspan="3">
-	                                <textarea class="review-detail" readonly>작성한 후기 상세 내용</textarea>
-	                            </td>
+	                    <tbody>	
+	                        <tr onclick="window.location.href='/myPage/productReview_4?btn=4';">
+	                            <td class="order-no-text">012345678910</td>
+	                            <td class="img-container"><img src="/img/sample-img.jpg" width="150px"></td>
+	                            <td class="product-info-text">[ESSENTIAL#]유리 보틀</td>
+	                            <td class="review-container"><textarea class="review-text"readonly>작성한 후기 내용</textarea></td>
 	                        </tr>
 	                    </tbody>
 	                </table>
-	            </div>
+	            </div> <!--<div class="product-review-list-wrap">-->
 	
-	
-	            <div class="registerBtn-wrap">
-	                <button type="button" class="reWriteBtn">수정</button>
-	                <button type="submit" class="closeBtn" onclick="window.location.href='/myPage/Donghyo_productReview_3?btn=4';">닫기</button>
+	            <div class="moreBtn-wrap">
+	                <button type="button" class="moreBtn">더보기</button>
 	            </div> <!--<div class="moreBtn-wrap">-->
-	            
-	            
-	    </div> <!--<div class="product-review-wrap">-->
+	
+	        </div> <!--<div class="product-review-wrap">-->
 
 	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->

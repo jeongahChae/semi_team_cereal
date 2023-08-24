@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>등록 상품 현황</title>
-    <link rel="stylesheet" href="/css/Donghyo_allProductList.css">
+    <title>회원목록</title>
+    <link rel="stylesheet" href="/css/allMemberList.css">
 </head>
 <body>
     
@@ -14,23 +14,23 @@
 	<div class="content-wrap">
 
 
-		<th:block th:include="adminPage/Donghyo_adminPageList"></th:block>
+		<th:block th:include="adminPage/adminPageList"></th:block>
 
 
-	    <div class="allProductList-wrap">
+	    <div class="allMemberList-wrap">
 	        
-	        <h2>등록 상품 현황</h2>
+	        <h2>회원목록</h2>
 	
-	        <div class="allProductList-table-wrap">
+	        <div class="allMemberList-table-wrap">
 	            <table>
 	                <thead>
 	                    <tr>
-	                        <th class="productNo">상품번호</th><th class="productName">상품명</th><th class="productOption">옵션</th><th class="productAmount">재고수량</th>
+	                        <th class="memberId">아이디</th><th class="memberName">회원명</th><th class="memberPhone">연락처</th><th class="memberAddr">배송지</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr onclick="window.location.href='#';">
-	                        <td>XZS123456789</td><td>[ESSENTIAL#]유리 보틀<td>블루</td><td>50</td>
+	                    <tr>
+	                        <td>as1231991</td><td>손동효</td><td>010-5468-5721</td><td>서울시 영등포구 영중로 6길 12 포레스트힐시티 1001호</td>
 	                    </tr>
 	                </tbody>
 	            </table>
@@ -41,7 +41,7 @@
 	        </div> <!--<div class="moreBtn-wrap">-->
 	
 	    </div> <!--<div class="allMemberList-wrap">-->
- 
+
 	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->
     

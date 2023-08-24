@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품문의</title>
-    <link rel="stylesheet" href="/css/Donghyo_productInquiry_1.css">
+    <link rel="stylesheet" href="/css/productInquiry_2.css">
 </head>
 <body>
     
@@ -14,20 +14,19 @@
 	<div class="content-wrap">
 
 
-		<th:block th:include="myPage/Donghyo_myPageList"></th:block>
+		<th:block th:include="myPage/myPageList"></th:block>
 
 
 	    <div class="product-inquiry-wrap">
 	        
 	        <h2>상품문의</h2>
-	
+	        
 	        <div class="guide-ment-wrap">
 	            <p>
 	                ㆍ배송관련, 주문(취소/교환/반품)관련 문의 및 요청사항은
 	                <a href="#">1:1 문의</a>에 남겨주세요.
 	            </p>
 	        </div> <!--<div class="guide-ment-wrap">-->
-	
 	        <div class="inquiry-list-wrap">
 	            <table>
 	                <thead>
@@ -36,16 +35,32 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr onclick="window.location.href='/myPage/Donghyo_productInquiry_2?btn=5';">
+	                    <tr>
 	                        <td class="inquiry-title-text">재입고 예정일이 궁금합니다.</td><td class="register-date-text">2023-08-22</td><td class="answer-status-text">답변완료</td>
 	                    </tr>
 	                </tbody>
 	            </table>
 	        </div> <!--<div class="inquiry-list-wrap">-->
 	            
-	        <div class="moreBtn-wrap">
-	            <button type="button" class="moreBtn">더보기</button>
-	        </div> <!--<div class="moreBtn-wrap">-->
+	        
+	        <div class="inquiry-answer-wrap">
+	            <div class="inquiry-detail">
+	                <textarea class="inquiry-text" readonly>[ESSENTIAL#]유리 보틀 상품의 재입고 예정일이 언제인지 알 수 있을까요?</textarea>
+	            </div>
+	            <div class="inquiry-answer">
+	                <textarea class="answer-text" readonly>
+안녕하십니까 고객님.
+ESSENTIAL# 입니다. 
+현재 고객님께서 문의하신 [ESSENTIAL#]유리 보틀의 재입고 예정일은
+2023-09-10 입니다.
+감사합니다.
+	                </textarea>
+	            </div>
+	            <div class="registerBtn-wrap">
+	                <button type="button" class="reWriteBtn">수정</button>
+	                <button type="button" class="closeBtn" onclick="window.location.href='/myPage/productInquiry_1?btn=5';">닫기</button>
+	            </div> <!--<div class="moreBtn-wrap">-->
+	        </div> <!--<div class="inquiry-answer-wrap">-->
 	
 	    </div> <!--<div class="product-inquiry-wrap">-->
 

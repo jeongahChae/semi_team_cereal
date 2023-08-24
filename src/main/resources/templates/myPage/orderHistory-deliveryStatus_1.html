@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문내역 / 배송현황</title>
-    <link rel="stylesheet" href="/css/Donghyo_orderHistory-deliveryStatus_1.css">
+    <link rel="stylesheet" href="/css/orderHistory-deliveryStatus_1.css">
 </head>
 <body>
     
@@ -14,7 +14,7 @@
 	<div class="content-wrap">
 
 
-		<th:block th:include="myPage/Donghyo_myPageList"></th:block>
+		<th:block th:include="myPage/myPageList"></th:block>
 
 
 	    <div class="orderHistory-deliveryStatus-wrap">
@@ -48,7 +48,7 @@
 		                </thead>
 		                <!--테스트 삽입 <td>-->
 		                <tbody id="js-load">
-		                    <tr onclick="window.location.href='/myPage/Donghyo_orderHistory-deliveryStatus_2?btn=1';">
+		                    <tr onclick="window.location.href='/myPage/orderHistory-deliveryStatus_2?btn=1';">
 		                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>45,000</td><td>배송완료</td>
 		                    </tr>
 		                    <tr th:each="order:${orderList}">

@@ -13,7 +13,7 @@ public class AdminPageController {
     @GetMapping(value="/allMemberList")
     public String allMemberListt(int btn, Model model) {
         model.addAttribute("btn", btn);
-    	return "adminPage/Donghyo_allMemberList";
+    	return "adminPage/allMemberList";
     }//allMemberListt(int btn, Model model)
     
     
@@ -21,7 +21,7 @@ public class AdminPageController {
     @GetMapping(value="/allProductList")
     public String allProductList(int btn, Model model) {
     	model.addAttribute("btn", btn);
-        return "adminPage/Donghyo_allProductList";
+        return "adminPage/allProductList";
     }//allProductList(int btn, Model model)
     
     
@@ -29,7 +29,7 @@ public class AdminPageController {
     @GetMapping(value="/orderStatusManagement")
     public String orderStatusManagement(int btn, Model model) {
     	model.addAttribute("btn", btn);
-    	return "adminPage/Donghyo_orderStatusManagement";
+    	return "adminPage/orderStatusManagement";
     }//orderStatusManagement(int btn, Model model)
     
     
