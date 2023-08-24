@@ -12,5 +12,5 @@ import lombok.NoArgsConstructor;
 public class WinnerListData {
 
 	private List winnerBoardList;
-	private String pageNavi;
+	private int totalPage;
 }
