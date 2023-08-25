@@ -86,7 +86,7 @@ thead>tr>:first-child{
 thead>tr>:last-child{
     width: 220px;
     text-align: left;
-    padding-left: 22.5px;
+    padding-left: 40.5px;
 }
 td {
     border-bottom: 1px solid rgb(244, 244, 244);
@@ -136,16 +136,3 @@ td {
 
 
 
-.moreBtn-wrap{
-    text-align: center;
-}
-.moreBtn{
-    width: 300px;
-    height: 40px;
-    color: #fff;
-    border: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    background-color: #1C8394;
-    cursor: pointer;
-}

@@ -50,12 +50,9 @@
 		                    </tr>
 		                </thead>
 		                <!--테스트 삽입 <td>-->
-		                <tbody id="js-load">
-		                    <tr onclick="window.location.href='/myPage/orderHistory-deliveryStatus_2?btn=1';">
-		                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>45,000</td><td>배송완료</td>
-		                    </tr>
-		                    <tr th:each="order:${orderList}">
-		                        <a th:href="@{/myPage/orderHistory-deliveryStatus_2(orderNo=${order.orderNo})}"><td th:text="${order.orderNo}"></td><td th:text="${order.productName}"></td><td th:text="${order.orderAmount}"></td><td th:text="${order.totalPrice}"></td><td th:text="${order.orderStatus}"></td></a>		                   
+		                <tbody id="js-load">	
+		                    <tr th:each="order:${orderList}" th:onclick="orderHistory([[${order.orderNo}]])">
+		                        <td th:text="${order.orderNo}"></td><td th:text="${order.productName}"></td><td th:text="${order.orderAmount}"></td><td th:text="${order.totalPrice}"></td><td th:text="${order.orderStatus}"></td>                   
 		                    </tr>  
 		                </tbody>   
 		            </table>
@@ -75,22 +72,9 @@
     <th:block th:include="common/footer"></th:block>
     
 	<script>
-		//'조회하기' 클릭 함수
-		function dateBtn() {
-			console.log("조회 버튼");
+		function orderHistory(orderNo){
+			location.href='/myPage/orderHistory-deliveryStatus_2?btn=1&orderNo='+orderNo;
 		}
-		
-		const firstDate = document.getElementById("firstDate");
-		const secondDate = document.getElementById("secondDate");
-		//첫 번째 날짜 값
-		firstDate.addEventListener("change", function(){
-			console.log(firstDate.value);
-		});
-		//두 번째 날짜 값
-		secondDate.addEventListener("change", function(){
-			console.log(secondDate.value);
-		});
-
 	</script>
 </body>
 </html>

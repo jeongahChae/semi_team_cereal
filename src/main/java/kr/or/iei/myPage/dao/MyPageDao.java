@@ -49,14 +49,13 @@ public class MyPageDao {
 	}//selectOrderTotalCount(String startDate, String endDate)
 	
 	
-	
-	
+		
 	//주문 내역 상세
 	public List selectOrderHistory(int orderNo) {
-		String query = "selct * from order_tbl where order_no=?";
+		String query = "select * from order_tbl where order_no=?";
 		List orderDetail = jdbc.query(query, orderRowMapper, orderNo);
 		return orderDetail;
-	}
+	}//selectOrderHistory(int orderNo)
 	
 	public List selectOneList(int start, int end) {
 		String query = "select * from (select rownum as rnum, p.* from (select * from order_tbl order by 1 desc)p) where rnum between ? and ?"; 

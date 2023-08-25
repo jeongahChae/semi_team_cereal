@@ -151,7 +151,7 @@ public class MyPageService {
 	public List selectOrderHistory(int orderNo) {
 		List orderDetail = myPageDao.selectOrderHistory(orderNo);
 		return orderDetail;
-	}
+	}//selectOrderHistory(int orderNo)
 	
 	public int totalCount() {
 		int totalCount = myPageDao.totalCount();
