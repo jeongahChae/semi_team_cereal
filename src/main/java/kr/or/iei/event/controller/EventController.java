@@ -61,7 +61,7 @@ public class EventController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/editor/"+filepath;
+		return "/img/editor/"+filepath;
 	}
 	
 	@PostMapping(value = "/write")
@@ -105,4 +105,12 @@ public class EventController {
 			return "common/msg";
 		}
 	}
+	
+	@GetMapping(value = "/updateFrm")
+	public String eventUpdate(int eventNo, Model model) {
+		Event e = eventService.selectOneEvent(eventNo);
+		model.addAttribute("e", e);
+		return "event/eventUpdateFrm";
+	}
+	
 }

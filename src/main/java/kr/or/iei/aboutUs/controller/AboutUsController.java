@@ -23,6 +23,8 @@ public class AboutUsController {
 
 	@Value("${file.root}")
 	private String root;
+	@Value("${file.root2}")
+	private String root2;
 	@Autowired
 	private FileUtil fileUtil;
 	@Autowired
@@ -72,7 +74,7 @@ public class AboutUsController {
 	@ResponseBody
 	@PostMapping(value="/news/editor", produces="plain/text;charset=utf-8")//produces : 파일명 한글로 받기용
 	public String editorUpload(MultipartFile file) {//file은 넘겨준 form.append의 첫번째 "file"과 맞춘 것
-		String savepath = root+"editor/";
+		String savepath = root2+"editor/";
 		String filepath = fileUtil.getFilepath(savepath, file.getOriginalFilename());
 		File image = new File(savepath+filepath);
 		System.out.println(image);
@@ -82,7 +84,7 @@ public class AboutUsController {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "/editor/"+filepath;
+		return "/img/editor/"+filepath;
 	}
 	
 	@PostMapping(value = "/news/write")
