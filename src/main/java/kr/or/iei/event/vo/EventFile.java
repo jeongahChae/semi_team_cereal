@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class EventFile {
 	private int fileNo;
-	private int noticeNo;
+	private int eventNo;
 	private String filename;
 	private String filepath;
 }

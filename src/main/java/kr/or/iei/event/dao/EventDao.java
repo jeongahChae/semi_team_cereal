@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.iei.event.vo.Event;
+import kr.or.iei.event.vo.EventFile;
 import kr.or.iei.event.vo.EventRowMapper;
 import kr.or.iei.event.vo.WinnerBoardRowMapper;
 
@@ -38,6 +39,19 @@ public class EventDao {
 		//회원 테스트할 때 작성자를 세션값으로 변경필요
 		Object[] params = {e.getEventTitle(), e.getEventContent(), e.getStartDate(),e.getEndDate(),e.getThumbnail()};
 		int result = jdbc.update(query, params);
+		return result;
+	}
+
+	public int getEventNo() {
+		String query = "select max(event_no) from event_tbl";
+		int eventNo = jdbc.queryForObject(query, Integer.class); 
+		return eventNo;
+	}
+
+	public int insertEventFile(EventFile file) {
+		String query = "insert into event_file values(event_file_seq.nextval,?,?,?)";
+		Object[] params = {file.getEventNo(),file.getFilename(),file.getFilepath()};
+		int result = jdbc.update(query,params);//parent key not found의 오류났을 때 찾아올 곳 : 외래키의 부모테이블(방금만들어져서~)에 데이터가 없어서 발생했음
 		return result;
 	}
 }
