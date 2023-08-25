@@ -71,10 +71,16 @@
 }
 .event-detail{
     float: left;
-    margin-bottom:50px
+    margin-bottom:50px;
+    width:450px
 }
-.event-detail>img{
+.event-detail>a{
+	text-decoration: none;
+}
+.event-detail>a>img{
     border-radius: 10px;
+    width: 450px;
+    height: 150px;
 }
 .event-detail:nth-child(2n-1){
     margin-right: 50px;

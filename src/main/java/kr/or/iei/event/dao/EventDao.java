@@ -54,4 +54,16 @@ public class EventDao {
 		int result = jdbc.update(query,params);//parent key not found의 오류났을 때 찾아올 곳 : 외래키의 부모테이블(방금만들어져서~)에 데이터가 없어서 발생했음
 		return result;
 	}
+
+	public List selectEventList() {
+		String query = "select * from event_tbl order by 1 desc";
+		List list = jdbc.query(query,eventRowMapper);
+		return list;
+	}
+
+	public Event selectOneEvent(int eventNo) {
+		String query = "select * from event_tbl where event_no = ?";
+		List list = jdbc.query(query, eventRowMapper,eventNo);
+		return (Event)list.get(0);
+	}
 }

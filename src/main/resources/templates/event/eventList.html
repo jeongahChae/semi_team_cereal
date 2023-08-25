@@ -26,27 +26,15 @@
 				<span>~</span>
 				<span>2099.12.31</span>
 			</div>
-			<div class="event-detail">
-				<img src="/img/joinevent.png">
-				<h3>신규가입 이벤트</h3>
-				<span>2016.05.09</span>
-				<span>~</span>
-				<span>2099.12.31</span>
-			</div>
-			<div class="event-detail">
-				<img src="/img/joinevent.png">
-				<h3>신규가입 이벤트</h3>
-				<span>2016.05.09</span>
-				<span>~</span>
-				<span>2099.12.31</span>
-			</div>
-			<div class="event-detail">
-				<img src="/img/joinevent.png">
-				<h3>신규가입 이벤트</h3>
-				<span>2016.05.09</span>
-				<span>~</span>
-				<span>2099.12.31</span>
-			</div>
+				<div class="event-detail" th:each="event : ${eventList}">
+				<a th:href="@{/event/view(eventNo=${event.eventNo})}">
+					<img th:src="@{/img/event/}+${event.thumbnail}">
+					<h3 th:text="${event.eventTitle}"></h3>
+					<span th:text="${event.startDate}"></span>
+					<span>~</span>
+					<span th:text="${event.endDate}"></span>
+				</a>
+				</div>
 		</div>
 		<!--당첨자-->
 		<div class="event-content">
