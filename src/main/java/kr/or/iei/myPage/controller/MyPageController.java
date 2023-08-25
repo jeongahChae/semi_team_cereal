@@ -60,7 +60,11 @@ public class MyPageController {
 	
 	//주문취소/교환/반품
 	@GetMapping(value="orderCancel-change-return_1")
-	public String orderCancelChangeReturn(int btn, Model model) {
+	public String orderCancelChangeReturn(int btn, int reqPage, Model model) {
+		OrderListData old = myPageService.selectAllOrderList2(reqPage); //주문내역 전체 조회			
+		model.addAttribute("orderList", old.getOrderList()); //주문내역 전체 조회
+		model.addAttribute("pageNavi", old.getPageNavi()); //페이지 네비게이션
+		model.addAttribute("btn", btn);
 		model.addAttribute("btn", btn);
 		return "myPage/orderCancel-change-return_1";
 	}//orderCancelChangeReturn(int btn, Model model)
@@ -128,19 +132,5 @@ public class MyPageController {
 		return "myPage/accmulated_money";
 	}//accumulatedMoney(int btn, Model model)
 	
-	//전체 주문 게시물 수 조회
-	@GetMapping(value="/list")
-	public String orderCount(Model model) {
-		int totalCount = myPageService.totalCount();
-		model.addAttribute("totalCount", totalCount);
-		return "myPage/orderHistory-deliveryStatus_1";
-	}//orderList(Model model)
-	//'더보기' 버튼
-	@ResponseBody
-	@PostMapping(value="/more")
-	public List more(int start, int end) {
-		List orderList = myPageService.selectOrderList(start, end);
-		return orderList;
-	}//more(int start, int end)
 	
 }//MyPageController
