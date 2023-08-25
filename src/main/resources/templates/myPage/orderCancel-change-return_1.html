@@ -38,7 +38,7 @@
 	                    <tr th:each="order:${orderList}">
 	                        <td>
 	                            <div class="check">
-						            <input type="checkbox" name="order-info" id="check1">
+						            <input type="checkbox" name="order-info" class="check1" th:value="${order}">
 	                                <label for="check1"></label>
 	                            </div>
 	                        </td>
