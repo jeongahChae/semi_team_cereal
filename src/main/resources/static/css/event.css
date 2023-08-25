@@ -115,6 +115,79 @@
     letter-spacing: -0.3px;
 }
 
+/********************* view-mid-wrap *********************/
+.view-mid-wrap{
+    margin-bottom: 100px;
+    border-top: 2px solid rgb(51, 51, 51);
+}
+.line-wrap{
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid rgb(244, 244, 244);
+}
+.title-line{
+    width: 100%;
+    padding: 13px 0px 13px 20px;
+    background-color: rgb(247, 245, 248);
+    border-top: 1px solid rgb(244, 244, 244);
+    text-align: center;
+    font-weight: 500;
+}
+.content-line{
+	width: 100%;
+    padding: 13px 20px 13px 20px;
+    align-self: center;
+    text-align: right;
+}
+.view-content-wrap{
+    padding: 30px 30px 100px;
+    border-bottom: 1px solid rgb(128, 128, 128);
+}
+.view-content{
+	text-align: center;
+}
+.view-content img{	
+	width:100% !important;
+}
+.btn-line2{
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    -webkit-box-pack: end;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* basic-btn 버튼 기본 디자인 */
+.basic-btn{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    width: 130px;
+    height: 50px;
+    color: #fff;
+    background-color: #1C8394;
+    border: 0px none;
+    line-height: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.cancel-btn{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 130px;
+    height: 50px;
+    color: #1C8394;
+    background-color: rgb(230, 230, 230);
+    border: 0px none;
+    line-height: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
 
 /* table */
 .tbl{
