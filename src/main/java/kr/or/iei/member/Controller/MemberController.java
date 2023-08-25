@@ -75,7 +75,18 @@ public class MemberController {
 		}
 		return "common/msg";
 	}
-
+	
+	@PostMapping(value = "/checkId")
+	public String checkId(String checkId, Model model) {
+		Member member = memberService.selectOneMember(checkId);
+		model.addAttribute("checkId", checkId);
+		if(member == null) {
+			model.addAttribute("result", 0);
+		}else {
+			model.addAttribute("result", 1);
+		}
+		return "member/checkId";
+	}
 	
 	
 }
