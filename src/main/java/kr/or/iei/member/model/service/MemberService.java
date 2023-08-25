@@ -25,4 +25,9 @@ public class MemberService {
 		return result;
 	}
 
+	public Member selectOneMember(String checkId) {
+		
+		return null;
+	}
+
 }
