@@ -28,9 +28,10 @@
         	<a class="basic-btn" href="/event/list">목록으로</a>
        	</div>
         <div class="btn-line2">
-            <!-- 수정삭제 버튼은 관리자 로그인 시에만 보임 넣기-->
-            <a class="basic-btn" th:href="@{/event/updateFrm(eventNo=${e.eventNo})}">수정</a>
+            <!-- 수정삭제 버튼은 관리자 로그인 시에만 보임 넣기
+            <a class="basic-btn" href="@{/event/updateFrm(eventNo=${e.eventNo})}">수정</a>
             <button class="cancel-btn" th:onclick="eventDelete([[${e.eventNo}]])">삭제</button>
+             -->
         </div>
 	</div>
 	<th:block th:include="common/footer"></th:block>

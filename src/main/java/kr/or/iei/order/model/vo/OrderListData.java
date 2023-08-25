@@ -12,4 +12,5 @@ import lombok.NoArgsConstructor;
 public class OrderListData {
 	private List orderList;
 	private String pageNavi;
+	private int totalCount;
 }//OrderListData

@@ -76,7 +76,7 @@ public class MyPageService {
 		}
 		pageNavi += "</ul>";
 		
-		OrderListData old = new OrderListData(orderList, pageNavi);
+		OrderListData old = new OrderListData(orderList, pageNavi, totalCount);
 		return old;
 	}//selectAllOrderList()
 
@@ -143,7 +143,7 @@ public class MyPageService {
 		}
 		pageNavi += "</ul>";
 		
-		OrderListData old = new OrderListData(orderList, pageNavi);
+		OrderListData old = new OrderListData(orderList, pageNavi, totalCount);
 		return old;
 	}//selectDateOrderList()
 	
@@ -172,7 +172,7 @@ public class MyPageService {
 		int pageNaviSize = 5;
 		int pageNo = ((reqPage-1)/pageNaviSize)*pageNaviSize+1;
 		//pageNavi 제작
-		String pageNavi = "<ul class='page-design circle-style'>";
+		String pageNavi = "<ul class='page-design2 circle-style'>";
 		if(pageNo != 1) {
 			pageNavi += "<li>";
 			pageNavi += "<a class='page-item' href='/myPage/orderCancel-change-return_1?btn=2&reqPage="+1+"'>";//1번페이지로 
@@ -220,7 +220,7 @@ public class MyPageService {
 		}
 		pageNavi += "</ul>";
 		
-		OrderListData old = new OrderListData(orderList, pageNavi);
+		OrderListData old = new OrderListData(orderList, pageNavi, totalCount);
 		return old;
 	}//selectAllOrderList2(int reqPage)
 

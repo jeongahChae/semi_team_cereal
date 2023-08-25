@@ -38,7 +38,7 @@
 	                    <tr th:each="order:${orderList}">
 	                        <td>
 	                            <div class="check">
-						            <input type="checkbox" name="order-info" id="check1">
+						            <input type="checkbox" name="order-info" class="check1" th:value="${order}">
 	                                <label for="check1"></label>
 	                            </div>
 	                        </td>
@@ -63,7 +63,7 @@
     
     <th:block th:include="common/footer"></th:block>
     
-     <script th:inline="javascript">
+    <script th:inline="javascript">
 		function getLink(){
 			const registerBtnWrap  = document.getElementsByClassName("registerBtn-wrap")[0];
 			registerBtnWrap.innerHTML = "<button type='button' class='registerBtn' onclick=\"window.location.href=\'/myPage/orderCancel-change-return_2?btn=2\';\">접수</button>";
