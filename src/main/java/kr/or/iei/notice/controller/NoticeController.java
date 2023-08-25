@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -15,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.iei.FileUtil;
-import kr.or.iei.member.model.vo.NoticeFile;
+import kr.or.iei.notice.model.vo.NoticeFile;
 import kr.or.iei.notice.model.service.NoticeService;
 import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeListData;
@@ -35,6 +37,7 @@ public class NoticeController {
 		NoticeListData nld = noticeService.selectNoticeList(reqPage);
 		model.addAttribute("noticeList",nld.getNoticeList());
 		model.addAttribute("pageNavi",nld.getPageNavi());
+		model.addAttribute("btn", 0);
 		return "notice/noticeList";
 	}
 	
@@ -42,16 +45,18 @@ public class NoticeController {
 	public String noticeView(int noticeNo, Model model) {
 		Notice n = noticeService.selectOneNotice(noticeNo);
 		model.addAttribute("n", n);
+		model.addAttribute("btn", 0);
 		return "notice/noticeView";
 	}
 	
 	@GetMapping(value = "/writeFrm")
-	public String noticeWriteFrm() {
-		return "notice/writeFrm";
+	public String noticeWriteFrm(Model model) {
+		model.addAttribute("btn", 0);
+		return "notice/noticeWriteFrm";
 	}
 	
 	@PostMapping(value = "/write")
-	public String noticeWrite(Notice n, MultipartFile[] upfile) {
+	public String noticeWrite(Notice n, MultipartFile[] upfile, Model model) {
 		ArrayList<NoticeFile> fileList = null;
 		if(!upfile[0].isEmpty()) {
 			fileList = new ArrayList<NoticeFile>();
@@ -78,11 +83,19 @@ public class NoticeController {
 		}else {
 			
 		}
+		model.addAttribute("btn", 0);
 		return "redirect:/notice/list?reqPage=1";
 	}
 	
+	@GetMapping(value = "/filedown")
+	public void filedown(NoticeFile file, HttpServletResponse response) {
+		String savepath = root+"notice/";
+		fileUtil.downloadFile(savepath,file.getFilename(),file.getFilepath(),response);
+	}
+	
+	
 	@GetMapping(value = "/delete")
-	public String deleteNotice(int noticeNo) {
+	public String deleteNotice(int noticeNo, Model model) {
 		List list = noticeService.deleteNotice(noticeNo);
 		if(list != null) {
 			String savepath = root+"notice/";
@@ -93,9 +106,51 @@ public class NoticeController {
 			}
 			return "redirect:/notice/list?reqPage=1";
 		}else {
+			model.addAttribute("btn", 0);
 			return "redirect:/notice/view?noticeNo="+noticeNo;
 		}
 	}
+	
+	@GetMapping(value = "/updateFrm")
+	public String updateFrm(int noticeNo, Model model) {
+		Notice n = noticeService.getNotice(noticeNo);
+		model.addAttribute("n", n);
+		return "notice/noticeUpdateFrm";
+	}
+	
+	@PostMapping(value = "/update")
+	public String update(Notice n, MultipartFile[] addfile, int[] delFileNo, Model model) {
+		ArrayList<NoticeFile> fileList = null;
+		String savepath = root+"notice/";
+		if(!addfile[0].isEmpty()) {
+			fileList = new ArrayList<NoticeFile>();
+			for(MultipartFile file : addfile) {
+				String filename = file.getOriginalFilename();
+				String filepath = fileUtil.getFilepath(savepath, filename);
+				File upfile = new File(savepath+filepath);
+				try {
+					file.transferTo(upfile);
+				} catch (IllegalStateException | IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				NoticeFile noticeFile = new NoticeFile();
+				noticeFile.setFilename(filename);
+				noticeFile.setFilepath(filepath);
+				noticeFile.setNoticeNo(n.getNoticeNo());
+				fileList.add(noticeFile);
+			}
+		}
+		List list = noticeService.updateNotice(n,fileList,delFileNo);
+		if(list != null) {
+			model.addAttribute("btn",0);
+			return "/notice/view?noticeNo="+n.getNoticeNo();
+		}else {
+			//error났을경우
+			return "/";
+		}
+	}
+	
 }
 
 

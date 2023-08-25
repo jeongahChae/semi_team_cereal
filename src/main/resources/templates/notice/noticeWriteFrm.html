@@ -2,9 +2,9 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <script src="/javascript/jquery-3.7.0.js"></script>
 <head>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 <meta charset="UTF-8">
-<title>공지사항 작성</title>
+<title>공지사항 Write</title>
 </head>
 <body>
 	<th:block th:include="common/header"></th:block>
@@ -12,7 +12,7 @@
         <th:block th:include="common/serviceCenterSide"></th:block>
         <div class="page-content">
             <div class="page-title">
-                <div class="content-title">공지사항</div>
+                <div class="content-title">공지사항 작성</div>
             </div>
             <div class="writeFrm-content">
                 <form action="/notice/write" method="post" enctype="multipart/form-data">
@@ -20,7 +20,7 @@
                         <tr>
                             <th style="width: 15% "><label for="writeFrmTitle">제목</label></th>
                             <td>
-                                <input type="text" name="noticeTitle" id="writeFrmTitle" class="input-form">
+                                <input type="text" name="noticeTitle" id="writeFrmTitle" class="input-form" placeholder="제목을 입력해주세요">
                             </td>
                             <td>
                                 <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
@@ -31,7 +31,7 @@
                         <tr>
                             <th class="content-tr"><label for="writeFrmContent">내용</label></th>
                             <td>
-                                <textarea name="noticeContent" id="writeFrmContent" class="input-form"></textarea>
+                                <textarea name="noticeContent" id="writeFrmContent" class="input-form" placeholder="내용을 입력해주세요"></textarea>
                             </td>
                         </tr>
                         <tr class="not-border-bottom">

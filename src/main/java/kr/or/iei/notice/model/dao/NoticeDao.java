@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import kr.or.iei.member.model.vo.NoticeFile;
+import kr.or.iei.notice.model.vo.NoticeFile;
 import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeFileRowMapper;
 import kr.or.iei.notice.model.vo.NoticeRowMapper;
@@ -75,6 +75,29 @@ public class NoticeDao {
 	public int deleteNotice(int noticeNo) {
 		String query = "delete from notice where notice_no=?";
 		Object[] params = {noticeNo};
+		int result = jdbc.update(query,params);
+		return result;
+	}
+
+
+	public int updateNotice(Notice n) {
+		String query = "update notice set notice_title=?, notice_content=? where notice_no=?";
+		Object[] params = {n.getNoticeTitle(), n.getNoticeContent(), n.getNoticeNo()};
+		int result = jdbc.update(query,params);
+		return result;
+	}
+
+
+	public NoticeFile selectOneFile(int fileNo) {
+		String query = "select * from notice_file where file_no=?";
+		List list = jdbc.query(query, noticeFileRowMapper, fileNo);
+		return (NoticeFile)list.get(0);
+	}
+
+
+	public int deleteFile(int fileNo) {
+		String query = "delete from notice_file where file_no=?";
+		Object[] params = {fileNo};
 		int result = jdbc.update(query,params);
 		return result;
 	}
