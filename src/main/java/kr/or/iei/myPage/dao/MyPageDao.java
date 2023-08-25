@@ -57,18 +57,22 @@ public class MyPageDao {
 		return orderDetail;
 	}//selectOrderHistory(int orderNo)
 	
-	public List selectOneList(int start, int end) {
-		String query = "select * from (select rownum as rnum, p.* from (select * from order_tbl order by 1 desc)p) where rnum between ? and ?"; 
-		List orderList = jdbc.query(query, orderRowMapper, start, end);
-		return orderList;
-	}//selectOneList(int start, int end)
 
 
+	//전체 주문 수
 	public int selectOrderTotalCount() {
 		String query = "select count(*) as cnt from order_tbl";
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}//selectOrderTotalCount()
+
+	
+	//주문 내역 - 주문 번호로 조회
+	public List selectNoOrderList(int orderNO) {
+		String query = "select * from order_tbl where order_no=?";
+		List orderDetail = jdbc.query(query, orderRowMapper, orderNO);
+		return orderDetail;
+	}//selectNoOrderList(int orderNO)
 
 
 

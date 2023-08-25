@@ -70,9 +70,11 @@ public class MyPageController {
 	}//orderCancelChangeReturn(int btn, Model model)
 	//주문취소/교환/반품 2 - 접수
 	@PostMapping("orderCancel-change-return_2")
-	public String registerOrderCancelChangeReturn(int btn, Model model) {
+	public String registerOrderCancelChangeReturn(int btn, Model model, String orderNo) {
+		List orderList = myPageService.selectNoOrderList(orderNo);
+		model.addAttribute("orderList", orderList);
 		model.addAttribute("btn", btn);
-		return "myPage/orderCancel-change-return_2";
+		return "myPage/orderCancel-change-return_2";		
 	}//registerOrderCancelChangeReturn(int btn, Model model)
 	//주문취소/교환/반품 3 - 교환/반품 내역
 	@GetMapping(value="orderCancel-change-return_3")

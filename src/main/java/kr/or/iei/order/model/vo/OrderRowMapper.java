@@ -14,7 +14,7 @@ public class OrderRowMapper implements RowMapper<Order>{
 		Order o = new Order();
 		o.setOrderNo(rs.getInt("order_no"));
 		o.setMemberNo(rs.getInt("member_no"));
-		o.setProductName(rs.getString("product_name"));
+		o.setProductName(rs.getString("product_name2"));
 		o.setOrderAmount(rs.getInt("order_amount"));
 		o.setMemberAddr(rs.getString("member_addr"));
 		o.setOrderStatus(rs.getString("order_status"));
