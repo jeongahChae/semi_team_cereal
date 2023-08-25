@@ -3,7 +3,7 @@
 <script src="/javascript/jquery-3.7.0.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>공지사항view</title>
+<title>공지사항 View</title>
 </head>
 <body>
     <th:block th:include="common/header"></th:block>
@@ -12,7 +12,7 @@
             <div class="view-title">공지사항</div>
             <div class="view-slogan">새로운 소식을 한곳에서 확인하세요!</div>
             <div class="btn-line">
-                <a href="/notice/list?reqPage=1" class="basic-btn">목록</a>
+                <a href="/notice/list?reqPage=1&btn=0" class="basic-btn">목록</a>
             </div>
         </div>
         <div class="view-mid-wrap">
@@ -34,7 +34,7 @@
         </div>
         <div class="btn-line2">
             <!-- 수정삭제 버튼은 관리자 로그인 시에만 보임 넣기 -->
-            <a class="basic-btn" href="@{/notice/updateFrm(noticeNo=${n.noticeNo})}">수정</a>
+            <a class="basic-btn" th:href="@{/notice/updateFrm(noticeNo=${n.noticeNo})}">수정</a>
             <button class="cancel-btn" th:onclick="noticeDelete([[${n.noticeNo}]])">삭제</button>
         </div>
     </div>

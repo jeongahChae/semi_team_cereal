@@ -1,5 +1,7 @@
 package kr.or.iei.notice.model.vo;
 
+import java.util.List;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,4 +15,5 @@ public class Notice {
 	private String noticeContent;
 	private String regDate;
 	private String noticeWriter;
+	private List fileList;
 }

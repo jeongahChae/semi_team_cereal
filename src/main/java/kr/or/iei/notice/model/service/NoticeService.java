@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import kr.or.iei.member.model.vo.NoticeFile;
+import kr.or.iei.notice.model.vo.NoticeFile;
 import kr.or.iei.notice.model.dao.NoticeDao;
 import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeListData;
@@ -99,7 +99,7 @@ public class NoticeService {
 		}
 		return result;
 	}
-
+	@Transactional
 	public List deleteNotice(int noticeNo) {
 		List list = noticeDao.selectNoticeFile(noticeNo);
 		int result = noticeDao.deleteNotice(noticeNo);
@@ -107,6 +107,41 @@ public class NoticeService {
 			return null;
 		}
 		return list;
+	}
+
+	public Notice getNotice(int noticeNo) {
+		Notice n = noticeDao.selectOneNotice(noticeNo);
+		List fileList = noticeDao.selectNoticeFile(noticeNo);
+		n.setFileList(fileList);
+		return n;
+	}
+
+	@Transactional
+	public List updateNotice(Notice n, ArrayList<NoticeFile> fileList, int[] delFileNo) {
+		int result = noticeDao.updateNotice(n);
+		List delFileList = new ArrayList<NoticeFile>();
+		if(result>0) {
+			if(delFileNo != null) {
+				for(int fileNo : delFileNo) {
+					NoticeFile noticeFile = noticeDao.selectOneFile(fileNo);
+					delFileList.add(noticeFile);
+					result += noticeDao.deleteFile(fileNo);
+				}
+			}
+			if(fileList != null) {
+				for(NoticeFile file : fileList) {
+					result += noticeDao.insertNoticeFile(file);
+				}
+			}
+		}
+		int updateTotal = 1;
+		updateTotal += delFileNo==null?0:delFileNo.length;
+		updateTotal += fileList==null?0:fileList.size();
+		if(result == updateTotal) {
+			return delFileList;
+		}else {
+			return null;
+		}
 	}
 	
 }

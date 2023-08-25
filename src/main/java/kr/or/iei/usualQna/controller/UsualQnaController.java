@@ -20,6 +20,7 @@ public class UsualQnaController {
 		UsualQnaListData uld = usualQnaService.selectUsualQnaList(reqPage);
 		model.addAttribute("usualQnaList",uld.getUsualQnaList());
 		model.addAttribute("pageNavi", uld.getPageNavi());
+		model.addAttribute("btn",1);
 		return "notice/usualQnaList";
 	}
 }
