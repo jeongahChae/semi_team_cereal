@@ -51,7 +51,7 @@ public class NoticeController {
 	}
 	
 	@PostMapping(value = "/write")
-	public String noticeWrite(Notice n, MultipartFile[] upfile, Model model) {
+	public String noticeWrite(Notice n, MultipartFile[] upfile) {
 		ArrayList<NoticeFile> fileList = null;
 		if(!upfile[0].isEmpty()) {
 			fileList = new ArrayList<NoticeFile>();
@@ -82,7 +82,7 @@ public class NoticeController {
 	}
 	
 	@GetMapping(value = "/delete")
-	public String deleteNotice(int noticeNo, Model model) {
+	public String deleteNotice(int noticeNo) {
 		List list = noticeService.deleteNotice(noticeNo);
 		if(list != null) {
 			String savepath = root+"notice/";
