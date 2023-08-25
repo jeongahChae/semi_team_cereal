@@ -4,11 +4,31 @@
         <div class="wrap-title">고객센터</div>
         <div class="myPage-list-wrap">
             <ul>
-                <li><a href="/notice/list?reqPage=1" class="sideButton" id="myPageBtn">공지사항</a></li>
-                <li><a href="/usualQna/list?reqPage=1" class="sideButton" id="myPageBtn" onclick="changeBtn(event)">자주하는 질문</a></li>
-                <li><a href="#" class="sideButton" id="myPageBtn" onclick="changeBtn(event)">1:1 문의</a></li>
-                <li><a href="#" class="sideButton" id="myPageBtn" onclick="changeBtn(event)">Furniture Access Check</a></li>
+                <li><a href="/notice/list?reqPage=1" class="sideButton" id="noticeListBtn">공지사항</a></li>
+                <li><a href="/usualQna/list?reqPage=1" class="sideButton" id="usualQnaListBtn" onclick="changeBtn(event)">자주하는 질문</a></li>
+                <li><a href="#" class="sideButton" id="personalQnaBtn" onclick="changeBtn(event)">1:1 문의</a></li>
+                <li><a href="#" class="sideButton" id="FACBtn" onclick="changeBtn(event)">Furniture Access Check</a></li>
             </ul>
         </div>
     </div>
+    <script th:inline="javascript">
+        const btnValue = [[${btn}]];
+        //console.log(btnValue);
+        if(btnValue == 0){
+            const updateMemberInfo = document.querySelector("#noticeListBtn");
+            updateMemberInfo.classList.add("active");
+        }else if(btnValue == 1){
+            const orderHistoryDeliveryStatus = document.querySelector("#usualQnaListBtn");
+            orderHistoryDeliveryStatus.classList.add("active");
+        }else if(btnValue == 2){
+            const orderCancelChangeReturn = document.querySelector("#personalQnaBtn");
+            orderCancelChangeReturn.classList.add("active");
+        }else if(btnValue == 3){
+            const likeItList = document.querySelector("#FACBtn");
+            likeItList.classList.add("active");
+        }else if(btnValue == 4){
+            const productReview = document.querySelector("#productReviewBtn");
+            productReview.classList.add("active");
+        }
+    </script>
 </html>

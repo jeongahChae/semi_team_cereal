@@ -31,6 +31,7 @@ public class ProductService {
 		double point = price*0.05;
 		int productPoint = (int)Math.round(point);
 		p.setProductPoint(productPoint);
+		System.out.println(p);
 		/*
 
 		int productPoint = (int)(p.getProductPrice()*0.05);

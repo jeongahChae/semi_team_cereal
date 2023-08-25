@@ -21,8 +21,8 @@ public class ProductDao {
 	private ProductCateogryRowMapper productCategoryRowMapper;
 
 	public int insertProduct(Product p) {
-		String query = "insert into product values(product_seq.nextval,?,?,?,?,DEFAULT,DEFAULT,?,?,?)";
-		Object[] params = {p.getProductPrice(),p.getProductName(),p.getProductPercent(),p.getProductPoint(),p.getProductContent(),p.getProductFinalPrice()};
+		String query = "insert into product values(product_seq.nextval,?,?,?,?,'ESSENTIAL#','무료배송',?,?,?)";
+		Object[] params = {p.getProductPrice(),p.getProductName(),p.getProductPercent(),p.getProductPoint(),p.getProductContent(),p.getProductCategory(),p.getProductFinalPrice()};
 		int result = jdbc.update(query, params);
 		return result;
 	}

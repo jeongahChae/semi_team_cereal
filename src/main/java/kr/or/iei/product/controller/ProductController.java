@@ -56,9 +56,6 @@ public class ProductController {
 	public String productWrite(Product p, ProductCategory pc, MultipartFile[] upfile, MultipartFile[] upfile2, Model model) {
 		ArrayList<ProductFile> fileList = null;
 		ArrayList<ProductDetailFile> dfileList = null;
-		System.out.println(pc);
-		System.out.println(upfile.length);
-		System.out.println(upfile2.length);
 		if(!upfile[0].isEmpty()) {
 			fileList = new ArrayList<ProductFile>();
 			String savepath = root+"product/";
@@ -128,6 +125,7 @@ public class ProductController {
 			model.addAttribute("msg", "상품 등록 실패");
 			model.addAttribute("icon", "error");
 		}
+		model.addAttribute("loc", "/product/productList");
 		return "common/msg";
 	}
 }

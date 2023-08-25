@@ -6,7 +6,6 @@ $(function(){
         type : "get",
         dataType : "json",
         success : function(data){
-            console.log(data);
             let main = [];
             let furniture = [];
             let light = [];
@@ -15,8 +14,10 @@ $(function(){
             for(let i=0 ; i<data.length;i++){
                 if(data[i].categoryRef == 0){
                     main.push(data[i]);
-                    let opt = $("<option value='${'data[i].categoryNo'}'>'${'data[i].categoryName'}'</option>");
-                    $("#main-category").append(opt);
+                    let opt = $("<option>");
+                    let attrValue = opt.attr("value",data[i].categoryNo);
+                    let mainOption = attrValue.text(data[i].categoryName);
+                    $("#main-category").append(mainOption);
                 } else if(data[i].categoryRef == 1){
                     furniture.push(data[i]);
                 } else if(data[i].categoryRef == 2){
@@ -27,21 +28,57 @@ $(function(){
                     fab.push(data[i]);
                 }
             }
+
+            $("#main-category").on("change",function(){
+                $("#sub-category").empty();
+
+                $("#sub-category").css("display","inline-block");
+                let subCategory = $("<option value=''>소분류</option>");
+                $("#sub-category").append(subCategory);
+                let oneSel = $("#main-category").val();
+    
+                if(oneSel == 1){
+                    $.each(furniture, function(index, item){
+                        let optTag = $("<option>");
+                        let attrValue = optTag.attr("value",item.categoryNo);
+                        let attrName = attrValue.attr("name","categoryNo")
+                        let subOption = attrName.text(item.categoryName);
+                        $("#sub-category").append(subOption);
+                    });
+                }else if(oneSel == 2){
+                    $.each(light, function(index, item){
+                        let optTag = $("<option>");
+                        let attrValue = optTag.attr("value",item.categoryNo);
+                        let attrName = attrValue.attr("name","categoryNo")
+                        let subOption = attrName.text(item.categoryName);
+                        $("#sub-category").append(subOption);
+                    });
+                }else if( oneSel == 3){
+                    $.each(acc, function(index, item){
+                        let optTag = $("<option>");
+                        let attrValue = optTag.attr("value",item.categoryNo);
+                        let attrName = attrValue.attr("name","categoryNo")
+                        let subOption = attrName.text(item.categoryName);
+                        $("#sub-category").append(subOption);
+                    });
+                }else if( oneSel == 4){
+                    $.each(fab, function(index, item){
+                        let optTag = $("<option>");
+                        let attrValue = optTag.attr("value",item.categoryNo);
+                        let attrName = attrValue.attr("name","categoryNo")
+                        let subOption = attrName.text(item.categoryName);
+                        $("#sub-category").append(subOption);
+                    });
+                }
+            });
         }
     });
 });
 
-/*
-function com_parent(){
-    let opt = [];
-    parents.forEach(data =>{
-        opt.push(`<option value="${"data.categoryNo"}">${"data.categoryName"}</option>`);
-    });
-    $("#main").append(opt);
-}
+$("#sub-category").on("change",function(){
+    console.log($("#sub-category option:selected").val());
+});
 
-function
-*/
 /*
 $("#main-category").on("change",function(){
     $("#sub-category").css("display","inline-block");
@@ -77,6 +114,7 @@ $("#main-category").on("change",function(){
     }
 });
 */
+
 $(".option-addBtn").on("click", function(){
     const optionColor = $("<input type='text' class='input-form' name='optionName' placeholder='색'>");
     const optionStock = $("<input type='text' class='input-form' name='optionAmount' placeholder='재고(숫자만)'>");

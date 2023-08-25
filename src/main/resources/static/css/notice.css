@@ -183,7 +183,7 @@ a{
     width: 100%;
     padding: 20px 0px;
     -webkit-box-pack: end;
-    justify-content: flex-end;
+    justify-content: center;
 }
 
 /* basic-btn 버튼 기본 디자인 */
