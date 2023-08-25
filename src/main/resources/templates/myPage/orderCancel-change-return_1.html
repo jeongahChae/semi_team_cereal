@@ -44,6 +44,15 @@
 	                        </td>
 	                        <td>012345678910</td><td>[ESSENTIAL#]유리 보틀</td><td>1</td><td>배송완료</td>
 	                    </tr>
+	                    <tr th:each="order:${orderList}">
+	                        <td>
+	                            <div class="check">
+						            <input type="checkbox" namd="order-info" id="check1">
+	                                <label for="check1"></label>
+	                            </div>
+	                        </td>
+	                        <td th:text="${order.orderNo}"></td><td th:text="${order.productName}"></td><td th:text="${order.orderAmount}"></td><td th:text="${order.orderStatus}"></td>
+	                    </tr>
 	                </tbody>
 	            </table>
 	        </div> <!--<div class="orderCancel-change-return-regiter-table">-->
@@ -51,6 +60,8 @@
 	        <div class="registerBtn-wrap">
 	            <!-- <button type="button" class="registerBtn" onclick="window.location.href='/myPage/orderCancel-change-return_2?btn=2';">접수</button> -->
 	        </div> <!--<div class="moreBtn-wrap">-->
+	        
+	        <div id="pageNavi" th:utext="${pageNavi}"></div>	
 	        
 	    </div> <!--<div class="orderCancel-change-return-wrap">-->
 
