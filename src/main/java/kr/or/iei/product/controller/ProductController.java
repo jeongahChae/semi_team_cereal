@@ -118,7 +118,7 @@ public class ProductController {
 		p.setProductCategory(pc.getCategoryNo());
 		int result = productService.insertProduct(p, fileList, dfileList);
 		System.out.println(p);
-		if((fileList == null && result == 1) || (fileList != null && result == (fileList.size()+1)) || (dfileList == null && result == 1) || (dfileList != null && result == (dfileList.size()+1))) {
+		if((fileList == null && dfileList == null && result == 1) || (fileList != null && dfileList == null && result == (fileList.size()+1)) || (dfileList != null && fileList == null  && result == (dfileList.size()+1)) || (dfileList != null && fileList != null && result == ((dfileList.size()+fileList.size()+1)))) {
 			model.addAttribute("title", "상품 등록 성공");
 			model.addAttribute("msg", "상품이 등록되었습니다.");
 			model.addAttribute("icon", "success");

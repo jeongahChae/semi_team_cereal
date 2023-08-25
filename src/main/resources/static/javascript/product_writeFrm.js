@@ -140,13 +140,13 @@ $("#file").on("change", function(){
 });
 
 $("#file2").on("change", function(){
-	let fileList2 = $("#file2")[0].files;
-	let fileNameList2 = [];
-	for(i=0; i<fileList2.length; i++){
-		fileNameList2.push(fileList2[i].name);
+	let fileList = $("#file2")[0].files;
+	let fileNameList = [];
+	for(i=0; i<fileList.length; i++){
+		fileNameList.push(fileList[i].name);
     }
-    console.log(fileNameList2);
-    $(".upload-name2").val(fileNameList2);
+    console.log(fileNameList);
+    $(".upload-name2").val(fileNameList);
 });
 
 
