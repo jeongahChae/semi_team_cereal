@@ -56,6 +56,8 @@ public class ProductController {
 	public String productWrite(Product p, ProductCategory pc, MultipartFile[] upfile, MultipartFile[] upfile2, Model model) {
 		ArrayList<ProductFile> fileList = null;
 		ArrayList<ProductDetailFile> dfileList = null;
+		System.out.println(upfile.length);
+		System.out.println(upfile2.length);
 		if(!upfile[0].isEmpty()) {
 			fileList = new ArrayList<ProductFile>();
 			String savepath = root+"product/";
@@ -96,9 +98,9 @@ public class ProductController {
 				String filepath = fileUtil.getFilepath(savepath, filename);
 				System.out.println("filepath : " + filepath);
 				// 실제 폴더에 파일을 업로드
-				File uploadFile = new File(savepath+filepath);
+				File uploadFile2 = new File(savepath+filepath);
 				try {
-					file.transferTo(uploadFile);
+					file.transferTo(uploadFile2);
 				} catch (IllegalStateException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -116,7 +118,7 @@ public class ProductController {
 		p.setProductCategory(pc.getCategoryNo());
 		int result = productService.insertProduct(p, fileList, dfileList);
 		System.out.println(p);
-		if((fileList == null && result == 1) || (fileList != null && result == (fileList.size()+1)) || (fileList == null && result == 1) || (fileList != null && result == (fileList.size()+1))) {
+		if((fileList == null && result == 1) || (fileList != null && result == (fileList.size()+1)) || (dfileList == null && result == 1) || (dfileList != null && result == (dfileList.size()+1))) {
 			model.addAttribute("title", "상품 등록 성공");
 			model.addAttribute("msg", "상품이 등록되었습니다.");
 			model.addAttribute("icon", "success");

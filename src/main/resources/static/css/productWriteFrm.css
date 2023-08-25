@@ -150,7 +150,7 @@
     overflow: hidden;
 }
 
-.upload-name {
+.upload-name, .upload-name2 {
     display: block;
     float: left;
     height: 30px;
@@ -162,7 +162,7 @@
     margin: 5px;
 }
 
-.upload-name:focus{
+.upload-name, .upload-name2:focus{
     outline: none;
 }
 
