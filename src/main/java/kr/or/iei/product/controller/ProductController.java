@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -21,6 +23,7 @@ import kr.or.iei.product.model.vo.Product;
 import kr.or.iei.product.model.vo.ProductCategory;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
+import kr.or.iei.product.model.vo.ProductListData;
 
 @Controller
 @RequestMapping(value="/product")
@@ -30,14 +33,31 @@ public class ProductController {
 	
 	@Value("${file.root}")
 	private String root;
+	@Value("${file.root2}")
+	private String root2;
 	
 	@Autowired
 	private FileUtil fileUtil;
 	
 	
 	@GetMapping(value="/productList")
-	public String productList() {
+	public String productList(Model model, int reqPage) {
+		ProductListData pld = productService.selectProductList(reqPage);
+		model.addAttribute("productList", pld.getProductList());
+		model.addAttribute("pageNavi", pld.getPageNavi());
 		return "product/productList";
+	}
+	
+	@GetMapping(value="/filedown")
+	public void filedown(ProductFile file, HttpServletResponse response) {
+		String savepath = root2+"product/";
+		fileUtil.downloadFile(savepath, file.getFilename(), file.getFilepath(), response);
+	}
+	
+	@GetMapping(value="/filedown2")
+	public void filedown(ProductDetailFile file, HttpServletResponse response) {
+		String savepath = root2+"product-detail/";
+		fileUtil.downloadFile(savepath, file.getFilename(), file.getFilepath(), response);
 	}
 	
 	@GetMapping(value="/writeFrm")
@@ -60,7 +80,7 @@ public class ProductController {
 		System.out.println(upfile2.length);
 		if(!upfile[0].isEmpty()) {
 			fileList = new ArrayList<ProductFile>();
-			String savepath = root+"product/";
+			String savepath = root2+"product/";
 			System.out.println("savepath : " + savepath);
 			for(MultipartFile file : upfile) {
 				String filename = file.getOriginalFilename();
@@ -89,7 +109,7 @@ public class ProductController {
 		
 		if(!upfile2[0].isEmpty()) {
 			dfileList = new ArrayList<ProductDetailFile>();
-			String savepath = root+"product-detail/";
+			String savepath = root2+"product-detail/";
 			System.out.println("savepath : " + savepath);
 			for(MultipartFile file : upfile2) {
 				String filename = file.getOriginalFilename();

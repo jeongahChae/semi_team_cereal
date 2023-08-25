@@ -11,11 +11,11 @@
 	<div class="product-list-content">
         <p>C A T E G O R Y</p>
         <ul>
-            <li>
+            <li th:each="product : ${productList}">
                 <a href="#">
                     <img src="/img/list-cart.png" class="list-cart">
                     <div class="product-img">
-                        <img src="/img/ex1.jpg">
+                        <img src="@{/product/filedown(filename=${file.filename},filepath=${file.filepath})}">
                     </div>
                     <div class="product-info">
                         <div class="product-name">상품 이름</div>

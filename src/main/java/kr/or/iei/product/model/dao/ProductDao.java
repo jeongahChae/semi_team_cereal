@@ -12,11 +12,14 @@ import kr.or.iei.product.model.vo.ProductCategory;
 import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
+import kr.or.iei.product.model.vo.ProductRowMapper;
 
 @Repository
 public class ProductDao {
 	@Autowired
 	private JdbcTemplate jdbc;
+	@Autowired
+	private ProductRowMapper productRowMapper;
 	@Autowired
 	private ProductCateogryRowMapper productCategoryRowMapper;
 
@@ -51,6 +54,19 @@ public class ProductDao {
 		String query = "select * from product_category";
 		List list = jdbc.query(query, productCategoryRowMapper);
 		return list;
+	}
+
+	public List selectProductList(int start, int end) {
+		String query = "select * from (select rownum as rnum, p.* from (select * from product order by 1 desc)p) where rnum between ? and ?";
+		List list = jdbc.query(query, productRowMapper, start, end);
+		return list;
+	}
+
+	public int selectProductTotalCount() {
+		String query = "select count(*) from product";
+		// 단일 값(행1, 열1)을 조회하는 경우
+		int totalCount = jdbc.queryForObject(query, Integer.class);
+		return totalCount;
 	}
 
 
