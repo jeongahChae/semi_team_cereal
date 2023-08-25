@@ -33,17 +33,18 @@ public class EventService {
 	}
 
 	@Transactional
-	public int insertEvent(Event e,  ArrayList<EventFile> fileList) {
-		int result = eventDao.insertEvent(e);	//이미 만들어진 메소드 사용
-		if(fileList != null) {
-			int eventNo = eventDao.getEventNo();
-			for(EventFile file : fileList) {
-				//바로 insert하면 file 객체 내부의  noticeNo가 0
-				// → 0인상태로 insert : 외래키 제약조건 위배(parent key not found)에러 
-				file.setEventNo(eventNo);
-				result += eventDao.insertEventFile(file);
-			}
-		}
+	public int insertEvent(Event e) {
+		int result = eventDao.insertEvent(e);
 		return result;
+	}
+
+	public List selectEventList() {
+		List eventList = eventDao.selectEventList();
+		return eventList;
+	}
+
+	public Event selectOneEvent(int eventNo) {
+		Event e = eventDao.selectOneEvent(eventNo);
+		return e;
 	}
 }

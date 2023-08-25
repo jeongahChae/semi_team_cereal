@@ -14,10 +14,12 @@ public class WebConfig implements WebMvcConfigurer {
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {//자원위치관련 설정을 건드리겠다는 의미
 		//원래 기본설정 추가(html → /templates, 기본자원들 → /static폴더 사용
 		registry.addResourceHandler("/**").addResourceLocations("classpath:/templates/","classpath:/static/");
-		registry.addResourceHandler("/editor/**").addResourceLocations("file:///C:/Temp/upload/editor/");
-		registry.addResourceHandler("/event/**").addResourceLocations("file:///C:/Temp/upload/event/");
+		//registry.addResourceHandler("/editor/**").addResourceLocations("file:///C:/Temp/upload/editor/");
+		//registry.addResourceHandler("/event/**").addResourceLocations("file:///C:/Temp/upload/event/");
+		registry.addResourceHandler("/event/**").addResourceLocations("file:///C:/Users/user1/Desktop/Semi_Project - ESSENTIAL#/semi_team_cereal/src/main/resources/static/img/event/");
+		registry.addResourceHandler("/editor/**").addResourceLocations("file:///C:/Users/user1/Desktop/Semi_Project - ESSENTIAL#/semi_team_cereal/src/main/resources/static/img/editor/");
 	}//스프링부트 설정파일
-
+	
 	/*
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {

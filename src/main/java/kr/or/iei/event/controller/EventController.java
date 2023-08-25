@@ -3,6 +3,7 @@ package kr.or.iei.event.controller;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,13 +27,17 @@ public class EventController {
 
 	@Value("${file.root}")
 	private String root;
+	@Value("${file.root2}")
+	private String root2;
 	@Autowired
 	private FileUtil fileUtil;
 	@Autowired
 	private EventService eventService;
 	
 	@GetMapping(value="/list")
-	public String eventList() {
+	public String eventList(Model model) {
+		List eventList = eventService.selectEventList();
+		model.addAttribute("eventList", eventList);
 		return "event/eventList";
 	}
 	
@@ -46,7 +51,7 @@ public class EventController {
 	@ResponseBody
 	@PostMapping(value="/editor", produces="plain/text;charset=utf-8")//produces : 파일명 한글로 받기용
 	public String editorUpload(MultipartFile file) {//file은 넘겨준 form.append의 첫번째 "file"과 맞춘 것
-		String savepath = root+"editor/";
+		String savepath = root2+"editor/";
 		String filepath = fileUtil.getFilepath(savepath, file.getOriginalFilename());
 		File image = new File(savepath+filepath);
 		System.out.println(image);
@@ -60,37 +65,19 @@ public class EventController {
 	}
 	
 	@PostMapping(value = "/write")
-	public String noticeWrite(Event e, MultipartFile[] upfile2, Model model) {// 업로드되는 파일을 여러개일수도 있으니까 배열로 받음
-		ArrayList<EventFile> fileList = null; // 첨부파일 목록을 저장할 리스트
-		if (!upfile2[0].isEmpty()) {// 첫 번째 파일이 비어있지 않으면
-			fileList = new ArrayList<EventFile>();// 파일이 없으면 리스트필요없으니까 있을 때 만들어줌!
-			String savepath = root + "event/";
-			for (MultipartFile file : upfile2) {
-				String filename = file.getOriginalFilename();// 사용자가 실제로 올린 파일 이름
-				System.out.println("filename : " + filename);
-				// 중복 파일명 체크
-				String filepath = fileUtil.getFilepath(savepath, filename);
-				System.out.println("filepath : " + filepath);
-				// 실제 폴더에 파일을 업로드
-				File uploadFile = new File(savepath + filepath);
-				try {
-					file.transferTo(uploadFile);
-				} catch (IllegalStateException | IOException ex) {
-					// TODO Auto-generated catch block
-					ex.printStackTrace();
-				} // 파일 업로드(물리적인 처리) 끝
-				EventFile nf = new EventFile();
-				nf.setFilename(filename);
-				nf.setFilepath(filepath);
-				fileList.add(nf);
-			}
+	public String eventWrite(Event e, MultipartFile upfile2, Model model) {// 업로드되는 파일을 여러개일수도 있으니까 배열로 받음
+		String savepath = root2+"event/";	//저장경로 지정
+		String filepath = fileUtil.getFilepath(savepath, upfile2.getOriginalFilename());	//중복파일명체크
+		e.setThumbnail(filepath);			//포토객체에 셋팅
+		File upFile = new File(savepath+filepath);
+		try {
+			upfile2.transferTo(upFile);	//파일업로드
+		} catch (IllegalStateException | IOException ex) {
+			// TODO Auto-generated catch block
+			ex.printStackTrace();
 		}
-		int result = eventService.insertEvent(e, fileList); // fileList가 있는 경우와 없는 경우(null)를 나누어서 고려할 것
-		// 성공케이스
-		// 1. 파일이 없는 경우 result = 1
-		// 2. 파일이 있는 경우 result = 파일갯수+1
-
-		if ((fileList == null && result == 1) || (fileList != null && result == (fileList.size() + 1))) {
+		int result = eventService.insertEvent(e); // fileList가 있는 경우와 없는 경우(null)를 나누어서 고려할 것
+		if (result>0) {
 			model.addAttribute("title", "이벤트 등록 성공");
 			model.addAttribute("msg", "이벤트 페이지로 이동합니다.");
 			model.addAttribute("icon", "success");
@@ -101,5 +88,21 @@ public class EventController {
 		}
 		model.addAttribute("loc", "/event/list?reqPage=1");
 		return "common/msg";
+	}
+	
+	@GetMapping(value = "/view")
+	public String eventView(int eventNo, Model model) {
+		Event e = eventService.selectOneEvent(eventNo);// 삭제됐으면 null 아니면 조회결과
+
+		if (e != null) {
+			model.addAttribute("e", e);
+			return "event/eventView";
+		} else {
+			model.addAttribute("title", "이벤트 조회 실패");
+			model.addAttribute("msg", "이미 삭제된 게시물입니다.");
+			model.addAttribute("icon", "info");
+			model.addAttribute("loc", "/event/list");
+			return "common/msg";
+		}
 	}
 }

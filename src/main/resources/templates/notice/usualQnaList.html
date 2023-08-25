@@ -11,7 +11,7 @@
         <th:block th:include="common/serviceCenterSide"></th:block>
         <div class="page-content">
             <div class="page-title">
-                <div class="content-title">자주하는 질문</div>.
+                <div class="content-title">자주하는 질문</div>
                 <span class="page-slogan">고객님들이 주로 하는 질문을 한곳에!</span>
             </div>
             <table class="tbl notice-tbl">
@@ -20,13 +20,17 @@
                     <th style="width: 30%;">카테고리</th>
                     <th style="width: 60%;">제목</th>
                 </tr>
-                <tr th:each="usualQna : ${usualQnaList}" th:onclick="usualQna([[${usualQna.usualQnaNo}]])" style="cursor: pointer;">
-                    <td>번호</td>
-                    <td>카테고리</td>
-                    <td>제목</td>
+                <tr th:each="usualQna : ${usualQnaList}" th:onclick="qnaNo([[${usualQna.qnaNo}]])" style="cursor: pointer;">
+                    <td th:text="${usualQna.qnaNo}"></td>
+                    <td th:text="${usualQna.qnaCategory}"></td>
+                    <td th:text="${usualQna.qnaTitle}"></td>
+                </tr>
+                <tr th:each="usualQna : ${usualQnaList}" th:onclick="qnaNo([[${usualQna.qnaNo}]])" style="cursor: pointer;">
+                    <td th:text="${usualQna.qnaContent}" colspan="3" style="display: none;"></td>
                 </tr>
             </table>
         </div>
     </div>
 </body>
+<link rel="stylesheet" href="/css/notice.css">
 </html>
