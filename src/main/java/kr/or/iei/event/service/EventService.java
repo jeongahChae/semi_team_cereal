@@ -47,4 +47,16 @@ public class EventService {
 		Event e = eventDao.selectOneEvent(eventNo);
 		return e;
 	}
+
+	@Transactional
+	public int updateEvent(Event e) {
+		int result = eventDao.updateEvent(e);
+		return result;
+	}
+	
+	@Transactional
+	public int deleteEvent(int eventNo) {
+		int result = eventDao.deleteEvent(eventNo);
+		return result;
+	}
 }

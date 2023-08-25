@@ -136,3 +136,4 @@ $("[name=upfile2]").on("change", function(){
         $("#img-view").attr("src","");	//다시 파일선택>취소 누르면 사라짐
     }
 });
+
