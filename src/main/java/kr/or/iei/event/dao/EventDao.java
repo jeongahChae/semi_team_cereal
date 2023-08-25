@@ -64,6 +64,20 @@ public class EventDao {
 	public Event selectOneEvent(int eventNo) {
 		String query = "select * from event_tbl where event_no = ?";
 		List list = jdbc.query(query, eventRowMapper,eventNo);
-		return (Event)list.get(0);
+			return (Event)list.get(0);			
+	}
+
+	public int updateEvent(Event e) {
+		String query = "update event_tbl set event_title = ?, event_content = ?, event_status = ?, start_date = ?, end_date = ?, thumbnail = ? where event_no=?";
+		Object[] params = {e.getEventTitle(),e.getEventContent(),e.getEventStatus(), e.getStartDate(), e.getEndDate(), e.getThumbnail(),e.getEventNo()};
+		int result = jdbc.update(query,params);
+		return result;
+	}
+
+	public int deleteEvent(int eventNo) {
+		String query = "delete from event_tbl where event_no = ?";
+		Object[] params = {eventNo};
+		int result = jdbc.update(query, params);
+		return result;
 	}
 }

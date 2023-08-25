@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+<meta charset="UTF-8">
+<title>공지사항 Update</title>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+    <div class="wrap-content">
+        <th:block th:include="common/serviceCenterSide"></th:block>
+        <div class="page-content">
+            <div class="page-title">
+                <div class="content-title">공지사항 작성</div>
+            </div>
+            <div class="writeFrm-content">
+                <form action="/notice/update" method="post" enctype="multipart/form-data">
+                    <table class="tbl notice-tbl">
+                        <tr>
+                            <th style="width: 15% "><label for="writeFrmTitle">제목</label></th>
+                            <td>
+                                <input type="text" name="noticeTitle" id="writeFrmTitle" class="input-form" th:value="${n.noticeTitle}">
+                                <input type="hidden" name="noticeNo" th:value="${n.noticeNo}">
+                            </td>
+                            <td>
+                                <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
+                                <input type="hidden" name="noticeWriter" value="admin">
+                            </td>
+                        </tr>
+                        <tr></tr>
+                        <tr>
+                            <th class="content-tr"><label for="writeFrmContent">내용</label></th>
+                            <td>
+                                <textarea name="noticeContent" id="writeFrmContent" class="input-form" th:value="${n.noticeContent}"></textarea>
+                            </td>
+                        </tr>
+                        <tr class="not-border-bottom">
+                            <th></th>
+                            <!-- 사진첨부 -->
+                            <td>
+                                <div class="img-attach-line">
+                                    <!-- 사진이 추가되면 작은 사진이 div.img-box로 추가 되게 만들기. -->
+                                    <!-- 시간이 된다면 3개까지 가능하도록 구현하자.(마켓컬리 1:1문의 사진넣기 참조.) -->
+                                    <div class="img-box-add" style="display: none;">
+                                        <div class="photo-img"></div>
+                                    </div>
+                                    <div class="img-box">
+                                        <label for="photo-picker" class="photo-picker-label" style="cursor: pointer;">
+                                                <span class="material-icons-outlined camera-icon">photo_camera</span>
+                                                <input type="file" name="upfile" multiple style="display: none;" id="photo-picker">
+                                        </label>
+                                    </div>
+                                </div>
+                                <ul class="img-ul">
+                                    <li>30MB 이하의 이미지만 업로드 가능합니다.</li>
+                                    <li>사진은 최대 1개까지 등록 가능합니다.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td>
+                                <div class="btn-line3">
+                                    <button type="submit" class="basic-btn" id="writeBtn" onclick="return checkValue()">등록</button>
+                                    <a href="/notice/list?reqPage=1" class="cancel-btn">취소</a>
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+                <!-- 모달 -->
+                <div class="modal" id="writeFrmModal">
+                    <div class="modal-content">
+                        <div class="modal-title">제목과 내용을 모두 입력해주세요.</div>
+                        <div class="modalBtn-area">
+                            <button class="closeModalBtn" id="closeModal">닫기</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <th:block th:include="common/footer"></th:block>
+</body>
+<link rel="stylesheet" href="/css/notice.css">
+<script src="/javascript/notice.js"></script>
+</html>

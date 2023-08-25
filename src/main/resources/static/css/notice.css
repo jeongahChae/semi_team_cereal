@@ -41,7 +41,8 @@ a{
     text-decoration: none;
 }
 .sideButton{
-    display: block; /*<a>태그는 inline속성이므로, block으로 변경하여야 너비, 높이가 적용된다.*/
+    /*<a>태그는 inline속성이므로, block으로 변경하여야 너비, 높이가 적용된다.*/
+    display: block;
     background-color: #fff;
     border: none;
     text-align: left;
@@ -379,3 +380,9 @@ textarea.input-form{
     height: 100%;
     padding: 15px 0px 15px 0px;
 }
+
+
+/* usualQna */
+/* .qnaContent{
+    text-align: left;
+} */

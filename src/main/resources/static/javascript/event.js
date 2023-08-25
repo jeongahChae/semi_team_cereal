@@ -41,3 +41,15 @@ $("[name=upfile2]").on("change", function(){
         $("#img-view").attr("src","");	//다시 파일선택>취소 누르면 사라짐
     }
 });
+
+// 썸네일 파일 변경시 삭제할 파일 이름얻는 함수
+$("#file").on("change", function(){
+    const delFileName = $(".upload-name").val();
+    $(".upload-name").val(event.target.files[0].name);
+    const input = $("<input>");
+    input.attr("name", "delFileName");
+    input.attr("type", "hidden");
+    input.val(delFileName);
+    $(".filebox").append(input);//form태그에 마지막 자식으로 추가
+});
+

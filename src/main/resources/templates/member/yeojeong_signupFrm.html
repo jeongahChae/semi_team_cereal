@@ -20,9 +20,13 @@
 	                <hr>
 	            </div>
 	            <div class="join-content">
-	                <form name="checkIdFrm" action="/member/checkId" method="post">
+					<form name="checkIdFrm" action="/member/checkId" method="post">
 	                    <input type="hidden" name="checkId">
 	                </form>
+					<form name="checkEmailFrm" action="/member/checkEmail" method="post">
+	                    <input type="hidden" name="checkEmail">
+	                </form>
+					
 	                <form action="/member/signup" method="post" id="signupFrm">
 	                    <div class="input-wrap">                      
 	                            <div class="label-wrap">
@@ -40,29 +44,38 @@
 	                        <div class="label-wrap">
 	                            <label for="memberPw">비밀번호<sup class="star">*</sup></label>
 	                        </div>
-	                            <input type="password" name="memberPw" id="memberPw" class="input-form" placeholder="비밀번호를 입력해주세요" required>
-	                        
+	                            <input type="password" name="memberPw" id="memberPw" class="input-form" placeholder="비밀번호를 입력해주세요" required>	                        
 	                    </div>
+						<div class="comment-wrap">
+	                        <div id="pw_comment"></div> 
+	                    </div>    
 	                    <div class="input-wrap">                        
 	                        <div class="label-wrap">
 	                            <label for="memberPwre">비밀번호 확인<sup class="star">*</sup></label>
 	                        </div>
-	                            <input type="password" name="memberPwre" id="memberPwre" class="input-form" placeholder="비밀번호를 한번 더 입력해주세요" required>
-	                        
+	                            <input type="password" name="memberPwre" id="memberPwre" class="input-form" placeholder="비밀번호를 한번 더 입력해주세요" required>	                        
 	                    </div>
+						<div class="comment-wrap">
+	                        <div id="pwre_comment"></div> 
+	                    </div>    
 	                    <div class="input-wrap">                        
 	                        <div class="label-wrap">
 	                            <label for="memberName">이름<sup class="star">*</sup></label>
 	                        </div>
-	                            <input type="text" name="memberName" id="memberName" class="input-form" placeholder="이름을 입력해주세요" required>
-	                        
+	                            <input type="text" name="memberName" id="memberName" class="input-form" placeholder="이름을 입력해주세요" required>	                        
 	                    </div>
+						<div class="comment-wrap">
+	                        <div id="name_comment"></div> 
+	                    </div>    
 	                    <div class="input-wrap">                        
 	                        <div class="label-wrap">
 	                            <label for="memberPhone">연락처<sup class="star">*</sup></label>
 	                        </div>
 	                            <input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)" required>
 	                    </div>
+						<div class="comment-wrap">
+	                        <div id="phone_comment"></div> 
+	                    </div>    
 	                    <div class="input-wrap">                        
 	                        <div class="label-wrap">
 	                            <label for="memberEmail">이메일<sup class="star">*</sup></label>
@@ -70,8 +83,10 @@
 	                            <input type="text" name="memberEmail" id="memberEmail" class="input-form" placeholder="예: essential@essential.com" required>
 	                        <span class="button-wrap">
 	                            <button type="button" id="emailChkBtn" class="dup-btn">중복확인</button>
-	                        </span>                
-	                        
+	                        </span>                        
+	                    </div>
+						<div class="comment-wrap">
+	                        <div id="email_comment"></div> 
 	                    </div>
 	                    <div class="input-wrap">                        
 	                        <div class="label-wrap">
@@ -81,6 +96,9 @@
 	                            <span class="button-wrap">
 	                                <button type="button" id="emailauthBtn" class="auth-btn">인증번호 받기</button>
 	                            </span>                           
+	                    </div>
+						<div class="comment-wrap">
+	                        <div id="emailre_comment"></div> 
 	                    </div>
 	                    <div class="input-wrap">
 	                        <div class="label-wrap">

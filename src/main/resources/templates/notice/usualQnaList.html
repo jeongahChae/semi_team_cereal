@@ -3,7 +3,7 @@
 <script src="/javascript/jquery-3.7.0.js"></script>
 <head>
 <meta charset="UTF-8">
-<title>자주하는 질문</title>
+<title>자주하는 질문 List</title>
 </head>
 <body>
     <th:block th:include="common/header"></th:block>
@@ -20,17 +20,28 @@
                     <th style="width: 30%;">카테고리</th>
                     <th style="width: 60%;">제목</th>
                 </tr>
-                <tr th:each="usualQna : ${usualQnaList}" th:onclick="qnaNo([[${usualQna.qnaNo}]])" style="cursor: pointer;">
-                    <td th:text="${usualQna.qnaNo}"></td>
-                    <td th:text="${usualQna.qnaCategory}"></td>
-                    <td th:text="${usualQna.qnaTitle}"></td>
-                </tr>
-                <tr th:each="usualQna : ${usualQnaList}" th:onclick="qnaNo([[${usualQna.qnaNo}]])" style="cursor: pointer;">
-                    <td th:text="${usualQna.qnaContent}" colspan="3" style="display: none;"></td>
-                </tr>
+                <th:block th:each="usualQna : ${usualQnaList}">
+                    <tr class="showContent" style="cursor: pointer;">
+                        <td th:text="${usualQna.qnaNo}"></td>
+                        <td th:text="${usualQna.qnaCategory}"></td>
+                        <td th:text="${usualQna.qnaTitle}"></td>
+                    </tr>
+                    <tr>
+                        <td class="qnaContent" colspan="3" style="display: none; text-align: left">
+                            <div th:text="${usualQna.qnaContent}"></div>
+                            <!-- 수정삭제는 관리자 로그인 시에만 가능하도록 만들기 -->
+                            <div class="btn-line2">
+                                <a class="basic-btn" href="#">수정</a>
+                                <a class="cancel-btn" href="#">삭제</a>
+                            </div>
+                        </td>
+                    </tr>
+                </th:block>
             </table>
         </div>
     </div>
+    <th:block th:include="common/footer"></th:block>
 </body>
 <link rel="stylesheet" href="/css/notice.css">
+<script src="/javascript/notice.js"></script>
 </html>

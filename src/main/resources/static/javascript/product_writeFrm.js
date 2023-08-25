@@ -75,10 +75,6 @@ $(function(){
     });
 });
 
-$("#sub-category").on("change",function(){
-    console.log($("#sub-category option:selected").val());
-});
-
 /*
 $("#main-category").on("change",function(){
     $("#sub-category").css("display","inline-block");
@@ -115,6 +111,7 @@ $("#main-category").on("change",function(){
 });
 */
 
+// 옵션 추가 버튼 클릭 시 
 $(".option-addBtn").on("click", function(){
     const optionColor = $("<input type='text' class='input-form' name='optionName' placeholder='색'>");
     const optionStock = $("<input type='text' class='input-form' name='optionAmount' placeholder='재고(숫자만)'>");
@@ -127,8 +124,7 @@ $(".option-addBtn").on("click", function(){
     });
 });
 
-// 파일 업로드 시 파일 이름 출력
-
+// 파일 업로드 시 파일 이름 input-box로 출력
 $("#file").on("change", function(){
 	let fileList = $("#file")[0].files;
 	let fileNameList = [];
@@ -140,13 +136,13 @@ $("#file").on("change", function(){
 });
 
 $("#file2").on("change", function(){
-	let fileList2 = $("#file2")[0].files;
-	let fileNameList2 = [];
-	for(i=0; i<fileList2.length; i++){
-		fileNameList2.push(fileList2[i].name);
+	let fileList = $("#file2")[0].files;
+	let fileNameList = [];
+	for(i=0; i<fileList.length; i++){
+		fileNameList.push(fileList[i].name);
     }
-    console.log(fileNameList2);
-    $(".upload-name2").val(fileNameList2);
+    console.log(fileNameList);
+    $(".upload-name2").val(fileNameList);
 });
 
 
