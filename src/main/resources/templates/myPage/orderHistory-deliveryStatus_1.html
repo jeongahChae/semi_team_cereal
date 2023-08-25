@@ -28,19 +28,19 @@
 		            <div>직접입력 조회</div>
 		            <div>
 						<form action="/myPage/orderHistory-deliveryStatus_1" method="get">
-							<input type="date" name="select-date" id="firstDate"> ~ <input type="date" name="select-date" id="secondDate">
-							<button type="button" class="dateBtn" onclick="dateBtn()">조회하기</button>
+							<input type="date" name="startDate" id="firstDate" th:value="${startDate}"> ~ <input type="date" name="endDate" id="secondDate" th:value="${endDate}">
+							<button type="submit" class="dateBtn">조회하기</button>
+							<input type="hidden" name="btn" value="1">
+							<input type="hidden" name="reqPage" value="1">
 						</form>
 		            </div>
 		        </div> <!--<div class="input-date-wrap">-->
 		
 		        <div class="date-message">
-		            <div>날짜</div>
-		            <p>
-		                간 구매하신 내역입니다.<br>
-		                <span class="guide-ment">주문번호를 클릭하시면 주문내역을 확인하실 수 있습니다.</span>
-		            </p>
-		        </div> <!--<div class="date-message">-->
+		            <p th:text="${startDate}"></p> <span id="between">&nbsp;~&nbsp;</span> <p th:text="${endDate}"></p>
+		            <p>&nbsp;기간동안 구매하신 내역입니다.</p><br>
+		            <span class="guide-ment">주문번호를 클릭하시면 주문내역을 확인하실 수 있습니다.</span> 
+				</div> <!--<div class="date-message">-->
 		
 		        <div class="order-table">
 		            <table>

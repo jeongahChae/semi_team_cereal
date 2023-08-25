@@ -30,11 +30,20 @@ public class MyPageController {
 	
 	//주문내역 / 배송현황
 	@GetMapping(value="orderHistory-deliveryStatus_1")
-	public String orderHistoryDeliveryStatus(int btn, int reqPage, Model model) {
-		OrderListData old = myPageService.selectAllOrderList(reqPage);
-		model.addAttribute("orderList", old.getOrderList());
-		model.addAttribute("pageNavi", old.getPageNavi());
-		model.addAttribute("btn", btn);
+	public String orderHistoryDeliveryStatus(int btn, int reqPage, Model model, String startDate, String endDate) {
+		if(startDate!=null && endDate!=null) {
+			OrderListData old = myPageService.selectDateOrderList(reqPage, startDate, endDate);
+			model.addAttribute("orderList", old.getOrderList()); //주문내역 전체 조회
+			model.addAttribute("pageNavi", old.getPageNavi()); //페이지 네비게이션
+			model.addAttribute("btn", btn);
+			model.addAttribute("startDate", startDate);
+			model.addAttribute("endDate", endDate);
+		}else {
+			OrderListData old = myPageService.selectAllOrderList(reqPage); //주문내역 전체 조회			
+			model.addAttribute("orderList", old.getOrderList()); //주문내역 전체 조회
+			model.addAttribute("pageNavi", old.getPageNavi()); //페이지 네비게이션
+			model.addAttribute("btn", btn);
+		}
 		return "myPage/orderHistory-deliveryStatus_1";
 	}//orderHistoryDeliveryStatus(int btn, Model model)
 	//주문내역 / 배송현황 2

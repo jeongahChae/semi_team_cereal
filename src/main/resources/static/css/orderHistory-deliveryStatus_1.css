@@ -65,16 +65,15 @@ input[name=select-date]{
     padding: 10px;
     font-size: 0.8em;
 }
-.date-message>:first-child{
-    float: left;
-    font-weight: bold;
-}
-p{
+p, #between{
     color: rgb(155, 155, 155);
     font-weight: bold;
+    float: left;
 }
 .guide-ment{
+    clear: both;
 	color: rgb(155, 155, 155);
+    font-weight: bold;
     text-decoration: underline;
 }
 
