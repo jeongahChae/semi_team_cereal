@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import kr.or.iei.order.model.vo.OrderRowMapper;
+import kr.or.iei.myPage.vo.LikeRowMapper;
+import kr.or.iei.myPage.vo.OrderRowMapper;
 
 @Repository
 public class MyPageDao {
@@ -14,6 +15,8 @@ public class MyPageDao {
 	private JdbcTemplate jdbc;
 	@Autowired
 	private OrderRowMapper orderRowMapper;
+	@Autowired
+	private LikeRowMapper likeRowMapper;
 	
 	//전체 주문 내역
 	public List selectAllOrderList(int start, int end) {
@@ -73,6 +76,19 @@ public class MyPageDao {
 		List orderDetail = jdbc.query(query, orderRowMapper, orderNO);
 		return orderDetail;
 	}//selectNoOrderList(int orderNO)
+
+	//찜목록 - 전체 조회
+	public List selectAllLikeList(int start, int end) {
+		String query = "select * from (select rownum as rnum, n. * from (select * from like_list order by 1 desc)n) where rnum between ? and ?";
+		List likeList = jdbc.query(query, likeRowMapper, start, end);
+		System.out.println("dao");
+		System.out.println(likeList.size());
+		for(int i=0;i<likeList.size();i++) {
+			System.out.println("dao: "+likeList.get(i));
+			
+		}
+		return likeList;
+	}
 
 
 
