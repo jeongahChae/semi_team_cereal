@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.iei.myPage.service.MyPageService;
-import kr.or.iei.order.model.vo.OrderListData;
+import kr.or.iei.myPage.vo.LikeListData;
+import kr.or.iei.myPage.vo.OrderListData;
 
 @Controller
 @RequestMapping(value="myPage", method = {RequestMethod.GET, RequestMethod.POST}) //마이페이지
@@ -86,7 +87,11 @@ public class MyPageController {
 	
 	//찜한 상품
 	@GetMapping(value="likeItList")
-	public String likeItList(int btn, Model model) {
+	public String likeItList(int btn, Model model, int reqPage) {
+		LikeListData lld = myPageService.selectAllListList(reqPage);
+		System.out.println(lld.getLikeList());
+		model.addAttribute("likeList", lld.getLikeList());
+		model.addAttribute("pageNavi", lld.getPageNavi());
 		model.addAttribute("btn", btn);
 		return "myPage/likeItList";
 	}//likeItList(int btn, Model model)

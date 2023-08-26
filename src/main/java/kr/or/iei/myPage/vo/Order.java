@@ -1,4 +1,4 @@
-package kr.or.iei.order.model.vo;
+package kr.or.iei.myPage.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
