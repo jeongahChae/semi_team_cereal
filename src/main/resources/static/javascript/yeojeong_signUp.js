@@ -16,37 +16,24 @@ allAgreement.addEventListener("change",function(){
 });
 //유효성 검사
 
-// const idComment = $("#id_comment");
-// $("#memberId").on("change",function(){
-    
-//     const idReg = /^[a-z0-9]{6,16}$/;
-//     const inputId = $("#memberId").val();
-//     const check = idReg.test(inputId);
+const idComment = $("#id_comment");
+const idReg = /^[a-z0-9]{6,16}$/;
+const idValue = $("#memberId").val();
 
-//     if(check){
+$("#memberId").on("keyup",function(){
+    const index = idReg.indexOf(idValue);
+    if(index == -1){
+        idComment.innerText = "6자이상 16자 이하의 영어 소문자와 숫자를 조합";
+        idComment.style.color = "#1f4787";     
+       
+    }else{
+        idComment.innerText.hide();
         
-        
-//         if(index == -1){
-            
-            
-//         }else{
-            
-            
-//             comment.eq(0).text("이미 사용중인 아이디입니다.");
-//             comment.eq(0).css("color","red");
-//             $(this).css("border","1px solid red");
-//             checkArr[0] = false;
+    }
     
-//         }
-//     }else{
-    
-//             comment.text("6자이상 16자 이하의 영문과 숫자를 조합");
-//             comment.css("color","pink");
-//             $(this).css("border","1px solid pink");
-//             checkArr[0] = false;
-    
-//     }
-// });
+});
+
+
 
 
 

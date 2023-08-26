@@ -11,14 +11,13 @@ import kr.or.iei.member.model.vo.Member;
 public class MemberService {
 	@Autowired
 	private MemberDao memberDao;
-	
+
 	public Member selectOneMember(String signId, String signPw) {
 		Member m = memberDao.selectOneMember(signId, signPw);
 		return m;
-	
-		
+
 	}
-	
+
 	@Transactional
 	public int insertMember(Member member) {
 		int result = memberDao.insertMember(member);
@@ -26,8 +25,10 @@ public class MemberService {
 	}
 
 	public Member selectOneMember(String checkId) {
-		
-		return null;
+
+		Member m = memberDao.selectOneMember(checkId);
+		return m;
+
 	}
 
 }

@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.iei.member.model.service.MemberService;
 import kr.or.iei.member.model.vo.Member;
@@ -77,15 +78,20 @@ public class MemberController {
 	}
 	
 	@PostMapping(value = "/checkId")
-	public String checkId(String checkId, Model model) {
+	@ResponseBody
+	public int checkId(String checkId) {
+		System.out.println("checkId : " + checkId);
 		Member member = memberService.selectOneMember(checkId);
-		model.addAttribute("checkId", checkId);
+		int result = 0;
 		if(member == null) {
-			model.addAttribute("result", 0);
+			//중복된 아이디가 없음
+			result =  0;
 		}else {
-			model.addAttribute("result", 1);
+			//중복된 아이디가 있음
+			result =  1;
 		}
-		return "member/checkId";
+		
+		return result;
 	}
 	
 	

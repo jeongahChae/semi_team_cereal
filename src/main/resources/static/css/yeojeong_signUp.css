@@ -153,9 +153,9 @@ input[type=text]{
     border-radius: 5px;
     
 }
-.comment-wrap{
+/* .comment-wrap{
     background-color: #A52502;
-}
+} */
 .modal {
     position: absolute;
     top: 0;
@@ -181,4 +181,20 @@ input[type=text]{
     border-radius: 10px;
     box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
     transform: translateX(-50%) translateY(-50%);
+}
+
+/* 아이디 중복확인 모달 css */
+.modal_body>p{
+    font-size: 20px;
+   
+
+}
+
+.chkBtn{
+    
+    font-size: 18px;
+    border: none;
+    color : #1C8394;
+    text-align: center;
+    background-color: #fff;
 }
