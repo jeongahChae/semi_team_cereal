@@ -18,6 +18,8 @@ allAgreement.addEventListener("change",function(){
 //아이디 유효성 검사
 
 $("#memberId").on("keyup",function(){
+    $("#idChkBtn").attr("disabled",false);
+    $("#idChkBtn").css("color","#1C8394");
     const idComment = $("#id_comment");
     const idReg = /^[a-z0-9]{6,16}$/;
     const idValue = $("#memberId").val();
@@ -40,6 +42,7 @@ $("#memberId").on("keyup",function(){
     }
    
 });
+
 
 //비밀번호 유효성 검사
 $("#memberPw").on("keyup",function(){

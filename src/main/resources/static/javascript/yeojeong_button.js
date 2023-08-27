@@ -39,11 +39,11 @@ $("#idChkBtn").click(function(){
 $(document).mouseup(function (e){
     console.log(e);
 	if($("#idChkModal1").has(e.target).length > 0){
-        //$("#idChkBtn").attr("disabled",false);
+        
 		$(".modal").fadeOut(400);
 	}
     else if($("#idChkModal2").has(e.target).length > 0){
-        //$("#idChkBtn").attr("disabled",false);
+        
 		$(".modal").fadeOut(400);
 	}
     else if($("#idChkModal3").has(e.target).length > 0){
@@ -158,12 +158,12 @@ let intervalId = null;
 			},1000);
 		}
         
-$("#authNum").change(function(){
+$("#authCode").change(function(){
     if(authCode != null){
-        const inputCode = $("#authNum").val();
+        const inputCode = $("#authCode").val();
         if(authCode == inputCode){
-            $("#authMsg").text("인증번호 일치");
-            $("#authMsg").css("color","##154B52");
+            $("#auth_comment").text("인증번호 일치");
+            $("#auth_comment").css("color","#154B52");
             window.clearInterval(intervalId);
             $("#timeZone").empty();
         }else{
