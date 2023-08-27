@@ -18,4 +18,6 @@ public class Product {
 	private int productCategory;
 	private String productContent;
 	private int productFinalPrice;
+	//private String productOption;
+	//private int productAmount;
 }

@@ -1,4 +1,4 @@
-package kr.or.iei.product.model.vo;
+package kr.or.iei.member.model.vo;
 
 import java.util.List;
 
@@ -6,11 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
-public class ProductListData {
-	private List productList;
+public class MemberListData {
+	private List memberList;
 	private String pageNavi;
 	private int totalCount;
 }
