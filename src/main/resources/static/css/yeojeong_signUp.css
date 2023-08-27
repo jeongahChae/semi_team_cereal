@@ -84,7 +84,7 @@ input[type=text]{
 }
 .join-content>:nth-child(2)>:nth-child(12)>div{
     float: left;
-    
+    background-color: #A52502;
 }
 .gender-wrap{
     width: 50%;
@@ -197,4 +197,9 @@ input[type=text]{
     color : #1C8394;
     text-align: center;
     background-color: #fff;
+}
+
+/*comment 창 수정*/
+.comment-wrap{
+    padding-left: 200px;
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import kr.or.iei.EmailSender;
 import kr.or.iei.member.model.service.MemberService;
 import kr.or.iei.member.model.vo.Member;
 
@@ -18,6 +19,8 @@ import kr.or.iei.member.model.vo.Member;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	@Autowired
+	private EmailSender emailSender;
 	
 	@GetMapping(value="/header")
 	public String header() {
@@ -109,7 +112,13 @@ public class MemberController {
 		
 		return result;
 	}
-	
+	@ResponseBody
+	@PostMapping(value="/auth")
+	public String authMail(String email) {
+		String authCode = emailSender.authMail(email);
+		return authCode;
+		
+	}
 	
 }
 
