@@ -50,13 +50,13 @@ public class ProductController {
 	
 	@GetMapping(value="/filedown")
 	public void filedown(ProductFile file, HttpServletResponse response) {
-		String savepath = root2+"product/";
+		String savepath = root+"product/";
 		fileUtil.downloadFile(savepath, file.getFilename(), file.getFilepath(), response);
 	}
 	
 	@GetMapping(value="/filedown2")
 	public void filedown(ProductDetailFile file, HttpServletResponse response) {
-		String savepath = root2+"product-detail/";
+		String savepath = root+"product-detail/";
 		fileUtil.downloadFile(savepath, file.getFilename(), file.getFilepath(), response);
 	}
 	
@@ -80,7 +80,7 @@ public class ProductController {
 		System.out.println(upfile2.length);
 		if(!upfile[0].isEmpty()) {
 			fileList = new ArrayList<ProductFile>();
-			String savepath = root2+"product/";
+			String savepath = root+"product/";
 			System.out.println("savepath : " + savepath);
 			for(MultipartFile file : upfile) {
 				String filename = file.getOriginalFilename();
@@ -109,7 +109,7 @@ public class ProductController {
 		
 		if(!upfile2[0].isEmpty()) {
 			dfileList = new ArrayList<ProductDetailFile>();
-			String savepath = root2+"product-detail/";
+			String savepath = root+"product-detail/";
 			System.out.println("savepath : " + savepath);
 			for(MultipartFile file : upfile2) {
 				String filename = file.getOriginalFilename();
@@ -135,6 +135,9 @@ public class ProductController {
 				dfileList.add(pdf);
 			}
 		}
+		model.addAttribute("fileList",fileList);
+		model.addAttribute("dfileList", dfileList);
+		System.out.println(fileList);
 		p.setProductCategory(pc.getCategoryNo());
 		int result = productService.insertProduct(p, fileList, dfileList);
 		System.out.println(p);
@@ -147,7 +150,7 @@ public class ProductController {
 			model.addAttribute("msg", "상품 등록 실패");
 			model.addAttribute("icon", "error");
 		}
-		model.addAttribute("loc", "/product/productList");
+		model.addAttribute("loc", "/product/productList?reqPage=1");
 		return "common/msg";
 	}
 }

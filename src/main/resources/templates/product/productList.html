@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>상품목록</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
     <link rel="stylesheet" href="/css/productList.css">
     <script src="/javascript/jquery-3.7.0.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -14,16 +15,16 @@
             <li th:each="product : ${productList}">
                 <a href="#">
                     <img src="/img/list-cart.png" class="list-cart">
-                    <div class="product-img">
-                        <img src="@{/product/filedown(filename=${file.filename},filepath=${file.filepath})}">
+                    <div class="product-img" th:each="productfile : ${fileList}">
+                        <img th:src="@{C:/Temp/upload/product/}+${productfile[0].filepath}">
                     </div>
                     <div class="product-info">
-                        <div class="product-name">상품 이름</div>
+                        <div class="product-name" th:text="${product.productName}"></div>
                         <div class="product-brand">ESSENTIAL<span class="sharp">#</span></div>
                         <div class="product-price-info">
-                            <div class="product-final-price">최종가격</div>
-                            <div class="product-price">할인 전 가격</div>
-                            <div class="product-percent">%</div>
+                            <div class="product-final-price" th:text="${product.productFinalPrice}+${'원'}"></div>
+                            <div class="product-price" th:text="${product.productPrice}+${'원'}"></div>
+                            <div class="product-percent" th:text="${product.productPercent}+${'%'}"></div>
                         </div>
                         <div>
                             <div id="soldout">sold out</div>
@@ -32,6 +33,7 @@
                 </a>
             </li>
         </ul>
+        <div id="pageNavi" th:utext="${pageNavi}"></div>
     </div>
 </body>
 </html>

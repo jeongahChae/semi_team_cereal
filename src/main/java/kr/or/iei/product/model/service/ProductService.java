@@ -74,6 +74,7 @@ public class ProductService {
 		// 2. 페이지 네비게이션 제작
 		// 총 게시물 수 조회
 		int totalCount = productDao.selectProductTotalCount();
+		System.out.println("총 게시물 수 : " + totalCount);
 		// 총 페이지 수 조회
 		int totalPage = (int)Math.ceil(totalCount/(double)numPerPage);
 		
@@ -81,11 +82,62 @@ public class ProductService {
 		int pageNo = ((reqPage-1)/pageNaviSize) * pageNaviSize + 1;
 		
 		// 페이지 네비게이션 제작 시작
+		
+		//pageNavi 제작
+				String pageNavi = "<ul class='page-design circle-style'>";
+				if(pageNo != 1) {
+					pageNavi += "<li>";
+					pageNavi += "<a class='page-item' href='/product/productList?reqPage="+1+"'>";//1번페이지로 
+					pageNavi += "<span class='material-icons'>first_page</span>";//(|<)이렇게 생김
+					pageNavi += "</a>";
+					pageNavi += "</li>";
+					pageNavi += "<li>";
+					pageNavi += "<a class='page-item' href='/product/productList?reqPage="+(pageNo-1)+"'>";
+					pageNavi += "<span class='material-icons'>chevron_left</span>";
+					pageNavi += "</a>";
+					pageNavi += "</li>";
+				}
+				//pageNavi 숫자
+				for(int i=0;i<pageNaviSize;i++) {
+					if(pageNo == reqPage) {
+						pageNavi += "<li>";
+						pageNavi += "<a class='page-item active-page' href='/product/productList?reqPage="+pageNo+"'>";
+						pageNavi += pageNo;
+						pageNavi += "</a>";
+						pageNavi += "</li>";
+					}else {
+						pageNavi += "<li>";
+						pageNavi += "<a class='page-item' href='/product/productList?reqPage="+pageNo+"'>";
+						pageNavi += pageNo;
+						pageNavi += "</a>";
+						pageNavi += "</li>";
+					}
+					pageNo++;
+					if(pageNo>totalPage) {
+						//페이지가 마지막 페이지에 도달했을 경우
+						break;
+					}
+				}
+				if(pageNo <= totalPage) {
+					pageNavi += "<li>";
+					pageNavi += "<a class='page-item' href='/product/productList?reqPage="+pageNo+"'>";
+					pageNavi += "<span class='material-icons'>chevron_right</span>";
+					pageNavi += "</a>";
+					pageNavi += "</li>";
+					pageNavi += "<li>";
+					pageNavi += "<a class='page-item' href='/product/productList?reqPage="+totalPage+"'>";//마지막 페이지로 가기
+					pageNavi += "<span class='material-icons'>last_page</span>";//마지막 페이지로 가기 icon
+					pageNavi += "</a>";
+					pageNavi += "</li>";
+				}
+				pageNavi += "</ul>";
+			
+		/*
 		String pageNavi = "<ul class='pagination circle-style'>";
 		// 이전 버튼 제작
 		if(pageNo != 1) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/notice/list?reqPage="+(pageNo-1)+"'>";
+			pageNavi += "<a class='page-item' href='/product/productList?reqPage="+(pageNo-1)+"'>";
 			pageNavi += "<span class='material-icons'>chevron_left</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";
@@ -94,13 +146,13 @@ public class ProductService {
 		for(int i=0; i<pageNaviSize; i++) {
 			if(pageNo == reqPage) {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item active-page' href='/notice/list?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item active-page' href='/product/productList?reqPage="+(pageNo)+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
 			}else {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item' href='/notice/list?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item' href='/product/productList?reqPage="+(pageNo)+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
@@ -113,13 +165,15 @@ public class ProductService {
 		// 다음 버튼 제작
 		if(pageNo <= totalPage) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/notice/list?reqPage="+(pageNo)+"'>"; // 마지막 페이지에서 +1한 상태로 나왔기 때문에 그냥 pageNo
+			pageNavi += "<a class='page-item' href='/product/productList?reqPage="+(pageNo)+"'>"; // 마지막 페이지에서 +1한 상태로 나왔기 때문에 그냥 pageNo
 			pageNavi += "<span class='material-icons'>chevron_right</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";
 		}
 		
 		pageNavi += "</ul>";
+		*/
+		
 		
 		ProductListData pld = new ProductListData(productList, pageNavi);
 		
