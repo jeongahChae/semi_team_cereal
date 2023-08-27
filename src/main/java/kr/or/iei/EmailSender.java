@@ -48,10 +48,10 @@ public class EmailSender {
 		}
 		try {
 			helper.setSentDate(new Date());
-			helper.setFrom(new InternetAddress("khdsaclass@gmail.com", "KH 당산 A 클래스"));
+			helper.setFrom(new InternetAddress("Essential@gmail.com", "에센셜"));
 			helper.setTo(email);
-			helper.setSubject("CHOE'S WORLD 인증메일입니다.");
-			helper.setText("<h1>안녕하세요 CHOE'S WORLD입니다.</h1>"
+			helper.setSubject("ESSENTIAL 인증메일입니다.");
+			helper.setText("<h1>안녕하세요 ESSENTIAL입니다.</h1>"
 							+"<h3>인증번호는 [<span style='color:red;'>"
 							+sb.toString()
 							+"</span>]입니다.</h3>"

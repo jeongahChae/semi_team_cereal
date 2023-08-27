@@ -24,8 +24,7 @@ $("#idChkBtn").click(function(){
                 }else{
                     $("#idChkModal2").fadeIn(500);
                     console.log(result);
-                }
-                
+                }              
                 
             },
             
@@ -37,11 +36,24 @@ $("#idChkBtn").click(function(){
 	
 });
 
-// $(document).mouseup(function (e){
-// 	if($("#idChkModal").has(e.target).length === 0){
-// 		$(".modal").fadeOut(500);
-// 	}
-// });
+$(document).mouseup(function (e){
+    console.log(e);
+	if($("#idChkModal1").has(e.target).length > 0){
+        //$("#idChkBtn").attr("disabled",false);
+		$(".modal").fadeOut(400);
+	}
+    else if($("#idChkModal2").has(e.target).length > 0){
+        //$("#idChkBtn").attr("disabled",false);
+		$(".modal").fadeOut(400);
+	}
+    else if($("#idChkModal3").has(e.target).length > 0){
+        
+		$(".modal").fadeOut(400);
+        $("#idChkBtn").css("color","#ccc");
+        $("#idChkBtn").attr("disabled",true);
+        
+	}
+});
 
 //이메일 중복확인 버튼 누르면 체크해서 모달로 띄워주기
 $("#emailChkBtn").click(function(){
@@ -78,15 +90,87 @@ $("#emailChkBtn").click(function(){
 	
 });
 
-// $(document).mouseup(function (e){
-// 	if($("#emailChkModal").has(e.target).length === 0){
-// 		$(".modal").fadeOut(500);
-// 	}
-// });
+$(document).mouseup(function (e){
+    //console.log(e);
+	if($("#emailChkModal1").has(e.target).length > 0){
+        
+		$(".modal").fadeOut(400);
+	}
+    else if($("#emailChkModal2").has(e.target).length > 0){
+        
+		$(".modal").fadeOut(400);
+	}
+    else if($("#emailChkModal3").has(e.target).length > 0){
+        
+		$(".modal").fadeOut(400);
+        $("#emailChkBtn").css("color","#ccc");
+        $("#emailChkBtn").attr("disabled",true);
+        
+	}
+});
 
 //이메일 인증번호 받기 버튼 누르면 인증받아서 번호입력
+
+let authCode = null;
+
 $("#emailauthBtn").click(function(){
+    const email = $("#memberEmailre").val();
+    $.ajax({
+        url : "/member/auth",
+        data : {email : email},
+        type : "post",
+        success : function(data){
+            console.log(data);
+            authCode = data;           
+	        authTime();
+        }
+    });
     
+});
+let intervalId = null;
+		function authTime(){
+			$("#timeZone").html("<span id='min'>3</span> : <span id ='sec'>00</span>");
+			intervalId = window.setInterval(function(){
+				const min = $("#min").text();
+				const sec = $("#sec").text();
+				if(sec == "00"){
+					if(min == "0"){
+						window.clearInterval(intervalId);
+						authCode = null;
+						$("#authMsg").text("인증 시간 만료");
+						$("#authMsg").css("color","#A52502");
+					}else{
+						const newMin = Number(min)-1;
+						$("#min").text(newMin);
+						$("#sec").text(59);
+						
+					}
+					
+				}else{
+					const newSec = Number(sec) -1;
+					if(newSec < 10){
+						$("#sec").text("0"+newSec);
+					}else{
+						$("#sec").text(newSec);						
+					}
+					
+				}
+			},1000);
+		}
+        
+$("#authNum").change(function(){
+    if(authCode != null){
+        const inputCode = $("#authNum").val();
+        if(authCode == inputCode){
+            $("#authMsg").text("인증번호 일치");
+            $("#authMsg").css("color","##154B52");
+            window.clearInterval(intervalId);
+            $("#timeZone").empty();
+        }else{
+            $("#auth_comment").text("메일코드를 확인하세요");
+            $("#auth_comment").css("color","#A52502");
+        }
+    }
 });
 //배송지 등록 누르면 주소api 누르기
 
