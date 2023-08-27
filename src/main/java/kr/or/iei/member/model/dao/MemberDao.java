@@ -45,4 +45,14 @@ public class MemberDao {
 		
 	}
 
+	public Member selectOneMemberEmail(String checkEmail) {
+		String query = "select * from member_tbl where member_email = ?";
+		List list = jdbc.query(query, memberRowMapper,checkEmail);
+		System.out.println(list.isEmpty());
+		if(list.isEmpty()) {
+			return null;
+		}
+		return (Member)list.get(0);
+	}
+
 }

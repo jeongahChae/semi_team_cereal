@@ -38,7 +38,7 @@
 	                            </span>                                                                                          
 	                    </div>
 	                    <div class="comment-wrap">
-	                        <div id="id_comment"></div> 
+	                        <div id="id_comment" style="display: none;"></div> 
 	                    </div>                       
 	                    <div class="input-wrap">    
 	                        <div class="label-wrap">
@@ -47,7 +47,7 @@
 	                            <input type="password" name="memberPw" id="memberPw" class="input-form" placeholder="비밀번호를 입력해주세요" required>	                        
 	                    </div>
 						<div class="comment-wrap">
-	                        <div id="pw_comment"></div> 
+	                        <div id="pw_comment" style="display: none;"></div> 
 	                    </div>    
 	                    <div class="input-wrap">                        
 	                        <div class="label-wrap">
@@ -56,7 +56,7 @@
 	                            <input type="password" name="memberPwre" id="memberPwre" class="input-form" placeholder="비밀번호를 한번 더 입력해주세요" required>	                        
 	                    </div>
 						<div class="comment-wrap">
-	                        <div id="pwre_comment"></div> 
+	                        <div id="pwre_comment" style="display: none;"></div> 
 	                    </div>    
 	                    <div class="input-wrap">                        
 	                        <div class="label-wrap">
@@ -202,6 +202,30 @@
 		<div id="idChkModal3" class="modal">
 			<div class="modal_body">				
 					<p class="idPossible">사용할 수 있는 아이디입니다.</p>				
+					<div class="modal-foot">						
+						<button type="button" class="chkBtn">확인</button>						
+					</div>			
+			</div>
+		</div>
+		<div id="emailChkModal1" class="modal">
+			<div class="modal_body">				
+					<p class="emailConditionChk">이메일을 입력해 주세요.</p>				
+					<div class="modal-foot">						
+						<button type="button" class="chkBtn">확인</button>						
+					</div>			
+			</div>
+		</div>
+		<div id="emailChkModal2" class="modal">
+			<div class="modal_body">				
+					<p class="emailImpossible">사용 불가능한 이메일입니다.</p>				
+					<div class="modal-foot">						
+						<button type="button" class="chkBtn">확인</button>						
+					</div>			
+			</div>
+		</div>
+		<div id="emailChkModal3" class="modal">
+			<div class="modal_body">				
+					<p class="emailPossible">사용 가능한 이메일입니다.</p>				
 					<div class="modal-foot">						
 						<button type="button" class="chkBtn">확인</button>						
 					</div>			

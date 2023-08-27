@@ -37,23 +37,57 @@ $("#idChkBtn").click(function(){
 	
 });
 
-$(document).mouseup(function (e){
-	if($("#idChkModal").has(e.target).length === 0){
-		$(".modal").fadeOut(500);
-	}
-});
+// $(document).mouseup(function (e){
+// 	if($("#idChkModal").has(e.target).length === 0){
+// 		$(".modal").fadeOut(500);
+// 	}
+// });
+
 //이메일 중복확인 버튼 누르면 체크해서 모달로 띄워주기
 $("#emailChkBtn").click(function(){
-    $()
-	$(".modal").fadeIn(500);
+    var emailValue = $("#memberEmail").val();
+    const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    const check = emailReg.test(emailValue);
+    var emailRe = $("#memberEmailre");
+   
+
+    if(check){
+        $.ajax({
+            type:"post",
+            url:"/member/checkEmail",
+            data:{checkEmail:emailValue},
+            success:function(result){
+                if(result ==0){
+                    $("#emailChkModal3").fadeIn(500);
+                    emailRe.val(emailValue);
+                    //console.log(emailRe);
+                    //console.log(emailValue);
+                }else{
+                    $("#emailChkModal2").fadeIn(500);
+                    //console.log(result);
+                }
+                
+                
+            },
+            
+             
+        });
+    }else{
+        $("#emailChkModal1").fadeIn(500);              
+    }   
+	
 });
 
-$(document).mouseup(function (e){
-	if($(".modal").has(e.target).length === 0){
-		$(".modal").fadeOut(500);
-	}
-});
+// $(document).mouseup(function (e){
+// 	if($("#emailChkModal").has(e.target).length === 0){
+// 		$(".modal").fadeOut(500);
+// 	}
+// });
+
 //이메일 인증번호 받기 버튼 누르면 인증받아서 번호입력
+$("#emailauthBtn").click(function(){
+    
+});
 //배송지 등록 누르면 주소api 누르기
 
 $("#jQ2").on("click",function(){

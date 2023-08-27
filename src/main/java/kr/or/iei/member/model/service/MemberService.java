@@ -31,4 +31,9 @@ public class MemberService {
 
 	}
 
+	public Member selectOneMemberEmail(String checkEmail) {
+		Member m = memberDao.selectOneMemberEmail(checkEmail);
+		return m;
+	}
+
 }

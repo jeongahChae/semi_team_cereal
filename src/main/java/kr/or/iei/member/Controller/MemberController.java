@@ -93,6 +93,22 @@ public class MemberController {
 		
 		return result;
 	}
+	@PostMapping(value = "/checkEmail")
+	@ResponseBody
+	public int checkEmail(String checkEmail) {
+		System.out.println("checkEmail : " + checkEmail);
+		Member member = memberService.selectOneMemberEmail(checkEmail);
+		int result = 0;
+		if(member == null) {
+			//중복된 이메일이 없음
+			result =  0;
+		}else {
+			//중복된 이메일이 있음
+			result =  1;
+		}
+		
+		return result;
+	}
 	
 	
 }
