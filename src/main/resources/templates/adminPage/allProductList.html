@@ -32,13 +32,15 @@
 	                    <tr onclick="window.location.href='#';">
 	                        <td>XZS123456789</td><td>[ESSENTIAL#]유리 보틀<td>블루</td><td>50</td>
 	                    </tr>
+	                    
+	                    <tr th:each="product:${productList}" onclick="window.location.href='#';">
+	                        <td th:text="${product.productNo}"></td><td th:text="${product.productName}"></td><td th:text="${product.productOption}"></td><td th:text="${product.productAmount}"></td>
+	                    </tr>
 	                </tbody>
 	            </table>
 	        </div> <!--<div class="allMemberList-table-wrap">-->
 	
-	        <div class="moreBtn-wrap">
-	            <button type="button" class="moreBtn">더보기</button>
-	        </div> <!--<div class="moreBtn-wrap">-->
+			<div id="pageNavi" th:utext="${pageNavi}"></div>	
 	
 	    </div> <!--<div class="allMemberList-wrap">-->
  

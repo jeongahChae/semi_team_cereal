@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import kr.or.iei.myPage.service.MyPageService;
 import kr.or.iei.myPage.vo.LikeListData;
 import kr.or.iei.myPage.vo.OrderListData;
+import kr.or.iei.product.model.vo.ProductListData;
 
 @Controller
 @RequestMapping(value="myPage", method = {RequestMethod.GET, RequestMethod.POST}) //마이페이지
@@ -99,7 +100,10 @@ public class MyPageController {
 	
 	//상품 후기
 	@GetMapping(value="productReview_1")
-	public String productReview(int btn, Model model) {
+	public String productReview(int btn, Model model, int reqPage) {
+		ProductListData pld = myPageService.selectAllreview(reqPage);
+		model.addAttribute("reviewList", pld.getProductList());
+		model.addAttribute("pageNavi", pld.getPageNavi());
 		model.addAttribute("btn", btn);
 		return "myPage/productReview_1";
 // 	    return "myPage/productReview(modal)_2";

@@ -52,14 +52,16 @@
 	                    <tr>
 	                        <td class="order-no-text">012345678910</td><td class="product-info-text">[ESSENTIAL#]유리 보틀</td><td class="product-amount-text">1</td><td class="change-or-return-text"><button type="button" class="write-review">작성하기</button></td>
 	                    </tr>
+	                    
+	                    <tr th:each="review:${reviewList}">
+	                        <td class="order-no-text" th:text="${review.?????}"></td><td class="product-info-text" th:text="${review.????}"></td><td class="product-amount-text" th:text="${review.????}"></td><td class="change-or-return-text"><button type="button" class="write-review">작성하기</button></td>
+	                    </tr>
 	                </tbody>
 	            </table>    
 	        </div> <!--<div class="product-review-list-wrap">-->
 	
 	
-	        <div class="moreBtn-wrap">
-	            <button type="button" class="moreBtn">더보기</button>
-	        </div> <!--<div class="moreBtn-wrap">-->
+			<div id="pageNavi" th:utext="${pageNavi}"></div>	
 	            
 	    </div> <!--<div class="product-review-wrap">-->
 

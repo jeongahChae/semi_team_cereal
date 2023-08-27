@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.iei.myPage.vo.LikeRowMapper;
 import kr.or.iei.myPage.vo.OrderRowMapper;
+import kr.or.iei.product.model.vo.ProductRowMapper;
 
 @Repository
 public class MyPageDao {
@@ -17,6 +18,8 @@ public class MyPageDao {
 	private OrderRowMapper orderRowMapper;
 	@Autowired
 	private LikeRowMapper likeRowMapper;
+	@Autowired
+	private ProductRowMapper productRowMapper;
 	
 	//전체 주문 내역
 	public List selectAllOrderList(int start, int end) {
@@ -88,6 +91,20 @@ public class MyPageDao {
 			
 		}
 		return likeList;
+	}
+
+	//상품 후기 목록
+	public List selectAllreview(int start, int end) {
+		String query = "select * from (select rownum as rnum, n. * from (select * from product_review order by 1 desc)n) where rnum between ? and ?";
+		List reviewList = jdbc.query(query, productRowMapper, start, end);
+		return reviewList;
+	}
+
+	//상품 후기 전체 수
+	public int selectReviewTotalCount() {
+		String query = "select count(*) as cnt from product_review";
+		int totalCount = jdbc.queryForObject(query, Integer.class);
+		return totalCount;
 	}
 
 
