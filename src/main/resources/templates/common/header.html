@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-    <link rel="stylesheet" href="/css/header.css">  
+    <link rel="stylesheet" href="/css/header.css"> 
+	<script src="/javascript/jquery-3.7.0.js"></script>
+</head>
+<body>
     <div id="header">
         <div class="header-top">
             <ul>
@@ -11,7 +16,7 @@
         </div>
         <div class="header-middle">
             <div class="header-logo">
-                <a href="/index.html"><img src="/img/Logo.png"></a>
+                <a href="#"><img src="/img/Logo.png"></a>
             </div>
             <div class="header-search">
                 <div class="header-search-box">
@@ -20,16 +25,24 @@
                 <button type="submit"><span class="material-icons">search</span></button>
             </div>
             <div class="header-menu">
-                <a href="#"><img src="/img/cart.png"></a>
-                <a href="#"><img src="/img/login.png"></a>
-                <a href="#"><img src="/img/enroll.png"></a>
+            <th:block th:if="${session.m == null}">			
+					<a href="#"><img src="/img/cart.png"></a>
+					<a class="modal-open-btn" href="#"><img src="/img/login.png"></a>
+					<a href="/member/yeojeong_signupFrm"><img src="/img/enroll.png"></a>
+			</th:block>
+			 <th:block th:if="${session.m != null}">			
+					
+			</th:block>
+				             
             </div>
+	<script src="/javascript/header_default.js"></script>
+
         </div>
         <div class="header-bottom">
             <div class="main-category">
                 <ul>
                     <li>
-                        <a href="#">가구</a>
+                        <a href="#">가구</a> 
                         <ul class="sub-category">
                             <li><a href="#">의자</a></li>
                             <li><a href="#">책상</a></li>
@@ -60,10 +73,41 @@
                             <li><a href="#">쿠션</a></li>
                         </ul>
                     </li>
-                    <li><a href="/event/list">이벤트</a></li>
+                    <li><a href="#">이벤트</a></li>
                 </ul>
             </div>
         </div>
         
     </div>
+</body>
+<th:block th:if="${session.m == null}">
+	<div class="modal-bg" id="login-modal">
+		<div class="modal-wrap">
+			<div class="modal-head">
+				<h2>로그인</h2>
+				<span class="material-icons close-icon modal-close">close</span>
+			</div>
+			<form action="/member/signin" method="post">
+				<div class="modal-content">
+					<div class="input-box">
+						<label for="signId">아이디</label> <input type="text" name="signId"
+							id="signId" class="login-input-form" placeholder="아이디를 입력하세요">
+					</div>
+					<div class="input-box">
+						<label for="signPw">비밀번호</label> <input type="password"
+							name="signPw" id="signPw" class="login-input-form"
+							placeholder="비밀번호를 입력하세요">
+					</div>
+					<div class="input-box link-box">
+						<a href="#">아이디찾기</a><span>|</span><a href="#">비밀번호 찾기</a>
+					</div>
+				</div>
+				<div class="modal-foot">
+					<button type="submit" class="login-btn">로그인</button>
+					<button type="submit" class="join-btn">회원가입</button>
+				</div>
+			</form>
+		</div>
+	</div>
+<th:block>
 </html>
