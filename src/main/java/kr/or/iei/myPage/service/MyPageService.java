@@ -6,10 +6,12 @@ import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.myPage.dao.MyPageDao;
 import kr.or.iei.myPage.vo.LikeListData;
 import kr.or.iei.myPage.vo.Order;
+import kr.or.iei.myPage.vo.OrderCancelListData;
 import kr.or.iei.myPage.vo.OrderListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
@@ -92,7 +94,7 @@ public class MyPageService {
 		int end = reqPage * numPerPage; //끝나는 개수 숫자 /한 페이지에 표시되는 마지막 숫자 /reqPage가 1일 경우: 10
 		int start = end - numPerPage +1; //시작하는 개수 숫자 /한 페이지에 표시되는 시작 숫자/reqPage가 1일 경우: 1
 		List orderList = myPageDao.selectDateOrderList(start, end, startDate, endDate);
-		System.out.println(orderList);
+//		System.out.println(orderList);
 		//pageNavi 제작준비
 		int totalCount = myPageDao.selectOrderTotalCount(startDate, endDate);
 		int totalPage = (int)Math.ceil(totalCount/(double)numPerPage);
@@ -259,13 +261,13 @@ public class MyPageService {
 
 	//찜목록 불러오기
 	public LikeListData selectAllListList(int reqPage) {
-		System.out.println(reqPage);
+//		System.out.println(reqPage);
 		//게시판 페이지는 가장 마지막에 insert된 요소가 제일 상단에 위치하는 내림차순 정렬로 표기
 		int numPerPage = 10; //한 페이지에 표시되는 게시물 수를 10개로 설정
 		int end = reqPage * numPerPage; //끝나는 개수 숫자 /한 페이지에 표시되는 마지막 숫자 /reqPage가 1일 경우: 10
 		int start = end - numPerPage +1; //시작하는 개수 숫자 /한 페이지에 표시되는 시작 숫자/reqPage가 1일 경우: 1
-		System.out.println("start: "+start);
-		System.out.println("end: "+end);
+//		System.out.println("start: "+start);
+//		System.out.println("end: "+end);
 		List likeList = myPageDao.selectAllLikeList(start, end);
 		
 		
@@ -325,7 +327,7 @@ public class MyPageService {
 		pageNavi += "</ul>";
 		
 		LikeListData lld = new LikeListData(likeList, pageNavi, totalCount);
-		System.out.println("servie: "+lld.getLikeList());
+//		System.out.println("servie: "+lld.getLikeList());
 		return lld;
 	}
 
@@ -396,6 +398,16 @@ public class MyPageService {
 		return pld;
 	}
 
+	@Transactional
+	//주문취소/교환/반품 등록
+	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate) {
+		int result = myPageDao.insertOrderCancelList(selectTap, reasonDetail, orderNo, productName, orderDate);
+		System.out.println(result);
+		return result;
+	}
+
+	
+	
 
 
 

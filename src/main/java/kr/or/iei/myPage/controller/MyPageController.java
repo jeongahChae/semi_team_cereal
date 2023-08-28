@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.iei.myPage.service.MyPageService;
 import kr.or.iei.myPage.vo.LikeListData;
+import kr.or.iei.myPage.vo.Order;
+import kr.or.iei.myPage.vo.OrderCancelListData;
 import kr.or.iei.myPage.vo.OrderListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
@@ -71,24 +73,31 @@ public class MyPageController {
 		return "myPage/orderCancel-change-return_1";
 	}//orderCancelChangeReturn(int btn, Model model)
 	//주문취소/교환/반품 2 - 접수
-	@PostMapping("orderCancel-change-return_2")
+	@PostMapping(value="orderCancel-change-return_2")
 	public String registerOrderCancelChangeReturn(int btn, Model model, String orderNo) {
 		List orderList = myPageService.selectNoOrderList(orderNo);
-		System.out.println(orderNo);
-		System.out.println(orderList);
+//		System.out.println(orderNo);
+//		System.out.println(orderList);
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("btn", btn);
 		return "myPage/orderCancel-change-return_2";		
 	}//registerOrderCancelChangeReturn(int btn, Model model)
-	//주문취소/교환/반품 3 - 교환/반품 내역
+	//주문취소/교환/반품 내역 접수
+	@GetMapping(value="insertCancel")
+	public void insertCancel(int btn, Model model, String selectTap, String reasonDetail, Order o) {
+		int result = myPageService.insertOrderCancelList(selectTap, reasonDetail, o.getOrderNo(), o.getProductName(), o.getOrderDate());
+		if(result>0) {
+			System.out.println("insert 성공: "+result);			
+		}else {
+			System.out.println("insert 실패");
+		}
+	}//changeReturnHistory(int btn, Model model)	
+	//주문취소/교환/반품 3
 	@GetMapping(value="orderCancel-change-return_3")
-	public String changeReturnHistory(int btn, Model model, int reqPage, String selectTap, String reasonDetail, String order) {
-		
-		
-		
+	public String orderCancelChangeReturn3(int btn, int reqPage, Model model) {
 		model.addAttribute("btn", btn);
-      return "myPage/orderCancel-change-return_3";
-	}//changeReturnHistory(int btn, Model model)
+		return "myPage/orderCancel-change-return_3";
+	}
 	
 	
 	//찜한 상품

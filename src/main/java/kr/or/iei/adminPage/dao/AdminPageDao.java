@@ -21,8 +21,8 @@ public class AdminPageDao {
 	//회원 목록
 	public static List selectAllMember(int start, int end) {
 		String query = "select * from (select rownum as rnum, n. * from (select * from member_tbl order by 1 desc)n) where rnum between ? and ?";
-		List memberList = jdbc.query(query, memberRowMapper, start, end);s
-		return memberList;
+//		List memberList = jdbc.query(query, memberRowMapper, start, end);s
+		return null;
 	}
 	
 	//전체 회원 수

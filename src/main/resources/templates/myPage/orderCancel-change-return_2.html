@@ -26,7 +26,7 @@
 		        </div> <!--<div class="select-tap-container">-->
 		
 		
-		        <form action="/myPage/orderCancel-change-return_3?btn=2&reqPage=1" method="get">
+		        <form action="/myPage/insertCancel?btn=2" method="get">
 			        <div class="orderCancel-change-return-register-table">
 				        <table>
 				                <thead>
@@ -73,16 +73,17 @@
 				        </div>
 				        
 				        <th:block th:each="order:${orderList}">
-				      		<input type="hidden" name="order" th:value="${order.orderNo}">
+				      		<input type="hidden" name="orderNo" th:value="${order.orderNo}">
 				   		</th:block>
+
 				   		
+			        <div class="registerBtn-wrap">
+						<button type="submit" class="registerBtn" onclick="window.location.href='/myPage/orderCancel-change-return_1?btn=2&reqPage=1';">접수</button>
+			        </div> <!--<div class="moreBtn-wrap">-->
 			        </form> <!-- <form action="/myPage/orderCancel-change-return_3?btn=2&reqPage=1" method="get"> -->
 		        </div> <!--<div class="writeReason-wrap">-->   
 		        
 		
-		        <div class="registerBtn-wrap">
-					<button type="submit" class="registerBtn" onclick="window.location.href='/myPage/orderCancel-change-return_1?btn=2';">접수</button>
-		        </div> <!--<div class="moreBtn-wrap">-->
 		
 		    </div> <!--<div class="orderCancel-change-return-wrap">-->
 
@@ -91,5 +92,11 @@
     
     <th:block th:include="common/footer"></th:block>
     
+    <script>
+    	const registerBtn = document.getElementsByClassName(".registerBtn")[0];
+		registerBtn.addEventListener("click", function(){
+			alert("접수가 완료되었습니다.");
+		});
+    </script>
 </body>
 </html>

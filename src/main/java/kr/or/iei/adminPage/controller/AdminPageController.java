@@ -16,6 +16,13 @@ public class AdminPageController {
     @Autowired
     private AdminPageService adminPageService;
 	
+  //회원목록
+    @GetMapping(value="/allMemberList")
+    public String allMemberListt(int btn, Model model, int reqPage) {
+        model.addAttribute("btn", btn);
+    	return "adminPage/allMemberList";
+    }//allMemberListt(int btn, Model model)
+    /*
 	//회원목록
     @GetMapping(value="/allMemberList")
     public String allMemberListt(int btn, Model model, int reqPage) {
@@ -25,8 +32,9 @@ public class AdminPageController {
         model.addAttribute("btn", btn);
     	return "adminPage/allMemberList";
     }//allMemberListt(int btn, Model model)
+    */
     
-    
+    /*
     //등록 상품 현황
     @GetMapping(value="/allProductList")
     public String allProductList(int btn, Model model, int reqPage) {
@@ -36,7 +44,7 @@ public class AdminPageController {
     	model.addAttribute("btn", btn);
         return "adminPage/allProductList";
     }//allProductList(int btn, Model model)
-    
+    */
     
     //주문 현황 관리
     @GetMapping(value="/orderStatusManagement")
