@@ -63,11 +63,35 @@ $("#memberPw").on("keyup",function(){
         console.log(pwComment);    
        
     }else{
-        //idCommnet.css("display","inline");
+        //pwComment.css("display","inline");
         pwComment.hide();
     }
    
 });
+
+//비밀번호에서 비밀번호 확인 일치 안되었을때
+$("#memberPw").on("change",function(){
+    const pwreComment = $("#pwre_comment");    
+    const pwValue = $("#memberPw").val();
+    const pwreValue = $("#memberPwre").val();
+    console.log(pwValue);
+    
+
+
+    if(pwValue != pwreValue){
+        
+        pwreComment.css("display","inline");
+        pwreComment.html("비밀번호가 일치하지 않습니다.");
+        pwreComment.css("color"," #A52502");
+        console.log(pwreComment);    
+       
+    }else{
+        //idCommnet.css("display","inline");
+        pwreComment.hide();
+    }
+   
+});
+
 //비밀번호 확인 체크
 $("#memberPwre").on("keyup",function(){
     const pwreComment = $("#pwre_comment");    
