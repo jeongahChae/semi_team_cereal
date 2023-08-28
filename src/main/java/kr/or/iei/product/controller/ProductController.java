@@ -153,4 +153,9 @@ public class ProductController {
 		model.addAttribute("loc", "/product/productList?reqPage=1");
 		return "common/msg";
 	}
+	
+	@GetMapping(value="/productDetail")
+	public String productDetail() {
+		return "product/productDetail";
+	}
 }

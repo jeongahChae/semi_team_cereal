@@ -253,8 +253,31 @@
     text-align: center;
     box-sizing: border-box;
     border: 1px solid #ccc;
-    color: #333333;
+    color: #1C8394;
     cursor: pointer;
+}
+
+.tab>ul>li.active-tab{
+    border-top: 1px solid #1C8394;
+    border-left: 1px solid #1C8394;
+    border-right: 1px solid #1C8394;
+    color: #1C8394;
+    font-weight: 900;
+    border-bottom: none;
+}
+
+.tab>ul>li.active-tab2{
+    border-bottom: 1px solid #1C8394;
+}
+
+.tab-content>div{
+    box-sizing: border-box;
+    padding: 50px 30px;
+    display: none;
+}
+
+.tab-content>div.active-content{
+    display: block;
 }
 
 .product-detail-content3{
