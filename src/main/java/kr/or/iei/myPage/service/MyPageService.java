@@ -270,7 +270,7 @@ public class MyPageService {
 		
 		
 		//pageNavi 제작준비
-		int totalCount = myPageDao.selectOrderTotalCount();
+		int totalCount = myPageDao.selectLikeListTotalCount();
 		int totalPage = (int)Math.ceil(totalCount/(double)numPerPage);
 		//pageNavi 사이즈(넘버 갯수 지정)
 		int pageNaviSize = 5;

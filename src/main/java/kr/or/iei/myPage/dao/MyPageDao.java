@@ -94,6 +94,13 @@ public class MyPageDao {
 		}
 		return likeList;
 	}
+	
+	//전체 찜목록 수 
+	public int selectLikeListTotalCount() {
+		String query = "select count(*) from like_list";
+		int totalCount = jdbc.queryForObject(query, Integer.class);
+		return totalCount;
+	}
 
 	//상품 후기 목록
 	public List selectAllreview(int start, int end) {
@@ -108,6 +115,7 @@ public class MyPageDao {
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}
+
 
 	
 
