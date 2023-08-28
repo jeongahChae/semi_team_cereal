@@ -21,7 +21,7 @@
                 <li><a href="/adminPage/insertProduct?btn=3" class="sideButton" id="insertProductBtn" onclick="changeBtn(event)">상품 등록</a></li>
                 <li><a href="/adminPage/insertNews?btn=4"class="sideButton" id="insertNewsBtn" onclick="changeBtn(event)">기사 등록</a></li>
                 <li><a href="/adminPage/insertEvent?btn=5"class="sideButton" id="insertEventBtn" onclick="changeBtn(event)">이벤트 등록</a></li>
-                <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">당첨자 발표 등록</a></li>
+                <li><a href="/adminPage/insertWinner?btn=6" class="sideButton" id="insertWinnerBtn" onclick="changeBtn(event)">당첨자 발표 등록</a></li>
                 <li><a href="/notice/writeFrm" class="sideButton" id="noticeWriteFrmBtn" onclick="changeBtn(event)">공지사항 등록</a></li>
                 <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">대시보드<span class="beta">Beta</span></a></li>
             </ul>
@@ -51,7 +51,7 @@
         }else if(btnValue == 5){
             $("#insertEventBtn").addClass("active");
         }else if(btnValue == 6){
-            
+            $("#insertWinnerBtn").addClass("active");
         }else if(btnValue == 7){
             const noticeWriteFrm = document.querySelector("#noticeWriteFrmBtn");
             noticeWriteFrm.classList.add("active");

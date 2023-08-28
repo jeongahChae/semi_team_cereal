@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ESSENTIAL#</title>
+<link rel="stylesheet" href="/css/aboutUsWriteFrm.css">
+<link rel="stylesheet" href="/css/productWriteFrm.css">
+
+</head>
+		<th:block th:include="/common/header"></th:block>
+		<div class="content-wrap">
+			<th:block th:include="/adminPage/adminPageList"></th:block>
+			<div class="product-writeFrm">
+				<div class="product-writeFrm-title">이벤트 등록</div>
+				<hr>
+				<form action="/event/write" method="post" enctype="multipart/form-data">
+				<table class="product-writeFrm-tbl">
+					<tr>
+						<th>이벤트 제목</th>
+						<td>
+							<input type="text" class="input-form" name="eventTitle" placeholder="이벤트 제목을 입력하세요.">
+						</td>
+					</tr>
+					<tr>
+						<th>이벤트 기간</th>
+						<td>
+							<input type="text" class="input-form" name="startDate" placeholder="시작날짜(YYYY.MM.DD.)" id="eventPeriod">
+							<div  style='float:left;'>
+								<span> ~ </span>
+							</div>
+							<input type="text" class="input-form" name="endDate" placeholder="종료날짜(YYYY.MM.DD.)" id="eventPeriod">
+						</td>
+					</tr>
+					<tr class="product-detail">
+						<th>이벤트 내용</th>
+						<td style="text-align: left;">
+							<textarea class="text-form" name="eventContent" id="eventContent"></textarea>
+						</td>
+					</tr>
+					<tr>
+						<th>썸네일</th>
+						<td>
+							<div class="filebox">
+								<input class="upload-name" placeholder="썸네일은 1개만 업로드할 수 있습니다." readonly>
+								<label for="file">파일첨부</label> 
+								<input type="file" name="upfile2" id="file">
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<th></th>
+						<td>
+							<p>· 30MB 이하의 이미지만 업로드 가능합니다.</p>
+						</td>
+					</tr>
+					<tr>
+						<th>썸네일 미리보기</th>
+						<td>
+							<div id="img-viewr">
+								<img id="img-view" width="450px">
+							</div>
+						</td>
+					</tr>
+				</table>
+				<hr>
+				<div class="product-writeFrm-sumbitBtn">
+					<button type="submit">이벤트 등록</button>
+					<button type="button" style='background-color:rgb(230,230, 230);color: #1C8394;margin-left:25px;'>취소</button>
+				</div>
+			</form>
+			</div>
+		</div>
+	<th:block th:include="/common/footer"></th:block>
+				<!-- 썸머노트 -->
+		<script src="/summernote/summernote-lite.js"></script>
+		<script src="/summernote/lang/summernote-ko-KR.js"></script>
+		<link rel="stylesheet" href="/summernote/summernote-lite.css">
+
+	<script src="/javascript/event.js"></script>
+</body>
+</html>
