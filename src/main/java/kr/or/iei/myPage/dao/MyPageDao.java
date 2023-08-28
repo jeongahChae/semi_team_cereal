@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.iei.myPage.vo.LikeRowMapper;
 import kr.or.iei.myPage.vo.Order;
+import kr.or.iei.myPage.vo.OrderCancelRowMapper;
 import kr.or.iei.myPage.vo.OrderRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
@@ -21,6 +22,8 @@ public class MyPageDao {
 	private LikeRowMapper likeRowMapper;
 	@Autowired
 	private ProductRowMapper productRowMapper;
+//	@Autowired
+//	private OrderCancelRowMapper orderCancelRowMapper;
 	
 	//전체 주문 내역
 	public List selectAllOrderList(int start, int end) {
@@ -114,6 +117,14 @@ public class MyPageDao {
 		String query = "select count(*) as cnt from product_review";
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
+	}
+
+	//주문취소/교환/반품 등록
+	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate) {
+		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		Object[] params = {orderNo, productName, orderDate, selectTap, reasonDetail}; 
+		int result = jdbc.update(query, params);
+		return result;
 	}
 
 

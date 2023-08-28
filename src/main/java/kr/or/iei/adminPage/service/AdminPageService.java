@@ -15,6 +15,7 @@ public class AdminPageService {
 	@Autowired
 	private AdminPageDao adminPageDao;
 
+	/*
 	public static MemberListData selectAllMember(int reqPage) {
 		int numPerPage = 10; //한 페이지에 표시되는 게시물 수를 10개로 설정
 		int end = reqPage * numPerPage; //끝나는 개수 숫자 /한 페이지에 표시되는 마지막 숫자 /reqPage가 1일 경우: 10
@@ -144,4 +145,5 @@ public class AdminPageService {
 		ProductListData pld = new ProductListData(productList, pageNavi, totalCount);
 		return pld;
 	}
+	*/
 }
