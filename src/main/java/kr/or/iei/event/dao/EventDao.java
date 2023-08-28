@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.iei.event.vo.Event;
 import kr.or.iei.event.vo.EventFile;
 import kr.or.iei.event.vo.EventRowMapper;
+import kr.or.iei.event.vo.WinnerBoard;
 import kr.or.iei.event.vo.WinnerBoardRowMapper;
 
 
@@ -64,7 +65,7 @@ public class EventDao {
 	public Event selectOneEvent(int eventNo) {
 		String query = "select * from event_tbl where event_no = ?";
 		List list = jdbc.query(query, eventRowMapper,eventNo);
-			return (Event)list.get(0);			
+		return (Event)list.get(0);			
 	}
 
 	public int updateEvent(Event e) {
@@ -78,6 +79,19 @@ public class EventDao {
 		String query = "delete from event_tbl where event_no = ?";
 		Object[] params = {eventNo};
 		int result = jdbc.update(query, params);
+		return result;
+	}
+
+	public WinnerBoard selectOneWinnerBoard(int winnerBoardNo) {
+		String query = "select * from winner_board where win_no = ?";
+		List list = jdbc.query(query, winnerBoardRowMapper,winnerBoardNo);
+		return (WinnerBoard)list.get(0);
+	}
+
+	public int updateReadCount(int winnerBoardNo) {
+		String query = "update winner_board set read_count = read_count+1 where win_no=?";
+		Object[] params = {winnerBoardNo};
+		int result = jdbc.update(query,params);
 		return result;
 	}
 }

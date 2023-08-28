@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.or.iei.event.dao.EventDao;
 import kr.or.iei.event.vo.Event;
 import kr.or.iei.event.vo.EventFile;
+import kr.or.iei.event.vo.WinnerBoard;
 import kr.or.iei.event.vo.WinnerListData;
 
 @Service
@@ -58,5 +59,16 @@ public class EventService {
 	public int deleteEvent(int eventNo) {
 		int result = eventDao.deleteEvent(eventNo);
 		return result;
+	}
+
+	@Transactional
+	public WinnerBoard selectOneWinnerBoard(int winnerBoardNo) {
+		int result = eventDao.updateReadCount(winnerBoardNo);
+		if(result>0) {
+			WinnerBoard wb = eventDao.selectOneWinnerBoard(winnerBoardNo);
+			return wb;
+		} else {
+			return null;
+		}
 	}
 }

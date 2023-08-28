@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.or.iei.FileUtil;
 import kr.or.iei.event.service.EventService;
 import kr.or.iei.event.vo.Event;
+import kr.or.iei.event.vo.WinnerBoard;
 import kr.or.iei.event.vo.WinnerListData;
 
 @Controller
@@ -163,5 +164,22 @@ public class EventController {
 			model.addAttribute("loc", "/event/view?eventNo=" + eventNo);
 		}
 		return "common/msg";
+	}
+	
+	@GetMapping(value = "/winnerView")//위너보드 상세보기로 보내기용
+	public String winnerView(int winnerBoardNo, Model model) {
+		
+		WinnerBoard wb = eventService.selectOneWinnerBoard(winnerBoardNo);// 삭제됐으면 null 아니면 조회결과
+
+		if (wb != null) {
+			model.addAttribute("wb", wb);
+			return "event/winnerView";
+		} else {
+			model.addAttribute("title", "당첨자 발표 게시판 조회 실패 혹은 조회수 업데이트 실패");
+			model.addAttribute("msg", "이미 삭제된 게시물입니다.");
+			model.addAttribute("icon", "info");
+			model.addAttribute("loc", "/event/list");
+			return "common/msg";
+		}
 	}
 }
