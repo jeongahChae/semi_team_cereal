@@ -45,4 +45,23 @@ public class AdminPageDao {
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}
+
+	//총 매출액(원)
+	public String selectTotalSales() {
+		String query = "select to_char(sum(total_price),'999,999,999') from order_tbl where order_status ='결제 완료'";
+		String totalSales = jdbc.queryForObject(query, String.class);
+		return totalSales;
+	}
+
+	public String selectSalesCount() {
+		String query = "select to_char(count(total_price),'999,999,999') from order_tbl where order_status ='결제 완료'";
+		String salesCount = jdbc.queryForObject(query, String.class);
+		return salesCount;
+	}
+
+	public String selectAvgSales() {
+		String query = "select to_char(avg(total_price),'999,999,999') from order_tbl where order_status ='결제 완료'";
+		String avgSales = jdbc.queryForObject(query, String.class);
+		return avgSales;
+	}
 }

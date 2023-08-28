@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.or.iei.adminPage.dao.AdminPageDao;
+import kr.or.iei.adminPage.vo.Dashboard;
 import kr.or.iei.member.model.vo.MemberListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
@@ -14,6 +15,14 @@ import kr.or.iei.product.model.vo.ProductListData;
 public class AdminPageService {
 	@Autowired
 	private AdminPageDao adminPageDao;
+
+	public Dashboard selectDashboardData() {
+		Dashboard d = new Dashboard();
+		d.setTotalSales(adminPageDao.selectTotalSales());	//총 매출액 조회
+		d.setSalesCount(adminPageDao.selectSalesCount());	//총 매출 건수 조회
+		d.setAvgSales(adminPageDao.selectAvgSales());		//건당 매출액 조회
+		return d;
+	}
 
 	/*
 	public static MemberListData selectAllMember(int reqPage) {

@@ -23,7 +23,7 @@
                 <li><a href="/adminPage/insertEvent?btn=5"class="sideButton" id="insertEventBtn" onclick="changeBtn(event)">이벤트 등록</a></li>
                 <li><a href="/adminPage/insertWinner?btn=6" class="sideButton" id="insertWinnerBtn" onclick="changeBtn(event)">당첨자 발표 등록</a></li>
                 <li><a href="/notice/writeFrm" class="sideButton" id="noticeWriteFrmBtn" onclick="changeBtn(event)">공지사항 등록</a></li>
-                <li><a class="sideButton" id="myPageBtn" onclick="changeBtn(event)">대시보드<span class="beta">Beta</span></a></li>
+                <li><a href="/adminPage/dashboard?btn=8" class="sideButton" id="dashboard" onclick="changeBtn(event)">대시보드<span class="beta">Beta</span></a></li>
             </ul>
         </div> <!--<div class="myPage-list-wrap">-->
     </div> <!--<div class="side-wrap">-->
@@ -56,7 +56,7 @@
             const noticeWriteFrm = document.querySelector("#noticeWriteFrmBtn");
             noticeWriteFrm.classList.add("active");
         }else if(btnValue == 8){
-            
+        	$("#dashboard").addClass("active");
         }
     </script>
 </body>
