@@ -68,7 +68,7 @@
 .detail-info1{
     float: left;
     height: 80px;
-    width: 50%;
+    width: 90%;
 }
 
 .product-detail-info-brand{
@@ -86,7 +86,7 @@
 
 .product-detail-info-starrate{
     float: left;
-    width: 50%;
+    width: 10%;
     height: 80px;
     line-height: 80px;
 }
@@ -258,7 +258,7 @@
 }
 
 .tab>ul>li.active-tab{
-    border-top: 1px solid #1C8394;
+    border-top: 3px solid #1C8394;
     border-left: 1px solid #1C8394;
     border-right: 1px solid #1C8394;
     color: #1C8394;

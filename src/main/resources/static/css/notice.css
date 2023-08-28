@@ -94,10 +94,12 @@ a{
     border-spacing: 0px;
     border-collapse: collapse;
 }
-.tbl th,
-.tbl td{
+.tbl th{
     padding: 1rem;
     text-align: center;
+}
+.tbl td{
+    padding: 1rem;
 }
 
 .notice-tbl tr:first-child{
@@ -114,6 +116,8 @@ a{
     display: block;
     margin-bottom: 5px;
 }
+
+
 
 /* page-design */
 .page-design {

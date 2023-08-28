@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.product.model.dao.ProductDao;
+import kr.or.iei.product.model.vo.Option;
 import kr.or.iei.product.model.vo.Product;
 import kr.or.iei.product.model.vo.ProductCategory;
+import kr.or.iei.product.model.vo.ProductDetailData;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
+import kr.or.iei.product.model.vo.ProductFileListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
 @Service
@@ -21,7 +24,7 @@ public class ProductService {
 	private ProductDao productDao;
 	
 	@Transactional
-	public int insertProduct(Product p, ArrayList<ProductFile> fileList, ArrayList<ProductDetailFile> dfileList) {
+	public int insertProduct(Product p, Option o, ArrayList<ProductFile> fileList, ArrayList<ProductDetailFile> dfileList) {
 		// p는 항상 존재, fileList, dfileList는 파일이 없으면 null, 있으면 list 객체
 		double percent = (double)p.getProductPercent();
 		double price = (double)p.getProductPrice();
@@ -40,15 +43,16 @@ public class ProductService {
 		p.setProductFinalPrice(productFinalPrice);
 		*/
 		int result = productDao.insertProduct(p);
+		int productNo = productDao.getProductNo();
+		int option = productDao.insertOption(o, productNo);
+		System.out.println(option);
 		if(fileList != null) {
-			int productNo = productDao.getProductNo();
 			for(ProductFile file : fileList) {
 				file.setProductNo(productNo);
 				result += productDao.insertProductFile(file);
 			}
 		}
 		if(dfileList != null) {
-			int productNo = productDao.getProductNo();
 			for(ProductDetailFile file : dfileList) {
 				file.setProductNo(productNo);
 				result += productDao.insertProductDetailFile(file);
@@ -71,6 +75,17 @@ public class ProductService {
 		int end = reqPage * numPerPage;
 		int start = end - numPerPage + 1;
 		List productList = productDao.selectProductList(start,end);
+		/*
+		List에서 1개꺼내면 Product
+		그 Product에서 productNo
+		*/
+		for(int i=0; i<productList.size(); i++) {
+			Product p = (Product)productList.get(i);
+			List fileList = productDao.selectProductFile(p.getProductNo());
+			p.setFileList(fileList);
+			System.out.println(fileList);
+		}
+		
 		// 2. 페이지 네비게이션 제작
 		// 총 게시물 수 조회
 		int totalCount = productDao.selectProductTotalCount();
@@ -135,9 +150,14 @@ public class ProductService {
 		return p;
 	}
 
-	
-
-
-
+	public ProductDetailData selectOneProduct(int productNo) {
+		Product p = productDao.selectOneProduct(productNo);
+		List fileList = productDao.selectAllProductFile(productNo);
+		List dfileList = productDao.selectAllProductDetailFile(productNo);
+		p.setFileList(fileList);
+		p.setDfileList(dfileList);
+		ProductDetailData pdd = new ProductDetailData(p);
+		return pdd;
+	}
 
 }

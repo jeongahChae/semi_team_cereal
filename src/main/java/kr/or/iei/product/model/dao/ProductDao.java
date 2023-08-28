@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.iei.product.model.vo.Option;
 import kr.or.iei.product.model.vo.Product;
 import kr.or.iei.product.model.vo.ProductCategory;
 import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
 import kr.or.iei.product.model.vo.ProductDetailFile;
+import kr.or.iei.product.model.vo.ProductDetailFileRowMapper;
 import kr.or.iei.product.model.vo.ProductFile;
 import kr.or.iei.product.model.vo.ProductFileRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
@@ -23,6 +25,8 @@ public class ProductDao {
 	private ProductRowMapper productRowMapper;
 	@Autowired
 	private ProductFileRowMapper productFileRowMapper;
+	@Autowired
+	private ProductDetailFileRowMapper productDetailFileRowMapper;
 	@Autowired
 	private ProductCateogryRowMapper productCategoryRowMapper;
 
@@ -79,10 +83,30 @@ public class ProductDao {
 	}
 
 	public List selectProductFile(int productNo) {
+		String query = "select * from product_file where file_no = (select min(file_no) from product_file where product_no=?)";
+		List list = jdbc.query(query, productFileRowMapper, productNo);
+		return list;
+	}
+
+	public List selectAllProductFile(int productNo) {
 		String query = "select * from product_file where product_no=?";
 		List list = jdbc.query(query, productFileRowMapper, productNo);
 		return list;
 	}
+
+	public List selectAllProductDetailFile(int productNo) {
+		String query = "select * from product_detail_file where product_no=?";
+		List list = jdbc.query(query, productDetailFileRowMapper, productNo);
+		return list;
+	}
+
+	public int insertOption(Option o, int productNo) {
+		String query = "insert into option_tbl values(option_seq.nextval,?,?,?)";
+		Object[] params = {productNo, o.getOptionAmount(), o.getOptionName()};
+		int option = jdbc.update(query, params);
+		return option;
+	}	
+
 
 
 

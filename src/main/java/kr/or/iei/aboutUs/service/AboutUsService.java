@@ -77,14 +77,26 @@ public class AboutUsService {
 		return nld;
 	}
 
-	public News selectOneNotice(int newsNo) {
-		News n = aboutUsDao.selectOneNotice(newsNo);
+	public News selectOneNews(int newsNo) {
+		News n = aboutUsDao.selectOneNews(newsNo);
 		return n;
 	}
 
 	@Transactional
 	public int insertNews(News n) {
 		int result = aboutUsDao.insertNews(n);
+		return result;
+	}
+
+	@Transactional
+	public int updateNews(News n) {
+		int result = aboutUsDao.updateNews(n);
+		return result;
+	}
+
+	@Transactional
+	public int deleteNews(int newsNo) {
+		int result = aboutUsDao.deleteNews(newsNo);
 		return result;
 	}
 }

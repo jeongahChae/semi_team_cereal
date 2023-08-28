@@ -11,6 +11,7 @@ import kr.or.iei.notice.model.vo.NoticeFile;
 import kr.or.iei.notice.model.dao.NoticeDao;
 import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeListData;
+import kr.or.iei.notice.model.vo.NoticeViewData;
 
 
 @Service
@@ -82,9 +83,13 @@ public class NoticeService {
 		return nld;
 	}
 
-	public Notice selectOneNotice(int noticeNo) {
+	@Transactional
+	public NoticeViewData selectOneNotice(int noticeNo) {
 		Notice n = noticeDao.selectOneNotice(noticeNo);
-		return n;
+		List fileList = noticeDao.selectNoticeFile(noticeNo);
+		n.setFileList(fileList);
+		NoticeViewData nvd = new NoticeViewData(n);
+		return nvd;
 	}
 	
 	@Transactional

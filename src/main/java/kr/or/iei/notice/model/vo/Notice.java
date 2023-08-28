@@ -16,4 +16,8 @@ public class Notice {
 	private String regDate;
 	private String noticeWriter;
 	private List fileList;
+	
+	public String getNoticeContentBr() {
+		return noticeContent.replaceAll("\r\n", "<br>");
+	}
 }

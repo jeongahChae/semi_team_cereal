@@ -145,3 +145,98 @@
 }
 
 
+#login-modal .input-box {
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: none;    
+  }
+  
+  
+  #login-modal .input-box > a:hover {
+    text-decoration: underline;
+  }
+  #login-modal .modal-foot {
+    width: 80%;
+    margin: 0 auto;
+  }
+  #login-modal .input-box.link-box {
+    text-align: right;
+  }
+  .modal-bg {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    align-items: center;
+    flex-direction: column;
+  }
+  .modal-wrap {
+    margin-top: 150px;
+    width: 400px;
+    background: #fff;
+    height: 540px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .modal-wrap div {
+    padding: 1rem;
+  }
+  
+  .modal-wrap .modal-foot {
+    text-align: right;
+  }
+  .modal-wrap div.modal-head {
+    position: relative;
+    text-align: center;
+  }
+  .close-icon {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    font-size: 30px;
+  }
+  .close-icon:hover {
+    cursor: pointer;
+  }
+  .modal-foot>button {
+    
+    padding: 1rem;
+    display: block;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+    font-size: 16px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    
+  }
+  .login-btn {
+    background-color: #1C8394;
+    color: #fff;
+    border: 2px solid #1C8394;
+    margin-bottom: 10px;
+  }
+  .join-btn {
+    color: #1C8394;
+    background-color: #fff;
+    border: 2px solid #1C8394;
+  }
+  .modal-foot>button:hover {    
+    cursor: pointer;
+   
+  }
+  .login-input-form {
+    width: 100%;
+    display: block;
+    padding: 0.8rem;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid #ccc;  
+    box-sizing: border-box;
+  }

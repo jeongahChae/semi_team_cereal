@@ -3,6 +3,7 @@ $(function(){
     $(".product-detail").addClass("active-content");
     $(".tab>ul>li").eq(1).addClass("active-tab2");
     $(".tab>ul>li").eq(2).addClass("active-tab2");
+    $(".tab>ul>li").eq(3).addClass("active-tab2");
 });
 
 const tabs = $(".tab>ul>li");

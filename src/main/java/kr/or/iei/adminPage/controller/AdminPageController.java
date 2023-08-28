@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.iei.adminPage.service.AdminPageService;
+import kr.or.iei.adminPage.vo.Dashboard;
 import kr.or.iei.member.model.vo.MemberListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
@@ -74,5 +75,21 @@ public class AdminPageController {
     public String insertEvent(int btn, Model model) {
     	model.addAttribute("btn", btn);
     	return "event/eventWriteFrm";
+    }
+    
+    //당첨자 발표 등록
+    @GetMapping(value="/insertWinner")
+    public String insertWinner(int btn, Model model) {
+    	model.addAttribute("btn", btn);
+    	return "event/winnerWriteFrm";
+    }
+    
+    //대시보드 이동
+    @GetMapping(value="/dashboard")
+    public String dashboard(int btn, Model model) {
+    	model.addAttribute("btn", btn);
+    	Dashboard d = adminPageService.selectDashboardData();
+    	model.addAttribute("d", d);
+    	return "adminPage/dashboard";
     }
 }//AdminPageController
