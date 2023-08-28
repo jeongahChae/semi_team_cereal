@@ -19,6 +19,8 @@ public class WebConfig implements WebMvcConfigurer {
 		registry.addResourceHandler("/product/**").addResourceLocations("file:///C:/Temp/upload/product/");
 		registry.addResourceHandler("/event/**").addResourceLocations("file:///C:/Users/user1/Desktop/Semi_Project - ESSENTIAL#/semi_team_cereal/src/main/resources/static/img/event/");
 		registry.addResourceHandler("/editor/**").addResourceLocations("file:///C:/Users/user1/Desktop/Semi_Project - ESSENTIAL#/semi_team_cereal/src/main/resources/static/img/editor/");
+		registry.addResourceHandler("/notice/**").addResourceLocations("file:///C:/Temp/upload/notice1/");
+		registry.addResourceHandler("/noticeEditor/**").addResourceLocations("file:///C:/Temp/upload/noticeEditor/");
 		//registry.addResourceHandler("/product/**").addResourceLocations("file:///C:/Users/user1/Desktop/Semi_Project - ESSENTIAL#/semi_team_cereal/src/main/resources/static/img/product/");
 	}//스프링부트 설정파일
 	

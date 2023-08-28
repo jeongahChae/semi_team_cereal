@@ -7,11 +7,12 @@
 </head>
 <body>
     <th:block th:include="common/header"></th:block>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <div class="all-wrap">
         <div class="view-top-wrap">
             <div class="view-title">공지사항</div>
             <div class="view-slogan">새로운 소식을 한곳에서 확인하세요!</div>
-            <div class="btn-line">
+            <div class="btn-line2">
                 <a href="/notice/list?reqPage=1&btn=0" class="basic-btn">목록</a>
             </div>
         </div>
@@ -28,8 +29,16 @@
                 <div class="title-line">작성일</div>
                 <div class="content-line" th:text="${n.regDate}"></div>
             </div>
+            <div class="line-wrap">
+                <div class="title-line">첨부파일</div>
+                <div class="content-line">
+                    <th:block th:each="file : ${n.fileList}">
+                        <a th:href="@{/notice/filedown(filename=${file.filename},filepath=${file.filepath})}" th:text="${file.filename}"></a>
+					</th:block>
+                </div>
+            </div>
             <div class="view-content-wrap">
-                <p class="view-content" th:text="${n.noticeContent}"></p>
+                <p class="view-content" th:utext="${n.noticeContent}"></p>
             </div>
         </div>
         <div class="btn-line2">
@@ -41,5 +50,7 @@
     <th:block th:include="common/footer"></th:block>
 </body>
 <link rel="stylesheet" href="/css/notice.css">
+<script src="/summernote/summernote-lite.js"></script>
+<script src="/summernote/lang/summernote-ko-KR.js"></script>
 <script src="/javascript/notice.js"></script>
 </html>
