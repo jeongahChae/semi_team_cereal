@@ -94,4 +94,18 @@ public class EventDao {
 		int result = jdbc.update(query,params);
 		return result;
 	}
+
+	public int updateWinnerBoard(WinnerBoard wb) {
+		String query = "update winner_board set win_title=?, win_content=? where win_no = ?";
+		Object[] params= {wb.getWinTitle(), wb.getWinContent(),wb.getWinNo()};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
+	public int deleteWinner(int winNo) {
+		String query = "delete from winner_board where win_no = ?";
+		Object[] params = {winNo};
+		int result = jdbc.update(query, params);
+		return result;
+	}
 }

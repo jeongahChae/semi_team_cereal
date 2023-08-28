@@ -167,19 +167,68 @@ public class EventController {
 	}
 	
 	@GetMapping(value = "/winnerView")//위너보드 상세보기로 보내기용
-	public String winnerView(int winnerBoardNo, Model model) {
-		
-		WinnerBoard wb = eventService.selectOneWinnerBoard(winnerBoardNo);// 삭제됐으면 null 아니면 조회결과
-
-		if (wb != null) {
-			model.addAttribute("wb", wb);
-			return "event/winnerView";
+	public String winnerView(int winNo, Model model) {
+		int result = eventService.updateReadCount(winNo);
+		if(result>0) {
+			WinnerBoard wb = eventService.selectOneWinnerBoard(winNo);// 삭제됐으면 null 아니면 조회결과
+			
+			if (wb != null) {
+				model.addAttribute("wb", wb);
+				return "event/winnerView";
+			} else {
+				model.addAttribute("title", "당첨자 발표 게시판 조회 실패");
+				model.addAttribute("msg", "이미 삭제된 게시물입니다.");
+				model.addAttribute("icon", "info");
+				model.addAttribute("loc", "/event/list");
+				return "common/msg";
+			}
 		} else {
-			model.addAttribute("title", "당첨자 발표 게시판 조회 실패 혹은 조회수 업데이트 실패");
+			model.addAttribute("title", "조회수 업데이트 실패");
 			model.addAttribute("msg", "이미 삭제된 게시물입니다.");
 			model.addAttribute("icon", "info");
 			model.addAttribute("loc", "/event/list");
 			return "common/msg";
 		}
+	}
+	
+	@GetMapping(value = "/winnerUpdateFrm")
+	public String eventWinnerUpdate(int winNo, Model model) {
+		WinnerBoard wb = eventService.selectOneWinnerBoard(winNo);
+		model.addAttribute("wb", wb);
+		return "event/winnerUpdateFrm";
+	}
+	
+	@PostMapping(value="/winnerUpdate")
+	public String updateWinnerBoard(WinnerBoard wb, Model model) {
+		int result = eventService.updateWinnerBoard(wb);
+		if(result>0) {
+			model.addAttribute("title", "수정 완료");
+			model.addAttribute("msg", "게시글이 수정되었습니다.");
+			model.addAttribute("icon", "success");
+		} else {
+			model.addAttribute("title", "수정 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+		}
+		System.out.println(wb.getWinNo());
+		model.addAttribute("loc", "/event/winnerView?winNo=" + wb.getWinNo());
+		return "common/msg";
+	}
+	
+	@GetMapping(value = "/deleteWinner")
+	public String deleteWinner(int winNo, Model model) {
+		int result = eventService.deleteWinner(winNo);
+		if (result>0) {
+				model.addAttribute("title", "삭제 완료");
+				model.addAttribute("msg", "게시글이 삭제되었습니다.");
+				model.addAttribute("icon", "success");
+				model.addAttribute("loc", "/event/list?reqPage=1");
+		} else {
+			model.addAttribute("title", "삭제 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요");
+			model.addAttribute("icon", "error");
+			model.addAttribute("loc", "/event/winnerView?winNo=" + winNo);
+		}
+		return "common/msg";
 	}
 }
