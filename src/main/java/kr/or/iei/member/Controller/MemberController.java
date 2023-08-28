@@ -26,7 +26,7 @@ public class MemberController {
 	@GetMapping(value="/header")
 	public String header() {
 		
-		return "member/header_copy";
+		return "common/header";
 	}
 	@PostMapping(value = "/signin")
 	public String logIn(String signId, String signPw, Model model, HttpSession session) {
