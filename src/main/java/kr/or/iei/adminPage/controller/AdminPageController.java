@@ -77,7 +77,7 @@ public class AdminPageController {
     }
     
     //당첨자 발표 등록
-    @GetMapping(value="/insertEvent")
+    @GetMapping(value="/insertWinner")
     public String insertWinner(int btn, Model model) {
     	model.addAttribute("btn", btn);
     	return "event/winnerWriteFrm";

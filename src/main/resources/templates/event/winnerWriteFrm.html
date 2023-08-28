@@ -11,12 +11,12 @@
 		<div class="content-wrap">
 			<th:block th:include="/adminPage/adminPageList"></th:block>
 			<div class="product-writeFrm">
-				<div class="product-writeFrm-title">이벤트 등록</div>
+				<div class="product-writeFrm-title">당첨자발표 등록</div>
 				<hr>
-				<form action="/event/write" method="post" enctype="multipart/form-data">
+				<form action="/event/winnerWrite" method="post">
 				<table class="product-writeFrm-tbl">
 					<tr>
-						<th>이벤트 제목</th>
+						<th>당첨자 발표 제목</th>
 						<td>
 							<input type="text" class="input-form" name="eventTitle" placeholder="이벤트 제목을 입력하세요.">
 						</td>
