@@ -1,0 +1,29 @@
+.dashboard-content{
+	display:flex;
+	justify-content: space-around;
+}
+.dashboard-box{
+	width: 300px;
+	box-sizing: border-box;
+	padding:50px 20px;
+	text-align: center;
+}
+.dashboard-box>h1{
+	color: #A52502;
+}
+#main-category, #sub-category{
+    margin: 5px;
+}
+.dashboard-chart{
+	margin:20px;
+}
+.dashboard-chart select{
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid #333333;
+}
+
+.dashboard-chart select:focus{
+    outline: none;
+}
