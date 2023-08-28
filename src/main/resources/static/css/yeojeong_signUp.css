@@ -139,12 +139,12 @@ input[type=password]{
 .must{
     color: #A52502;
 }
-.join-btn{
+.signin-btn{
     padding: 20px;
     text-align: center;
     
 }
-.join-btn>button{
+.signin-btn>button{
     width:200px;
     height: 80px;
     
