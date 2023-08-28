@@ -79,19 +79,26 @@ input[type=password]{
     font-size: small;
     padding-top: 0;
 }
+#addrInfo{
+	padding:0;
+}
 .star{
     color: #A52502;
 }
-.join-content>:nth-child(2)>:nth-child(12){
+
+.join-content>:nth-child(3)>:nth-child(20){
     overflow: hidden;
 }
-.join-content>:nth-child(2)>:nth-child(12)>div{
+.join-content>:nth-child(3)>:nth-child(20)>div{
     float: left;
-    background-color: #A52502;
+   
 }
+
+
 .gender-wrap{
     width: 50%;
     overflow: hidden;
+    
     
 }
 .gender-wrap>div{

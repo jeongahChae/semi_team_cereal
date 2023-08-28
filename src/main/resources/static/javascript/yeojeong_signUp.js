@@ -70,7 +70,7 @@ $("#memberPw").on("keyup",function(){
 });
 
 //비밀번호에서 비밀번호 확인 일치 안되었을때
-$("#memberPw").on("change",function(){
+$("#memberPw").on("keyup",function(){
     const pwreComment = $("#pwre_comment");    
     const pwValue = $("#memberPw").val();
     const pwreValue = $("#memberPwre").val();

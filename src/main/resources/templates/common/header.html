@@ -25,14 +25,16 @@
                 <button type="submit"><span class="material-icons">search</span></button>
             </div>
             <div class="header-menu">
-            <th:block th:if="${session.m == null}">			
+            <!-- <th:block th:if="${session.m == null}">			 -->
+					<a href="#"><img src="/img/cart.png"></a>
+					<a class="" href="#"><img src="/img/logout.png"></a>
+					<a href="/member/yeojeong_signupFrm"><img src="/img/enroll.png"></a>
+			<!-- </th:block> -->
+			 <!-- <th:block th:if="${session.m != null}">			
 					<a href="#"><img src="/img/cart.png"></a>
 					<a class="modal-open-btn" href="#"><img src="/img/login.png"></a>
 					<a href="/member/yeojeong_signupFrm"><img src="/img/enroll.png"></a>
-			</th:block>
-			 <th:block th:if="${session.m != null}">			
-					
-			</th:block>
+			</th:block> -->
 				             
             </div>
 	<script src="/javascript/header_default.js"></script>
@@ -80,7 +82,7 @@
         
     </div>
 </body>
-<th:block th:if="${session.m == null}">
+<!-- <th:block th:if="${session.m == null}"> -->
 	<div class="modal-bg" id="login-modal">
 		<div class="modal-wrap">
 			<div class="modal-head">
@@ -109,5 +111,5 @@
 			</form>
 		</div>
 	</div>
-<th:block>
+<!-- <th:block> -->
 </html>
