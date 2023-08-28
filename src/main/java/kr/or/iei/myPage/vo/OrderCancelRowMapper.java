@@ -20,6 +20,7 @@ public class OrderCancelRowMapper implements RowMapper<OrderCancel>{
 		oc.setOrderDate(rs.getString("order_date2"));
 		oc.setSelectTap(rs.getString("select_tap"));
 		oc.setReason(rs.getString("reason"));
+		oc.setOrder_amount(rs.getInt("order_amount"));
 		return oc;
 	}
 

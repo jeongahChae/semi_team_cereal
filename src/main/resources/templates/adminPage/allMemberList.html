@@ -29,10 +29,6 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr>
-	                        <td>as1231991</td><td>손동효</td><td>010-5468-5721</td><td>서울시 영등포구 영중로 6길 12 포레스트힐시티 1001호</td>
-	                    </tr>
-	                    
 	                    <tr th:each="member:${memberList}">
 	                        <td th:text="${member.memberId}"></td><td th:text="${member.memberName}"></td><td th:text="${member.memberPhone}"></td><td th:text="${member.memberAddr}"></td>
 	                    </tr>

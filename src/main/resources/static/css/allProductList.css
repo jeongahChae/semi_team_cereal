@@ -68,16 +68,40 @@ td {
 
 
 
-.moreBtn-wrap{
-    text-align: center;
+/* page-design */
+.page-design {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 15px;
 }
-.moreBtn{
-    width: 300px;
+
+.page-design > li {
+    width: 40px;
     height: 40px;
+    text-align: center;
+    line-height: 40px;
+    overflow: hidden;
+}
+.page-design.circle-style > li {
+    border-radius: 20%;
+}
+.page-design > li > a.page-item {
+    color: rgb(28, 131, 148);
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+}
+.page-design > li > a.page-item > span.material-icons {
+    color: rgb(28, 131, 148);
+    display: block;
+    width: 100%;
+    height: 100%;
+    line-height: 40px;
+}
+.page-design .page-item.active-page {
+    background-color: rgb(28, 131, 148);
     color: #fff;
-    border: none;
-    font-weight: bold;
-    font-size: 1.1em;
-    background-color: #1C8394;
-    cursor: pointer;
 }

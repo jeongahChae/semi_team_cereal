@@ -99,27 +99,52 @@ public class MyPageController {
 				if(selectTap.equals("1")) {
 					//주문취소
 					String selectTap2 = "주문취소";
-					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate());
+					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);			
+						
+						//주문내역에서 삭제
+						int resultDelete = myPageService.deleteOrderHistory(order.getOrderNo());
+						if(result > 0) {
+							System.out.println("주문내역에서 삭제 성공");
+						}else {
+							System.out.println("주문내역에서 삭제 실패");
+						}	
+						
 					}else {
 						System.out.println("insert 실패");
 					}					
 				}else if(selectTap.equals("2")) {
 					//교환
 					String selectTap2 = "교환";
-					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate());
+					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount());
 					if(result>0) {
-						System.out.println("insert 성공: "+result);			
+						System.out.println("insert 성공: "+result);	
+						
+						//주문내역에서 삭제
+						int resultDelete = myPageService.deleteOrderHistory(order.getOrderNo());
+						if(result > 0) {
+							System.out.println("주문내역에서 삭제 성공");
+						}else {
+							System.out.println("주문내역에서 삭제 실패");
+						}	
 					}else {
 						System.out.println("insert 실패");
 					}	
 				}else if(selectTap.equals("3")) {
 					//반품
 					String selectTap2 = "반품";
-					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate());
+					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount());
 					if(result>0) {
-						System.out.println("insert 성공: "+result);			
+						System.out.println("insert 성공: "+result);		
+						
+						//주문내역에서 삭제
+						int resultDelete = myPageService.deleteOrderHistory(order.getOrderNo());
+						if(result > 0) {
+							System.out.println("주문내역에서 삭제 성공");
+						}else {
+							System.out.println("주문내역에서 삭제 실패");
+						}	
 					}else {
 						System.out.println("insert 실패");
 					}	

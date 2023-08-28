@@ -23,6 +23,8 @@ public class ProductRowMapper implements RowMapper<Product>{
 		p.setProductPercent(rs.getInt("product_percent"));
 		p.setProductPoint(rs.getInt("product_point"));
 		p.setProductPrice(rs.getInt("product_price"));
+		//p.setProductOption(rs.getString("product_option"));
+		//p.setProductAmount(rs.getInt("product_amount"));
 		return p;
 	} 
 }

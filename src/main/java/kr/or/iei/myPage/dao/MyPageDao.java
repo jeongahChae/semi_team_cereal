@@ -123,15 +123,15 @@ public class MyPageDao {
 	}
 
 	//주문취소/교환/반품 등록
-	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate) {
-		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?)";
-		Object[] params = {orderNo, productName, orderDate, selectTap, reasonDetail}; 
+	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate, int orderAmount) {
+		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		Object[] params = {orderNo, productName, orderDate, selectTap, reasonDetail, orderAmount}; 
 		int result = jdbc.update(query, params);
 		return result;
 	}
 	//주문취소/교환/반품 내역 출력
 	public List selectAllOrderCancel(int start, int end) {
-		String query = "select order_no, order_tbl.product_name2, ORDER_AMOUNT, select_tap from (select rownum as rnum, n. * from (select * from order_cancel order by 1 desc)n) join order_tbl using(order_no) where rnum between ? and ?";
+		String query = "select * from (select rownum as rnum, n. * from (select * from order_cancel order by 1 desc)n) where rnum between ? and ?";
 		List cancelList = jdbc.query(query, orderCancelRowMapper2, start, end);
 		return cancelList;
 	}
@@ -142,13 +142,13 @@ public class MyPageDao {
 		return totalCount;
 	}
 
-//	//주문내역에서 삭제
-//	public int deleteOrderHistory(int orderNO) {
-//		String query = "delete from order_tbl where order_no=?";
-//		Object[] params = {orderNO};
-//		int result = jdbc.update(query, params);
-//		return result;
-//	}
+	//주문내역에서 삭제
+	public int deleteOrderHistory(int orderNo) {
+		String query = "delete from order_tbl where order_no=?";
+		Object[] params = {orderNo};
+		int result = jdbc.update(query, params);
+		return result;
+	}
 
 
 

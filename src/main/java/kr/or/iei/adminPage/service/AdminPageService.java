@@ -24,8 +24,9 @@ public class AdminPageService {
 		return d;
 	}
 
-	/*
-	public static MemberListData selectAllMember(int reqPage) {
+	
+	//회원 목록
+	public MemberListData selectAllMember(int reqPage) {
 		int numPerPage = 10; //한 페이지에 표시되는 게시물 수를 10개로 설정
 		int end = reqPage * numPerPage; //끝나는 개수 숫자 /한 페이지에 표시되는 마지막 숫자 /reqPage가 1일 경우: 10
 		int start = end - numPerPage +1; //시작하는 개수 숫자 /한 페이지에 표시되는 시작 숫자/reqPage가 1일 경우: 1
@@ -90,6 +91,8 @@ public class AdminPageService {
 		return mld;
 	}
 
+
+	//등록 상품 현황
 	public ProductListData selectAllProduct(int reqPage) {
 		int numPerPage = 10; //한 페이지에 표시되는 게시물 수를 10개로 설정
 		int end = reqPage * numPerPage; //끝나는 개수 숫자 /한 페이지에 표시되는 마지막 숫자 /reqPage가 1일 경우: 10
@@ -154,5 +157,5 @@ public class AdminPageService {
 		ProductListData pld = new ProductListData(productList, pageNavi, totalCount);
 		return pld;
 	}
-	*/
+	
 }

@@ -257,14 +257,6 @@ public class MyPageService {
 			int orderNO = Integer.parseInt(st.nextToken());
 			Order order = myPageDao.selectNoOrderList(orderNO);
 			orderList.add(order);
-			
-//			//주문내역에서 삭제
-//			int result = myPageDao.deleteOrderHistory(orderNO);
-//			if(result > 0) {
-//				System.out.println("주문내역에서 삭제 성공");
-//			}else {
-//				System.out.println("주문내역에서 삭제 실패");
-//			}
 		}
 		return orderList;
 	}//selectNoOrderList(String orderNo)
@@ -410,9 +402,9 @@ public class MyPageService {
 
 	//주문취소/교환/반품 등록
 	@Transactional
-	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate) {
+	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate, int orderAmount) {
 		System.out.println("orderNo : "+orderNo);
-		int result = myPageDao.insertOrderCancelList(selectTap, reasonDetail, orderNo, productName, orderDate);
+		int result = myPageDao.insertOrderCancelList(selectTap, reasonDetail, orderNo, productName, orderDate, orderAmount);
 		System.out.println("result: "+result);
 		return result;
 	}
@@ -481,6 +473,12 @@ public class MyPageService {
 		
 		OrderCancelListData ocld = new OrderCancelListData(cancelList, pageNavi, totalCount);
 		return ocld;
+	}
+
+	//주문내역에서 삭제
+	public int deleteOrderHistory(int orderNo) {
+		int result = myPageDao.deleteOrderHistory(orderNo);
+		return result;
 	}
 
 
