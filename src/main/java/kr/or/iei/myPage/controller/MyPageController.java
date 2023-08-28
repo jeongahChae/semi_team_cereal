@@ -82,22 +82,71 @@ public class MyPageController {
 		model.addAttribute("btn", btn);
 		return "myPage/orderCancel-change-return_2";		
 	}//registerOrderCancelChangeReturn(int btn, Model model)
-	//주문취소/교환/반품 내역 접수
+	//주문취소/교환/반품 - 접수 양식
 	@GetMapping(value="insertCancel")
-	public void insertCancel(int btn, Model model, String selectTap, String reasonDetail, Order o) {
-		int result = myPageService.insertOrderCancelList(selectTap, reasonDetail, o.getOrderNo(), o.getProductName(), o.getOrderDate());
-		if(result>0) {
-			System.out.println("insert 성공: "+result);			
-		}else {
-			System.out.println("insert 실패");
-		}
-	}//changeReturnHistory(int btn, Model model)	
-	//주문취소/교환/반품 3
+	public String insertCancel(int btn, int reqPage, Model model, String selectTap, String reasonDetail, int[] orderNo) {
+		
+		for(int i=0;i<orderNo.length;i++) {
+			
+			System.out.println("orderNo["+i+"]: "+orderNo[i]);			
+			//조회 과정 후, 인서트
+			List list = myPageService.selectOrderHistory(orderNo[i]);
+			System.out.println("list.size(): "+list.size());
+			for(int j=0;j<list.size();j++){
+				Order order = (Order)list.get(j); //형변환 필요
+				
+				System.out.println("selectTap: "+selectTap); //1: 주문취소, 2: 교환, 3: 반품
+				if(selectTap.equals("1")) {
+					//주문취소
+					String selectTap2 = "주문취소";
+					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate());
+					if(result>0) {
+						System.out.println("insert 성공: "+result);			
+					}else {
+						System.out.println("insert 실패");
+					}					
+				}else if(selectTap.equals("2")) {
+					//교환
+					String selectTap2 = "교환";
+					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate());
+					if(result>0) {
+						System.out.println("insert 성공: "+result);			
+					}else {
+						System.out.println("insert 실패");
+					}	
+				}else if(selectTap.equals("3")) {
+					//반품
+					String selectTap2 = "반품";
+					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate());
+					if(result>0) {
+						System.out.println("insert 성공: "+result);			
+					}else {
+						System.out.println("insert 실패");
+					}	
+				}
+
+			}//for(int j=0;j<list.size();j++)
+		}//for(int i=0;i<orderNo.length;i++)
+		
+		
+		
+		OrderCancelListData ocld = myPageService.selectAllOrderCancel(reqPage);
+		model.addAttribute("cancelList", ocld.getOrderCancelList());
+		model.addAttribute("pageNavi", ocld.getPageNavi());
+		model.addAttribute("btn", btn);
+		
+		return "myPage/orderCancel-change-return_3";
+	}
+	//주문취소/교환/반품 내역 출력
 	@GetMapping(value="orderCancel-change-return_3")
-	public String orderCancelChangeReturn3(int btn, int reqPage, Model model) {
+	public String orderCancelChangeReturnHistory(int btn, int reqPage, Model model) {
+		OrderCancelListData ocld = myPageService.selectAllOrderCancel(reqPage);
+		model.addAttribute("cancelList", ocld.getOrderCancelList());
+		model.addAttribute("pageNavi", ocld.getPageNavi());
 		model.addAttribute("btn", btn);
 		return "myPage/orderCancel-change-return_3";
 	}
+	
 	
 	
 	//찜한 상품

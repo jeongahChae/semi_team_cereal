@@ -26,7 +26,9 @@
 		        </div> <!--<div class="select-tap-container">-->
 		
 		
-		        <form action="/myPage/insertCancel?btn=2" method="get">
+		        <form action="/myPage/insertCancel" method="get"> <!-- <form action="/myPage/insertCancel?btn=2&reqPage=1" method="get"> 사용불가 -->
+		        	<input type="hidden" name="btn" value="2">
+		        	<input type="hidden" name="reqPage" value="1">
 			        <div class="orderCancel-change-return-register-table">
 				        <table>
 				                <thead>
@@ -78,7 +80,7 @@
 
 				   		
 			        <div class="registerBtn-wrap">
-						<button type="submit" class="registerBtn" onclick="window.location.href='/myPage/orderCancel-change-return_1?btn=2&reqPage=1';">접수</button>
+						<button type="submit" class="registerBtn">접수</button>
 			        </div> <!--<div class="moreBtn-wrap">-->
 			        </form> <!-- <form action="/myPage/orderCancel-change-return_3?btn=2&reqPage=1" method="get"> -->
 		        </div> <!--<div class="writeReason-wrap">-->   
@@ -93,10 +95,12 @@
     <th:block th:include="common/footer"></th:block>
     
     <script>
+    /*
     	const registerBtn = document.getElementsByClassName(".registerBtn")[0];
 		registerBtn.addEventListener("click", function(){
 			alert("접수가 완료되었습니다.");
 		});
+	*/
     </script>
 </body>
 </html>

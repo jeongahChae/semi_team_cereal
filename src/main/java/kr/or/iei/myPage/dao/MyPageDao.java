@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import kr.or.iei.myPage.vo.LikeRowMapper;
 import kr.or.iei.myPage.vo.Order;
 import kr.or.iei.myPage.vo.OrderCancelRowMapper;
+import kr.or.iei.myPage.vo.OrderCancelRowMapper2;
 import kr.or.iei.myPage.vo.OrderRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
@@ -22,8 +23,10 @@ public class MyPageDao {
 	private LikeRowMapper likeRowMapper;
 	@Autowired
 	private ProductRowMapper productRowMapper;
-//	@Autowired
-//	private OrderCancelRowMapper orderCancelRowMapper;
+	@Autowired
+	private OrderCancelRowMapper orderCancelRowMapper;
+	@Autowired
+	private OrderCancelRowMapper2 orderCancelRowMapper2;
 	
 	//전체 주문 내역
 	public List selectAllOrderList(int start, int end) {
@@ -68,7 +71,7 @@ public class MyPageDao {
 		List orderDetail = jdbc.query(query, orderRowMapper, orderNo);
 		return orderDetail;
 	}//selectOrderHistory(int orderNo)
-	
+
 
 
 	//전체 주문 수
@@ -121,11 +124,33 @@ public class MyPageDao {
 
 	//주문취소/교환/반품 등록
 	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate) {
-		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?, ?)";
+		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?)";
 		Object[] params = {orderNo, productName, orderDate, selectTap, reasonDetail}; 
 		int result = jdbc.update(query, params);
 		return result;
 	}
+	//주문취소/교환/반품 내역 출력
+	public List selectAllOrderCancel(int start, int end) {
+		String query = "select order_no, order_tbl.product_name2, ORDER_AMOUNT, select_tap from (select rownum as rnum, n. * from (select * from order_cancel order by 1 desc)n) join order_tbl using(order_no) where rnum between ? and ?";
+		List cancelList = jdbc.query(query, orderCancelRowMapper2, start, end);
+		return cancelList;
+	}
+	//주문취소/교환/반품 전체 수
+	public int selectCancelTotalCount() {
+		String query = "select count(*) as cnt from order_cancel";
+		int totalCount = jdbc.queryForObject(query, Integer.class);
+		return totalCount;
+	}
+
+//	//주문내역에서 삭제
+//	public int deleteOrderHistory(int orderNO) {
+//		String query = "delete from order_tbl where order_no=?";
+//		Object[] params = {orderNO};
+//		int result = jdbc.update(query, params);
+//		return result;
+//	}
+
+
 
 
 	
