@@ -38,7 +38,7 @@ function getWinnerBoard(num){
                 const titleTd = $("<td>");
                 
                 const tagA = $("<a>");
-                tagA.attr("href","/event/winnerView?winnerBoardNo="+winnerBoard.winNo);
+                tagA.attr("href","/event/winnerView?winNo="+winnerBoard.winNo);
                 tagA.attr("style","text-decoration: none;");
                 tagA.text(winnerBoard.winTitle);
                 titleTd.append(tagA);
@@ -100,6 +100,13 @@ function pageLink(reqPage, totalPage, funcName){
 	
 	return pageUrl;
 }
+
+//당첨자발표에서 목록으로 이동 눌렀을 때 당첨자 발표화면 나왔으면 좋겠음..ㅜㅜ
+	$("#move-winner").on("click", function(){
+		eventContents.eq(1).show();
+	});
+
+
 
 //여기서부터 eventWriteFrm 스크립트
 //썸머노트용

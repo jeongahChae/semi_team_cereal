@@ -26,11 +26,11 @@
             </div>
         </div>
 		<div class="btn-line2">
-        	<a class="basic-btn" href="/event/list">목록으로</a>
+        	<a class="basic-btn" id="move-winner" href="/event/list">목록으로</a>
        	</div>
         <div class="btn-line2">
             <!-- 수정삭제 버튼은 관리자 로그인 시에만 보임 넣기-->
-            <a class="basic-btn" th:href="@{/event/updateFrm(winNo=${wb.winNo})}">수정</a>
+            <a class="basic-btn" th:href="@{/event/winnerUpdateFrm(winNo=${wb.winNo})}">수정</a>
             <button class="cancel-btn" th:onclick="eventDelete([[${wb.winNo}]])">삭제</button>
         </div>
 	</div>
@@ -39,9 +39,9 @@
 	
 	<script>
 	//이벤트 삭제
-	function eventDelete(eventNo){
+	function eventDelete(winNo){
 	    if(confirm("게시글을 삭제하시겠습니까?")){
-	        //location.href = "/event/delete?eventNo="+eventNo;
+	        location.href = "/event/deleteWinner?winNo="+winNo;
 	    }
 	}
 	</script>

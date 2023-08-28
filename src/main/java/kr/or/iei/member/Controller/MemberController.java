@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.or.iei.EmailSender;
 import kr.or.iei.member.model.service.MemberService;
@@ -118,6 +119,38 @@ public class MemberController {
 		String authCode = emailSender.authMail(email);
 		return authCode;
 		
+	}
+	@GetMapping(value="/map")
+	public String map() {
+		return "member/map";
+	}
+	@PostMapping(value = "/update")
+	public String update(Member member,Model model,@SessionAttribute(required = false) Member m) {
+		
+		
+		int result = memberService.updateMember(member);
+		if (result > 0) {
+			
+			
+			
+			m.setMemberPw(member.getMemberPw());
+			m.setMemberPhone(member.getMemberPhone());
+			m.setMemberAddr(member.getMemberAddr());
+			
+			model.addAttribute("title", "정보수정 완료");
+			model.addAttribute("msg", "정보가 수정되었습니다.");
+			model.addAttribute("icon", "success");
+			model.addAttribute("loc", "/member/mypage");
+
+
+		} else {
+
+			model.addAttribute("title", "정보수정 실패");
+			model.addAttribute("msg", "이게 보이면 return값, where에 들어가는 값 확인");
+			model.addAttribute("icon", "error");
+			model.addAttribute("loc", "/");
+		}
+		return "common/msg";
 	}
 	
 }

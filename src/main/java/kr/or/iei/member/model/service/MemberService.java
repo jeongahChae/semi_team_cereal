@@ -36,4 +36,10 @@ public class MemberService {
 		return m;
 	}
 
+	@Transactional
+	public int updateMember(Member member) {
+		int result = memberDao.updateMember(member);
+		return result;
+	}
+
 }
