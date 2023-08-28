@@ -11,27 +11,27 @@
 		<div class="content-wrap">
 			<th:block th:include="/adminPage/adminPageList"></th:block>
 			<div class="product-writeFrm">
-				<div class="product-writeFrm-title">당첨자발표 등록</div>
+				<div class="product-writeFrm-title">등록된 기사 수정</div>
 				<hr>
-				<form action="/event/winnerWrite" method="post">
+				<form action="/news/update" method="post">
 				<table class="product-writeFrm-tbl">
 					<tr>
-						<th>당첨자 발표 제목</th>
+						<th>기사 제목</th>
 						<td>
-							<input type="text" class="input-form" name="winTitle" placeholder="이벤트 제목을 입력하세요.">
-							<input type="hidden" name="winWriter" value="admin"><!-- 로그인 후 작성자밸류 변경 -->
+							<input type="hidden" name="newsNo" th:value="${n.newsNo}">
+							<input type="text" class="input-form" name="newsTitle" th:value="${n.newsTitle}">
 						</td>
 					</tr>
 					<tr class="product-detail">
-						<th>이벤트 내용</th>
+						<th>기사 내용</th>
 						<td style="text-align: left;">
-							<textarea class="text-form" name="winContent" id="eventContent"></textarea>
+							<textarea class="text-form" name="newsContent" id="eventContent" th:utext="${n.newsContent}"></textarea>
 						</td>
 					</tr>
 				</table>
 				<hr>
 				<div class="product-writeFrm-sumbitBtn">
-					<button type="submit">이벤트 등록</button>
+					<button type="submit">기사 수정</button>
 					<button type="button" style='background-color:rgb(230,230, 230);color: #1C8394;margin-left:25px;'>취소</button>
 				</div>
 			</form>

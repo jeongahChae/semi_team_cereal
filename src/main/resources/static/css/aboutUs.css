@@ -189,4 +189,45 @@
 .news-center{
 	text-align:center;
 }
-/**************** WriteFrm *****************/
+/**************** 버튼 디자인 *****************/
+
+
+.btn-line2{
+    display: flex;
+    width: 100%;
+    padding: 20px 0px;
+    -webkit-box-pack: end;
+    justify-content: center;
+    gap: 10px;
+}
+
+/* basic-btn 버튼 기본 디자인 */
+.basic-btn{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    text-decoration: none;
+    overflow: hidden;
+    width: 130px;
+    height: 50px;
+    color: #fff;
+    background-color: #1C8394;
+    border: 0px none;
+    line-height: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+.cancel-btn{
+    display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 130px;
+    height: 50px;
+    color: #1C8394;
+    background-color: rgb(230, 230, 230);
+    border: 0px none;
+    line-height: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+}

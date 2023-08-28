@@ -38,7 +38,7 @@ public class AboutUsDao {
 		return totalCount;
 	}
 
-	public News selectOneNotice(int newsNo) {
+	public News selectOneNews(int newsNo) {
 		String query = "select * from news_tbl where news_no=?";
 		List list = jdbc.query(query, newsRowMapper, newsNo);
 		return (News)list.get(0);
@@ -47,6 +47,20 @@ public class AboutUsDao {
 	public int insertNews(News n) {
 		String query = "insert into news_tbl values (news_seq.nextval, ?, ?, ?, default)";
 		Object[] params = {n.getNewsTitle(), n.getNewsContent(), n.getPress()};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
+	public int updateNews(News n) {
+		String query = "update news_tbl set news_title=?, news_content=? where news_no = ?";
+		Object[] params= {n.getNewsTitle(),n.getNewsContent(),n.getNewsNo()};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
+	public int deleteNews(int newsNo) {
+		String query = "delete from news_tbl where news_no = ?";
+		Object[] params = {newsNo};
 		int result = jdbc.update(query, params);
 		return result;
 	}	

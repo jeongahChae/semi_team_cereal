@@ -13,7 +13,7 @@
 			<br>
 			<h1>미디어 센터</h1>
 		</div>
-		<a th:href="@{/news/view(newsNo=${news.newsNo})}" th:each="news : ${newsList}">
+		<a th:href="@{/news/view(newsNo=${news.newsNo}, reqPage=${reqPage})}" th:each="news : ${newsList}">
 			<div class="news-list">
 				<h3 th:text="${news.newsTitle}"></h3>
 				<span th:text="${news.regDate}"></span>
