@@ -31,16 +31,25 @@ function getWinnerBoard(num){
             for(let i=0 ; i<data.winnerBoardList.length ; i++){
                 const winnerBoard = data.winnerBoardList[i];
                 const tr = $("<tr>");
-                tr.addClass("winnerTr")
+                tr.addClass("winnerTr");
+
                 const noTd = $("<td>");
                 noTd.text(winnerBoard.winNo);
                 const titleTd = $("<td>");
-                titleTd.text(winnerBoard.winTitle);
-                const writerTd = $("<td>");
-                writerTd.text(winnerBoard.winWriter);
+                
+                const tagA = $("<a>");
+                tagA.attr("href","/event/winnerView?winnerBoardNo="+winnerBoard.winNo);
+                tagA.attr("style","text-decoration: none;");
+                tagA.text(winnerBoard.winTitle);
+                titleTd.append(tagA);
+                
                 const regDateTd = $("<td>");
                 regDateTd.text(winnerBoard.regDate);
-                tr.append(noTd).append(titleTd).append(writerTd).append(regDateTd);
+                const readCountTd = $("<td>");
+                readCountTd.text(winnerBoard.readCount);
+                
+
+                tr.append(noTd).append(titleTd).append(regDateTd).append(readCountTd);
                 $(".notice-tbl").children("tbody").append(tr);
             }
             const pageNavi = pageLink(reqPage,data.totalPage,"getWinnerBoard");
