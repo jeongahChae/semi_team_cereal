@@ -74,6 +74,8 @@ public class MyPageController {
 	@PostMapping("orderCancel-change-return_2")
 	public String registerOrderCancelChangeReturn(int btn, Model model, String orderNo) {
 		List orderList = myPageService.selectNoOrderList(orderNo);
+		System.out.println(orderNo);
+		System.out.println(orderList);
 		model.addAttribute("orderList", orderList);
 		model.addAttribute("btn", btn);
 		return "myPage/orderCancel-change-return_2";		

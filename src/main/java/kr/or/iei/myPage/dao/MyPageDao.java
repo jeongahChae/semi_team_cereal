@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.iei.myPage.vo.LikeRowMapper;
+import kr.or.iei.myPage.vo.Order;
 import kr.or.iei.myPage.vo.OrderRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
@@ -38,10 +39,12 @@ public class MyPageDao {
 	
 	//기간내 주문 내역
 	public List selectDateOrderList(int start, int end, String startDate, String endDate) {
+		/*
 		System.out.println(start);
 		System.out.println(end);
 		System.out.println(startDate);
 		System.out.println(endDate);
+		*/
 		String query = "select * from (select rownum as rnum, n. * from (select * from order_tbl where order_date between ? and ? order by 1 desc)n) where rnum between ? and ?";
 		List orderList = jdbc.query(query, orderRowMapper, startDate, endDate, start, end);
 		return orderList;
@@ -74,21 +77,20 @@ public class MyPageDao {
 
 	
 	//주문 내역 - 주문 번호로 조회
-	public List selectNoOrderList(int orderNO) {
+	public Order selectNoOrderList(int orderNO) {
 		String query = "select * from order_tbl where order_no=?";
 		List orderDetail = jdbc.query(query, orderRowMapper, orderNO);
-		return orderDetail;
+		return (Order)orderDetail.get(0);
 	}//selectNoOrderList(int orderNO)
 
 	//찜목록 - 전체 조회
 	public List selectAllLikeList(int start, int end) {
 		String query = "select * from (select rownum as rnum, n. * from (select * from like_list order by 1 desc)n) where rnum between ? and ?";
-		List likeList = jdbc.query(query, likeRowMapper, start, end);
+		List likeList = jdbc.query(query, likeRowMapper, start, end); //문제
 		System.out.println("dao");
 		System.out.println(likeList.size());
 		for(int i=0;i<likeList.size();i++) {
 			System.out.println("dao: "+likeList.get(i));
-			
 		}
 		return likeList;
 	}
@@ -107,7 +109,7 @@ public class MyPageDao {
 		return totalCount;
 	}
 
-
+	
 
 
 

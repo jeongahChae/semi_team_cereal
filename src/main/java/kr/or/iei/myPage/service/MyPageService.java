@@ -232,19 +232,27 @@ public class MyPageService {
 	//주문내역 조회 - 주문 번호로 조회
 	public List selectNoOrderList(String orderNo) {
 		StringTokenizer st = new StringTokenizer(orderNo, "/");
+		/*
 		int orderNO = Integer.parseInt(st.nextToken());
 		System.out.println(orderNO);
 		int orderNO2 = Integer.parseInt(st.nextToken());
 		System.out.println(orderNO2);
-		List order1 = myPageDao.selectNoOrderList(orderNO);
+		Order order1 = myPageDao.selectNoOrderList(orderNO);
 		System.out.println(order1);
-		List order2 = myPageDao.selectNoOrderList(orderNO2);
+		Order order2 = myPageDao.selectNoOrderList(orderNO2);
 		System.out.println(order2);
 		List orderList = new ArrayList<Order>();
 		orderList.add(order1);
 		orderList.add(order2);
 		for(int i=0;i<orderList.size();i++) {
 			System.out.println(orderList.get(i));
+		}
+		*/
+		List orderList = new ArrayList<Order>();
+		while(st.hasMoreTokens()) {
+			int orderNO = Integer.parseInt(st.nextToken());
+			Order order = myPageDao.selectNoOrderList(orderNO);
+			orderList.add(order);
 		}
 		return orderList;
 	}//selectNoOrderList(String orderNo)
