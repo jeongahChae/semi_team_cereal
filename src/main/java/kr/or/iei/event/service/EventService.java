@@ -61,14 +61,25 @@ public class EventService {
 		return result;
 	}
 
+	public WinnerBoard selectOneWinnerBoard(int winNo) {
+		WinnerBoard wb = eventDao.selectOneWinnerBoard(winNo);
+		return wb;
+	}
+	
 	@Transactional
-	public WinnerBoard selectOneWinnerBoard(int winnerBoardNo) {
-		int result = eventDao.updateReadCount(winnerBoardNo);
-		if(result>0) {
-			WinnerBoard wb = eventDao.selectOneWinnerBoard(winnerBoardNo);
-			return wb;
-		} else {
-			return null;
-		}
+	public int updateReadCount(int winNo) {
+		int result = eventDao.updateReadCount(winNo);
+		return result;
+	}
+
+	@Transactional
+	public int updateWinnerBoard(WinnerBoard wb) {
+		int result = eventDao.updateWinnerBoard(wb);
+		return result;
+	}
+
+	public int deleteWinner(int winNo) {
+		int result = eventDao.deleteWinner(winNo);
+		return result;
 	}
 }
