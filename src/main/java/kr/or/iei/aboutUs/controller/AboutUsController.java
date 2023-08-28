@@ -17,6 +17,8 @@ import kr.or.iei.FileUtil;
 import kr.or.iei.aboutUs.service.AboutUsService;
 import kr.or.iei.aboutUs.vo.News;
 import kr.or.iei.aboutUs.vo.NewsListData;
+import kr.or.iei.event.vo.Event;
+import kr.or.iei.event.vo.WinnerBoard;
 
 @Controller
 public class AboutUsController {
@@ -53,14 +55,16 @@ public class AboutUsController {
 		NewsListData nld = aboutUsService.selectNewsList(reqPage);
 		model.addAttribute("newsList", nld.getNewsList());
 		model.addAttribute("pageNavi", nld.getPageNavi());
+		model.addAttribute("reqPage", reqPage);
 		return "aboutUs/news";
 	}
 	
 	@GetMapping(value="/news/view")
-	public String newsView(int newsNo, Model model) {
-		News n = aboutUsService.selectOneNotice(newsNo);// 삭제됐으면 null 아니면 조회결과
+	public String newsView(int newsNo, int reqPage, Model model) {
+		News n = aboutUsService.selectOneNews(newsNo);// 삭제됐으면 null 아니면 조회결과
 		if (n != null) {
 			model.addAttribute("n", n);
+			model.addAttribute("reqPage", reqPage);
 			return "aboutUs/newsView";
 		}else {
 			model.addAttribute("title", "목록 불러오기 실패");
@@ -103,5 +107,45 @@ public class AboutUsController {
 		 model.addAttribute("loc", "/news/list?reqPage=1");
 		 
 		 return "common/msg";
+	}
+	
+	@GetMapping(value="/news/updateFrm")
+	public String updateNews(int newsNo, Model model) {
+		News n = aboutUsService.selectOneNews(newsNo);
+		model.addAttribute("n", n);
+		return "aboutUs/newsUpdateFrm";
+	}
+	
+	@PostMapping(value="/news/update")
+	public String updateNews(News n, Model model) {
+		int result = aboutUsService.updateNews(n);
+		if(result>0) {
+			model.addAttribute("title", "수정 완료");
+			model.addAttribute("msg", "게시글이 수정되었습니다.");
+			model.addAttribute("icon", "success");
+		} else {
+			model.addAttribute("title", "수정 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+		}
+		model.addAttribute("loc", "/news/view?newsNo=" + n.getNewsNo());
+		return "common/msg";
+	}
+	
+	@GetMapping(value = "/news/deleteNews")
+	public String deleteNews(int newsNo, Model model) {
+		int result = aboutUsService.deleteNews(newsNo);
+		if (result>0) {
+				model.addAttribute("title", "삭제 완료");
+				model.addAttribute("msg", "기사가 삭제되었습니다.");
+				model.addAttribute("icon", "success");
+				model.addAttribute("loc", "/news/list?reqPage=1");
+		} else {
+			model.addAttribute("title", "삭제 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요");
+			model.addAttribute("icon", "error");
+			model.addAttribute("loc", "/news/list?reqPage=1");
+		}
+		return "common/msg";
 	}
 }

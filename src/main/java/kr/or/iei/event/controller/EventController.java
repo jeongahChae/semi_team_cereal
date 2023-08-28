@@ -231,4 +231,20 @@ public class EventController {
 		}
 		return "common/msg";
 	}
+	
+	@PostMapping(value="/winnerWrite")
+	public String eventWinnerWrite(WinnerBoard wb, Model model) {// 업로드되는 파일을 여러개일수도 있으니까 배열로 받음
+		int result = eventService.insertWinnerBoard(wb);
+		if (result>0) {
+			model.addAttribute("title", "당첨자 발표 등록 성공");
+			model.addAttribute("msg", "당첨자 발표 페이지로 이동합니다.");
+			model.addAttribute("icon", "success");
+		} else {
+			model.addAttribute("title", "당첨자 발표 작성 실패");
+			model.addAttribute("msg", "관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+		}
+		model.addAttribute("loc", "/event/list");
+		return "common/msg";
+	}
 }

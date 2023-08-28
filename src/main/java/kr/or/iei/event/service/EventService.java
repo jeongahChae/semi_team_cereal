@@ -78,8 +78,15 @@ public class EventService {
 		return result;
 	}
 
+	@Transactional
 	public int deleteWinner(int winNo) {
 		int result = eventDao.deleteWinner(winNo);
+		return result;
+	}
+
+	@Transactional
+	public int insertWinnerBoard(WinnerBoard wb) {
+		int result = eventDao.insertWinnerBoard(wb);
 		return result;
 	}
 }

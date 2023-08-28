@@ -108,4 +108,12 @@ public class EventDao {
 		int result = jdbc.update(query, params);
 		return result;
 	}
+
+	public int insertWinnerBoard(WinnerBoard wb) {
+		String query = "insert into winner_board values (win_seq.nextval, ?, ?, ?,default, default, ?)";
+		//회원 테스트할 때 작성자를 세션값으로 변경필요
+		Object[] params = {wb.getWinTitle(), wb.getWinContent(), wb.getWinWriter(),wb.getWinImage()};
+		int result = jdbc.update(query, params);
+		return result;
+	}
 }
