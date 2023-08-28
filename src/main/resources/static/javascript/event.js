@@ -44,8 +44,7 @@ $("[name=upfile2]").on("change", function(){
 
 // 썸네일 파일 변경시 삭제할 파일 이름얻는 함수
 $("#file").on("change", function(){
-    const delFileName = $(".upload-name").val();
-    $(".upload-name").val(event.target.files[0].name);
+    const delFileName = $(".upload-name").val(event.target.files[0].name);
     const input = $("<input>");
     input.attr("name", "delFileName");
     input.attr("type", "hidden");

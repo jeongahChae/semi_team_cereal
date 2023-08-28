@@ -115,7 +115,7 @@ public class EventController {
 	@PostMapping(value = "/update")
 	public String update(Event e, MultipartFile upfile2, String delFileName, Model model) {
 		String savepath = root2+"event/";	//저장경로 지정
-		if(delFileName != e.getThumbnail()) {
+		if(!upfile2.isEmpty() && delFileName != e.getThumbnail()) {
 			String filepath = fileUtil.getFilepath(savepath, upfile2.getOriginalFilename());	//중복파일명체크
 			File upFile = new File(savepath+filepath);
 			try {
@@ -124,10 +124,9 @@ public class EventController {
 				// TODO Auto-generated catch block
 				ex.printStackTrace();
 			}
-			e.setThumbnail(filepath);	
+			e.setThumbnail(filepath);
 		}
 		int result = eventService.updateEvent(e); // 여기까지는 제목,내용,새 파일 추가 + 삭제까지 하는 것&폴더에 있는 파일까지
-																		// 지우기 위해서 list로 받음
 		if (result>0) {
 			File delFile = new File(savepath + delFileName);
 			delFile.delete();
