@@ -30,7 +30,7 @@
 									<div class="label-wrap">
 										<label for="memberId">아이디</label>
 									</div>
-									<input type="text" name="memberId" id="memberId" class="input-form" value="" readonly>	                                                                                                                   
+									<input type="text" name="memberId" id="memberId" class="input-form" th:value="${session.m.memberId}" readonly>	                                                                                                                   
 							</div>	                                         
 							<div class="input-wrap">    
 								<div class="label-wrap">
@@ -55,19 +55,19 @@
 								<div class="label-wrap">
 									<label for="memberName">이름</label>
 								</div>
-									<input type="text" name="memberName" id="memberName" class="input-form" value="" readonly>	                        
+									<input type="text" name="memberName" id="memberName" class="input-form" th:value="${session.m.memberName}" readonly>	                        
 							</div>
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberPhone">연락처</label>
 								</div>
-									<input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)">
+									<input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)" th:value="${session.m.memberPhone}">
 							</div>
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberEmail">이메일</label>
 								</div>
-									<input type="text" name="memberEmail" id="memberEmail" class="input-form" value="" readonly>	                        
+									<input type="text" name="memberEmail" id="memberEmail" class="input-form" th:value="${session.m.memberEmail}" readonly>	                        
 									<span class="button-wrap">
 										<button type="button" id="emailChkBtn" class="dup-btn" disabled>중복확인</button>
 									</span>   
@@ -77,7 +77,7 @@
 								<div class="label-wrap">
 									<label for="memberAddr">배송지</label>
 								</div>
-									<input type="text" name="memberAddr" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요">
+									<input type="text" name="memberAddr" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요" th:value="${session.m.memberAddr}">
 									<span class="button-wrap">
 										<button type="button" id="addrBtn" class="addr-btn">배송지 변경</button>
 									</span>                            
@@ -121,8 +121,9 @@
 			
 	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->
-    <script src="/javascript/yeojeong_updateMemberInfo.js"></script>
+   
     <th:block th:include="common/footer"></th:block>
+     <script src="/javascript/yeojeong_updateMemberInfo.js"></script>
     
 </body>
 </html>
