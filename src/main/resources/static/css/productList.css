@@ -110,40 +110,37 @@
     color: white;
 }
 
-/* page-design */
-.page-design {
-    list-style-type: none;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 15px;
+/* 페이징 디자인 */
+.pagination {
+  list-style-type: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.page-design > li {
-    width: 40px;
-    height: 40px;
-    text-align: center;
-    line-height: 40px;
-    overflow: hidden;
+.pagination > li {
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+  overflow: hidden;
 }
-.page-design.circle-style > li {
-    border-radius: 20%;
+.pagination.circle-style > li {
+  border-radius: 50%;
 }
-.page-design > li > a.page-item {
-    color: rgb(28, 131, 148);
-    display: block;
-    width: 100%;
-    height: 100%;
-    font-size: 18px;
+.pagination > li > a.page-item {
+  display: block;
+  width: 100%;
+  height: 100%;
+  font-size: 18px;
 }
-.page-design > li > a.page-item > span.material-icons {
-    color: rgb(28, 131, 148);
-    display: block;
-    width: 100%;
-    height: 100%;
-    line-height: 40px;
+.pagination > li > a.page-item > span.material-icons {
+  display: block;
+  width: 100%;
+  height: 100%;
+  line-height: 40px;
 }
-.page-design .page-item.active-page {
-    background-color: rgb(28, 131, 148);
-    color: #fff;
+.pagination .page-item.active-page {
+  background-color: #252a34;
+  color: #fff;
 }

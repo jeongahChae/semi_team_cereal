@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>상품 상세보기</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"rel="stylesheet">
-    <link rel="stylesheet" href="/src/main/resources/static/css/productDetail.css">
+    <link rel="stylesheet" href="/css/productDetail.css">
     <script src="/javascript/jquery-3.7.0.js"></script>
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
@@ -15,20 +15,20 @@
             <span class="product-detail-category-arrow">></span>
             <a href="#"><span class="product-detail-category-sub">서브 카테고리</span></a>
         </div>
-        <div class="product-detail-content">
+        <div class="product-detail-content1">
             <div class="product-detail-subimg-box">
                 <div class="subimg-box1">
-                    <img src="/src/main/resources/static/img/detail1.jpg">
+                    <img src="/img/detail1.jpg">
                 </div>
                 <div class="subimg-box2">
-                    <img src="/src/main/resources/static/img/detail2.jpg">
+                    <img src="/img/detail2.jpg">
                 </div>
                 <div class="subimg-box3">
-                    <img src="/src/main/resources/static/img/detail3.jpg">
+                    <img src="/img/detail3.jpg">
                 </div>
             </div>
             <div class="product-detail-mainimg-box">
-                <img src="/src/main/resources/static/img/detail4.jpg">
+                <img src="">
             </div>
             <div class="product-detail-info">
                 <div class="detail-info1">
@@ -63,6 +63,59 @@
                         <button type="button" id="minus">-</button>
                     </div>
                 </div>
+                <div class="product-detail-info-totalPrice">
+                    <div class="info-totalPrice-title">주문금액</div>
+                    <div class="info-totalPrice">총 가격</div>
+                </div>
+                <div class="product-detail-btn-box">
+                    <button id="cart-btn">장바구니</button>
+                    <button id="purchase-btn">바로구매</button>
+                </div>
+            </div>
+        </div>
+        <div class="product-detail-content2">
+            <div class="product-detail-tab">
+                <div class="tab">
+                    <ul>
+                        <li>상품정보</li>
+                        <li>상품리뷰</li>
+                        <li>상품문의</li>
+                        <li>배송/교환/반품</li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="product-detail-img">
+                        <img src="./img/detail/w_1_d.jpg">
+                    </div>
+                    <div class="product-review">
+                    </div>
+                    <div class="product-qna">
+                    </div>
+                    <div class="product-etc">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="product-detail-content3">
+            <div class="product-detail-info-option2">
+                <select class="product-option2">
+                    <option value="">옵션</option>
+                </select>
+            </div>
+            <div class="product-detail-info-optionbox2">
+                <div class="option-count2">
+                    <button type="button" id="plus">+</button>
+                    <div class="count2">1</div>
+                    <button type="button" id="minus">-</button>
+                </div>
+            </div>
+            <div class="product-detail-info-totalPrice">
+                <div class="info-totalPrice-title">주문금액</div>
+                <div class="info-totalPrice">총 가격</div>
+            </div>
+            <div class="product-detail-btn-box2">
+                <button id="cart-btn">장바구니</button>
+                <button id="purchase-btn">바로구매</button>
             </div>
         </div>
 

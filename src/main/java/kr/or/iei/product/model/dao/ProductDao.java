@@ -12,6 +12,7 @@ import kr.or.iei.product.model.vo.ProductCategory;
 import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
+import kr.or.iei.product.model.vo.ProductFileRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
 @Repository
@@ -20,6 +21,8 @@ public class ProductDao {
 	private JdbcTemplate jdbc;
 	@Autowired
 	private ProductRowMapper productRowMapper;
+	@Autowired
+	private ProductFileRowMapper productFileRowMapper;
 	@Autowired
 	private ProductCateogryRowMapper productCategoryRowMapper;
 
@@ -67,6 +70,18 @@ public class ProductDao {
 		// 단일 값(행1, 열1)을 조회하는 경우
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
+	}
+
+	public Product selectOneProduct(int productNo) {
+		String query = "select * from product where product_no=?";
+		List list = jdbc.query(query, productRowMapper, productNo);
+		return (Product)list.get(0);
+	}
+
+	public List selectProductFile(int productNo) {
+		String query = "select * from product_file where product_no=?";
+		List list = jdbc.query(query, productFileRowMapper, productNo);
+		return list;
 	}
 
 
