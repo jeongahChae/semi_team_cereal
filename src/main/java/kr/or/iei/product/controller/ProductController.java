@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.iei.FileUtil;
 import kr.or.iei.product.model.service.ProductService;
+import kr.or.iei.product.model.vo.Option;
 import kr.or.iei.product.model.vo.Product;
 import kr.or.iei.product.model.vo.ProductCategory;
+import kr.or.iei.product.model.vo.ProductDetailData;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
 import kr.or.iei.product.model.vo.ProductFileListData;
@@ -74,7 +77,7 @@ public class ProductController {
 	}
 	
 	@PostMapping(value="/write")
-	public String productWrite(Product p, ProductCategory pc, MultipartFile[] upfile, MultipartFile[] upfile2, Model model) {
+	public String productWrite(Product p, Option o, ProductCategory pc, MultipartFile[] upfile, MultipartFile[] upfile2, Model model) {
 		ArrayList<ProductFile> fileList = null;
 		ArrayList<ProductDetailFile> dfileList = null;
 		System.out.println(upfile.length);
@@ -138,10 +141,8 @@ public class ProductController {
 		}
 		model.addAttribute("fileList",fileList);
 		model.addAttribute("dfileList", dfileList);
-		System.out.println(fileList);
 		p.setProductCategory(pc.getCategoryNo());
-		int result = productService.insertProduct(p, fileList, dfileList);
-		System.out.println(p);
+		int result = productService.insertProduct(p, o, fileList, dfileList);
 		if((fileList == null && dfileList == null && result == 1) || (fileList != null && dfileList == null && result == (fileList.size()+1)) || (dfileList != null && fileList == null  && result == (dfileList.size()+1)) || (dfileList != null && fileList != null && result == ((dfileList.size()+fileList.size()+1)))) {
 			model.addAttribute("title", "상품 등록 성공");
 			model.addAttribute("msg", "상품이 등록되었습니다.");
@@ -156,7 +157,23 @@ public class ProductController {
 	}
 	
 	@GetMapping(value="/productDetail")
-	public String productDetail() {
-		return "product/productDetail";
+	public String productDetail(int productNo, Model model) {
+		ProductDetailData pdd = productService.selectOneProduct(productNo);
+		if(pdd != null) {
+			model.addAttribute("p", pdd.getP());
+			return "product/productDetail";
+		}else {
+			model.addAttribute("title", "조회 실패");
+			model.addAttribute("msg", "이미 삭제된 게시물 입니다.");
+			model.addAttribute("icon", "info");
+			model.addAttribute("loc", "/product/productlist?reqPage=1");
+			return "common/msg";
+		}
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/option")
+	public List option() {
+
 	}
 }

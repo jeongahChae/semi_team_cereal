@@ -9,7 +9,7 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-    <div class="product-detail">
+    <div class="product-detail" th:each="p : ${p}">
         <div class="product-detail-category">
             <a href="#"><span class="product-detail-category-main">메인 카테고리</span></a>
             <span class="product-detail-category-arrow">></span>
@@ -33,18 +33,18 @@
             <div class="product-detail-info">
                 <div class="detail-info1">
                     <div class="product-detail-info-brand">ESSENTIAL<span class="sharp">#</span></div>
-                    <div class="product-detail-info-name">제품이름</div>
+                    <div class="product-detail-info-name" th:text="${p.productName}"></div>
                 </div>
                 <div class="product-detail-info-starrate"><span class="star">★</span> 4.7</div>
                 <div class="detail-info2">
-                    <div class="product-detail-info-percent">할인율%</div>
-                    <div class="product-detail-info-price">할인 전 가격</div>
+                    <div class="product-detail-info-percent" th:text="${p.productPercent}+${'%'}"></div>
+                    <div class="product-detail-info-price" th:text="${p.productPrice}+${'원'}"></div>
                 </div>
-                <div class="product-detail-info-final-price">제품 가격</div>
+                <div class="product-detail-info-final-price" th:text="${p.productFinalPrice}+${'원'}"></div>
                 <div class="detail-info3">
                     <div class="product-detail-info-point">
                         <div class="info-point-title">적립</div>
-                        <div class="info-point">가격의 5%</div>
+                        <div class="info-point" th:text="${p.productPoint}+${'p'}"></div>
                     </div>
                     <div class="product-detail-info-del">
                         <div class="info-del-title">배송</div>
