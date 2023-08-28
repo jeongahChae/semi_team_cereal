@@ -82,7 +82,10 @@ public class MyPageController {
 	}//registerOrderCancelChangeReturn(int btn, Model model)
 	//주문취소/교환/반품 3 - 교환/반품 내역
 	@GetMapping(value="orderCancel-change-return_3")
-	public String changeReturnHistory(int btn, Model model) {
+	public String changeReturnHistory(int btn, Model model, int reqPage, String selectTap, String reasonDetail, String order) {
+		
+		
+		
 		model.addAttribute("btn", btn);
       return "myPage/orderCancel-change-return_3";
 	}//changeReturnHistory(int btn, Model model)
