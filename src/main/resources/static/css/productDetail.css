@@ -258,7 +258,7 @@
 }
 
 .tab>ul>li.active-tab{
-    border-top: 1px solid #1C8394;
+    border-top: 3px solid #1C8394;
     border-left: 1px solid #1C8394;
     border-right: 1px solid #1C8394;
     color: #1C8394;

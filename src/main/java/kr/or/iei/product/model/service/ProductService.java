@@ -13,6 +13,7 @@ import kr.or.iei.product.model.vo.Product;
 import kr.or.iei.product.model.vo.ProductCategory;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
+import kr.or.iei.product.model.vo.ProductFileListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
 @Service
@@ -71,6 +72,17 @@ public class ProductService {
 		int end = reqPage * numPerPage;
 		int start = end - numPerPage + 1;
 		List productList = productDao.selectProductList(start,end);
+		/*
+		List에서 1개꺼내면 Product
+		그 Product에서 productNo
+		*/
+		for(int i=0; i<productList.size(); i++) {
+			Product p = (Product)productList.get(i);
+			List fileList = productDao.selectProductFile(p.getProductNo());
+			p.setFileList(fileList);
+			System.out.println(fileList);
+		}
+		
 		// 2. 페이지 네비게이션 제작
 		// 총 게시물 수 조회
 		int totalCount = productDao.selectProductTotalCount();
@@ -134,10 +146,5 @@ public class ProductService {
 		p.setFileList(fileList);
 		return p;
 	}
-
-	
-
-
-
 
 }

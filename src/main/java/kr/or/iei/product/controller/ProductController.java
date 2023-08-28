@@ -23,6 +23,7 @@ import kr.or.iei.product.model.vo.Product;
 import kr.or.iei.product.model.vo.ProductCategory;
 import kr.or.iei.product.model.vo.ProductDetailFile;
 import kr.or.iei.product.model.vo.ProductFile;
+import kr.or.iei.product.model.vo.ProductFileListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
 @Controller
@@ -43,7 +44,7 @@ public class ProductController {
 	@GetMapping(value="/productList")
 	public String productList(Model model, int reqPage) {
 		ProductListData pld = productService.selectProductList(reqPage);
-		model.addAttribute("productList", pld.getProductList());
+ 		model.addAttribute("productList", pld.getProductList());
 		model.addAttribute("pageNavi", pld.getPageNavi());
 		return "product/productList";
 	}

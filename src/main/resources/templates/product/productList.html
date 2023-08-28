@@ -15,8 +15,8 @@
             <li th:each="product : ${productList}">
                 <a href="#">
                     <img src="/img/list-cart.png" class="list-cart">
-                    <div class="product-img" th:each="productfile : ${fileList}">
-                        <img th:src="@{C:/Temp/upload/product/}+${productfile[0].filepath}">
+                    <div class="product-img" th:each="productFile : ${product.fileList}">
+                        <img th:src="@{/product/}+${productFile.filepath}">
                     </div>
                     <div class="product-info">
                         <div class="product-name" th:text="${product.productName}"></div>

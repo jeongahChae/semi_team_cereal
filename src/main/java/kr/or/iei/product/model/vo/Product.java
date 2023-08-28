@@ -21,6 +21,7 @@ public class Product {
 	private String productContent;
 	private int productFinalPrice;
 	private List fileList;
+	private String filepath;
 	//private String productOption;
 	//private int productAmount;
 }

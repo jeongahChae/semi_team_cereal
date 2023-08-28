@@ -79,10 +79,25 @@ public class ProductDao {
 	}
 
 	public List selectProductFile(int productNo) {
-		String query = "select * from product_file where product_no=?";
+		String query = "select * from product_file where file_no = (select min(file_no) from product_file where product_no=?)";
 		List list = jdbc.query(query, productFileRowMapper, productNo);
 		return list;
 	}
+/*
+	public String selectProductFilepath(int productNo) {
+		String query = "select * from product_file where file_no = (select min(file_no) from product_file where product_no=?)";
+		List list = jdbc.query(query, productFileRowMapper, productNo);
+	
+		ProductFile f = (ProductFile)list.get(0);
+		if(f == null) {
+			return "ex1.jpg";
+		}else {
+			return f.getFilepath();
+		}
+		
+	}
+*/	
+
 
 
 
