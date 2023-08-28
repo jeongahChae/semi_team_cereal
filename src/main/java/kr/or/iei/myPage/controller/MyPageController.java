@@ -27,6 +27,7 @@ public class MyPageController {
 	//개인정보수정
 	@GetMapping(value="updateMemberInfo")
 	public String updateMemberInfo(int btn, Model model) {
+		System.out.println("update");
 		model.addAttribute("btn", btn);
 		return "myPage/updateMemberInfo";
 	}//orderHistoryDeliveryStatus1()

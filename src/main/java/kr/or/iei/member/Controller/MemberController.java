@@ -34,7 +34,7 @@ public class MemberController {
 		Member m = memberService.selectOneMember(signId, signPw);
 		if (m != null) {
 			session.setAttribute("m", m);
-
+			System.out.println(m.getMemberId());
 			model.addAttribute("title", "로그인 성공");
 			model.addAttribute("msg", "로그인에 성공하셨습니다.");
 			model.addAttribute("icon", "success");
@@ -51,10 +51,15 @@ public class MemberController {
 		return "common/msg";
 
 	}
-	/*
-	 * @GetMapping(value = "/logout") public String logout(HttpSession session) { //
-	 * 현재 세션에 저장되어있는 정보 파기 session.invalidate(); return "redirect:/"; }
-	 */
+	
+	@GetMapping(value = "/logout")
+	public String logout(HttpSession session) {	
+		
+		session.invalidate();
+		System.out.println("logout");
+		return "redirect:/";
+	}
+	
 
 	@GetMapping(value = "/yeojeong_signupFrm")
 	public String signupFrm() {
