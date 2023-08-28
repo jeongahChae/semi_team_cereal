@@ -52,7 +52,8 @@ h2{
     margin: 0 auto;
 }
 .label-wrap{
-    display: inline-block;    
+    display: inline-block; 
+    float:left;   
     width: 200px;    
 }
 input::placeholder{

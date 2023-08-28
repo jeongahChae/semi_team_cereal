@@ -25,12 +25,12 @@
 						<form name="" action="" method="post">
 							<input type="hidden" name="checkId">
 						</form>
-						<form action="" method="post" id="" class="all-input-wrap">
+						<form action="/member/update" method="post" name="updateFrm" class="all-input-wrap">
 							<div class="input-wrap">                      
 									<div class="label-wrap">
 										<label for="memberId">아이디</label>
 									</div>
-									<input type="text" name="memberId" id="memberId" class="input-form" placeholder="아이디를 입력해주세요">	                                                                                                                   
+									<input type="text" name="memberId" id="memberId" class="input-form" value="" readonly>	                                                                                                                   
 							</div>	                                         
 							<div class="input-wrap">    
 								<div class="label-wrap">
@@ -43,31 +43,31 @@
 								<div class="label-wrap">
 									<label for="memberPwnew">새 비밀번호</label>
 								</div>
-									<input type="password" name="memberPwnew" id="memberPwnew" class="input-form" placeholder="새 비밀번호를 입력해주세요" required>	                        
+									<input type="password" name="memberPwnew" id="memberPwnew" class="input-form" placeholder="새 비밀번호를 입력해주세요">	                        
 							</div>
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberPwNewre">새 비밀번호 확인</label>
 								</div>
-									<input type="password" name="memberPwNewre" id="memberPwNewre" class="input-form" placeholder="새 비밀번호를 다시 입력해주세요" required>	                        
+									<input type="password" name="memberPwNewre" id="memberPwNewre" class="input-form" placeholder="새 비밀번호를 다시 입력해주세요">	                        
 							</div>
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberName">이름</label>
 								</div>
-									<input type="text" name="memberName" id="memberName" class="input-form" placeholder="이름을 입력해주세요" required>	                        
+									<input type="text" name="memberName" id="memberName" class="input-form" value="" readonly>	                        
 							</div>
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberPhone">연락처</label>
 								</div>
-									<input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)" required>
+									<input type="text" name="memberPhone" id="memberPhone" class="input-form" placeholder="전화번호를 입력해주세요(예:01023233434)">
 							</div>
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberEmail">이메일</label>
 								</div>
-									<input type="text" name="memberEmail" id="memberEmail" class="input-form" placeholder="예: essential@essential.com" required>	                        
+									<input type="text" name="memberEmail" id="memberEmail" class="input-form" value="" readonly>	                        
 									<span class="button-wrap">
 										<button type="button" id="emailChkBtn" class="dup-btn" disabled>중복확인</button>
 									</span>   
@@ -75,9 +75,9 @@
 							
 							<div class="input-wrap">                        
 								<div class="label-wrap">
-									<label for="memberAddr">배송지<sup class="star">*</sup></label>
+									<label for="memberAddr">배송지</label>
 								</div>
-									<input type="text" name="memberAddr" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요" required>
+									<input type="text" name="memberAddr" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요">
 									<span class="button-wrap">
 										<button type="button" id="addrBtn" class="addr-btn">배송지 변경</button>
 									</span>                            
@@ -121,7 +121,7 @@
 			
 	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->
-    
+    <script src="/javascript/yeojeong_updateMemberInfo.js"></script>
     <th:block th:include="common/footer"></th:block>
     
 </body>

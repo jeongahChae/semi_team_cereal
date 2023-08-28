@@ -72,6 +72,9 @@ input::placeholder{
 input[type=text]{
     padding-left: 10px;
 }
+input[type=password]{
+    padding-left: 10px;
+}
 .addrInfo{
     font-size: small;
     padding-top: 0;
@@ -186,8 +189,6 @@ input[type=text]{
 /* 아이디 중복확인 모달 css */
 .modal_body>p{
     font-size: 20px;
-   
-
 }
 
 .chkBtn{
@@ -201,5 +202,7 @@ input[type=text]{
 
 /*comment 창 수정*/
 .comment-wrap{
-    padding-left: 200px;
+    padding-left: 210px;
 }
+/* 상세주소 창 수정 */
+
