@@ -14,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.or.iei.FileUtil;
@@ -21,6 +22,7 @@ import kr.or.iei.notice.model.vo.NoticeFile;
 import kr.or.iei.notice.model.service.NoticeService;
 import kr.or.iei.notice.model.vo.Notice;
 import kr.or.iei.notice.model.vo.NoticeListData;
+import kr.or.iei.notice.model.vo.NoticeViewData;
 
 @Controller
 @RequestMapping(value = "/notice")
@@ -43,8 +45,8 @@ public class NoticeController {
 	
 	@GetMapping(value = "/view")
 	public String noticeView(int noticeNo, Model model) {
-		Notice n = noticeService.selectOneNotice(noticeNo);
-		model.addAttribute("n", n);
+		NoticeViewData nvd = noticeService.selectOneNotice(noticeNo);
+		model.addAttribute("n", nvd.getN());
 		model.addAttribute("btn", 0);
 		return "notice/noticeView";
 	}
@@ -60,7 +62,7 @@ public class NoticeController {
 		ArrayList<NoticeFile> fileList = null;
 		if(!upfile[0].isEmpty()) {
 			fileList = new ArrayList<NoticeFile>();
-			String savepath = root+"notice/";
+			String savepath = root+"notice1/";
 			for(MultipartFile file : upfile) {
 				String filename = file.getOriginalFilename();
 				String filepath = fileUtil.getFilepath(savepath, filename);
@@ -98,7 +100,7 @@ public class NoticeController {
 	public String deleteNotice(int noticeNo, Model model) {
 		List list = noticeService.deleteNotice(noticeNo);
 		if(list != null) {
-			String savepath = root+"notice/";
+			String savepath = root+"notice1/";
 			for(Object obj : list) {
 				NoticeFile file = (NoticeFile)obj;
 				File delfile = new File(savepath+file.getFilepath());
@@ -121,7 +123,7 @@ public class NoticeController {
 	@PostMapping(value = "/update")
 	public String update(Notice n, MultipartFile[] addfile, int[] delFileNo, Model model) {
 		ArrayList<NoticeFile> fileList = null;
-		String savepath = root+"notice/";
+		String savepath = root+"notice1/";
 		if(!addfile[0].isEmpty()) {
 			fileList = new ArrayList<NoticeFile>();
 			for(MultipartFile file : addfile) {
@@ -143,14 +145,31 @@ public class NoticeController {
 		}
 		List list = noticeService.updateNotice(n,fileList,delFileNo);
 		if(list != null) {
+			for(Object item : list) {
+				NoticeFile file = (NoticeFile)item;
+				File delFile = new File(savepath+file.getFilepath());
+				delFile.delete();
+			}
 			model.addAttribute("btn",0);
-			return "/notice/view?noticeNo="+n.getNoticeNo();
+			return "redirect:/notice/view?noticeNo="+n.getNoticeNo();
 		}else {
-			//error났을경우
 			return "/";
 		}
 	}
-	
+	@ResponseBody
+	@PostMapping(value = "/noticeEditor", produces = "plain/text;charset=utf-8")
+	public String editorUpload(MultipartFile file) {
+		String savepath = root+"noticeEditor/";
+		String filepath = fileUtil.getFilepath(savepath, file.getOriginalFilename());
+		File image = new File(savepath+filepath);
+		try {
+			file.transferTo(image);
+		} catch (IllegalStateException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return "/noticeEditor/"+filepath;
+	}
 }
 
 

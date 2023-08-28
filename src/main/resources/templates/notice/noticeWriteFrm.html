@@ -8,6 +8,7 @@
 </head>
 <body>
 	<th:block th:include="common/header"></th:block>
+	<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <div class="wrap-content">
         <th:block th:include="common/serviceCenterSide"></th:block>
         <div class="page-content">
@@ -18,43 +19,26 @@
                 <form action="/notice/write" method="post" enctype="multipart/form-data">
                     <table class="tbl notice-tbl">
                         <tr>
-                            <th style="width: 15% "><label for="writeFrmTitle">제목</label></th>
+                            <th style="width: 14% "><label for="writeFrmTitle">제목</label></th>
                             <td>
                                 <input type="text" name="noticeTitle" id="writeFrmTitle" class="input-form" placeholder="제목을 입력해주세요">
                             </td>
-                            <td>
+                            <td style="display: none">
                                 <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
                                 <input type="hidden" name="noticeWriter" value="admin">
                             </td>
                         </tr>
                         <tr></tr>
                         <tr>
-                            <th class="content-tr"><label for="writeFrmContent">내용</label></th>
+                            <th>파일첨부</th>
                             <td>
-                                <textarea name="noticeContent" id="writeFrmContent" class="input-form" placeholder="내용을 입력해주세요"></textarea>
+                                <input type="file" name="upfile" multiple>
                             </td>
                         </tr>
                         <tr class="not-border-bottom">
-                            <th></th>
-                            <!-- 사진첨부 -->
+                            <th class="content-tr"><label for="writeFrmContent">내용</label></th>
                             <td>
-                                <div class="img-attach-line">
-                                    <!-- 사진이 추가되면 작은 사진이 div.img-box로 추가 되게 만들기. -->
-                                    <!-- 시간이 된다면 3개까지 가능하도록 구현하자.(마켓컬리 1:1문의 사진넣기 참조.) -->
-                                    <div class="img-box-add" style="display: none;">
-                                        <div class="photo-img"></div>
-                                    </div>
-                                    <div class="img-box">
-                                        <label for="photo-picker" class="photo-picker-label" style="cursor: pointer;">
-                                                <span class="material-icons-outlined camera-icon">photo_camera</span>
-                                                <input type="file" name="upfile" multiple style="display: none;" id="photo-picker">
-                                        </label>
-                                    </div>
-                                </div>
-                                <ul class="img-ul">
-                                    <li>30MB 이하의 이미지만 업로드 가능합니다.</li>
-                                    <li>사진은 최대 1개까지 등록 가능합니다.</li>
-                                </ul>
+                                <textarea name="noticeContent" id="writeFrmContent" class="input-form" placeholder="내용을 입력해주세요"></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -83,5 +67,7 @@
     <th:block th:include="common/footer"></th:block>
 </body>
 <link rel="stylesheet" href="/css/notice.css">
+<script src="/summernote/summernote-lite.js"></script>
+<script src="/summernote/lang/summernote-ko-KR.js"></script>
 <script src="/javascript/notice.js"></script>
 </html>
