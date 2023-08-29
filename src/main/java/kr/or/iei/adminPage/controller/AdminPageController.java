@@ -138,6 +138,7 @@ public class AdminPageController {
     	return "adminPage/dashboard";
     }
     
+    
     //카테고리별 매출
     @ResponseBody
     @GetMapping(value="/findCategorySales")
@@ -146,4 +147,5 @@ public class AdminPageController {
     	List categorySalesList = adminPageService.selectCategorySales(year, strMonth, category);
     	return categorySalesList;
     }
+    
 }//AdminPageController

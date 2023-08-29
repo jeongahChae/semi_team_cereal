@@ -11,6 +11,7 @@ import kr.or.iei.myPage.vo.Order;
 import kr.or.iei.myPage.vo.OrderCancelRowMapper;
 import kr.or.iei.myPage.vo.OrderCancelRowMapper2;
 import kr.or.iei.myPage.vo.OrderRowMapper;
+import kr.or.iei.product.model.vo.ProductReviewRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
 @Repository
@@ -27,6 +28,8 @@ public class MyPageDao {
 	private OrderCancelRowMapper orderCancelRowMapper;
 	@Autowired
 	private OrderCancelRowMapper2 orderCancelRowMapper2;
+	@Autowired
+	private ProductReviewRowMapper productReviewRowMapper;
 	
 	//전체 주문 내역
 	public List selectAllOrderList(int start, int end) {
@@ -92,7 +95,7 @@ public class MyPageDao {
 	//찜목록 - 전체 조회
 	public List selectAllLikeList(int start, int end) {
 		String query = "select * from (select rownum as rnum, n. * from (select * from like_list order by 1 desc)n) where rnum between ? and ?";
-		List likeList = jdbc.query(query, likeRowMapper, start, end); //문제
+		List likeList = jdbc.query(query, likeRowMapper, start, end);  
 		System.out.println("dao");
 		System.out.println(likeList.size());
 		for(int i=0;i<likeList.size();i++) {
@@ -111,7 +114,7 @@ public class MyPageDao {
 	//상품 후기 목록
 	public List selectAllreview(int start, int end) {
 		String query = "select * from (select rownum as rnum, n. * from (select * from product_review order by 1 desc)n) where rnum between ? and ?";
-		List reviewList = jdbc.query(query, productRowMapper, start, end); //reviewRowMapper로 대체 해야함
+		List reviewList = jdbc.query(query, productReviewRowMapper, start, end); 
 		return reviewList;
 	}
 

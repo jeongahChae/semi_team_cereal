@@ -110,6 +110,7 @@ public class AdminPageDao {
 		return avgSales;
 	}
 	
+	
 	//카테고리별 매출 조회ㅠ ㅠ
 	public List selectCategorySales(int year, String strMonth, int category) {
 		String query = "select category_ref, category_no, category_name, sum(total_price)" + 
@@ -119,4 +120,5 @@ public class AdminPageDao {
 		List list = jdbc.query(query, categorySalesRowMapper, date);
 		return list;
 	}
+	
 }
