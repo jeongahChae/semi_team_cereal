@@ -11,4 +11,5 @@ public class ProductCategory {
 	private int categoryNo;
 	private String categoryName;
 	private int categoryRef;
+	private int categorySales;
 }

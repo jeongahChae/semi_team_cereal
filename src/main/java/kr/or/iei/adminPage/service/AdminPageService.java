@@ -157,5 +157,10 @@ public class AdminPageService {
 		ProductListData pld = new ProductListData(productList, pageNavi, totalCount);
 		return pld;
 	}
+
+	public List selectCategorySales(int year, int month, int category) {
+		List categorySalesList = adminPageDao.selectCategorySales(year,month, category);
+		return categorySalesList;
+	}
 	
 }

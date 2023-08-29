@@ -16,6 +16,7 @@ public class ProductCateogryRowMapper implements RowMapper<ProductCategory> {
 		pc.setCategoryName(rs.getString("category_name"));
 		pc.setCategoryNo(rs.getInt("category_no"));
 		pc.setCategoryRef(rs.getInt("category_ref"));
+		pc.setCategorySales(rs.getInt("sum(total_price)"));
 		return pc;
 	}
 	
