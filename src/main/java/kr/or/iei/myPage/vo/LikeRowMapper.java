@@ -14,7 +14,7 @@ public class LikeRowMapper implements RowMapper<LikeList>{
 		LikeList likeList = new LikeList();
 		likeList.setLikeNo(rs.getInt("like_no"));
 		likeList.setProductName(rs.getString("product_name"));
-		likeList.setOptionNo(rs.getInt("option_no"));
+		//likeList.setProductNo(rs.getInt("product_no"));
 		likeList.setProductPrice(rs.getInt("product_price"));
 		return likeList;
 	}

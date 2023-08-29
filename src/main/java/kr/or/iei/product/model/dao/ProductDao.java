@@ -105,7 +105,7 @@ public class ProductDao {
 		Object[] params = {productNo, o.getOptionAmount(), o.getOptionName()};
 		int option = jdbc.update(query, params);
 		return option;
-	}	
+	}
 
 
 

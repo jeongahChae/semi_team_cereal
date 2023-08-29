@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>ESSENTIAL#</title>
+<link rel="stylesheet" href="/css/aboutUs.css">
+<link rel="stylesheet" href="/css/likeItList.css">
+<link rel="stylesheet" href="/css/allProductList.css">
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+	<div class="us-wrap">
+		<div class="us-title">
+			<br>
+			<h1>장바구니</h1>
+		</div>
+	
+        <div><span class="guide-ment">찜한 상품은 최대 50개까지 저장됩니다.</span></div>
+
+		<div class="news-list">
+			<th:block th:if="${cil == null}">
+				<span class="guide-ment" style="text-align:center;">장바구니 비었음</span>
+			</th:block>
+			<th:block th:if="${cil != null}">
+			<div class="allProductList-table-wrap">
+            <table>
+                <tbody>
+                	<tr>
+   						<th style="width: 10%"></th>
+						<th style="width: 50%;">제목</th>
+						<th style="width: 25%;">작성일</th>
+						<th style="width: 10%;">조회수</th>
+                	</tr>
+                    <tr th:each="cart : ${cil}">
+                    	<td></td>
+	                    <td class="img-container">
+							<a th:text ="${cart.productName}"></a><!--  th:href="@{/prodcut/productDetail(productNo=${cart.productNo})}" -->
+	                        <img src="/img/sample-img.jpg" width="150px">
+	                    </td>
+	                    <!-- 
+	                    <td class="product-info">
+	                        <span th:text="${like.productName}"></span><br>
+	                        <span th:text="${like.productPrice}"></span>
+	                    </td>
+	                    <td class="button-container">
+	                        <button type="button" class="removeBtn">삭제</button><br>
+	                        <button type="button" class="cartBtn">장바구니 담기 </button>
+	                    </td>
+	                     -->
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+            </th:block>
+		</div>
+		<div id="pageNavi" th:utext="${pageNavi}"></div>
+        </div>
+
+	<th:block th:include="common/footer"></th:block>
+</body>
+</html>

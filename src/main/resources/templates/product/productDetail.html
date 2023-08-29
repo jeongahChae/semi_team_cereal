@@ -52,7 +52,7 @@
                     </div>
                 </div>
                 <div class="product-detail-info-option">
-                    <select class="product-option">
+                    <select class="product-option" name="optionNo">
                         <option value="">옵션</option>
                     </select>
                 </div>
@@ -68,7 +68,7 @@
                     <div class="info-totalPrice">총 가격</div>
                 </div>
                 <div class="product-detail-btn-box">
-                    <button id="cart-btn">장바구니</button>
+                    <button id="cart-btn" th:onclick="addToCart([[${optionNo}]])">장바구니</button>
                     <button id="purchase-btn">바로구매</button>
                 </div>
             </div>
@@ -101,7 +101,7 @@
         </div>
         <div class="product-detail-content3">
             <div class="product-detail-info-option2">
-                <select class="product-option2">
+                <select class="product-option2" name="optionNo">
                     <option value="">옵션</option>
                 </select>
             </div>

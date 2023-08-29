@@ -22,3 +22,4 @@ $(function () {
       $(".modal").fadeOut(500);
     }
   });
+
