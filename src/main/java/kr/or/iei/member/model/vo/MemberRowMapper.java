@@ -23,6 +23,7 @@ public class MemberRowMapper implements RowMapper<Member>{
 		m.setBirthDate(rs.getString("birth_date"));
 		m.setEnrollDate(rs.getString("enroll_date"));
 		m.setMemberLevel(rs.getInt("member_level"));		
+		m.setDetail(rs.getString("detail"));
 		return m;
 	}
 	
