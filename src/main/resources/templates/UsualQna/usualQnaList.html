@@ -2,11 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <script src="/javascript/jquery-3.7.0.js"></script>
 <head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
 <meta charset="UTF-8">
 <title>자주하는 질문 List</title>
 </head>
 <body>
     <th:block th:include="common/header"></th:block>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
     <div class="wrap-content">
         <th:block th:include="common/serviceCenterSide"></th:block>
         <div class="page-content">
@@ -28,20 +30,28 @@
                     </tr>
                     <tr>
                         <td class="qnaContent" colspan="3" style="display: none; text-align: left">
-                            <div th:text="${usualQna.qnaContent}"></div>
+                            <span class="material-icons-outlined" style="float: left; color: #1C8394;">support_agent</span>
+                            <div th:utext="${usualQna.qnaContent}" style="padding-left: 30px;"></div>
                             <!-- 수정삭제는 관리자 로그인 시에만 가능하도록 만들기 -->
                             <div class="btn-line2">
-                                <a class="basic-btn" href="#">수정</a>
-                                <a class="cancel-btn" href="#">삭제</a>
+                                <a class="basic-btn" th:href="@{/usualQna/updateFrm(qnaNo=${usualQna.qnaNo})}">수정</a>
+                                <button class="cancel-btn" th:onclick="usualQnaDelete([[${usualQna.qnaNo}]])">삭제</button>
                             </div>
                         </td>
                     </tr>
                 </th:block>
             </table>
+            <div class="btn-line2">
+                <!-- th:if="${session.m != null && session.m.memberLevel == 1}" 잠시 제외 -->
+                <a class="basic-btn" href="/usualQna/writeFrm">작성하기</a>
+            </div>
+            <div id="pageNavi" th:utext="${pageNavi}"></div>
         </div>
     </div>
     <th:block th:include="common/footer"></th:block>
 </body>
 <link rel="stylesheet" href="/css/notice.css">
-<script src="/javascript/notice.js"></script>
+<script src="/summernote/summernote-lite.js"></script>
+<script src="/summernote/lang/summernote-ko-KR.js"></script>
+<script src="/javascript/usualQna.js"></script>
 </html>
