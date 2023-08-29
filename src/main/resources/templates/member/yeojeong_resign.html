@@ -4,58 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/src/main/resources/static/css/yeojeong_resign.css">
+    <script src="/src/main/resources/static/javascript/jquery-3.7.0.js"></script>
 </head>
 <body>
-    <div class="resign-all-wrap">
-        <div class="resign-wrap">
-            <div class="resign-title">
-                <h2>회원탈퇴안내</h2>
-                <hr>
+    <div class="wrap-content">
+        <div class="resign-all-wrap">
+            <div class="resign-wrap">
+                <div class="resign-title">
+                    <h2>회원탈퇴안내</h2>
+                    <hr>
+                </div>
+                <div class="resign-content">
+                    <div class="resign-info-wrap">
+                        <div class="resign-info">
+                            <div class="label-wrap">
+                                <label for="info-title">회원탈퇴안내</label>                    
+                            </div>
+                            <div class="content-wrap">
+                                <div name="commment" id="info-content">
+                                    고객님께서 회원 탈퇴를 원하신다니 저희 쇼핑몰의 서비스가 많이 부족하고 미흡했나 봅니다. 불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서 고객님의 불편함을 해결해 드리도록 노력하겠습니다.
+                                </div>
+                                <div name="commment" id="caution-title">
+                                    아울러 회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다. 
+                                </div>
+                                <ul name="comment" id="caution-content">
+                                    <li>1. 회원 탈퇴 시 고객님의 정보는 상품 반품 및 A/S를 위해 전자상거래 등에서의 소비자 보호에 관한 법률에 의거한 고객정보 보호정책에 따라 관리됩니다.</li> 
+                                    <li>2. 탈퇴 시 고객님께서 보유하셨던 적립금은 모두 삭제됩니다.</li>
+                                    <li>3. 회원 탈퇴 후 3개월간 재가입이 불가능합니다. </li>
+                                </ul>
+                            </div>
+                            
+                        </div>
+                       
+                    </div>        
+                
+                        
+                            
+               
+                    <div class="input-password">
+                        <div class="label-wrap">
+                            <label for="inputpw-title">비밀번호 입력</label>                    
+                        </div>
+                        <div class="input-wrap">
+                            <input type="text" name="inputPw" id="inputPw" placeholder="현재 비밀번호를 입력해주세요">
+                        </div>
+                    </div>
+                    <div class="complain-wrap">
+                        <div class="label-wrap">
+                            <label for="complain-title">무엇이 불편하였나요?</label>  
+                        </div>
+                        <div class="content-wrap">
+                            <div class="complain">
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">고객서비스(상담,포장)불만
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">배송 불만
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">교환/환불/반품 불만
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">방문 빈도가 낮음
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">상품가격 불만
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">개인 정보유출 우려
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">쇼핑몰의 신뢰도 불만
+                                </div>
+                                <div class="input-wrap">
+                                    <input type="checkbox" class="complain-content">쇼핑 기능 불만
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="resign-btn">
+                    <button type="submit" id="resignBtn">탈퇴하기</button>                        
+                </div>
+    
             </div>
-            <div class="resign-info">
-                <div class="label-wrap">
-                    <label for="info-title">회원탈퇴안내</label>                    
-                </div>
-                <div class="content-wrap">
-                    <textarea name="commment" id="info-content">
-                        고객님꼐서 회원 탈퇴를 원하신다니 저희 쇼핑몰의 서비스가 많이 부족하고 미흡했나 봅니다. 불편하셨던 점이나 불만사항을 알려주시면 적극 반영해서 고객님의 불편함을 해결해 드리도록 노려하겠습니다.
-                    </textarea>
-                    <textarea name="commment" id="caution-title">
-                        아울러 회원 탈퇴시의 아래 사항을 숙지하시기 바랍니다. 
-                    </textarea>
-                    <textarea name="comment" id="caution-content">
-                        1. 회원 탈퇴 시 고객님의 정보는 상품 반품 및 A/S를 위해 전자상거래 등에서의 소비자 보호에 관한 법률에 의거한 고객정보 보호정책에 따라 관리됩니다. 2. 탈퇴 시 고객님께서 보유하셨던 적립금은 모두 삭제됩니다. 3. 회원 탈퇴 후 3개월간 재가입이 불가능합니다. 
-                    </textarea>
-                </div>
-            </div>
-            <div class="input-password">
-                <div class="label-wrap">
-                    <label for="inputpw-title">비밀번호 입력</label>                    
-                </div>
-                <div class="input-wrap">
-                    <input type="text" name="inputPw" id="inputPw" placeholder="현재 비밀번호를 입력해주세요">
-                </div>
-            </div>
-            <div class="complain-wrap">
-                <div class="label-wrap">
-                    <label for="complain-title">무엇이 불편하였나요?</label>  
-                </div>
-                <div class="ul-wrap">
-                    <ul class="complain">
-                        <li>고객서비스(상담,포장 등)불만</li>
-                        <li>배송불만</li>
-                        <li>교환/환불/반품 불만</li>
-                        <li>방문 빈도가 낮음</li>
-                        <li>상품가격 불만</li>
-                        <li>개인 정보유출 우려</li>
-                        <li>쇼핑몰의 신뢰도 불만</li>
-                        <li>쇼핑 기능 불만</li>
-                    </ul>
-                </div>
-            </div>
-
+    
         </div>
-
     </div>
+    
 </body>
 </html>

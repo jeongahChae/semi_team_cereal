@@ -1,0 +1,81 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+*{  
+    /*
+    #1C8394 #154B52 #000B0D #390D02 #A52502
+    */
+    margin:0;
+    padding:0;
+    color:#333333;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.wrap-content{
+    display: flex;
+    width: 1200px;
+    padding: 50px 0 80px 0;
+    margin: 0 auto;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 30px;
+}
+.resign-all-wrap{
+    
+    padding: 5px 0 15px 1px;
+    
+    
+}
+.resign-content{
+    width: 800px;
+   
+    
+}
+
+.resign-info-wrap{
+    padding-top:20px;
+    
+}
+.input-password{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.label-wrap{
+    font-size: 20px;
+    display: inline-block;
+    width: 200px !important;
+    
+}
+label{
+    vertical-align: top;
+}
+.content-wrap{
+    display: inline-block;
+}
+.no-title-wrap{
+    width:200px;
+}
+.content-wrap{
+    width: 580px;
+}
+.input-password{
+    overflow: hidden;
+}
+.input-password>div{
+    float:left;
+}
+input[name="inputPw"]{
+    width: 400px;
+    height: 50px;
+    border-radius: 3px;
+    padding-left: 10px;
+}
+
+li{
+    list-style-type: none;
+}
+
