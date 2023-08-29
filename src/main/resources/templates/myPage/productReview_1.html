@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>상품후기</title>
     <link rel="stylesheet" href="/css/productReview_1.css">
+	<link rel="stylesheet" href="/css/productReview(modal)_2.css">
 </head>
 <body>
     
@@ -15,7 +16,7 @@
 
 
 		<th:block th:include="myPage/myPageList"></th:block>
-
+		
 
 	    <div class="product-review-wrap">
 	        
@@ -62,13 +63,63 @@
 	
 	
 			<div id="pageNavi" th:utext="${pageNavi}"></div>	
+			
+			
 	            
 	    </div> <!--<div class="product-review-wrap">-->
 
 	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->
     
-    <th:block th:include="common/footer"></th:block>
+     <div class="modal">
+        <div class="modal_body">
+    <!---------------------------------------------------------------------------->
+		    <div id="modal-write-review" class="modal-background">
+		        <div class="modal-write-review-wrap">
+		            <div class="modal-head">
+		                <h2 class="modal-h2">후기 작성</h2>
+		                <div class="modal-product-info">
+		                    <div class="modal-img-container">
+		                        <img src="/img/sample-img.jpg" width="150px">
+		                    </div>
+		                    <span class="modal-product-title">[ESSENTIAL#]유리 보틀</span>
+		                </div>
+		                <div class="modal-button-container">
+		                    <button type="button" class="modal-insert-file-btn">첨부파일</button>
+		                </div>
+		            </div> <!--<div class="modal-head">-->
+		            
+		            <div class="modal-body">
+		                <div class="modal-textarea-container">
+		                    <textarea class="modal-review-detail">상품 후기 상세 내용</textarea>
+		                </div>
+		                <div class="modal-registerBtn-wrap">
+		                    <button type="button" class="modal-registerBtn">작성완료</button>
+		                </div> <!--<div class="moreBtn-wrap">-->
+		            </div> <!--<div class="modal-body">-->
+		        </div> <!--<div class="write-review-modal-wrap">-->
+		    </div> <!--<div id="write-review-modal" class="modal-background">-->
+    <!---------------------------------------------------------------------------->
+    	</div>
+    </div>
     
+    
+    
+    <th:block th:include="common/footer"></th:block>
+    <script>
+	    $(".write-review").click(function(){
+	    	$(".modal").fadeIn(500);
+	    });
+	
+	    $(document).mouseup(function (e){
+	    	if($(".modal").has(e.target).length === 0){
+	    		$(".modal").fadeOut(500);
+	    	}
+	    });
+
+		$(".modla-registerBtn").on("click", function(){
+			//작성 예정
+		});
+    </script>
 </body>
 </html>

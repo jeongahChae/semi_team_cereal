@@ -4,45 +4,99 @@
 .notosanskr * { 
     font-family: 'Noto Sans KR', sans-serif;
 }
+
 *{
     padding: 0;
     margin: 0;  
     color: #333333;
     font-family: 'Noto Sans KR', sans-serif;
 }
-.write-review-modal-wrap{
-    padding: 30px;
-    width: 740px;
+
+
+
+
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    background-color: rgba(0, 0, 0, 0.4);
+    
+}
+.modal.show {
+    display: block;
+}
+.modal_body {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    padding: 40px;
+    text-align: center;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    box-shadow: 0 2px 3px 0 rgba(34, 36, 38, 0.15);
+    transform: translateX(-50%) translateY(-50%);
+}
+.modal-open-btn{
+    color: white;
+    background-color: #1C8394;
+    width: 200px;
+    height: 50px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: none;
+}
+
+
+
+.modal-background{
+    text-align: center;
+    width: 500px;
+}
+.modal-write-review-wrap{
+    width: 500px;
     height: 600px;
 }
-h2{
+.modal-h2{
     padding-bottom: 10px;
-}
-.product-info{
-    padding: 10px;
-    width: 720px;
-    height: 150px;
-    overflow: hidden;
-    border-top: 2px solid #333;
-    border-bottom: 1.5px solid #333;
-    margin-bottom: 10px;
-}
-.img-container{
-    width: 150px;
-    height: 150px;
     float: left;
 }
-.product-title{
+.modal-product-info{
+    clear: both;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: 2px solid #333;
+    border-bottom: 1.5px solid #333;
+}
+.modal-img-container{
+    width: 150px;
+    height: 150px;
+    margin-left: 20px;
+    float: left;
+}
+.modal-product-title{
     clear: both;
     display: inline-block;
-    margin-left: 40px;
     line-height: 150px;
 }
-.button-container{
+.modal-button-container{
     text-align: center;
-    margin-bottom: 10px;
+    height: 35px;
+    line-height: 35px;
 }
-.insert-file-btn{
+.modal-insert-file-btn{
     width: 100px;
     height: 25px;
     font-weight: bold;
@@ -51,27 +105,25 @@ h2{
     border-radius: 2px;
     cursor: pointer;
 }
-.textarea-container{
-    width: 740px;
+.modal-textarea-container{
+    width: 500px;
     height: 300px;
     margin-bottom: 5px;
 }
-.review-detail{
+.modal-review-detail{
     font-size: 1.1em;
     padding: 10px;
-    width: 720px;
+    width: 476px;
     height: 280px;
     resize: none;
     border: 1.5px solid #9e9e9e;
     outline: none;
 }
-
-
-
-.registerBtn-wrap{
+.modal-registerBtn-wrap{
     text-align: right;
 }
-.registerBtn{
+.modal-registerBtn{
+    margin-top: 5px;
     background-color: #1C8394;
     border: none;
     width: 150px;
@@ -80,7 +132,4 @@ h2{
     font-weight: bold;
     color: #fff;
     cursor: pointer;
-}
-form{
-    display: inline;
 }
