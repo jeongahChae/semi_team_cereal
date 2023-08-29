@@ -4,6 +4,15 @@ $(function(){
     $(".tab>ul>li").eq(1).addClass("active-tab2");
     $(".tab>ul>li").eq(2).addClass("active-tab2");
     $(".tab>ul>li").eq(3).addClass("active-tab2");
+
+    $.ajax({
+        url : "/product/option",
+        type : "get",
+        dataType : "json",
+        success : function(data){
+            console.log(data);
+        }
+    });
 });
 
 const tabs = $(".tab>ul>li");

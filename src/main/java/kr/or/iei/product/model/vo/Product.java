@@ -24,4 +24,7 @@ public class Product {
 	private List dfileList;
 	private String optionName;
 	private int optionAmount;
+	private List optionList;
+	//private String productOption;
+	//private int productAmount;
 }
