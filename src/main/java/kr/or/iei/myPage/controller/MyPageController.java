@@ -198,7 +198,6 @@ public class MyPageController {
 		model.addAttribute("pageNavi", pld.getPageNavi());
 		model.addAttribute("btn", btn);
 		return "myPage/productReview_1";
-// 	    return "myPage/productReview(modal)_2";
 	}//productReview(int btn, Model model)
 	//상품 후기 3 - 작성한 후기
 	@GetMapping(value="productReview_3")
