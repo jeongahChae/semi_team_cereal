@@ -208,9 +208,11 @@ $("#memberPwre").on("keyup",function(){
 
 //주소 + 상세주소 합치기
 $("#signinBtn").on("click",function(){
+    var memberAddrValue = $("#memberAddr").val();
     const detailValue = $("#detail").val();
-    $("#memberAddr").val(detailValue);
-
+    memberAddrValue += detailValue;
+    console.log(memberAddrValue);
+    console.log(detailValue);
 });
 
 

@@ -172,21 +172,4 @@ $("#authCode").change(function(){
         }
     }
 });
-//배송지 등록 누르면 주소api 누르기
-
-$("#jQ2").on("click",function(){
-    const input = $(this).prev();
-    const inputValue = input.val();
-    console.log(inputValue);
-    $.ajax({
-        url : "/ajax/test2",
-        type : "get",
-        data : {input1:inputValue},
-        success : function(){
-            console.log("서버로 데이터 전송 완료");
-            
-        }
-        
-    });
- });
 
