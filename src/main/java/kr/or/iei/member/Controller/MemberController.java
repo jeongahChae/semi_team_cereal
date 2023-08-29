@@ -68,7 +68,7 @@ public class MemberController {
 	}
 	@PostMapping(value="/signup")
 	public String signup(Member member, Model model) {
-		System.out.println(member.getMemberGender() + member.getBirthDate());
+		
 		int result = memberService.insertMember(member);
 		if (result > 0) {
 			model.addAttribute("title", "회원가입 성공");
@@ -138,20 +138,20 @@ public class MemberController {
 			
 			
 			
-			m.setMemberPw(member.getMemberPw());
+			m.setMemberPw(member.getMemberPwnew());
 			m.setMemberPhone(member.getMemberPhone());
 			m.setMemberAddr(member.getMemberAddr());
-			
+			m.setBirthDate(member.getBirthDate());
 			model.addAttribute("title", "정보수정 완료");
 			model.addAttribute("msg", "정보가 수정되었습니다.");
 			model.addAttribute("icon", "success");
-			model.addAttribute("loc", "/member/mypage");
+			model.addAttribute("loc", "/member/header");
 
 
 		} else {
 
 			model.addAttribute("title", "정보수정 실패");
-			model.addAttribute("msg", "이게 보이면 return값, where에 들어가는 값 확인");
+			model.addAttribute("msg", "에러");
 			model.addAttribute("icon", "error");
 			model.addAttribute("loc", "/");
 		}

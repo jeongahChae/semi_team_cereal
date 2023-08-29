@@ -28,8 +28,8 @@ public class MemberDao {
 
 	public int insertMember(Member member) {
 		
-		String query = "insert into member_tbl values(member_tbl_seq.nextval,?,?,?,?,?,?,?,?,to_char(sysdate,'yyyy-mm-dd'),2)";
-		Object[] params = {member.getMemberId(),member.getMemberPw(),member.getMemberName(),member.getMemberPhone(),member.getMemberEmail(),member.getMemberAddr(),member.getMemberGender(),member.getBirthDate()};
+		String query = "insert into member_tbl values(member_tbl_seq.nextval,?,?,?,?,?,?,?,?,to_char(sysdate,'yyyy-mm-dd'),2,?)";
+		Object[] params = {member.getMemberId(),member.getMemberPw(),member.getMemberName(),member.getMemberPhone(),member.getMemberEmail(),member.getMemberAddr(),member.getMemberGender(),member.getBirthDate(),member.getDetail()};
 		int result = jdbc.update(query,params);		
 		return result;
 	}
@@ -56,8 +56,8 @@ public class MemberDao {
 	}
 
 	public int updateMember(Member member) {
-		String query = "update member_tbl set member_pw = ?, member_phone = ?, member_addr=? where member_id = ?";
-		Object[] params = {member.getMemberPw(),member.getMemberPhone(),member.getMemberAddr(),member.getMemberId()};
+		String query = "update member_tbl set member_pw = ?, member_phone = ?, member_addr=?, birth_date=? where member_id = ?";
+		Object[] params = {member.getMemberPwnew(),member.getMemberPhone(),member.getMemberAddr(),member.getBirthDate(),member.getMemberId()};
 		int result = jdbc.update(query, params);
 		return result;
 	}
