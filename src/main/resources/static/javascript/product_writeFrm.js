@@ -113,8 +113,8 @@ $("#main-category").on("change",function(){
 
 // 옵션 추가 버튼 클릭 시 
 $(".option-addBtn").on("click", function(){
-    const optionColor = $("<input type='text' class='input-form' name='optionName' placeholder='색'>");
-    const optionStock = $("<input type='text' class='input-form' name='optionAmount' placeholder='재고(숫자만)'>");
+    const optionColor = $("<input type='text' class='input-form' name='optionNameList[]' placeholder='색'>");
+    const optionStock = $("<input type='text' class='input-form' name='optionAmountList[]' placeholder='재고(숫자만)'>");
     const optionDelbtn = $("<button type='button' class='option-delBtn'>삭제</button>");
     $(".product-option-frm>td").append(optionColor).append(optionStock).append(optionDelbtn);
     $(".option-delBtn").on("click", function(){
