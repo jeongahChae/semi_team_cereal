@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.product.model.vo.Option;
+import kr.or.iei.product.model.vo.OptionRowMapper;
 import kr.or.iei.product.model.vo.Product;
 import kr.or.iei.product.model.vo.ProductCategory;
 import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
@@ -29,6 +31,8 @@ public class ProductDao {
 	private ProductDetailFileRowMapper productDetailFileRowMapper;
 	@Autowired
 	private ProductCateogryRowMapper productCategoryRowMapper;
+	@Autowired
+	private OptionRowMapper optionRowMapper;
 
 	public int insertProduct(Product p) {
 		String query = "insert into product values(product_seq.nextval,?,?,?,?,'ESSENTIAL#','무료배송',?,?,?)";
@@ -105,6 +109,12 @@ public class ProductDao {
 		Object[] params = {productNo, o.getOptionAmount(), o.getOptionName()};
 		int option = jdbc.update(query, params);
 		return option;
+	}
+
+	public List selectAllOption(int productNo) {
+		String query = "select * from option_tbl where product_no=?";
+		List list = jdbc.query(query, optionRowMapper, productNo);
+		return list;
 	}	
 
 

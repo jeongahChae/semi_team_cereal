@@ -159,12 +159,15 @@ public class ProductService {
 
 	public ProductDetailData selectOneProduct(int productNo) {
 		Product p = productDao.selectOneProduct(productNo);
+		List optionList = productDao.selectAllOption(productNo);
 		List fileList = productDao.selectAllProductFile(productNo);
 		List dfileList = productDao.selectAllProductDetailFile(productNo);
+		p.setOptionList(optionList);
 		p.setFileList(fileList);
 		p.setDfileList(dfileList);
 		ProductDetailData pdd = new ProductDetailData(p);
 		return pdd;
 	}
+
 
 }

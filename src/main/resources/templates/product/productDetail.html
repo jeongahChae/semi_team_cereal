@@ -54,6 +54,7 @@
                 <div class="product-detail-info-option">
                     <select class="product-option">
                         <option value="">옵션</option>
+                        <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionNo}" th:text="${productOption.optionName}"></option>
                     </select>
                 </div>
                 <div class="product-detail-info-optionbox">
