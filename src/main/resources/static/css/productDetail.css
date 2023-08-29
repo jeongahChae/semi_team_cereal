@@ -68,7 +68,7 @@
 .detail-info1{
     float: left;
     height: 80px;
-    width: 90%;
+    width: 80%;
 }
 
 .product-detail-info-brand{
@@ -86,7 +86,7 @@
 
 .product-detail-info-starrate{
     float: left;
-    width: 10%;
+    width: 20%;
     height: 80px;
     line-height: 80px;
 }

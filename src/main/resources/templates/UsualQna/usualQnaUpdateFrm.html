@@ -1,9 +1,19 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined">
+    <style>
+        .usualQna-category{
+            width: 780px;
+            height: 46px;
+            font-size: 13px;
+            padding-left: 10px;
+            border: 1px solid rgb(221, 221, 221);
+            border-radius: 5px;
+            color: rgb(130 , 130, 130);
+        }
+    </style>
 <meta charset="UTF-8">
-<title>공지사항 Update</title>
+<title>자주하는 질문 Update</title>
 </head>
 <body>
 	<th:block th:include="common/header"></th:block>
@@ -15,34 +25,38 @@
                 <div class="content-title">공지사항 수정</div>
             </div>
             <div class="writeFrm-content">
-                <form action="/notice/update" class="noticeUpdateFrm" method="post" enctype="multipart/form-data">
+                <form action="/usualQna/update" class="noticeUpdateFrm" method="post" enctype="multipart/form-data">
                     <table class="tbl notice-tbl">
                         <tr>
                             <th style="width: 14% "><label for="writeFrmTitle">제목</label></th>
                             <td>
-                                <input type="text" name="noticeTitle" id="writeFrmTitle" class="input-form" th:value="${n.noticeTitle}">
-                                <input type="hidden" name="noticeNo" th:value="${n.noticeNo}">
+                                <input type="text" name="qnaTitle" id="writeFrmTitle" class="input-form" th:value="${q.qnaTitle}">
+                                <input type="hidden" name="qnaNo" th:value="${q.qnaNo}">
                             </td>
                             <td style="display: none;">
                                 <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
-                                <input type="hidden" name="noticeWriter" value="admin">
+                                <input type="hidden" name="qnaWriter" value="admin">
                             </td>
                         </tr>
                         <!-- 아래 tr은 선 디자인으로 넣었음.(연한선을 위해) -->
                         <tr></tr>
                         <tr>
-                            <th>첨부파일</th>
+                            <th>카테고리</th>
                             <td>
-                                <input type="file" name="addfile" multiple>
-                                <div th:each="file : ${n.fileList}" class="files">
-								<span class="delFilename" th:text="${file.filename}" th:onclick="deleteFile(this,[[${file.fileNo}]])" style="cursor: pointer;"></span>
-							</div>
+                                <select class="usualQna-category" name="qnaCategory" id="writeFrmCategory" th:data="${q.qnaCategory}">
+                                    <option value="">카테고리 선택</option>
+                                    <option value="취소/교환/환불">취소/교환/환불</option>
+                                    <option value="회원">회원</option>
+                                    <option value="배송">배송</option>
+                                    <option value="상품">상품</option>
+                                    <option value="주문/결제">주문/결제</option>
+                                </select>
                             </td>
                         </tr>
                         <tr>
                             <th class="content-tr"><label for="writeFrmContent">내용</label></th>
                             <td>
-                                <textarea name="noticeContent" id="writeFrmContent" class="input-form" th:text="${n.noticeContent}"></textarea>
+                                <textarea name="qnaContent" id="writeFrmContent" class="input-form" th:text="${q.qnaContent}"></textarea>
                             </td>
                             
                         </tr>
@@ -51,7 +65,7 @@
                             <td>
                                 <div class="btn-line3">
                                     <button type="submit" class="basic-btn" id="writeBtn" onclick="return checkValue()">등록</button>
-                                    <a href="/notice/list?reqPage=1" class="cancel-btn">취소</a>
+                                    <a href="/usualQna/list?reqPage=1" class="cancel-btn">취소</a>
                                 </div>
                             </td>
                         </tr>
@@ -66,6 +80,14 @@
                         </div>
                     </div>
                 </div>
+                <div class="modal" id="writeFrmModal2">
+                    <div class="modal-content">
+                        <div class="modal-title">카테고리를 선택해주세요.</div>
+                        <div class="modalBtn-area">
+                            <button class="closeModalBtn" id="closeModal2">닫기</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -74,5 +96,5 @@
 <link rel="stylesheet" href="/css/notice.css">
 <script src="/summernote/summernote-lite.js"></script>
 <script src="/summernote/lang/summernote-ko-KR.js"></script>
-<script src="/javascript/notice.js"></script>
+<script src="/javascript/usualQna.js"></script>
 </html>

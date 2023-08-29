@@ -8,8 +8,13 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.iei.adminPage.vo.OrderAdminRowMapper;
 import kr.or.iei.member.model.vo.MemberRowMapper;
+
 import kr.or.iei.myPage.vo.OrderRowMapper;
 import kr.or.iei.myPage.vo.OrderRowMapper2;
+
+import kr.or.iei.product.model.vo.CategorySalesRowMapper;
+import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
+
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
 @Repository
@@ -85,24 +90,30 @@ public class AdminPageDao {
 
 	//총 매출액(원)
 	public String selectTotalSales() {
-		String query = "select to_char(sum(total_price),'999,999,999') from order_tbl where order_status ='결제 완료'";
+		String query = "select to_char(sum(total_price),'999,999,999') from order_tbl where order_status ='1'";
 		String totalSales = jdbc.queryForObject(query, String.class);
 		return totalSales;
 	}
 
 	public String selectSalesCount() {
-		String query = "select to_char(count(total_price),'999,999,999') from order_tbl where order_status ='결제 완료'";
+		String query = "select to_char(count(total_price),'999,999,999') from order_tbl where order_status ='1'";
 		String salesCount = jdbc.queryForObject(query, String.class);
 		return salesCount;
 	}
 
 	public String selectAvgSales() {
-		String query = "select to_char(avg(total_price),'999,999,999') from order_tbl where order_status ='결제 완료'";
+		String query = "select to_char(avg(total_price),'999,999,999') from order_tbl where order_status ='1'";
 		String avgSales = jdbc.queryForObject(query, String.class);
 		return avgSales;
 	}
-
-
-
 	
+	//카테고리별 매출 조회ㅠ ㅠ
+	public List selectCategorySales(int year, String strMonth, int category) {
+		String query = "select category_ref, category_no, category_name, sum(total_price)" + 
+				"from (select category_no, category_name, order_no, total_price, category_ref, order_date from order_tbl left join product_category using (category_no) where order_status ='1' and order_date like ?)" + 
+				"group by category_no, category_ref, category_name order by category_ref";
+		String date = year+"-"+strMonth+"%";
+		List list = jdbc.query(query, categorySalesRowMapper, date);
+		return list;
+	}
 }

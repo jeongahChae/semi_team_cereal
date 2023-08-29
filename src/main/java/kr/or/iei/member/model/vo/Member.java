@@ -19,5 +19,6 @@ public class Member {
 	private String birthDate;
 	private String enrollDate;
 	private int memberLevel;
-	
+	private String memberPwnew;
+	private String detail;
 }

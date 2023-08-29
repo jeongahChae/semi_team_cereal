@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <title>개인정보수정</title>
     <link rel="stylesheet" href="/css/updateMemberInfo.css">
+    <script src="/javascript/jquery-3.7.0.js"></script>
+    <script type="text/javascript" src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpClientId=q0icanumdd&submodules=geocoder"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 </head>
 <body>
     
@@ -34,23 +37,32 @@
 							</div>	                                         
 							<div class="input-wrap">    
 								<div class="label-wrap">
-									<label for="memberPw">비밀번호</label>
+									<label for="memberPw">비밀번호<sup class="star">*</sup></label>
 								</div>
 									<input type="password" name="memberPw" id="memberPw" class="input-form" placeholder="현재 비밀번호를 입력해주세요" required>
-								
+									<input type="hidden" name="memberPw" id="memberPwValue"  th:value="${session.m.memberPw}">																
 							</div>
+							<div class="comment-wrap">
+	                        	<div id="pw_comment" style="display: none;"></div> 
+	                    	</div> 
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberPwnew">새 비밀번호</label>
 								</div>
 									<input type="password" name="memberPwnew" id="memberPwnew" class="input-form" placeholder="새 비밀번호를 입력해주세요">	                        
 							</div>
+							<div class="comment-wrap">
+	                        	<div id="pwnew_comment" style="display: none;"></div> 
+	                    	</div> 
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberPwNewre">새 비밀번호 확인</label>
 								</div>
 									<input type="password" name="memberPwNewre" id="memberPwNewre" class="input-form" placeholder="새 비밀번호를 다시 입력해주세요">	                        
 							</div>
+							<div class="comment-wrap">
+	                        	<div id="pwnewre_comment" style="display: none;"></div> 
+	                    	</div>
 							<div class="input-wrap">                        
 								<div class="label-wrap">
 									<label for="memberName">이름</label>
@@ -79,39 +91,27 @@
 								</div>
 									<input type="text" name="memberAddr" id="memberAddr" class="input-form" placeholder="배송지를 등록해주세요" th:value="${session.m.memberAddr}">
 									<span class="button-wrap">
-										<button type="button" id="addrBtn" class="addr-btn">배송지 변경</button>
+										<button type="button" id="addrBtn" class="addr-btn" onclick="searchAddress();">배송지 변경</button>
 									</span>                            
-							</div>
-							
+							</div>						
 							<div class="input-wrap">                        
-								<div class="label-wrap">
-									<label for="memberGender">성별</label>
-								</div>
-								<div class="gender-wrap">
-									<div class="gender-m">
-										<input type="radio" name="gender" id="m" value="m">
-										<label for="m">남자</label>
-									</div>
-									<div class="gender-f">
-										<input type="radio" name="gender" id="f" value="f">
-										<label for="f">여자</label>
-									</div>
-									<div class="gender-ns">
-										<input type="radio" name="gender" id="gn" value="gn">
-										<label for="ns">선택안함</label>
-									</div>
-								</div>                       
-							</div>
+	                        	<div class="label-wrap">
+	                            	<label for="memberAddr"></label>
+	                        	</div>
+									<input type="text" name="detail" id="detail" class="input-form" placeholder="상세주소를 입력해 주세요">
+	                            <span class="button-wrap">	                               
+	                            </span>   	                            	                                                     
+	                    	</div>
 							<div class="input-wrap">               
 								<div class="label-wrap">
 									<label for="memberBirthdate">생년월일</label>
 								</div>
-									<input type="text" name="memberBirthdate" id="memberBirthdate" class="input-form" placeholder="YYYY/MM/DD">
+									<input type="text" name="birthDate" id="memberBirthdate" class="input-form" placeholder="YYYYMMDD" th:value="${session.m.BirthDate}">
 								
 							</div>
-							<hr>	                    
+								                    
 							<div class="buttonBox">
-								<button type="submit" id="signOutBtn">탈퇴하기</button>
+								<button type="button" id="resignBtn" onclick="location.href='/member/delete'">탈퇴하기</button>
 								<button type="submit" id="updateBtn">회원정보수정</button>                         
 							</div>
 						</form>
@@ -123,7 +123,73 @@
     <!---------------------------------------------------------------------------->
    
     <th:block th:include="common/footer"></th:block>
-     <script src="/javascript/yeojeong_updateMemberInfo.js"></script>
     
+    <script>
+		const map = new naver.maps.Map("map",{
+			center : new naver.maps.LatLng(37.533837, 126.896836),
+			zoom : 17,
+			zoomControl : true,
+			zoomControlOptions : {
+				position : naver.maps.Position.TOP_RIGHT,
+				style : naver.maps.ZoomControlStyle.SMALL
+			}
+		});//상단의 script가 선행이 되어야 이 객체를 사용할 수 있음.
+		const marker = new naver.maps.Marker({
+			position : new naver.maps.LatLng(37.533837, 126.896836),
+			map : map
+		});
+		
+		let infoWindow = new naver.maps.InfoWindow();
+		let contentString = [
+			"<div class='iw_inner'>",
+			"	<h3>KH정보교육원</h3>",
+			"	<p>서울시 영등포구 선유2로 57 이레빌딩 19F A강의장</p>",
+			"</div>"
+		].join("");
+		//marker에 클릭이벤트 추가
+		naver.maps.Event.addListener(marker,"click",function(e){
+			infoWindow = new naver.maps.InfoWindow({
+				content : contentString
+				
+			});
+			//태그를 넣은 infoWindow를 map의 marker위에 생성
+			infoWindow.open(map, marker);
+			
+		});
+		//map에 클릭이벤트 추가
+		naver.maps.Event.addListener(map,"click",function(e){
+			console.log(e);
+			marker.setPosition(e.coord);//클릭한 위치로 마커 이동
+			map.setCenter(e.coord);//클릭한 위치로 지도 중심 이동
+			if(infoWindow.getMap()){//정보창이 지도에 보이는 상태면
+				infoWindow.close();
+			}
+			
+			//위경도를 통해서 해당 위치의 주소를 구하는 코드(reverseGeocode)
+			naver.maps.Service.reverseGeocode({//위경도 알려줌
+				location : e.coord
+			},function(status,response){//주소검색에 대한 결과를 받아옴
+				console.log(response);
+				const address = response.result.items[1].address;
+				console.log(address);
+				contentString = [
+					"<div class='iw_inner'>",
+					"	<p>"+address+"</p>",
+					"</div>"
+				].join("");
+			});
+		});
+		function searchAddress(){
+			new daum.Postcode({
+				oncomplete : function(data){
+					console.log(data);					
+					$("#memberAddr").val(data.roadAddress);
+					$("#detail").focus();
+				}
+			}).open();
+		}
+		
+	</script>
+	 <script src="/javascript/yeojeong_updateMemberInfo.js"></script>
 </body>
 </html>

@@ -44,8 +44,15 @@ public class ProductService {
 		*/
 		int result = productDao.insertProduct(p);
 		int productNo = productDao.getProductNo();
-		int option = productDao.insertOption(o, productNo);
-		System.out.println(option);
+		System.out.println(o.getOptionNameList());
+		System.out.println(o.getOptionAmountList());
+		for(int i=0; i<o.getOptionNameList().length; i++) {
+			o.setOptionName(o.getOptionNameList()[i]);
+			o.setOptionAmount(o.getOptionAmountList()[i]);
+			int option = productDao.insertOption(o, productNo);
+			System.out.println(option);
+		}
+		
 		if(fileList != null) {
 			for(ProductFile file : fileList) {
 				file.setProductNo(productNo);

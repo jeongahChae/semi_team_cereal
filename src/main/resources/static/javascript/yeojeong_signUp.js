@@ -206,7 +206,12 @@ $("#memberPwre").on("keyup",function(){
    
 });
 
+//주소 + 상세주소 합치기
+$("#signinBtn").on("click",function(){
+    const detailValue = $("#detail").val();
+    $("#memberAddr").val(detailValue);
 
+});
 
 
 

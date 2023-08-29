@@ -4,8 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.usualQna.model.dao.UsualQnaDao;
+import kr.or.iei.usualQna.model.vo.UsualQna;
 import kr.or.iei.usualQna.model.vo.UsualQnaListData;
 
 @Service
@@ -75,6 +77,29 @@ public class UsualQnaService {
 		
 		UsualQnaListData nld = new UsualQnaListData(usualQnaList,pageNavi);
 		return nld;
+	}
+	
+	@Transactional
+	public int insertUsualQna(UsualQna u) {
+		int result = usualQnaDao.insertUsualQna(u);
+		return result;
+	}
+
+	@Transactional
+	public int deleteUsualQna(int qnaNo) {
+		int result = usualQnaDao.deleteUsualQna(qnaNo);
+		return result;
+	}
+
+	public UsualQna getUsualQna(int qnaNo) {
+		UsualQna q = usualQnaDao.selectOneUsualQna(qnaNo);
+		return q;
+	}
+
+	@Transactional
+	public int updateUsualQna(UsualQna u) {
+		int result = usualQnaDao.updateUsualQna(u);
+		return result;
 	}
 
 }

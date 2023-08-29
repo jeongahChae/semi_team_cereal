@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import kr.or.iei.adminPage.service.AdminPageService;
 import kr.or.iei.adminPage.vo.Dashboard;
@@ -135,5 +136,14 @@ public class AdminPageController {
     	Dashboard d = adminPageService.selectDashboardData();
     	model.addAttribute("d", d);
     	return "adminPage/dashboard";
+    }
+    
+    //카테고리별 매출
+    @ResponseBody
+    @GetMapping(value="/findCategorySales")
+    public List findCategorySales(int year, int month, int category) {
+        String strMonth = String.format("%02d", month);
+    	List categorySalesList = adminPageService.selectCategorySales(year, strMonth, category);
+    	return categorySalesList;
     }
 }//AdminPageController

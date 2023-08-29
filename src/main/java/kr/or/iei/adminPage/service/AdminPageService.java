@@ -235,9 +235,9 @@ public class AdminPageService {
 	}
 	//주문 현황 업데이트 - 업데이트
 	@Transactional
-	public int orderUpdate(int orderStatus, int orderNo) {
-		int result = adminPageDao.orderUpdate(orderStatus, orderNo);
-		return result;
+	public List selectCategorySales(int year, String strMonth, int category) {
+		List categorySalesList = adminPageDao.selectCategorySales(year,strMonth, category);
+		return categorySalesList;
 	}
 	
 }

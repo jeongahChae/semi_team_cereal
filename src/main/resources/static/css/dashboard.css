@@ -12,10 +12,10 @@
 	color: #A52502;
 }
 #main-category, #sub-category{
-    margin: 5px;
+    margin: 10px;
 }
-.dashboard-chart{
-	margin:20px;
+.dashboard-chart>h3{
+	margin:20px 0;
 }
 .dashboard-chart select{
     width: 100px;
@@ -23,7 +23,6 @@
     border: none;
     border-bottom: 1px solid #333333;
 }
-
 .dashboard-chart select:focus{
     outline: none;
 }
