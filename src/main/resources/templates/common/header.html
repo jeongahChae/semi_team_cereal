@@ -26,19 +26,19 @@
             </div>
             <div class="header-menu">
              <th:block th:if="${session.m == null}">			
-					<a href="#"><img src="/img/cart.png"></a>
+					<a href="/order/cart"><img src="/img/cart.png"></a>
 					<a class="modal-open-btn" href="#"><img src="/img/login.png"></a>
 					<a href="/member/yeojeong_signupFrm"><img src="/img/enroll.png"></a>
 				</th:block>
 			  <th:block th:if="${session.m != null}">			
-					<a href="#"><img src="/img/cart.png"></a>
+					<a href="/order/cart"><img src="/img/cart.png"></a>
 					<a href="/member/logout"><img src="/img/logout1.png"></a>
 					<a href="/myPage/updateMemberInfo?btn=0"><img src="/img/enroll.png"></a>
 			</th:block>
 				             
             </div>
 	<script src="/javascript/header_default.js"></script>
-
+	
         </div>
         <div class="header-bottom">
             <div class="main-category">
@@ -75,7 +75,7 @@
                             <li><a href="#">쿠션</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">이벤트</a></li>
+                    <li><a href="/event/list">이벤트</a></li>
                 </ul>
             </div>
         </div>
