@@ -6,6 +6,10 @@
 <link rel="stylesheet" href="/css/aboutUsWriteFrm.css">
 <link rel="stylesheet" href="/css/productWriteFrm.css">
 <link rel="stylesheet" href="/css/dashboard.css">
+<script src="/javascript/jquery-3.7.0.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script> <!-- 구글차트 api 라이브러리 연동 (cdn) -->
+
+	<script src="/javascript/dashboard.js"></script>
 
 </head>
 		<th:block th:include="/common/header"></th:block>
@@ -42,13 +46,17 @@
                     <select id="month" name="month"></select>
                     <select id="main-category"></select>                  	
                     <button type="button" id="findMonthlySales">조회</button>
-                    <div id="category-chart"></div>
+                    <div id="category-chart">
+                    	<div id="chart_div1" style="width: 800px; height: 500px;background-color:#333;"></div>
+                    </div>
 				</div>
 			</div>
 
 		</div>
 	<th:block th:include="/common/footer"></th:block>
-	<script src="/javascript/dashboard.js"></script>
+	
+
+
 
 </body>
 </html>

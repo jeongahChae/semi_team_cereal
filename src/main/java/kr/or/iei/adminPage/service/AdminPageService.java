@@ -158,8 +158,8 @@ public class AdminPageService {
 		return pld;
 	}
 
-	public List selectCategorySales(int year, int month, int category) {
-		List categorySalesList = adminPageDao.selectCategorySales(year,month, category);
+	public List selectCategorySales(int year, String strMonth, int category) {
+		List categorySalesList = adminPageDao.selectCategorySales(year,strMonth, category);
 		return categorySalesList;
 	}
 	

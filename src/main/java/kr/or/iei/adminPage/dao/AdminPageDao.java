@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.iei.member.model.vo.MemberRowMapper;
+import kr.or.iei.product.model.vo.CategorySalesRowMapper;
 import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
@@ -19,7 +20,7 @@ public class AdminPageDao {
 	@Autowired
 	private ProductRowMapper productRowMapper;
 	@Autowired
-	private ProductCateogryRowMapper productCateogryRowMapper;
+	private CategorySalesRowMapper categorySalesRowMapper;
 	
 	//회원 목록
 	public List selectAllMember(int start, int end) {
@@ -67,12 +68,14 @@ public class AdminPageDao {
 		String avgSales = jdbc.queryForObject(query, String.class);
 		return avgSales;
 	}
-
-	public List selectCategorySales(int year, int month, int category) {
+	
+	//카테고리별 매출 조회ㅠ ㅠ
+	public List selectCategorySales(int year, String strMonth, int category) {
 		String query = "select category_ref, category_no, category_name, sum(total_price)" + 
-				"from (select category_no, category_name, order_no, total_price, category_ref, order_date from order_tbl left join product_category using (category_no) where order_status ='1' and order_date like '?-?%')" + 
+				"from (select category_no, category_name, order_no, total_price, category_ref, order_date from order_tbl left join product_category using (category_no) where order_status ='1' and order_date like ?)" + 
 				"group by category_no, category_ref, category_name order by category_ref";
-		List list = jdbc.query(query, productCateogryRowMapper, year, month);
+		String date = year+"-"+strMonth+"%";
+		List list = jdbc.query(query, categorySalesRowMapper, date);
 		return list;
 	}
 }

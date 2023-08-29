@@ -92,9 +92,10 @@ public class AdminPageController {
     
     //카테고리별 매출
     @ResponseBody
-    @GetMapping(value="/findMonthlySales")
+    @GetMapping(value="/findCategorySales")
     public List findCategorySales(int year, int month, int category) {
-    	List categorySalesList = adminPageService.selectCategorySales(year, month, category);
+        String strMonth = String.format("%02d", month);
+    	List categorySalesList = adminPageService.selectCategorySales(year, strMonth, category);
     	return categorySalesList;
     }
 }//AdminPageController
