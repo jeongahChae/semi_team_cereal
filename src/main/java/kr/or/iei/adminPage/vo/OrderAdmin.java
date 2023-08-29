@@ -1,4 +1,4 @@
-package kr.or.iei.myPage.vo;
+package kr.or.iei.adminPage.vo;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class Order {
+public class OrderAdmin {
 	private int orderNo;
 	private int memberNo;
 	private String productName;
@@ -18,4 +18,4 @@ public class Order {
 	private int totalPrice;
 	private int totalPoint;
 	private String memberName;
-}//Order
+}

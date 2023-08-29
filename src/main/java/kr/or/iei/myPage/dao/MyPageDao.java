@@ -123,9 +123,9 @@ public class MyPageDao {
 	}
 
 	//주문취소/교환/반품 등록
-	public int insertOrderCancelList(String selectTap, String reasonDetail, int orderNo, String productName, String orderDate, int orderAmount) {
-		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?, ?)";
-		Object[] params = {orderNo, productName, orderDate, selectTap, reasonDetail, orderAmount}; 
+	public int insertOrderCancelList(int orderStatus, String reasonDetail, int orderNo, String productName, String orderDate, int orderAmount, String memberName, String memberAddr) {
+		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = {orderNo, productName, orderDate, reasonDetail, orderAmount, memberName, memberAddr, orderStatus}; 
 		int result = jdbc.update(query, params);
 		return result;
 	}

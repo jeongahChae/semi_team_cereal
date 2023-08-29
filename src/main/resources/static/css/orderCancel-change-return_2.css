@@ -127,7 +127,7 @@ td {
 
 
 
-input[name=selectTap]+label{
+input[name=orderStatus]+label{
     display: block;
     border: 1px solid black;
     width: 100px;
@@ -136,12 +136,12 @@ input[name=selectTap]+label{
     float: left;
     cursor: pointer;
 }
-input[name=selectTap]:checked+label{
+input[name=orderStatus]:checked+label{
     background-color: #1C8394;
     border: 1px solid #1C8394;
     color: #fff;
 }
-input[name=selectTap]{
+input[name=orderStatus]{
     display: none;
 }
 

@@ -85,7 +85,7 @@ public class MyPageController {
 	}//registerOrderCancelChangeReturn(int btn, Model model)
 	//주문취소/교환/반품 - 접수 양식
 	@GetMapping(value="insertCancel")
-	public String insertCancel(int btn, int reqPage, Model model, String selectTap, String reasonDetail, int[] orderNo) {
+	public String insertCancel(int btn, int reqPage, Model model, String orderStatus, String reasonDetail, int[] orderNo) {
 		
 		for(int i=0;i<orderNo.length;i++) {
 			
@@ -96,14 +96,13 @@ public class MyPageController {
 			for(int j=0;j<list.size();j++){
 				Order order = (Order)list.get(j); //형변환 필요
 				
-				System.out.println("selectTap: "+selectTap); //1: 주문취소, 2: 교환, 3: 반품
-				if(selectTap.equals("1")) {
+				System.out.println("orderStatus: "+orderStatus); //3: 주문취소, 7: 교환, 8: 반품
+				if(orderStatus.equals("3")) {
 					//주문취소
-					String selectTap2 = "주문취소";
-					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount(), order.getMemberName(), order.getMemberAddr());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);			
-						
+						System.out.println("order.getOrderStatus(): "+order.getOrderStatus());
 						//주문내역에서 삭제
 						int resultDelete = myPageService.deleteOrderHistory(order.getOrderNo());
 						if(result > 0) {
@@ -115,10 +114,9 @@ public class MyPageController {
 					}else {
 						System.out.println("insert 실패");
 					}					
-				}else if(selectTap.equals("2")) {
+				}else if(orderStatus.equals("7")) {
 					//교환
-					String selectTap2 = "교환";
-					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount(), order.getMemberName(), order.getMemberAddr());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);	
 						
@@ -132,10 +130,9 @@ public class MyPageController {
 					}else {
 						System.out.println("insert 실패");
 					}	
-				}else if(selectTap.equals("3")) {
+				}else if(orderStatus.equals("8")) {
 					//반품
-					String selectTap2 = "반품";
-					int result = myPageService.insertOrderCancelList(selectTap2, reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount(), order.getMemberName(), order.getMemberAddr());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);		
 						
@@ -155,7 +152,7 @@ public class MyPageController {
 		}//for(int i=0;i<orderNo.length;i++)
 		
 		
-		
+	
 		OrderCancelListData ocld = myPageService.selectAllOrderCancel(reqPage);
 		model.addAttribute("cancelList", ocld.getOrderCancelList());
 		model.addAttribute("pageNavi", ocld.getPageNavi());

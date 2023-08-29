@@ -12,7 +12,9 @@ public class OrderCancel {
 	private int orderNo;
 	private String productName;
 	private String orderDate;
-	private String selectTap;
 	private String reason;
-	private int order_amount;
+	private int orderAmount;
+	private String memberName;
+	private String memberAddr;
+	private int orderStatus;
 }

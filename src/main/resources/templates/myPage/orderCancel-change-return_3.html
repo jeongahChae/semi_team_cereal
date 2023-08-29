@@ -36,7 +36,12 @@
 	                </thead>
 	                <tbody>
    	                    <tr th:each="cancel:${cancelList}">
-	                        <td class="order-no-text" th:text="${cancel.orderNo}"></td><td class="product-info-text" th:text="${cancel.productName}"></td><td class="product-amount-text" th:text="${cancel.order_amount}"></td><td class="change-or-return-text" th:text="${cancel.selectTap}"></td>
+	                        <td class="order-no-text" th:text="${cancel.orderNo}"></td><td class="product-info-text" th:text="${cancel.productName}"></td><td class="product-amount-text" th:text="${cancel.orderAmount}"></td>
+	                        <th:block th:switch="${cancel.orderStatus}">
+	                        	<td class="change-or-return-text" th:case="3">주문 취소</td>
+	                        	<td class="change-or-return-text" th:case="7">교환</td>
+	                        	<td class="change-or-return-text" th:case="8">반품</td>
+	                        </th:block>
 	                    </tr>
 	                </tbody>
 	            </table>    

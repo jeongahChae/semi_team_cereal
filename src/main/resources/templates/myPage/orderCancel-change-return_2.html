@@ -22,7 +22,7 @@
 		        
 		        <div class="select-tap-container">
 		            <input type="radio" name="orderCancel-change-return-tap" id="orderCancel-change-return-register" checked><label for="orderCancel-change-return-register">주문취소/교환/반품 접수</label>
-		            <input type="radio" name="orderCancel-change-return-tap" id="select-change-return-list" onclick="window.location.href='/myPage/orderCancel-change-return_3?btn=2';"><label for="select-change-return-list">주문취소/교환/반품 내역</label>
+		            <input type="radio" name="orderCancel-change-return-tap" id="select-change-return-list" onclick="window.location.href='/myPage/orderCancel-change-return_3?btn=2&reqPage=1';"><label for="select-change-return-list">주문취소/교환/반품 내역</label>
 		        </div> <!--<div class="select-tap-container">-->
 		
 		
@@ -35,9 +35,9 @@
 				                    <tr>
 				                        <th>유형 선택</th>
 				                        <th colspan="2" class="select-tap">
-				                            <input type="radio" name="selectTap" id="orderCancel" value="1" checked><label for="orderCancel">주문취소</label>
-				                            <input type="radio" name="selectTap" id="change" value="2"><label for="change">교환</label>
-				                            <input type="radio" name="selectTap" id="return" value="3"><label for="return">반품</label>
+				                            <input type="radio" name="orderStatus" id="orderCancel" value="3" checked><label for="orderCancel">주문취소</label>
+				                            <input type="radio" name="orderStatus" id="change" value="7"><label for="change">교환</label>
+				                            <input type="radio" name="orderStatus" id="return" value="8"><label for="return">반품</label>
 				                        </th>
 				                        <th></th>
 				                    </tr>

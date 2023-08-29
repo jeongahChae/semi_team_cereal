@@ -45,7 +45,16 @@
 	                        <td th:text="${order.orderNo}"></td>
 	                        <td th:text="${order.productName}"></td>
 	                        <td th:text="${order.orderAmount}"></td>
-	                        <td th:text="${order.orderStatus}"></td>
+	                        <th:block th:switch="${order.orderStatus}">
+			                        <td th:case="1">결제 대기</td>
+			                        <td th:case="2">결제 완료</td>
+			                        <td th:case="3">주문 취소</td>
+			                        <td th:case="4">배송 준비 중</td>
+			                        <td th:case="5">배송 중</td>
+			                        <td th:case="6">배송 완료</td>
+			                        <td th:case="7">교환</td>
+			                        <td th:case="8">반품</td>              
+		                    </th:block>
 	                    </tr>
 	                </tbody>
 	            </table>

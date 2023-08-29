@@ -38,34 +38,119 @@
 	                    </tr>
 	                </thead>
 	                <tbody>
-	                    <tr>
-	                        <td>012345678910</td>
-	                        <td>[ESSENTIAL#]유리 보틀</td>
-	                        <td>손동효</td>
-	                        <td>서울시 영등포구 영중로6길 12 포레스트힐시티 1001호</td>
-	                        <td>
-	                            <select name="selectOrderStatus" class="selectOrderStatus">
-	                                <option value="waitPayment">결제 대기</option>
-	                                <option value="donePayment">결제 완료</option>
-	                                <option value="orderCancel">주문 취소</option>
-	                                <option value="prepareDelivery">배송 준비 중</option>
-	                                <option value="deliveryNow">배송 중</option>
-	                                <option value="deliveryDone">배송 완료</option>
-									<option value="change">교환</option>
-									<option value="return">반품</option>
-	                            </select>
-	                        </td>
-	                        <td>
-	                            <button type="button" class="change-btn">변경</button>
-	                        </td>
-	                    </tr>
+	     				<tr th:each="order:${orderList}">
+		                        <td th:text="${order.orderNo}"></td>
+		                        <td th:text="${order.productName}"></td>
+		                        <td th:text="${order.memberName}"></td>
+		                        <td th:text="${order.memberAddr}"></td>
+		                 
+		                        <th:block th:switch="${order.orderStatus}">
+			                        <td th:case="1">
+			                            <select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1" selected>결제 대기</option>
+			                                <option value="2">결제 완료</option>
+			                                <option value="3">주문 취소</option>
+			                                <option value="4">배송 준비 중</option>
+			                                <option value="5">배송 중</option>
+			                                <option value="6">배송 완료</option>
+											<option value="7">교환</option>
+											<option value="8">반품</option>
+			                            </select>
+			                        </td>
+			                        <td th:case="2">
+			                        	<select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1">결제 대기</option>
+			                                <option value="2" selected>결제 완료</option>
+			                                <option value="3">주문 취소</option>
+			                                <option value="4">배송 준비 중</option>
+			                                <option value="5">배송 중</option>
+			                                <option value="6">배송 완료</option>
+											<option value="7">교환</option>
+											<option value="8">반품</option>
+			                            </select>
+			                        </td>
+			                        <td th:case="3">
+			                        	<select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1">결제 대기</option>
+			                                <option value="2">결제 완료</option>
+			                                <option value="3" selected>주문 취소</option>
+			                                <option value="4">배송 준비 중</option>
+			                                <option value="5">배송 중</option>
+			                                <option value="6">배송 완료</option>
+											<option value="7">교환</option>
+											<option value="8">반품</option>
+			                            </select>
+			                        </td>
+			                        <td th:case="4">
+			                        	<select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1">결제 대기</option>
+			                                <option value="2">결제 완료</option>
+			                                <option value="3">주문 취소</option>
+			                                <option value="4" selected>배송 준비 중</option>
+			                                <option value="5">배송 중</option>
+			                                <option value="6">배송 완료</option>
+											<option value="7">교환</option>
+											<option value="8">반품</option>
+			                            </select>
+			                        </td>
+			                        <td th:case="5">
+			                        	<select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1">결제 대기</option>
+			                                <option value="2">결제 완료</option>
+			                                <option value="3">주문 취소</option>
+			                                <option value="4">배송 준비 중</option>
+			                                <option value="5" selected>배송 중</option>
+			                                <option value="6">배송 완료</option>
+											<option value="7">교환</option>
+											<option value="8">반품</option>
+			                            </select>
+			                        </td>
+			                        <td th:case="6">
+			                        	<select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1">결제 대기</option>
+			                                <option value="2">결제 완료</option>
+			                                <option value="3">주문 취소</option>
+			                                <option value="4">배송 준비 중</option>
+			                                <option value="5">배송 중</option>
+			                                <option value="6" selected>배송 완료</option>
+											<option value="7">교환</option>
+											<option value="8">반품</option>
+			                            </select>
+			                        </td>
+			                        <td th:case="7">
+			                        	<select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1">결제 대기</option>
+			                                <option value="2">결제 완료</option>
+			                                <option value="3">주문 취소</option>
+			                                <option value="4">배송 준비 중</option>
+			                                <option value="5">배송 중</option>
+			                                <option value="6">배송 완료</option>
+											<option value="7" selected>교환</option>
+											<option value="8">반품</option>
+			                            </select>
+			                        </td>
+			                        <td th:case="8">
+			                        	<select name="selectOrderStatus" class="selectOrderStatus">
+			                                <option value="1">결제 대기</option>
+			                                <option value="2">결제 완료</option>
+			                                <option value="3">주문 취소</option>
+			                                <option value="4">배송 준비 중</option>
+			                                <option value="5">배송 중</option>
+			                                <option value="6">배송 완료</option>
+											<option value="7">교환</option>
+											<option value="8" selected>반품</option>
+			                            </select>
+			                        </td>
+		                        </th:block>
+		                        <td>
+		                            <button type="button" class="change-btn">변경</button>
+		                        </td>
+		                 </tr>
 	                </tbody>
 	            </table>
 	        </div> <!--<div class="orderStatusManagement-table-wrap">-->
 	
-	        <div class="moreBtn-wrap">
-	            <button type="button" class="moreBtn">더보기</button>
-	        </div> <!--<div class="moreBtn-wrap">-->
+			<div id="pageNavi" th:utext="${pageNavi}"></div>	
 	
 	    </div> <!--<div class="orderStatusManagement-wrap">-->
 
@@ -73,6 +158,15 @@
     <!---------------------------------------------------------------------------->
     
     <th:block th:include="common/footer"></th:block>
-    
+    <script src="/javascript/jquery-3.7.0.js"></script>
+    <script>
+    	//'변경'버튼
+    	$(".change-btn").on("click", function(){
+    		console.log("클릭");
+    		const selectOrderStatus = $(this).parent().prev().children().val();
+    		const orderNo = $(this).parent().parent().children().eq(0).text();
+    		location.href = "/adminPage/orderUpdate?btn=2&reqPage=1&orderNo="+orderNo+"&selectOrderStatus="+selectOrderStatus;
+    	});
+    </script>
 </body>
 </html>

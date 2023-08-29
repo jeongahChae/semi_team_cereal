@@ -6,7 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.iei.adminPage.vo.OrderAdminRowMapper;
 import kr.or.iei.member.model.vo.MemberRowMapper;
+import kr.or.iei.myPage.vo.OrderRowMapper;
+import kr.or.iei.myPage.vo.OrderRowMapper2;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
 @Repository
@@ -17,6 +20,10 @@ public class AdminPageDao {
 	private MemberRowMapper memberRowMapper;
 	@Autowired
 	private ProductRowMapper productRowMapper;
+	@Autowired
+	private OrderRowMapper orderRowMapper;
+	@Autowired
+	private OrderRowMapper2 orderRowMapper2;
 	
 	//회원 목록
 	public List selectAllMember(int start, int end) {
@@ -45,6 +52,36 @@ public class AdminPageDao {
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}
+	
+	
+	//주문 현황 관리 - 전체 주문 조회
+	public List selectAllOrderListAdmin(int start, int end) {
+		String query = "select * from (select rownum as rnum, n. * from (select * from(select order_no, product_name2, member_name, member_addr, order_status from order_tbl union select order_no, product_name2, member_name, member_addr, order_status from ORDER_CANCEL) order by 1 desc)n) where rnum between ? and ?";
+		List orderList = jdbc.query(query, orderRowMapper2, start, end);
+		return orderList;
+	}
+	//주문 현황 관리 - 단일 조회
+	public List selectOrderAdmin(int orderNO) {
+		String query = "select * from order_tbl where order_no=?";
+		List order = jdbc.query(query, orderRowMapper, orderNO);
+		return order;
+	}
+	//주문 현황 관리 - 업데이트
+	public int orderUpdate(int orderStatus, int orderNo) {
+		String query = "update order_tbl set order_status=? where order_no=?";
+		Object[] params = {orderStatus, orderNo};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+	
+	
+	//전체 주문 수 
+	public int selectOrderTotalCount() {
+		String query = "select count(*) from (select order_no, product_name2, member_name, member_addr, order_status from order_tbl union select order_no, product_name2, member_name, member_addr, order_status from ORDER_CANCEL)";
+		int totalCount = jdbc.queryForObject(query, Integer.class);
+		return totalCount;
+	}
+	
 
 	//총 매출액(원)
 	public String selectTotalSales() {
@@ -64,4 +101,8 @@ public class AdminPageDao {
 		String avgSales = jdbc.queryForObject(query, String.class);
 		return avgSales;
 	}
+
+
+
+	
 }

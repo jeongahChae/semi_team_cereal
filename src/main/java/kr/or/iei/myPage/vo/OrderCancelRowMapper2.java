@@ -16,8 +16,8 @@ public class OrderCancelRowMapper2 implements RowMapper<OrderCancel>{
 		OrderCancel oc = new OrderCancel();
 		oc.setOrderNo(rs.getInt("order_no"));
 		oc.setProductName(rs.getString("product_name2"));
-		oc.setOrder_amount(rs.getInt("order_amount"));
-		oc.setSelectTap(rs.getString("select_tap"));
+		oc.setOrderAmount(rs.getInt("order_amount"));
+		oc.setOrderStatus(rs.getInt("order_status"));
 		return oc;
 	}
 

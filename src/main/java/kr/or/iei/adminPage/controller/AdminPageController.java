@@ -1,14 +1,20 @@
 package kr.or.iei.adminPage.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.or.iei.adminPage.service.AdminPageService;
 import kr.or.iei.adminPage.vo.Dashboard;
 import kr.or.iei.member.model.vo.MemberListData;
+import kr.or.iei.myPage.service.MyPageService;
+import kr.or.iei.myPage.vo.Order;
+import kr.or.iei.myPage.vo.OrderListData;
 import kr.or.iei.product.model.vo.ProductListData;
 
 @Controller
@@ -16,7 +22,8 @@ import kr.or.iei.product.model.vo.ProductListData;
 public class AdminPageController {
     @Autowired
     private AdminPageService adminPageService;
-	
+	@Autowired
+	private MyPageService myPageService;
     
 	//회원목록
     @GetMapping(value="/allMemberList")
@@ -43,11 +50,54 @@ public class AdminPageController {
     
     //주문 현황 관리
     @GetMapping(value="/orderStatusManagement")
-    public String orderStatusManagement(int btn, Model model) {
-    	model.addAttribute("btn", btn);
+    public String orderStatusManagement(int btn, Model model, int reqPage) {
+    	OrderListData old = adminPageService.selectAllOrderListAdmin(reqPage);
+		model.addAttribute("orderList", old.getOrderList()); //주문내역 전체 조회
+		model.addAttribute("pageNavi", old.getPageNavi()); //페이지 네비게이션
+		model.addAttribute("btn", btn);
     	return "adminPage/orderStatusManagement";
     }//orderStatusManagement(int btn, Model model)
+    //주문 현황 관리 - 업데이트
+    @GetMapping(value="orderUpdate")
+    public String orderUpdate(int btn, int reqPage, Model model, String selectOrderStatus, String orderNo) {
+    	int orderNO = Integer.parseInt(orderNo);
+    	int orderStatus = Integer.parseInt(selectOrderStatus);
+    	//조회 후 업데이트
+    	List order = adminPageService.selectOrderAdmin(orderNO);
+    	Order orderList = (Order)order.get(0);
+    	int result = adminPageService.orderUpdate(orderStatus, orderList.getOrderNo());
+    	if(result > 0) {
+    		System.out.println("업데이트 완료");
+    		
+    		if(orderStatus==3 || orderStatus==7 || orderStatus==8) {
+    			String reasonDetail = "관리자 관한으로 수행";
+    			
+				int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOrderDate(), orderList.getOrderAmount(), orderList.getMemberName(), orderList.getMemberAddr());
+    			if(result>0) {
+					System.out.println("insert 성공: "+result);			
+					
+					//주문내역에서 삭제
+					int resultDelete = myPageService.deleteOrderHistory(orderList.getOrderNo());
+					if(result > 0) {
+						System.out.println("주문내역에서 삭제 성공");
+					}else {
+						System.out.println("주문내역에서 삭제 실패");
+					}	
+					
+				}else {
+					System.out.println("insert 실패");
+				}	
+    		}
+    		
+    	}
+    	
     
+    	OrderListData old = adminPageService.selectAllOrderListAdmin(reqPage);
+    	model.addAttribute("orderList", old.getOrderList());
+    	model.addAttribute("pageNavi", old.getPageNavi());
+    	model.addAttribute("btn", btn);
+    	return "adminPage/orderStatusManagement";
+    }
     
     //상품 등록
     @GetMapping(value="/insertProduct")

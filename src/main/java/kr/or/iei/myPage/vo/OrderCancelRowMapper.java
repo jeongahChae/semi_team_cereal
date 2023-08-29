@@ -17,10 +17,12 @@ public class OrderCancelRowMapper implements RowMapper<OrderCancel>{
 		oc.setCancelNo(rs.getInt("cancel_no"));
 		oc.setOrderNo(rs.getInt("order_no"));
 		oc.setProductName(rs.getString("product_name2"));
-		oc.setOrderDate(rs.getString("order_date2"));
-		oc.setSelectTap(rs.getString("select_tap"));
+		oc.setOrderDate(rs.getString("order_date"));
 		oc.setReason(rs.getString("reason"));
-		oc.setOrder_amount(rs.getInt("order_amount"));
+		oc.setOrderAmount(rs.getInt("order_amount"));
+		oc.setMemberName(rs.getString("member_name"));
+		oc.setMemberAddr(rs.getString("member_addr"));
+		oc.setOrderStatus(rs.getInt("order_status"));
 		return oc;
 	}
 
