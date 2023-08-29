@@ -24,6 +24,12 @@ public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
 	
+	@GetMapping(value="myPageList")
+	public String myPageList(int btn, Model model) {
+		model.addAttribute("btn", btn);
+		return "myPage/myPageList";
+	}
+	
 	//개인정보수정
 	@GetMapping(value="updateMemberInfo")
 	public String updateMemberInfo(int btn, Model model) {

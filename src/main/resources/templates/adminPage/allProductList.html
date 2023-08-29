@@ -30,7 +30,7 @@
 	                </thead>
 	                <tbody>
 	                    <tr th:each="product:${productList}" onclick="window.location.href='#';">
-	                        <td th:text="${product.productNo}"></td><td th:text="${product.productName}"></td><!-- <td th:text="${product.productOption}"></td><td th:text="${product.productAmount}"></td> -->
+	                        <td th:text="${product.productNo}"></td><td th:text="${product.productName}"></td> <td th:text="${product.optionName}"></td><td th:text="${product.optionAmount}"></td>
 	                    </tr>
 	                </tbody>
 	            </table>

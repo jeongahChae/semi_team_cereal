@@ -16,6 +16,7 @@ import kr.or.iei.product.model.vo.CategorySalesRowMapper;
 import kr.or.iei.product.model.vo.ProductCateogryRowMapper;
 
 import kr.or.iei.product.model.vo.ProductRowMapper;
+import kr.or.iei.product.model.vo.ProductRowMapper2;
 
 @Repository
 public class AdminPageDao {
@@ -25,6 +26,8 @@ public class AdminPageDao {
 	private MemberRowMapper memberRowMapper;
 	@Autowired
 	private ProductRowMapper productRowMapper;
+	@Autowired
+	private ProductRowMapper2 productRowMapper2;
 	@Autowired
 	private OrderRowMapper orderRowMapper;
 	@Autowired
@@ -46,14 +49,14 @@ public class AdminPageDao {
 
 	//전체 등록 상품
 	public List selectAllProduct(int start, int end) {
-		String query = "select * from (select rownum as rnum, n. * from (select * from product order by 1 desc)n) where rnum between ? and ?";
-		List productList = jdbc.query(query, productRowMapper, start, end);
+		String query = "select * from (select rownum as rnum, n. * from (select product_no, product_name, option_name, option_amount from product join option_tbl using(product_no))n) where rnum between ? and ?";
+		List productList = jdbc.query(query, productRowMapper2, start, end);
 		return productList;
 	}
 
 	//전체 등록 상품 수
 	public int selectProductTotalCount() {
-		String query = "select count(*) as cnt from product";
+		String query = "select count(*) from product join option_tbl using(product_no)";
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}

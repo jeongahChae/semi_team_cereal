@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class LikeList {
 	private int likeNo;
-	private int productNo;
+	private int optionNo;
 	private String productName;
 	private int productPrice;
 }//LikeList
