@@ -21,6 +21,7 @@
     margin: 0 auto;
     flex-direction: row;
     justify-content: space-between;
+    line-height: 30px;
 }
 .resign-all-wrap{
     
@@ -40,20 +41,20 @@
 }
 .input-password{
     padding-top: 20px;
+    padding-bottom: 20px;
 }
-.resign-info{
-    
-    overflow: hidden;
-    
-}
-.resign-info>div{
-    float: left;
-    
-}
+
 .label-wrap{
     font-size: 20px;
-   
-    width: 200px;
+    display: inline-block;
+    width: 200px !important;
+    
+}
+label{
+    vertical-align: top;
+}
+.content-wrap{
+    display: inline-block;
 }
 .no-title-wrap{
     width:200px;
@@ -67,12 +68,13 @@
 .input-password>div{
     float:left;
 }
-input{
+input[name="inputPw"]{
     width: 400px;
     height: 50px;
     border-radius: 3px;
     padding-left: 10px;
 }
+
 li{
     list-style-type: none;
 }
