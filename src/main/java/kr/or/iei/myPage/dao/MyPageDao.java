@@ -111,7 +111,7 @@ public class MyPageDao {
 	//상품 후기 목록
 	public List selectAllreview(int start, int end) {
 		String query = "select * from (select rownum as rnum, n. * from (select * from product_review order by 1 desc)n) where rnum between ? and ?";
-		List reviewList = jdbc.query(query, productRowMapper, start, end);
+		List reviewList = jdbc.query(query, productRowMapper, start, end); //reviewRowMapper로 대체 해야함
 		return reviewList;
 	}
 
