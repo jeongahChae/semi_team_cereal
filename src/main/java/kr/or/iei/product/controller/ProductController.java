@@ -171,9 +171,5 @@ public class ProductController {
 		}
 	}
 	
-	@ResponseBody
-	@GetMapping(value="/option")
-	public List option() {
 
-	}
 }

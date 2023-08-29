@@ -12,4 +12,6 @@ public class Option {
 	private int productNo;
 	private int optionAmount;
 	private String optionName;
+	private int[] optionAmountList;
+	private String[] optionNameList;
 }
