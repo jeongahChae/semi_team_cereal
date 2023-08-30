@@ -14,6 +14,7 @@
 .product-detail{
     width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
 .product-detail-category{
@@ -26,6 +27,7 @@
 
 .product-detail-content1{
     overflow: hidden;
+    height: 600px;
 }
 
 .product-detail-subimg-box{
@@ -39,7 +41,7 @@
     margin-bottom: 15px;
 }
 
-.subimg-box1>img, .subimg-box2>img, .subimg-box3>img{
+.subimg-box1>img, .subimg-box2>img, .subimg-box3>img, .subimg-box4>img{
     width: 100%;
     height: 100%;
 
@@ -203,7 +205,7 @@
     height: 50px;
 }
 
-.info-totalPrice{
+.info-totalPrice, .info-totalPrice2{
     float: right;
     font-size: 30px;
     line-height: 50px;
@@ -288,13 +290,11 @@
 
 .product-detail-content3{
     box-sizing: border-box;
-    height: 500px;
     padding-left: 20px;
     margin-top: 100px;
     text-align: right;
     width: 300px;
-    position: fixed;
-    left: 1200px;
+    float: right;
 }
 
 /* fix option box*/
