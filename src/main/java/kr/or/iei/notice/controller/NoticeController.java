@@ -91,7 +91,7 @@ public class NoticeController {
 	
 	@GetMapping(value = "/filedown")
 	public void filedown(NoticeFile file, HttpServletResponse response) {
-		String savepath = root+"notice/";
+		String savepath = root+"notice1/";
 		fileUtil.downloadFile(savepath,file.getFilename(),file.getFilepath(),response);
 	}
 	
