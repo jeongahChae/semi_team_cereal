@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.personalQna.model.vo.PersonalQna;
 import kr.or.iei.personalQna.model.vo.PersonalQnaCommentRowMapper;
 import kr.or.iei.personalQna.model.vo.PersonalQnaFile;
@@ -59,6 +60,38 @@ public class PersonalQnaDao {
 		String query = "select * from personal_qna where qna_no=?";
 		List list = jdbc.query(query, personalQnaRowMapper, qnaNo);
 		return (PersonalQna)list.get(0);
+	}
+
+	public List selectPersonalQnaMemberList(Member m, int start, int end) {
+		String query = "select * from (select rownum as rnum, p.* from (select * from personal_qna where personal_qna.qna_writer=? order by 1 desc)p) where rnum between ? and ? ";
+		List list = jdbc.query(query, personalQnaRowMapper,m.getMemberId(), start, end);
+		return list;
+	}
+
+	public int selectPersonalQnaMemberTotalCount(Member m) {
+		String query = "select count(*) as cnt from personal_qna where qna_writer=?";
+		int totalCount = jdbc.queryForObject(query, Integer.class, m.getMemberId());
+		return totalCount;
+	}
+
+	public int updatePersonalQna(PersonalQna p) {
+		String query = "update personal_qna set qna_title=?, qna_content=? where qna_no=?";
+		Object[] params = {p.getQnaTitle(),p.getQnaContent(),p.getQnaNo()};
+		int result = jdbc.update(query,params);
+		return result;
+	}
+
+	public int deletePersonalQna(int qnaNo) {
+		String query = "delete from personal_qna where qna_no=?";
+		Object[] params = {qnaNo};
+		int result = jdbc.update(query,params);
+		return result;
+	}
+
+	//comment
+	public List selectCommentList(int qnaNo) {
+		
+		return null;
 	}
 	
 	

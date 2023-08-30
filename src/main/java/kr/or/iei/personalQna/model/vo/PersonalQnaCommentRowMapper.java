@@ -16,6 +16,7 @@ public class PersonalQnaCommentRowMapper implements RowMapper<PersonalQnaComment
 		pc.setPersonalCommentDate(rs.getString("personal_comment_date"));
 		pc.setPersonalCommentNo(rs.getInt("personal_comment_no"));
 		pc.setPersonalCommentWriter(rs.getString("personal_comment_writer"));
+		pc.setPersonalQnaRef(rs.getInt("personal_qna_ref"));
 		return pc;
 	}
 

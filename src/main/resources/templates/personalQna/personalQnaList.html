@@ -27,21 +27,24 @@
                     </tr>
                     <tr>
                         <td class="qnaContent" colspan="3" style="display: none; text-align: left">
+                            
                             <span class="material-icons-outlined" style="float: left; color: #1C8394;">question_mark</span>
                             <div th:utext="${personalQna.qnaContent}" style="padding-left: 30px;"></div>
                             <!-- 수정삭제는 관리자 답글 달기 전에만 가능하도록 만들기 -->
                             <div class="btn-line2">
-                                <a class="basic-btn" th:href="@{/personalQna/updateFrm(qnaNo=${personalQna.qnaNo})}">수정</a>
-                                <!-- <button class="cancel-btn" th:onclick="personalQnaDelete([[${personalQna.qnaNo}]])">삭제</button> -->
+                                <a class="basic-btn" th:if="${session.m != null && session.m.memberLevel == 2}" th:href="@{/personalQna/updateFrm(qnaNo=${personalQna.qnaNo})}">수정</a>
+                                <button class="cancel-btn" th:if="${session.m != null && session.m.memberLevel == 2}" th:onclick="personalQnaDelete([[${personalQna.qnaNo}]])">삭제</button>
                             </div>
                             <span class="material-icons-outlined" style="float: left; color: #1C8394;">feedback</span>
+                            <th:block th:each="pc : ${personalQnaCommentList}"></th:block>
+                            <div th:utext="${}"></div>
                             <!-- comment -->
                         </td>
                     </tr>
                 </th:block>
             </table>
             <div class="btn-line2">
-                <!-- th:if="${session.m != null && session.m.memberLevel == 2}" 회원(등급은 고객일경우에만 보임) 잠시 제외 -->
+                <!-- 회원(등급은 memberLevel==2, 즉 고객일경우에만 보임) -->
                 <a class="basic-btn" th:if="${session.m != null && session.m.memberLevel == 2}" href="/personalQna/writeFrm">문의하기</a>
             </div>
             <div id="pageNavi" th:utext="${pageNavi}"></div>

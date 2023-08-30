@@ -12,4 +12,5 @@ public class PersonalQnaComment {
 	private String personalCommentWriter;
 	private String personalCommentContent;
 	private String personalCommentDate;
+	private int personalQnaRef;
 }
