@@ -18,7 +18,7 @@
                         <tr>
                             <th style="width: 14% "><label for="writeFrmTitle">제목</label></th>
                             <td>
-                                <input type="text" name="qnaTitle" id="writeFrmTitle" class="input-form" th:value="${q.qnaTitle}">
+                                <input type="text" name="qnaTitle" id="writeFrmTitle" class="input-form" th:value="${p.qnaTitle}">
                                 <input type="hidden" name="qnaNo" th:value="${p.qnaNo}">
                             </td>
                         </tr>
@@ -27,7 +27,7 @@
                         <tr>
                             <th class="content-tr"><label for="writeFrmContent">내용</label></th>
                             <td>
-                                <textarea name="qnaContent" id="writeFrmContent" class="input-form" th:text="${q.qnaContent}"></textarea>
+                                <textarea name="qnaContent" id="writeFrmContent" class="input-form" th:text="${p.qnaContent}"></textarea>
                             </td>
                             
                         </tr>

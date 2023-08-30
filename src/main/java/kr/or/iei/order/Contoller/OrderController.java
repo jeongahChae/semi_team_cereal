@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
 import kr.or.iei.member.model.vo.Member;
@@ -62,12 +63,22 @@ public class OrderController {
 				
 			}
 			*/
-			if(list!=null) {
-				model.addAttribute("list", list);				
-			} else {
-				model.addAttribute("list", null);
-			}
+			model.addAttribute("list", list);				
 		}
 		return "order/cart";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/optionList")
+	public List optionList(int optionNo, int productNo) {
+		List list = orderService.selectProductOption(productNo);
+		return list;
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/chgOpt")
+	public int changeOption(int cartNo, int newOptionNo, int newCount) {
+		int result = orderService.updateOption(cartNo, newOptionNo, newCount);
+		return result;
 	}
 }

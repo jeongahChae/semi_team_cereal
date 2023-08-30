@@ -8,12 +8,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.order.Dao.OrderDao;
 import kr.or.iei.order.vo.Cart;
+import kr.or.iei.product.model.dao.ProductDao;
 
 @Service
 public class OrderService {
 
 	@Autowired
 	private OrderDao orderDao;
+	@Autowired
+	private ProductDao productDao;
 
 	public List selectCartInfoList(int memberNo) {
 		List list = orderDao.selectCartInfoList(memberNo);
@@ -29,6 +32,17 @@ public class OrderService {
 	@Transactional
 	public int deleteCart(int cartNo) {
 		int result = orderDao.deleteCart(cartNo);
+		return result;
+	}
+
+	public List selectProductOption(int productNo) {
+		List list = productDao.selectAllOption(productNo);
+		return list;
+	}
+
+	@Transactional
+	public int updateOption(int cartNo, int newOptionNo, int newCount) {
+		int result = orderDao.updateOption(cartNo, newOptionNo, newCount);
 		return result;
 	}
 }

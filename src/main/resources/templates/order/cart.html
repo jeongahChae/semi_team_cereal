@@ -63,7 +63,7 @@
 							<span th:text="${cart.count}"></span>
 						</td>
 						<td>
-							<button type="button" id="changeOption" class="normal-btn option-modal" style="font-size:16px;">옵션/수량 변경</button>
+							<button type="button" id="changeOption" class="normal-btn option-modal" style="font-size:16px;" th:onclick="return checkValue([[${cart.cartNo}]],[[${cart.optionNo}]],[[${cart.productNo}]], [[${cart.count}]]);">옵션/수량 변경</button>
 						</td>
 						<td>
 							<s th:text="${cart.getPpc}+원"></s>
@@ -99,11 +99,39 @@
 	</th:block>
 </div>
 		<th:block th:include="common/footer"></th:block>
-<div class="modal">
-<div class="modal_body">
-<p>모달내용내용</p>
-</div>
-</div>		
+		
+		
+        <!-- 모달 -->
+        <div class="modal" id="writeFrmModal">
+            <div class="modal-content">
+                <div class="modal-title">옵션/수량 변경</div>
+                <div class="modal-detail">
+
+        <div class="product-detail-content3">
+            <div class="product-detail-info-option2">
+            	<span class="hidden-cartNo" style="display:none;"></span>
+            	<span>옵션  </span>
+                <select class="product-option2">
+                </select>
+            </div>
+            <div class="product-detail-info-optionbox2">
+	            <div class="option-count2">
+	              	<span>수량 </span>
+	                <button type="button" id="minus">-</button>
+	                <span class="count2"></span>
+	                <button type="button" id="plus">+</button>
+	            </div>
+            </div>
+        </div>
+
+
+                </div>
+                <div class="modalBtn-area">
+                    <button class="closeModalBtn" id="changeModal">변경</button>
+                    <button class="closeModalBtn" id="closeModal">닫기</button>
+                </div>
+            </div>
+        </div>	
 
             
             
