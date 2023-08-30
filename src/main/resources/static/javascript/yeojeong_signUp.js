@@ -123,7 +123,7 @@ $("#memberPwre").on("keyup",function(){
         const pwreValue = $("#memberPwre").val();
         console.log(pwValue);
         
-        if(pwreValue.isEmpty()){
+        if(pwreValue===""){
             pwreComment.hide();
         }else{
             if(pwValue != pwreValue){
@@ -245,7 +245,27 @@ $("#signinBtn").on("click",function(){
     console.log(detailValue);
 });
 
-
+//약관보기 클릭하면 모달창 뜨게 하기
+// $(function () {  
+//     $(document).on("click", ".modal-close", function () {
+//       console.log(2);
+//       $(this).parents(".modal-wrap").parent().css("display", "none");
+//     });  
+//     //$(".sub-navi").prev().after("<span class='material-icons dropdown'>expand_more</span>");
+//   });
+   
+   $(".showMust").click(function(){
+      
+    $("#mustAgreeModal").fadeIn(500);  
+    });
+    $(".showPrivacy").click(function(){
+       
+        $("#privacyAgreeModal").fadeIn(500);  
+    });
+    $(".showAgree").click(function(){
+        
+        $("#optionalAgreeModal").fadeIn(500);  
+    });
 
 
 
