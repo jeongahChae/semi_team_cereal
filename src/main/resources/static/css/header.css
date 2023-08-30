@@ -144,7 +144,7 @@
     font-size: 14px;
 }
 
-
+/* 로그인 */
 #login-modal .input-box {
     width: 80%;
     margin: 0 auto;
@@ -176,8 +176,8 @@
   .modal-wrap {
     margin-top: 150px;
     width: 400px;
-    background: #fff;
     height: 540px;
+    background: #fff;    
     position: fixed;
     top: 50%;
     left: 50%;
@@ -199,6 +199,9 @@
     top: 16px;
     right: 16px;
     font-size: 30px;
+  }
+  .input-box::placeholder{
+    font-size: 16px;
   }
   .close-icon:hover {
     cursor: pointer;

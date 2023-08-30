@@ -69,28 +69,28 @@ $("#memberPw").on("keyup",function(){
    
 });
 
-//비밀번호에서 비밀번호 확인 일치 안되었을때
-$("#memberPw").on("keyup",function(){
-    const pwreComment = $("#pwre_comment");    
-    const pwValue = $("#memberPw").val();
-    const pwreValue = $("#memberPwre").val();
-    console.log(pwValue);
+// //비밀번호에서 비밀번호 확인 일치 안되었을때
+// $("#memberPw").on("keyup",function(){
+//     const pwreComment = $("#pwre_comment");    
+//     const pwValue = $("#memberPw").val();
+//     const pwreValue = $("#memberPwre").val();
+//     console.log(pwValue);
     
 
 
-    if(pwValue != pwreValue){
+//     if(pwValue != pwreValue){
         
-        pwreComment.css("display","inline");
-        pwreComment.html("비밀번호가 일치하지 않습니다.");
-        pwreComment.css("color"," #A52502");
-        console.log(pwreComment);    
+//         pwreComment.css("display","inline");
+//         pwreComment.html("비밀번호가 일치하지 않습니다.");
+//         pwreComment.css("color"," #A52502");
+//         console.log(pwreComment);    
        
-    }else{
-        //idCommnet.css("display","inline");
-        pwreComment.hide();
-    }
+//     }else{
+//         //idCommnet.css("display","inline");
+//         pwreComment.hide();
+//     }
    
-});
+// });
 
 //비밀번호 확인 체크
 $("#memberPwre").on("keyup",function(){
@@ -114,6 +114,34 @@ $("#memberPwre").on("keyup",function(){
     }
    
 });
+
+
+    $("#memberPw").on("keyup",function(){
+        
+        const pwreComment = $("#pwre_comment");    
+        const pwValue = $("#memberPw").val();
+        const pwreValue = $("#memberPwre").val();
+        console.log(pwValue);
+        
+        if(pwreValue.isEmpty()){
+            pwreComment.hide();
+        }else{
+            if(pwValue != pwreValue){
+            
+                pwreComment.css("display","inline");
+                pwreComment.html("비밀번호가 일치하지 않습니다.");
+                pwreComment.css("color"," #A52502");
+                console.log(pwreComment);    
+               
+            }else{
+                //idCommnet.css("display","inline");
+                pwreComment.hide();
+            }
+        }
+    
+        
+       
+    });
 
 //이름 체크
 $("#memberName").on("keyup",function(){
@@ -161,6 +189,8 @@ $("#memberPhone").on("keyup",function(){
 });
 //이메일 형식입력
 $("#memberEmail").on("keyup",function(){
+    $("#emailChkBtn").attr("disabled",false);
+    $("#emailChkBtn").css("color","#1C8394");
     const emailComment = $("#email_comment");    
     const emailValue = $("#memberEmail").val();
     const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;

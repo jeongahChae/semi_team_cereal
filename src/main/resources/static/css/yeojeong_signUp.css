@@ -100,8 +100,7 @@ input[type=password]{
 
 .gender-wrap{
     width: 50%;
-    overflow: hidden;
-    
+    overflow: hidden;    
     
 }
 .gender-wrap>div{
@@ -109,8 +108,12 @@ input[type=password]{
     float:left;
     width:33%;
 }
+.join-content>:nth-child(3)>:nth-child(21){
+    background-color:#A52502;
+   
+}
 .agree-whole-wrap{
-    padding-top: 10px;
+    padding-top: 20px;
     width:800px;
     height: 200px;
 }
@@ -170,7 +173,7 @@ input[type=password]{
     background-color: #A52502;
 } */
 .modal {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -214,5 +217,7 @@ input[type=password]{
 .comment-wrap{
     padding-left: 210px;
 }
-/* 상세주소 창 수정 */
+.modal-foot>button{
+    width: ;
+}
 

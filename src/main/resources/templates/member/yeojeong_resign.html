@@ -49,7 +49,7 @@
                             <label for="inputpw-title">비밀번호 입력<sup class="star">*</sup></label>                    
                         </div>
                         <div class="input-wrap">
-                            <input type="text" name="memberPw" id="inputPw" placeholder="현재 비밀번호를 입력해주세요" required>
+                            <input type="password" name="memberPw" id="inputPw" placeholder="현재 비밀번호를 입력해주세요" required>
                             <!-- <input type="hidden" name="memberPw" id="memberPwValue"  th:value="${session.m.memberPw}"> -->
                             <form name="checkPwFrm" action="/member/checkPw" method="post">
                                 <input type="hidden" name="checkPw" id="memberPwValue">
