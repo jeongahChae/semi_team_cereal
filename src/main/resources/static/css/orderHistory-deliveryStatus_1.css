@@ -84,6 +84,18 @@ table{
     margin: 0 auto;
     margin-bottom: 1em;
 }
+thead>tr>:first-child{
+    width: 150px;
+}
+thead>tr>:last-child{
+    width: 100px;
+}
+thead>tr>:nth-child(4){
+    width: 150px;
+}
+thead>tr>:nth-child(3){
+    width: 100px;
+}
 th {
     height: 50px;
     text-align: center;
