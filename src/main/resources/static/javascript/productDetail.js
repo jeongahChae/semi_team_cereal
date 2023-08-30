@@ -1,3 +1,17 @@
+$(window).scroll(function () { 
+    var scrollValue = $(document).scrollTop(); 
+    console.log(scrollValue); 
+    if($(this).scrollTop() > 500) {
+		$(".product-detail-content3").css('position','fixed');
+        $(".product-detail-content3").css('bottom','350px');
+        $(".product-detail-content3").css('left','1250px');
+	}else{
+		$(".product-detail-content3").css('position','');
+        $(".product-detail-content3").css('bottom','');
+        $(".product-detail-content3").css('left','');
+	}
+});
+
 $(function(){
     $(".tab>ul>li").eq(0).addClass("active-tab");
     $(".product-detail-img").addClass("active-content");
@@ -18,6 +32,26 @@ tabs.on("click",function(){
         contents.eq(index).addClass("active-content");
         tabs.not($(this)).addClass("active-tab2");
     }
+});
+
+$(".subimg-box1").on("click", function(){
+    const imgurl = $(".subimg-box1>img").attr("src");
+    $(".product-detail-mainimg-box>img").attr("src", imgurl);
+});
+
+$(".subimg-box2").on("click", function(){
+    const imgurl = $(".subimg-box2>img").attr("src");
+    $(".product-detail-mainimg-box>img").attr("src", imgurl);
+});
+
+$(".subimg-box3").on("click", function(){
+    const imgurl = $(".subimg-box3>img").attr("src");
+    $(".product-detail-mainimg-box>img").attr("src", imgurl);
+});
+
+$(".subimg-box4").on("click", function(){
+    const imgurl = $(".subimg-box4>img").attr("src");
+    $(".product-detail-mainimg-box>img").attr("src", imgurl);
 });
 
 const select = $(".product-option")
@@ -91,9 +125,19 @@ select2.change(function(){
 	    }
 	    $(".count2").text(Number(currNum)-1);
 	});
+
+    let sum = 0;
+    $('.count2').each(function(){
+        var text = $(this).text();
+        let text2 = (Number)(text);
+        sum += text2;
+        
+    });
+    let finalPrice = $(".product-detail-info-final-price2").val();
+    let totalPrice = sum * finalPrice;
+    console.log(totalPrice.toLocaleString());
+    $(".info-totalPrice2").text(totalPrice.toLocaleString()+"원");
 });
-
-
 
 
 
