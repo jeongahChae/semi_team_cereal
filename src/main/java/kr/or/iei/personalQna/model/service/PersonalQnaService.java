@@ -35,8 +35,6 @@ public class PersonalQnaService {
 			//pageNavi 제작준비
 			totalCount = personalQnaDao.selectPersonalQnaMemberTotalCount(m);
 		}
-		
-		
 		int totalPage = (int)Math.ceil(totalCount/(double)numPerPage);
 		//pageNavi 사이즈(넘버 갯수 지정)
 		int pageNaviSize = 5;
@@ -89,7 +87,6 @@ public class PersonalQnaService {
 			pageNavi += "</li>";
 		}
 		pageNavi += "</ul>";
-		
 		PersonalQnaListData nld = new PersonalQnaListData(personalQnaList,pageNavi);
 		return nld;
 	}

@@ -14,4 +14,10 @@ public class PersonalQna {
 	private String regDate;
 	private String qnaStatus;
 	private String qnaWriter;
+	
+	//editor 사용시 br은 없어도 괜찮다.(<p>태그로 감싸기 떄문에)
+		public String getQnaContentBr() {
+			//replaceAll(?,?) 앞에 있는? 를 뒤에 있는 ?로 바꿔줘
+			return qnaContent.replaceAll("\r\n", "<br>");
+		}
 }
