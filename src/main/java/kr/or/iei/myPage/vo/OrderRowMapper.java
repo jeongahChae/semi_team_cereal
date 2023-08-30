@@ -13,15 +13,18 @@ public class OrderRowMapper implements RowMapper<Order>{
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Order o = new Order();
 		o.setOrderNo(rs.getInt("order_no"));
-		o.setMemberNo(rs.getInt("member_no"));
-		o.setProductName(rs.getString("product_name2"));
-		o.setOrderAmount(rs.getInt("order_amount"));
-		o.setMemberAddr(rs.getString("member_addr"));
-		o.setOrderStatus(rs.getInt("order_status"));
 		o.setOrderDate(rs.getString("order_date"));
 		o.setTotalPrice(rs.getInt("total_price"));
 		o.setTotalPoint(rs.getInt("total_point"));
+		o.setCategoryNo(rs.getInt("category_no"));
+		o.setOrderStatus(rs.getInt("order_status"));
+		o.setMemberNo(rs.getInt("member_no"));
+		o.setMemberAddr(rs.getString("member_addr"));
 		o.setMemberName(rs.getString("member_name"));
+		o.setOrderedPno(rs.getInt("ordered_pno"));
+		o.setProductFinalPrice(rs.getInt("product_final_price"));
+		o.setCount(rs.getInt("count"));
+		o.setOptionNo(rs.getInt("option_no"));
 		return o;
 	}
 
