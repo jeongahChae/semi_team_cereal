@@ -103,3 +103,37 @@ $(".del-cart").on("click", function(){
 
 
 //이젠...주문하고싶다
+//1)선택상품주문
+$("#partialOrder").on("click", function(){
+
+	const check = $(".cartChk:checked");
+	if(check.length == 0){
+		alert("선택된 상품이 없습니다.");
+		return;
+	}
+	const no = new Array();		//체크된 카트 번호를 저장할 배열
+
+	check.each(function(index,item){
+		const cartNo = $(item).next().val();
+		console.log(cartNo);
+		no.push(cartNo);
+	});
+	location.href="/order/orderChk?no="+no.join("/");//js에서 배열을 구분자를 써서 하나의 긴 문자열로 빼주는 함수^^..
+});
+//2)전체상품주문
+$("#allOrder").on("click", function(){
+
+	const check = $(".cartChk");
+	if(check.length == 0){
+		alert("선택된 상품이 없습니다.");
+		return;
+	}
+	const no = new Array();		//체크된 카트 번호를 저장할 배열
+
+	check.each(function(index,item){
+		const cartNo = $(item).next().val();
+		console.log(cartNo);
+		no.push(cartNo);
+	});
+	location.href="/order/orderChk?no="+no.join("/");//js에서 배열을 구분자를 써서 하나의 긴 문자열로 빼주는 함수^^..
+});	

@@ -30,8 +30,8 @@
        	</div>
         <div class="btn-line2">
             <!-- 수정삭제 버튼은 관리자 로그인 시에만 보임 넣기-->
-            <a class="basic-btn" th:href="@{/event/winnerUpdateFrm(winNo=${wb.winNo})}">수정</a>
-            <button class="cancel-btn" th:onclick="eventDelete([[${wb.winNo}]])">삭제</button>
+            <a class="basic-btn" th:if="${session.m != null && session.m.memberLevel == 1}" th:href="@{/event/winnerUpdateFrm(winNo=${wb.winNo})}">수정</a>
+            <button class="cancel-btn" th:if="${session.m != null && session.m.memberLevel == 1}" th:onclick="eventDelete([[${wb.winNo}]])">삭제</button>
         </div>
 	</div>
 	<th:block th:include="common/footer"></th:block>

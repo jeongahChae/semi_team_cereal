@@ -1,4 +1,4 @@
-google.charts.load("current", { packages: ["corechart", "bar"] });
+google.charts.load("current", { packages: ["bar"] });
 google.charts.setOnLoadCallback(drawChart);
 
 $(function () {
@@ -46,7 +46,7 @@ $(function () {
       success: function (data) {
         $("#chart_div1").empty();
         let categorySalesList = [];
-        categorySalesList.push(["카테고리", "판매수량"]);
+        categorySalesList.push(["카테고리", "매출액"]);
         console.log(google.visualization);
         for (let i = 0; i < data.length; i++) {
           if (category == data[i].categoryRef) {
@@ -62,6 +62,7 @@ $(function () {
     });
   });
 });
+
 function drawChart(categorySalesList) {
   console.log(categorySalesList);
   if (categorySalesList == undefined) {
@@ -78,6 +79,7 @@ function drawChart(categorySalesList) {
     var options = {
       title: "카테고리별 판매 수량",
       chartArea: { width: "50%" },
+      bars: "vertical",
       hAxis: {
         title: "총 판매수량",
         minValue: 0,
@@ -85,9 +87,10 @@ function drawChart(categorySalesList) {
       vAxis: {
         title: "카테고리",
       },
+       colors: ['#1C8394']
     };
     // 그래프를 그려넣을 요소 선택 후 데이터, 옵션을 매개변수로 넣어 그리기
-    var chart = new google.visualization.BarChart(
+    var chart = new google.charts.Bar(
       document.getElementById("chart_div1")
     );
     chart.draw(data, options);
@@ -96,19 +99,21 @@ function drawChart(categorySalesList) {
     var data = google.visualization.arrayToDataTable(categorySalesList);
     // 그래프 그리기 옵션
     var options = {
-      title: "카테고리별 판매 수량",
+      title: "카테고리별 월별 매출액",
       chartArea: { width: "50%" },
+      bars: "vertical",
       hAxis: {
-        title: "총 판매수량",
+        title: "매출액",
         minValue: 0,
       },
       vAxis: {
         title: "카테고리",
       },
+      colors: ['#1C8394']
     };
     // 그래프를 그려넣을 요소 선택 후 데이터, 옵션을 매개변수로 넣어 그리기
     console.log(document.getElementById("chart_div1"));
-    var chart = new google.visualization.BarChart(
+    var chart = new google.charts.Bar(
       document.getElementById("chart_div1")
     );
     chart.draw(data, options);

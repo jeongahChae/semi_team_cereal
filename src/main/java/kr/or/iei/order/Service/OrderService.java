@@ -1,5 +1,6 @@
 package kr.or.iei.order.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.StringTokenizer;
 
@@ -59,5 +60,16 @@ public class OrderService {
 			}
 		}
 		return result;
+	}
+
+	public List selectCartToOrder(String no) {
+		StringTokenizer sT1 = new StringTokenizer(no, "/");
+		List<Cart> list = new ArrayList<Cart>();
+		while(sT1.hasMoreTokens()) {
+			int cartNo = Integer.parseInt(sT1.nextToken());
+			Cart c = orderDao.selectCartToOrder(cartNo);
+			list.add(c);
+		}
+		return list;
 	}
 }

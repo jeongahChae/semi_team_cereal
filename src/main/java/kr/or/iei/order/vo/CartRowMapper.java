@@ -14,7 +14,7 @@ public class CartRowMapper implements RowMapper{
 		Cart c = new Cart();
 		c.setCartNo(rs.getInt("cart_no"));
 		c.setCount(rs.getInt("count"));
-		//c.setMemberNo(rs.getInt("member_no"));
+		c.setMemberNo(rs.getInt("member_no"));
 		c.setOptionNo(rs.getInt("option_no"));
 		c.setPoint(rs.getInt("product_point"));
 		c.setProductFinalPrice(rs.getInt("product_final_price"));

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import kr.or.iei.order.vo.Cart;
 import kr.or.iei.order.vo.CartRowMapper;
 
 @Repository
@@ -46,5 +47,13 @@ public class OrderDao {
 		String query = "delete from cart where cart_no = ? and member_no = ?";
 		int result = jdbc.update(query, cartNo, memberNo);
 		return result;
+	}
+
+	public Cart selectCartToOrder(int cartNo) {
+		String query = "select * from(select* from(select * from cart where cart_no = ?))"+
+				"left join option_tbl using (option_no) left join product using(product_no)";
+		Object[] params = {cartNo};
+		List list = jdbc.query(query, cartRowMapper, params);
+		return (Cart)list.get(0);
 	}
 }
