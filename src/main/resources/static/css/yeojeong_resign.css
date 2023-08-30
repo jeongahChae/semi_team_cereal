@@ -30,17 +30,26 @@
     
 }
 .resign-content{
-    width: 800px;
-   
+    width: 850px;
+    
     
 }
-
+#caution-title{
+    color:#1C8394;
+}
+.complain-wrap{
+    display: flex;
+    padding-top: 30px;
+}
+.complain-wrap>:nth-child(1){
+    justify-content: flex-start;
+}
 .resign-info-wrap{
     padding-top:20px;
     
 }
 .input-password{
-    padding-top: 20px;
+    padding-top: 30px;
     padding-bottom: 20px;
 }
 
@@ -50,18 +59,28 @@
     width: 200px !important;
     
 }
+.button-wrap>button{
+    width:150px;
+    height: 50px;
+    border-radius: 5px;
+    background-color:#1C8394;
+    border: 1px solid #fff ;
+    color:#fff;  
+    font-weight: 900; 
+    font-size: medium; 
+}
 label{
     vertical-align: top;
 }
 .content-wrap{
     display: inline-block;
+    padding-top: 30px;
+    width: 580px;
 }
 .no-title-wrap{
     width:200px;
 }
-.content-wrap{
-    width: 580px;
-}
+
 .input-password{
     overflow: hidden;
 }
