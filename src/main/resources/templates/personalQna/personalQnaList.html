@@ -36,8 +36,7 @@
                                 <button class="cancel-btn" th:if="${session.m != null && session.m.memberLevel == 2}" th:onclick="personalQnaDelete([[${personalQna.qnaNo}]])">삭제</button>
                             </div>
                             <span class="material-icons-outlined" style="float: left; color: #1C8394;">feedback</span>
-                            <th:block th:each="pc : ${personalQnaCommentList}"></th:block>
-                            <div th:utext="${}"></div>
+                            
                             <!-- comment -->
                         </td>
                     </tr>

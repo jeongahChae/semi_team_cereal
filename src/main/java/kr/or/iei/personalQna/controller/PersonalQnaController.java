@@ -32,10 +32,10 @@ public class PersonalQnaController {
 	@Autowired
 	private FileUtil fileUtil;
 	
-	//qnaNo삭제
+	
 	@GetMapping(value = "/list")
-	public String personalQnaList(Model model, int reqPage, int qnaNo, @SessionAttribute Member m) {
-		PersonalQnaListData pld = personalQnaService.selectPersonalQnaList(qnaNo, reqPage,m);
+	public String personalQnaList(Model model, int reqPage, @SessionAttribute Member m) {
+		PersonalQnaListData pld = personalQnaService.selectPersonalQnaList(reqPage,m);
 		model.addAttribute("personalQnaList", pld.getPersonalQnaList());
 		model.addAttribute("pageNavi", pld.getPageNavi());
 		model.addAttribute("btn", 2);

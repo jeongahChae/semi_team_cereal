@@ -88,11 +88,7 @@ public class PersonalQnaDao {
 		return result;
 	}
 
-	//comment
-	public List selectCommentList(int qnaNo) {
-		
-		return null;
-	}
+	
 	
 	
 	

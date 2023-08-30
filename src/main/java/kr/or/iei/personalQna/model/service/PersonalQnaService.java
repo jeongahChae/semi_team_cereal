@@ -18,14 +18,11 @@ public class PersonalQnaService {
 	@Autowired
 	private PersonalQnaDao personalQnaDao;
 
-	public PersonalQnaListData selectPersonalQnaList(int qnaNo,int reqPage, Member m) {
+	public PersonalQnaListData selectPersonalQnaList(int reqPage, Member m) {
 		int numPerPage = 10;
 		int end = reqPage * numPerPage;
 		int start = end - numPerPage +1;
-		//commentList 삭제
 		List personalQnaList = null; 
-		PersonalQna p = personalQnaDao.selectOnePersonalQna(qnaNo);
-		List commentList = personalQnaDao.selectCommentList(qnaNo);
 		int totalCount = 0;
 		if(m.getMemberLevel() == 1) {
 			//관리자인경우 이전과 동일.
