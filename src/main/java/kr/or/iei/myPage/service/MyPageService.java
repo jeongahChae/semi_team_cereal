@@ -174,7 +174,7 @@ public class MyPageService {
 		List orderList = myPageDao.selectAllOrderList(start, end);
 		
 		//pageNavi 제작준비
-		int totalCount = myPageDao.selectOrderTotalCount();
+		int totalCount = myPageDao.totalCount(); //이전코드: selectOrderTotalCount();
 		int totalPage = (int)Math.ceil(totalCount/(double)numPerPage);
 		//pageNavi 사이즈(넘버 갯수 지정)
 		int pageNaviSize = 5;
@@ -402,9 +402,9 @@ public class MyPageService {
 
 	//주문취소/교환/반품 등록
 	@Transactional
-	public int insertOrderCancelList(int orderStatus, String reasonDetail, int orderNo, String productName, String orderDate, int orderAmount, String memberName, String memberAddr) {
+	public int insertOrderCancelList(int orderStatus, String reasonDetail, int orderNo, int memberNo, int optionNo) {
 		System.out.println("orderNo : "+orderNo);
-		int result = myPageDao.insertOrderCancelList(orderStatus, reasonDetail, orderNo, productName, orderDate, orderAmount, memberName, memberAddr);
+		int result = myPageDao.insertOrderCancelList(orderStatus, reasonDetail, orderNo, memberNo, optionNo);
 		System.out.println("result: "+result);
 		return result;
 	}

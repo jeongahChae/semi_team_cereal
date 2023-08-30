@@ -10,11 +10,14 @@ import lombok.NoArgsConstructor;
 public class OrderCancel {
 	private int cancelNo;
 	private int orderNo;
-	private String productName;
 	private String orderDate;
+	private int orderStatus;
 	private String reason;
-	private int orderAmount;
+	private String optionName;
+	private int optionAmount;
 	private String memberName;
 	private String memberAddr;
-	private int orderStatus;
+	private String productName;
+	private int count;
+	private int orderedPno;
 }

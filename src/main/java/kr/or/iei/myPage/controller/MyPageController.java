@@ -60,7 +60,7 @@ public class MyPageController {
 	//주문내역 / 배송현황 2
 	@GetMapping(value="orderHistory-deliveryStatus_2")
 	public String orderHistoryDeliveryStatus2(int btn, int orderNo, Model model) {
-//		System.out.println(orderNo);
+		System.out.println(orderNo);
 		List orderDetail = myPageService.selectOrderHistory(orderNo);
 		model.addAttribute("orderNo", orderNo);
 		model.addAttribute("orderDetail", orderDetail);
@@ -68,7 +68,7 @@ public class MyPageController {
 		return "myPage/orderHistory-deliveryStatus_2";
 	}//orderHistoryDeliveryStatus2(int btn, Model model)
 	
-	/*
+
 	//주문취소/교환/반품
 	@GetMapping(value="orderCancel-change-return_1")
 	public String orderCancelChangeReturn(int btn, int reqPage, Model model) {
@@ -105,7 +105,7 @@ public class MyPageController {
 				System.out.println("orderStatus: "+orderStatus); //3: 주문취소, 7: 교환, 8: 반품
 				if(orderStatus.equals("3")) {
 					//주문취소
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount(), order.getMemberName(), order.getMemberAddr());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getMemberNo(), order.getOptionNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);			
 						System.out.println("order.getOrderStatus(): "+order.getOrderStatus());
@@ -122,7 +122,7 @@ public class MyPageController {
 					}					
 				}else if(orderStatus.equals("7")) {
 					//교환
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount(), order.getMemberName(), order.getMemberAddr());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getMemberNo(), order.getOptionNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);	
 						
@@ -138,7 +138,7 @@ public class MyPageController {
 					}	
 				}else if(orderStatus.equals("8")) {
 					//반품
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOrderDate(), order.getOrderAmount(), order.getMemberName(), order.getMemberAddr());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getMemberNo(), order.getOptionNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);		
 						
@@ -175,7 +175,7 @@ public class MyPageController {
 		model.addAttribute("btn", btn);
 		return "myPage/orderCancel-change-return_3";
 	}
-	*/
+
 	
 	
 	//찜한 상품

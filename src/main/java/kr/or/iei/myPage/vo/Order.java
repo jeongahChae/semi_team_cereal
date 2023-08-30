@@ -15,11 +15,9 @@ public class Order {
 	private int categoryNo;
 	private int orderStatus; //1:결제대기 /2:결제완료 /3:주문취소 /4:배송준비중 /5:배송중 /6:배송완료 /7:교환 /8:반품
 	private int orderedPno;
-	private int productFinalPrice;
 	private int count;
 	private int optionNo;
 	private String optionName;
-	private int productNo;
 	private int optionAmount;
 
 	private int memberNo;
@@ -35,4 +33,16 @@ public class Order {
 	private int memberLevel;
 	private String memberPwnew;
 	private String detail;
+	
+	private int productNo;
+	private int productPrice;
+	private String productName;
+	private int productPercent;
+	private int productPoint;
+	private String productBrand;
+	private String productDelfree;
+	private int productCategory;
+	private String productContent;
+	private int productFinalPrice;
+	private int productFinalPrice1;
 }//Order
