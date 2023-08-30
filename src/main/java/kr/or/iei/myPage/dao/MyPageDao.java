@@ -128,6 +128,7 @@ public class MyPageDao {
 		
 	//주문 내역 상세
 	public List selectOrderHistory(int orderNo) {
+		/*
 		String query = "select product_name, total_price, count, order_status\r\n" + 
 				"from (select *\r\n" + 
 				"from order_tbl\r\n" + 
@@ -135,8 +136,14 @@ public class MyPageDao {
 				"left join option_tbl using(option_no)\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
 				"left join product using(product_no)\r\n" + 
-				"where order_no=?\r\n" + 
-				"order by 1 desc";
+				"where order_no=?";
+		*/
+		String query = "select *\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no)\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
+				"where order_no=?";
 		List orderDetail = jdbc.query(query, orderRowMapper3, orderNo);
 		return orderDetail;
 	}//selectOrderHistory(int orderNo)
