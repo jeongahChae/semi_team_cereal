@@ -52,7 +52,7 @@
 		                <!--테스트 삽입 <td>-->
 		                <tbody id="js-load">	
 		                    <tr th:each="order:${orderList}" th:onclick="orderHistory([[${order.orderNo}]])">
-		                        <td th:text="${order.orderNo}"></td><td th:text="${order.productName}"></td><td th:text="${order.orderAmount}"></td><td th:text="${order.totalPrice}"></td>
+		                        <td th:text="${order.orderNo}"></td><td th:text="${order.optionName}"></td><td th:text="${order.optionAmount}"></td><td th:text="${order.totalPrice}"></td>
 		                        <th:block th:switch="${order.orderStatus}">
 			                        <td th:case="1">결제 대기</td>
 			                        <td th:case="2">결제 완료</td>

@@ -7,6 +7,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.iei.myPage.vo.LikeRowMapper;
+import kr.or.iei.myPage.vo.OdHistoryDelStatusRowMapper;
 import kr.or.iei.myPage.vo.Order;
 import kr.or.iei.myPage.vo.OrderCancelRowMapper;
 import kr.or.iei.myPage.vo.OrderCancelRowMapper2;
@@ -21,6 +22,8 @@ public class MyPageDao {
 	@Autowired
 	private OrderRowMapper orderRowMapper;
 	@Autowired
+	private OdHistoryDelStatusRowMapper odHistoryDelStatusRowMapper;
+	@Autowired
 	private LikeRowMapper likeRowMapper;
 	@Autowired
 	private ProductRowMapper productRowMapper;
@@ -33,14 +36,36 @@ public class MyPageDao {
 	
 	//전체 주문 내역
 	public List selectAllOrderList(int start, int end) {
-		String query = "select * from (select rownum as rnum, n. * from (select * from order_tbl order by 1 desc)n) where rnum between ? and ?";
+		//String query = "select * from (select rownum as rnum, n. * from (select * from order_tbl order by 1 desc)n) where rnum between ? and ?";
+		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
+				"(select *\r\n" + 
+				"from (select *\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no))\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join member_tbl using(member_no))\r\n" + 
+				"n) where rnum between ? and ?";
 		List orderList = jdbc.query(query, orderRowMapper, start, end);
+		
+		System.out.println(orderList.size());
+		for(int i=0;i<orderList.size();i++) {
+			System.out.println(orderList.get(i));
+		}
+		
 		return orderList;
 	}//selectAllOrderList()
 
 	//전체 주문 내역 페이지 네비에 사용
 	public int totalCount() {
-		String query = "select count(*) from order_tbl";
+		String query = "select count(*)\r\n" + 
+				"from (\r\n" + 
+				"select *\r\n" + 
+				"from (select *\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no))\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join member_tbl using(member_no)\r\n" + 
+				")";
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}//totalCount()
@@ -54,7 +79,21 @@ public class MyPageDao {
 		System.out.println(startDate);
 		System.out.println(endDate);
 		*/
-		String query = "select * from (select rownum as rnum, n. * from (select * from order_tbl where order_date between ? and ? order by 1 desc)n) where rnum between ? and ?";
+		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
+				"(\r\n" + 
+				"select *\r\n" + 
+				"from (\r\n" + 
+				"select *\r\n" + 
+				"from (select *\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no))\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join member_tbl using(member_no)\r\n" + 
+				")\r\n" + 
+				"where order_date between ? and ? \r\n" + 
+				"order by 1 desc\r\n" + 
+				")\r\n" + 
+				"n) where rnum between ? and ?";
 		List orderList = jdbc.query(query, orderRowMapper, startDate, endDate, start, end);
 		return orderList;
 	}//selectDateOrderList(int start, int end, String startDate, String endDate)

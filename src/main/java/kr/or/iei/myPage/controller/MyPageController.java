@@ -50,7 +50,7 @@ public class MyPageController {
 			model.addAttribute("startDate", startDate);
 			model.addAttribute("endDate", endDate);
 		}else {
-			OrderListData old = myPageService.selectAllOrderList(reqPage); //주문내역 전체 조회			
+			OrderListData old = myPageService.selectAllOrderList(reqPage); //주문내역 전체 조회	
 			model.addAttribute("orderList", old.getOrderList()); //주문내역 전체 조회
 			model.addAttribute("pageNavi", old.getPageNavi()); //페이지 네비게이션
 			model.addAttribute("btn", btn);
@@ -68,7 +68,7 @@ public class MyPageController {
 		return "myPage/orderHistory-deliveryStatus_2";
 	}//orderHistoryDeliveryStatus2(int btn, Model model)
 	
-	
+	/*
 	//주문취소/교환/반품
 	@GetMapping(value="orderCancel-change-return_1")
 	public String orderCancelChangeReturn(int btn, int reqPage, Model model) {
@@ -175,7 +175,7 @@ public class MyPageController {
 		model.addAttribute("btn", btn);
 		return "myPage/orderCancel-change-return_3";
 	}
-	
+	*/
 	
 	
 	//찜한 상품
