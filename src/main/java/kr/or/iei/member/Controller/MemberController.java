@@ -157,6 +157,25 @@ public class MemberController {
 		}
 		return "common/msg";
 	}
+	@GetMapping(value="/delete")
+	public String delete(Model model,@SessionAttribute(required = false)Member m) {
+		int result = memberService.deleteMember(m.getMemberId());
+		
+		if (result > 0) {
+			//session.invalidate(); -> 이거 쓰면 매개변수에 HttpSession session 추가
+			return "redirect:/member/logout";
+
+
+		} else {
+
+			model.addAttribute("title", "로그아웃 실패");
+			model.addAttribute("msg", "로그아웃 실패");
+			model.addAttribute("icon", "warning");
+			model.addAttribute("loc", "/member/mypage");
+			return "common/msg";
+		}
+		
+	}
 	
 }
 

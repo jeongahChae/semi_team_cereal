@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.member.model.vo.MemberRowMapper;
@@ -60,6 +61,15 @@ public class MemberDao {
 		Object[] params = {member.getMemberPwnew(),member.getMemberPhone(),member.getMemberAddr(),member.getBirthDate(),member.getMemberId()};
 		int result = jdbc.update(query, params);
 		return result;
+	}
+
+	@Transactional
+	public int deleteMember(String memberId) {
+		String query = "delete from member_tbl where member_id = ?";
+		Object[] params = {memberId};
+		int result = jdbc.update(query, params);
+		return result;
+		
 	}
 
 }
