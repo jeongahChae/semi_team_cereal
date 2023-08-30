@@ -25,6 +25,24 @@ public class WebConfig implements WebMvcConfigurer {
 		//registry.addResourceHandler("/product/**").addResourceLocations("file:///C:/Users/user1/Desktop/Semi_Project - ESSENTIAL#/semi_team_cereal/src/main/resources/static/img/product/");
 	}//스프링부트 설정파일
 	
+	//인터셉터 관리하는 메소드
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		//login인터셉터
+		registry.addInterceptor(new LoginInterceptor()).addPathPatterns(
+				"/personalQna/**","/notice/writeFrm","/notice/updateFrm","/usualQna/writeFrm","/usualQna/updateFrm"
+				)
+		//제외 항목
+		.excludePathPatterns(
+				""
+				);
+		//admin 인터셉터
+		registry.addInterceptor(new AdminInterceptor()).addPathPatterns(
+				"/notice/writeFrm","/notice/updateFrm","/usualQna/writeFrm","/usualQna/updateFrm"
+				);
+		
+	}
+	
 	/*
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
