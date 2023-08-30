@@ -34,4 +34,11 @@ public class OrderDao {
 		int result = jdbc.update(query, cartNo2);
 		return result;
 	}
+
+	public int updateOption(int cartNo, int newOptionNo, int newCount) {
+		String query = "update cart set option_no = ?, count = ? where cart_no=?";
+		Object[] params = {newOptionNo, newCount, cartNo};
+		int result= jdbc.update(query, params);
+		return result;
+	}
 }
