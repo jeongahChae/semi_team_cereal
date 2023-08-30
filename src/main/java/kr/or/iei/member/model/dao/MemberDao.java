@@ -72,4 +72,13 @@ public class MemberDao {
 		
 	}
 
+	public int selectOneMemberPw(String checkPw) {
+		String query = "select * from member_tbl where member_pw = ?";
+		List list = jdbc.query(query, memberRowMapper,checkPw);
+		if(list.isEmpty()) {
+			return 0;
+		}
+		return 1;
+	}
+
 }

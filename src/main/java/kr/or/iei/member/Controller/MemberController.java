@@ -176,6 +176,26 @@ public class MemberController {
 		}
 		
 	}
-	
+	@GetMapping(value = "/deleteFrm")
+	public String deleteFrm() {
+		
+		return "member/yeojeong_resign";
+	}
+	@PostMapping(value = "/checkPw")
+	@ResponseBody
+	public int checkPw(String checkPw) {
+		System.out.println("checkPw : " + checkPw);
+		int result = memberService.selectOneMemberPw(checkPw);
+		
+		if(result == 0) {
+			//중복된 비밀번호가 없음
+			result =  0;
+		}else {
+			//중복된 비밀번호가 있음
+			result =  1;
+		}
+		
+		return result;
+	}
 }
 
