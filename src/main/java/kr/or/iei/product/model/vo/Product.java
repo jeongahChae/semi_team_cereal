@@ -1,5 +1,6 @@
 package kr.or.iei.product.model.vo;
 
+import java.text.DecimalFormat;
 import java.util.List;
 
 import lombok.AllArgsConstructor;
@@ -27,4 +28,16 @@ public class Product {
 	private List optionList;
 	//private String productOption;
 	//private int productAmount;
+	
+	public String getPpc() {//게터 추가(ProductPriceComma 세자리씩 나눔)
+		DecimalFormat df = new DecimalFormat("###,###,###");
+		String ppc = df.format(productPrice);
+		return ppc;
+	}
+	
+	public String getPfpc() {//게터 추가(ProductFinalPriceComma 세자리씩 나눔)
+		DecimalFormat df = new DecimalFormat("###,###,###");
+		String pfpc = df.format(productFinalPrice);
+		return pfpc;
+	}
 }
