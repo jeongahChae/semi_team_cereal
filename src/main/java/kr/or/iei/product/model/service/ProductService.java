@@ -166,6 +166,7 @@ public class ProductService {
 		p.setFileList(fileList);
 		p.setDfileList(dfileList);
 		ProductDetailData pdd = new ProductDetailData(p);
+		System.out.println(fileList.get(0));
 		return pdd;
 	}
 

@@ -18,17 +18,17 @@
         <div class="product-detail-content1">
             <div class="product-detail-subimg-box">
                 <div class="subimg-box1">
-                    <img src="/img/detail1.jpg">
+                    <img th:src="@{/product/}+${p.fileList[0].filepath}">
                 </div>
                 <div class="subimg-box2">
-                    <img src="/img/detail2.jpg">
+                    <img th:src="@{/product/}+${p.fileList[1].filepath}">
                 </div>
                 <div class="subimg-box3">
-                    <img src="/img/detail3.jpg">
+                    <img th:src="@{/product/}+${p.fileList[2].filepath}">
                 </div>
             </div>
-            <div class="product-detail-mainimg-box">
-                <img src="/img/detail4.jpg">
+            <div class="product-detail-mainimg-box" >
+                <img th:src="@{/product/}+${p.fileList[3].filepath}">
             </div>
             <div class="product-detail-info">
                 <div class="detail-info1">
@@ -52,17 +52,12 @@
                     </div>
                 </div>
                 <div class="product-detail-info-option">
-                    <select class="product-option" name="optionNo">
+                    <select class="product-option">
                         <option value="">옵션</option>
-                        <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionNo}" th:text="${productOption.optionName}"></option>
+                        <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionName}" th:text="${productOption.optionName}"></option>
                     </select>
                 </div>
                 <div class="product-detail-info-optionbox">
-                    <div class="option-count">
-                        <button type="button" id="plus">+</button>
-                        <div class="count">1</div>
-                        <button type="button" id="minus">-</button>
-                    </div>
                 </div>
                 <div class="product-detail-info-totalPrice">
                     <div class="info-totalPrice-title">주문금액</div>
@@ -102,8 +97,9 @@
         </div>
         <div class="product-detail-content3">
             <div class="product-detail-info-option2">
-                <select class="product-option2" name="optionNo">
+                <select class="product-option2">
                     <option value="">옵션</option>
+                    <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionName}" th:text="${productOption.optionName}"></option>
                 </select>
             </div>
             <div class="product-detail-info-optionbox2">
