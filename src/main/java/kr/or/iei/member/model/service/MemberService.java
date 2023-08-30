@@ -48,4 +48,9 @@ public class MemberService {
 		return result;
 	}
 
+	public int selectOneMemberPw(String checkPw) {
+		int result = memberDao.selectOneMemberPw(checkPw);
+		return result;
+	}
+	
 }

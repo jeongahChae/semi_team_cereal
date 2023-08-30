@@ -30,7 +30,7 @@
 	                </thead>
 	                <tbody>
 	                    <tr th:each="member:${memberList}">
-	                        <td th:text="${member.memberId}"></td><td th:text="${member.memberName}"></td><td th:text="${member.memberPhone}"></td><td th:text="${member.memberAddr}"></td>
+	                        <td th:text="${member.memberId}"></td><td th:text="${member.memberName}"></td><td th:text="${member.memberPhone}"></td><td th:text="|${member.memberAddr} ${member.detail}|"></td>
 	                    </tr>
 	                </tbody>
 	            </table>
