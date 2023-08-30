@@ -91,7 +91,7 @@ $("#emailChkBtn").click(function(){
 });
 
 $(document).mouseup(function (e){
-    //console.log(e);
+    console.log(e);
 	if($("#emailChkModal1").has(e.target).length > 0){
         
 		$(".modal").fadeOut(400);
