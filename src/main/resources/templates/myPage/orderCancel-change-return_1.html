@@ -44,7 +44,7 @@
 	                        </td>
 	                        <td th:text="${order.orderNo}"></td>
 	                        <td th:text="${order.productName}"></td>
-	                        <td th:text="${order.orderAmount}"></td>
+	                        <td th:text="${order.count}"></td>
 	                        <th:block th:switch="${order.orderStatus}">
 			                        <td th:case="1">결제 대기</td>
 			                        <td th:case="2">결제 완료</td>

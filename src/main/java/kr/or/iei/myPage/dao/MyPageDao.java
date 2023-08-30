@@ -12,6 +12,9 @@ import kr.or.iei.myPage.vo.Order;
 import kr.or.iei.myPage.vo.OrderCancelRowMapper;
 import kr.or.iei.myPage.vo.OrderCancelRowMapper2;
 import kr.or.iei.myPage.vo.OrderRowMapper;
+import kr.or.iei.myPage.vo.OrderRowMapper2;
+import kr.or.iei.myPage.vo.OrderRowMapper3;
+import kr.or.iei.myPage.vo.OrderRowMapper4;
 import kr.or.iei.product.model.vo.ProductReviewRowMapper;
 import kr.or.iei.product.model.vo.ProductRowMapper;
 
@@ -21,6 +24,12 @@ public class MyPageDao {
 	private JdbcTemplate jdbc;
 	@Autowired
 	private OrderRowMapper orderRowMapper;
+	@Autowired
+	private OrderRowMapper2 orderRowMapper2;
+	@Autowired
+	private OrderRowMapper3 orderRowMapper3;	
+	@Autowired
+	private OrderRowMapper4 orderRowMapper4;
 	@Autowired
 	private OdHistoryDelStatusRowMapper odHistoryDelStatusRowMapper;
 	@Autowired
@@ -37,19 +46,23 @@ public class MyPageDao {
 	//전체 주문 내역
 	public List selectAllOrderList(int start, int end) {
 		//String query = "select * from (select rownum as rnum, n. * from (select * from order_tbl order by 1 desc)n) where rnum between ? and ?";
-		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
-				"(select *\r\n" + 
+		
+		String query = "select * from (select rownum as rnum, n. * from\r\n" + 
+				"(select order_no, product_name, count, total_price, order_status\r\n" + 
 				"from (select *\r\n" + 
 				"from order_tbl\r\n" + 
 				"left join ordered_products_tbl using(order_no))\r\n" + 
 				"left join option_tbl using(option_no)\r\n" + 
-				"left join member_tbl using(member_no))\r\n" + 
+				"left join member_tbl using(member_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
+				"order by 1 desc) \r\n" + 
 				"n) where rnum between ? and ?";
-		List orderList = jdbc.query(query, orderRowMapper, start, end);
 		
-		System.out.println(orderList.size());
+		List orderList = jdbc.query(query, orderRowMapper2, start, end);
+		
+		System.out.println("orderList.size(): "+orderList.size());
 		for(int i=0;i<orderList.size();i++) {
-			System.out.println(orderList.get(i));
+			System.out.println("orderList.get(i): "+orderList.get(i));
 		}
 		
 		return orderList;
@@ -65,6 +78,7 @@ public class MyPageDao {
 				"left join ordered_products_tbl using(order_no))\r\n" + 
 				"left join option_tbl using(option_no)\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
 				")";
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
@@ -80,8 +94,23 @@ public class MyPageDao {
 		System.out.println(endDate);
 		*/
 		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
-				"(\r\n" + 
-				"select *\r\n" + 
+				"(select order_no, product_name, count, total_price, order_status\r\n" + 
+				"from (select *\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no))\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join member_tbl using(member_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
+				"where order_date between ? and ?\r\n" + 
+				"order by 1 desc)\r\n" + 
+				"n) where rnum between ? and ?";
+		List orderList = jdbc.query(query, orderRowMapper2, startDate, endDate, start, end);
+		return orderList;
+	}//selectDateOrderList(int start, int end, String startDate, String endDate)
+	
+	//기간내 주문 내역 페이지 네비에 사용
+	public int selectOrderTotalCount(String startDate, String endDate) {
+		String query = "select count(*)\r\n" + 
 				"from (\r\n" + 
 				"select *\r\n" + 
 				"from (select *\r\n" + 
@@ -90,17 +119,7 @@ public class MyPageDao {
 				"left join option_tbl using(option_no)\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
 				")\r\n" + 
-				"where order_date between ? and ? \r\n" + 
-				"order by 1 desc\r\n" + 
-				")\r\n" + 
-				"n) where rnum between ? and ?";
-		List orderList = jdbc.query(query, orderRowMapper, startDate, endDate, start, end);
-		return orderList;
-	}//selectDateOrderList(int start, int end, String startDate, String endDate)
-	
-	//기간내 주문 내역 페이지 네비에 사용
-	public int selectOrderTotalCount(String startDate, String endDate) {
-		String query = "select count(*) from order_tbl where order_date between ? and ?";
+				"where order_date between ? and ?";
 		int totalCount = jdbc.queryForObject(query, Integer.class, startDate, endDate);
 		return totalCount;
 	}//selectOrderTotalCount(String startDate, String endDate)
@@ -109,13 +128,22 @@ public class MyPageDao {
 		
 	//주문 내역 상세
 	public List selectOrderHistory(int orderNo) {
-		String query = "select * from order_tbl where order_no=?";
-		List orderDetail = jdbc.query(query, orderRowMapper, orderNo);
+		String query = "select product_name, total_price, count, order_status\r\n" + 
+				"from (select *\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no))\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join member_tbl using(member_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
+				"where order_no=?\r\n" + 
+				"order by 1 desc";
+		List orderDetail = jdbc.query(query, orderRowMapper3, orderNo);
 		return orderDetail;
 	}//selectOrderHistory(int orderNo)
 
 
 
+	//현재 미사용
 	//전체 주문 수
 	public int selectOrderTotalCount() {
 		String query = "select count(*) as cnt from order_tbl";
@@ -126,10 +154,111 @@ public class MyPageDao {
 	
 	//주문 내역 - 주문 번호로 조회
 	public Order selectNoOrderList(int orderNO) {
-		String query = "select * from order_tbl where order_no=?";
-		List orderDetail = jdbc.query(query, orderRowMapper, orderNO);
+//		String query = "select * from order_tbl where order_no=?";
+		String query = "select order_no, product_name, count\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no)\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
+				"where order_no=?";
+		List orderDetail = jdbc.query(query, orderRowMapper4, orderNO);
 		return (Order)orderDetail.get(0);
 	}//selectNoOrderList(int orderNO)
+
+	
+
+	//주문취소/교환/반품 등록
+	public int insertOrderCancelList(int orderStatus, String reasonDetail, int orderNo, int memberNo, int optionNo) {
+	  //insert into order_cancel values(order_cancel_no.nextval, order_no, reason, member_no, option_no, orderStatus);
+		String query = "insert into order_cancel values(order_cancel_no.nextval, ?, ?, ?, ?, ?)";
+		Object[] params = {orderNo, reasonDetail, memberNo, optionNo, orderStatus}; 
+		int result = jdbc.update(query, params);
+		return result;
+	}
+	//주문취소/교환/반품 내역 출력
+	public List selectAllOrderCancel(int start, int end) {
+//		String query = "select * from (select rownum as rnum, n. * from (select * from order_cancel order by 1 desc)n) where rnum between ? and ?";
+		/*
+		회원번호: 27로 로그인해서 해당하는 정보를 출력할 경우
+		String query = "select order_no,count,order_status,option_name,product_name\r\n" + 
+				"from ordered_products_tbl\r\n" + 
+				"join order_tbl using(order_no)\r\n" + 
+				"join option_tbl using(option_no)\r\n" + 
+				"join product using(product_no)\r\n" + 
+				"where \r\n" + 
+				"member_no = 27\r\n" + 
+				"and\r\n" + 
+				"ordered_pno in (select min(ordered_pno) from ordered_products_tbl group by order_no);";
+		*/
+		/*
+		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
+				"(\r\n" + 
+				"select order_no,count,order_status,option_name,product_name\r\n" + 
+				"from ordered_products_tbl\r\n" + 
+				"join order_tbl using(order_no)\r\n" + 
+				"join option_tbl using(option_no)\r\n" + 
+				"join product using(product_no)\r\n" + 
+				"where\r\n" + 
+				"ordered_pno in (select min(ordered_pno) from ordered_products_tbl group by order_no)\r\n" + 
+				")\r\n" + 
+				"n) where rnum between ? and ?";
+		*/
+		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
+				"(select order_no, order_status, product_name, count\r\n" + 
+				"from order_tbl\r\n" + 
+				"left join ordered_products_tbl using(order_no)\r\n" + 
+				"left join option_tbl using(option_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
+				"order by 1 desc) \r\n" + 
+				"n) where rnum between ? and ?";
+		List cancelList = jdbc.query(query, orderCancelRowMapper2, start, end);
+		return cancelList;
+	}
+	//주문취소/교환/반품 전체 수
+	public int selectCancelTotalCount() {
+//		String query = "select count(*) as cnt from order_cancel";
+		/*
+		회원번호: 27로 로그인해서 해당하는 정보를 출력할 경우
+		String query = "select count(*)\r\n" + 
+				"from ordered_products_tbl\r\n" + 
+				"join order_tbl using(order_no)\r\n" + 
+				"join option_tbl using(option_no)\r\n" + 
+				"join product using(product_no)\r\n" + 
+				"where \r\n" + 
+				"member_no = 27\r\n" + 
+				"and\r\n" + 
+				"ordered_pno in (select min(ordered_pno) from ordered_products_tbl group by order_no);";
+		*/
+		/*
+		String query = "select count(*)\r\n" + 
+				"from ordered_products_tbl\r\n" + 
+				"join order_tbl using(order_no)\r\n" + 
+				"join option_tbl using(option_no)\r\n" + 
+				"join product using(product_no)\r\n" + 
+				"where \r\n" + 
+				"ordered_pno in (select min(ordered_pno) from ordered_products_tbl group by order_no)";
+		*/
+		String query = "select count(*)\r\n" + 
+				"from order_cancel \r\n" + 
+				"left join member_tbl  using(member_no)\r\n" + 
+				"left join order_tbl using(order_no)\r\n" + 
+				"left join option_tbl  using(option_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
+				"left join ordered_products_tbl using(order_no)";
+		int totalCount = jdbc.queryForObject(query, Integer.class);
+		return totalCount;
+	}
+
+	//주문내역에서 삭제
+	public int deleteOrderHistory(int orderNo) {
+		String query = "delete from order_tbl where order_no=?";
+		Object[] params = {orderNo};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
+
+
 
 	//찜목록 - 전체 조회
 	public List selectAllLikeList(int start, int end) {
@@ -163,39 +292,6 @@ public class MyPageDao {
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}
-
-	//주문취소/교환/반품 등록
-	public int insertOrderCancelList(int orderStatus, String reasonDetail, int orderNo, String productName, String orderDate, int orderAmount, String memberName, String memberAddr) {
-		String query = "insert into order_cancel values(ORDER_CANCEL_NO.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?)";
-		Object[] params = {orderNo, productName, orderDate, reasonDetail, orderAmount, memberName, memberAddr, orderStatus}; 
-		int result = jdbc.update(query, params);
-		return result;
-	}
-	//주문취소/교환/반품 내역 출력
-	public List selectAllOrderCancel(int start, int end) {
-		String query = "select * from (select rownum as rnum, n. * from (select * from order_cancel order by 1 desc)n) where rnum between ? and ?";
-		List cancelList = jdbc.query(query, orderCancelRowMapper2, start, end);
-		return cancelList;
-	}
-	//주문취소/교환/반품 전체 수
-	public int selectCancelTotalCount() {
-		String query = "select count(*) as cnt from order_cancel";
-		int totalCount = jdbc.queryForObject(query, Integer.class);
-		return totalCount;
-	}
-
-	//주문내역에서 삭제
-	public int deleteOrderHistory(int orderNo) {
-		String query = "delete from order_tbl where order_no=?";
-		Object[] params = {orderNo};
-		int result = jdbc.update(query, params);
-		return result;
-	}
-
-
-
-
-	
 
 
 

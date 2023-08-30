@@ -20,11 +20,9 @@ public class OrderRowMapper implements RowMapper<Order>{
 		o.setCategoryNo(rs.getInt("category_no"));
 		o.setOrderStatus(rs.getInt("order_status"));
 		o.setOrderedPno(rs.getInt("ordered_pno"));
-		o.setProductFinalPrice(rs.getInt("product_final_price"));
 		o.setCount(rs.getInt("count"));
 		o.setOptionNo(rs.getInt("option_no"));
 		o.setOptionName(rs.getString("option_name"));
-		o.setProductNo(rs.getInt("product_no"));
 		o.setOptionAmount(rs.getInt("option_amount"));
 		
 		
@@ -38,8 +36,20 @@ public class OrderRowMapper implements RowMapper<Order>{
 		o.setMemberGender(rs.getString("member_gender"));
 		o.setBirthDate(rs.getString("birth_date"));
 		o.setEnrollDate(rs.getString("enroll_date"));
-		o.setMemberLevel(rs.getInt("member_level"));		
+		o.setMemberLevel(rs.getInt("member_level"));	
 		o.setDetail(rs.getString("detail"));
+		
+		o.setProductBrand(rs.getString("product_brand"));
+		o.setProductCategory(rs.getInt("product_category"));
+		o.setProductContent(rs.getString("product_content"));
+		o.setProductDelfree(rs.getString("product_delfree"));
+		o.setProductFinalPrice(rs.getInt("product_final_price"));
+		o.setProductName(rs.getString("product_name"));
+		o.setProductNo(rs.getInt("product_no"));
+		o.setProductPercent(rs.getInt("product_percent"));
+		o.setProductPoint(rs.getInt("product_point"));
+		o.setProductPrice(rs.getInt("product_price"));
+//		o.setProductFinalPrice1(rs.getInt("product_final_price_1"));
 		return o;
 	}
 
