@@ -23,26 +23,26 @@ $("tr.showContent").click(function() {
 $("#photo-picker").on("change",function(){
     //첨부파일은 multiple옵션 사용 시 여러개일 수 있으므로 배열로 처리
     //첨부파일 갯수가 0개가 아니고 && 첫번째 파일이 정상이면
-    // const photoImg = $(".photo-img");
-    // const imgBoxAdd = $(".img-box-add");
+    const photoImg = $(".photo-img");
+    const imgBoxAdd = $(".img-box-add");
     if(this.files.length != 0 && this.files[0] != 0){
         const reader = new FileReader();//파일정보를 얻어올 수 있는 객체
         //선택한 파일 정보를 읽어옴(비동기처리)
         reader.readAsDataURL(this.files[0]);
         //파일리더가 정보를 다 읽어오면 동작할 함수
         reader.onload = function(e){
-            $(".photo-img").attr("src",e.target.result);
-            $(".img-box-add").css("display","block");
-            //추가된 이미지 삭제하는 함수
-            $(".img-box-add").on("click",function(){
-                if(confirm("등록된 사진을 삭제하시겠습니까?")){
-                    $(".photo-img").attr("src","");
-                    $(".img-box-add").css("display","none");
-                }
+            photoImg.attr("src",e.target.result);
+            imgBoxAdd.css("display","block");
+            //추가된 이미지를 클릭했을 때 삭제하는 함수
+            imgBoxAdd.on("click",function(){
+                photoImg.attr("src","");
+                imgBoxAdd.css("display","none");
+                //input에 value값을 바꿔주는 코드
+                $("#photo-picker").val("");
             });
         }
     }else{
-        $(".photo-img").attr("src","");
-        $(".img-box-add").css("display","none");
+        photoImg.attr("src","");
+        imgBoxAdd.css("display","none");
     }
 });
