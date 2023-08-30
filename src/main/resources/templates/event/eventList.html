@@ -22,6 +22,7 @@
 				<div class="event-detail" th:each="event : ${eventList}">
 				<a th:href="@{/event/view(eventNo=${event.eventNo})}">
 					<img th:if="${event.eventStatus}=='1'" th:src="@{/img/event/}+${event.thumbnail}">
+					<img th:if="${event.eventStatus}=='2'" th:src="@{/img/event/}+${event.thumbnail}" style="filter:grayscale(1);">
 					<h3 th:text="${event.eventTitle}"></h3>
 					<span th:text="${event.startDate}"></span>
 					<span>~</span>

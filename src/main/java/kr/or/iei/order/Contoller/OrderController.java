@@ -83,15 +83,15 @@ public class OrderController {
 		return result;
 	}
 	
-	@PostMapping(value="/orderChk")
-	public String checkOrderPage(@SessionAttribute(required = false) Member m,Model model) {
-		
+	@GetMapping(value="/orderChk")
+	public String checkOrderPage(@SessionAttribute(required = false) Member m, String no, Model model) {
+		List list = orderService.selectCartToOrder(no);
+		model.addAttribute("list", list);
 		return "order/orderChk";
 	}
 	
 	@GetMapping(value="/delCart")
 	public String deleteCart(@SessionAttribute(required = false) Member m, String no, Model model) {
-		System.out.println(no+","+ m.getMemberNo());
 		boolean result = orderService.deleteCart(no, m.getMemberNo());
 		if(result) {
 			return "redirect:/order/cart";//html이 아니라 컨트롤러로 리다이렉트시킴
