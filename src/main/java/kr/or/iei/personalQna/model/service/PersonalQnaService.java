@@ -1,11 +1,15 @@
 package kr.or.iei.personalQna.model.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.or.iei.personalQna.model.dao.PersonalQnaDao;
+import kr.or.iei.personalQna.model.vo.PersonalQna;
+import kr.or.iei.personalQna.model.vo.PersonalQnaFile;
 import kr.or.iei.personalQna.model.vo.PersonalQnaListData;
 
 @Service
@@ -13,7 +17,7 @@ public class PersonalQnaService {
 	@Autowired
 	private PersonalQnaDao personalQnaDao;
 
-	public PersonalQnaListData seletPersonalQnaList(int reqPage) {
+	public PersonalQnaListData selectPersonalQnaList(int reqPage) {
 		int numPerPage = 10;
 		int end = reqPage * numPerPage;
 		int start = end - numPerPage +1;
@@ -75,5 +79,18 @@ public class PersonalQnaService {
 		
 		PersonalQnaListData nld = new PersonalQnaListData(personalQnaList,pageNavi);
 		return nld;
+	}
+
+	@Transactional
+	public int insertPersonalQna(PersonalQna p, ArrayList<PersonalQnaFile> fileList) {
+		int result = personalQnaDao.insertPersonalQna(p);
+		if(fileList != null) {
+			int personalQnaNo = personalQnaDao.getPersonalQnaNo();
+			for(PersonalQnaFile file : fileList) {
+				file.setQnaNo(personalQnaNo);
+				result += personalQnaDao.insertPersonalQnaFile(file);
+			}
+		}
+		return result;
 	}
 }

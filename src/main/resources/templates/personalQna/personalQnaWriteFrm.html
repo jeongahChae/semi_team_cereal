@@ -20,7 +20,6 @@
                             <th style="width: 14% "><label for="writeFrmTitle">제목</label></th>
                             <td>
                                 <input type="text" name="qnaTitle" id="writeFrmTitle" class="input-form">
-                                <input type="hidden" name="qnaNo">
                             </td>
                             <td style="display: none;">
                                 <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
@@ -41,13 +40,13 @@
                                 <div class="img-attach-line">
                                     <!-- 사진이 추가되면 작은 사진이 div.img-box로 추가 되게 만들기. -->
                                     <!-- 시간이 된다면 3개까지 가능하도록 구현하자.(마켓컬리 1:1문의 사진넣기 참조.) -->
-                                    <div class="img-box-add" style="display: none;">
+                                    <div class="img-box-add" style="display: none; cursor: pointer;">
                                         <img class="photo-img">
                                     </div>
                                     <div class="img-box">
                                         <label for="photo-picker" class="photo-picker-label" style="cursor: pointer;">
                                             <span class="material-icons-outlined camera-icon">photo_camera</span>
-                                            <input type="file" name="addfile" multiple style="display: none;" id="photo-picker">
+                                            <input type="file" name="addfile" style="display: none;" id="photo-picker">
                                         </label>
                                     </div>
                                 </div>
