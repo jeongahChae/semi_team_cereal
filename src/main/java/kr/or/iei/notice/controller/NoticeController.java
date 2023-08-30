@@ -170,6 +170,25 @@ public class NoticeController {
 		}
 		return "/noticeEditor/"+filepath;
 	}
+	
+	
+	//인터셉터 받는곳
+	@GetMapping(value = "/loginMsg")
+	public String loginMsg(Model model) {
+		model.addAttribute("title", "로그인 가능");
+		model.addAttribute("msg", "로그인 후 이용 가능합니다.");
+		model.addAttribute("icon", "info");
+		model.addAttribute("loc", "/member/yeojeong_signupFrm");
+		return "common/msg";
+	}
+	@GetMapping(value = "/adminMsg")
+	public String adminMsg(Model model) {
+		model.addAttribute("title", "관리자 페이지");
+		model.addAttribute("msg", "관리자만 가능함.");
+		model.addAttribute("icon", "warning");
+		model.addAttribute("loc", "/");
+		return "common/msg";
+	}
 }
 
 
