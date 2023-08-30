@@ -12,27 +12,23 @@
 	<div class="us-wrap">
 		<div class="us-title">
 			<br>
-			<h1>장바구니</h1>
+			<h1>주문하기</h1>
 		</div>
-
-		<div class="us-wrap">
-			
+ 			
 			<th:block th:if="${list.size == 0 && session.m!=null}">
 				<div class="empty-cart">
 					<span class="guid-ment">장바구니에 담긴 상품이 없습니다.</span>
 				</div>
                  <div class="btn-line3">
-		             <button type="button"> <a href="/aboutUs" class="basic-btn">쇼핑하러 가기</a></button><!-- 상품페이지로 이동시킬거임 -->
+		             <button type="button"> <a href="/aboutUs" class="basic-btn">쇼핑하러 가기</a></button><!-- 상품페이지로 이동시킬거임-->
 		         </div>
 			</th:block>
 			
 			<th:block th:if="${list.size != 0 && session.m!=null}">
 
 			<div class="full-cart">
-				<button type="button" class="normal-btn del-cart" style="margin-bottom:20px;">선택 삭제</button>
-				<form action="/order/orderChk" method="post">
+				<button type="button" class="normal-btn" style="margin-bottom:20px;">선택 삭제</button>
 				<table class="tbl notice-tbl">
-					
 					<tbody>
 					<tr>
 						<th style="width: 10%;"><input type="checkbox" id="cartAll"></th>
@@ -41,11 +37,9 @@
 						<th style="width: 15%;">주문관리</th>
 						<th style="width: 15%;">가격</th>
 					</tr>
-					
 					<tr th:each = "cart : ${list}">
 						<td>
-							<input type="checkbox" class="cartChk">
-							<input type="hidden" class="cartNo" name="cartNo" th:value="${cart.cartNo}">
+							<input type="checkbox" class="cartChk" name="cartNo" value="${cart.cartNo}">
 						</td>
 						<td style="text-align:left; padding-left:20px;">
 							<a th:href="@{/product/productDetail(productNo=${cart.productNo})}" class="cart-detail">
@@ -82,20 +76,17 @@
 						</td>
 						<td colspan="2" style="padding-left:0;padding-right:20px;">
 							<div>
-							<button type="button" class="normal-btn" id="partialOrder">선택상품 주문</button>
-							<button type="button" class="normal-btn" style="color:#fff;background-color: #1C8394;margin-left:10px;" id="allOrder">전체상품 주문</button>
+							<button type="button" class="normal-btn">선택상품 주문</button>
+							<button type="button" class="normal-btn" style="color:#fff;background-color: #1C8394;margin-left:10px;">전체상품 주문</button>
 							</div>
 						</td>
 					</tr>
-
 					</tbody>
 				</table>
-			</form>
 			</div>
 	</th:block>
 </div>
 		<th:block th:include="common/footer"></th:block>
-		
 		
         <!-- 모달 -->
         <div class="modal" id="writeFrmModal">
@@ -128,7 +119,7 @@
                 </div>
             </div>
         </div>	
-</div>
+
             
             
 

@@ -41,4 +41,10 @@ public class OrderDao {
 		int result= jdbc.update(query, params);
 		return result;
 	}
+
+	public int deleteCart(int memberNo, int cartNo) {
+		String query = "delete from cart where cart_no = ? and member_no = ?";
+		int result = jdbc.update(query, cartNo, memberNo);
+		return result;
+	}
 }
