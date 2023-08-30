@@ -17,6 +17,12 @@ $("tr.showContent").click(function() {
         usualQnaContent.slideDown();
     }
 });
+//삭제버튼 -> 시간이 난다면 모달창으로 처리하기
+function personalQnaDelete(qnaNo){
+    if(confirm("문의를 삭제하시겠습니까?")){
+        location.href = "/personalQna/delete?qnaNo="+qnaNo;
+    }
+}
 
 /* personalQnaWriteFrm.html */
 //파일 업로드 할 시 작은 이미지 옆으로 생성(미리보기)
