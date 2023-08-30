@@ -17,10 +17,28 @@ public class OrderDao {
 	private CartRowMapper cartRowMapper;
 
 	public List selectCartInfoList(int memberNo) {
-		String query = "select * from" + 
-				"(select * from (select option_no, sum(count)count from(select * from cart where member_no = ?)c group by option_no)" + 
-				"left join option_tbl using (option_no))left join product using(product_no)";
+		String query = "select * from(select* from(select * from cart) where member_no = ? ) left join option_tbl using (option_no)" + 
+				"left join product using(product_no)";
 		List cartInfoList = jdbc.query(query, cartRowMapper,memberNo);
 		return cartInfoList;
+	}
+
+	public int updateCartCount(int cartNo, int count2) {
+		String query = "update cart set count=count+? where cart_no = ?";
+		int result = jdbc.update(query, count2, cartNo);
+		return result;
+	}
+
+	public int deleteCart(int cartNo2) {
+		String query = "delete from cart where cart_no = ?";
+		int result = jdbc.update(query, cartNo2);
+		return result;
+	}
+
+	public int updateOption(int cartNo, int newOptionNo, int newCount) {
+		String query = "update cart set option_no = ?, count = ? where cart_no=?";
+		Object[] params = {newOptionNo, newCount, cartNo};
+		int result= jdbc.update(query, params);
+		return result;
 	}
 }

@@ -33,10 +33,6 @@
                                 <input type="text" name="qnaTitle" id="writeFrmTitle" class="input-form" th:value="${q.qnaTitle}">
                                 <input type="hidden" name="qnaNo" th:value="${q.qnaNo}">
                             </td>
-                            <td style="display: none;">
-                                <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
-                                <input type="hidden" name="qnaWriter" value="admin">
-                            </td>
                         </tr>
                         <!-- 아래 tr은 선 디자인으로 넣었음.(연한선을 위해) -->
                         <tr></tr>

@@ -14,6 +14,7 @@
 .product-detail{
     width: 1200px;
     margin: 0 auto;
+    position: relative;
 }
 
 .product-detail-category{
@@ -26,6 +27,7 @@
 
 .product-detail-content1{
     overflow: hidden;
+    height: 600px;
 }
 
 .product-detail-subimg-box{
@@ -39,7 +41,7 @@
     margin-bottom: 15px;
 }
 
-.subimg-box1>img, .subimg-box2>img, .subimg-box3>img{
+.subimg-box1>img, .subimg-box2>img, .subimg-box3>img, .subimg-box4>img{
     width: 100%;
     height: 100%;
 
@@ -203,7 +205,7 @@
     height: 50px;
 }
 
-.info-totalPrice{
+.info-totalPrice, .info-totalPrice2{
     float: right;
     font-size: 30px;
     line-height: 50px;
@@ -282,6 +284,10 @@
     display: block;
 }
 
+.product-detail-img>img{
+    width: 100%;
+}
+
 .product-detail-content3{
     box-sizing: border-box;
     padding-left: 20px;
@@ -322,6 +328,9 @@
 
 .option-count2{
     height: 30px;
+    width: 65%;
+    float: left;
+    margin-bottom: 5px;
 }
 
 .option-count2>button{
@@ -371,6 +380,39 @@
     line-height: 30px;
     padding-left: 10px;
 }
+
+.product-etc{
+    border-top: 2px solid #333333;
+    border-bottom: 2px solid #333333;
+    border-collapse: collapse;
+    margin: 0 auto;
+
+}
+
+.product-etc>tbody>tr{
+    height: 200px;
+    border-top: 1px solid #ccc;
+}
+
+.product-etc>tbody>tr>td{
+    padding: 30px;
+}
+
+.product-etc>tbody>tr>td>ul{
+    list-style-type: none;
+}
+
+.product-etc>tbody>tr>td>ul>li{
+    font-size: 13px;
+    line-height: 200%;
+}
+
+.product-etc>tbody>tr>td:first-child{
+    width: 20%;
+    text-align: center;
+    background-color: #f8f8f8;
+}
+
 
 
 

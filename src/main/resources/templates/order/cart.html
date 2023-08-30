@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <title>ESSENTIAL#</title>
 <link rel="stylesheet" href="/css/aboutUs.css">
-<link rel="stylesheet" href="/css/likeItList.css">
-<link rel="stylesheet" href="/css/allProductList.css">
+<link rel="stylesheet" href="/css/cart.css">
+<link rel="stylesheet" href="/css/event.css">
 </head>
 <body>
 	<th:block th:include="common/header"></th:block>
@@ -14,48 +14,131 @@
 			<br>
 			<h1>장바구니</h1>
 		</div>
-	
-        <div><span class="guide-ment">찜한 상품은 최대 50개까지 저장됩니다.</span></div>
 
-		<div class="news-list">
-			<th:block th:if="${cil == null}">
-				<span class="guide-ment" style="text-align:center;">장바구니 비었음</span>
+		<div class="us-wrap">
+			<th:block th:if="${session.m==null}">
+				<div class="empty-cart">
+					<span class="guid-ment">로그인 후 이용이 가능합니다.</span>
+				</div>
+
+                 <div class="btn-line3">
+		             <button type="button"> <a href="#" class="modal-open-btn basic-btn">로그인하기</a></button><!-- 상품페이지로 이동시킬거임 -->
+		         </div>
 			</th:block>
-			<th:block th:if="${cil != null}">
-			<div class="allProductList-table-wrap">
-            <table>
-                <tbody>
-                	<tr>
-   						<th style="width: 10%"></th>
-						<th style="width: 50%;">제목</th>
-						<th style="width: 25%;">작성일</th>
-						<th style="width: 10%;">조회수</th>
-                	</tr>
-                    <tr th:each="cart : ${cil}">
-                    	<td></td>
-	                    <td class="img-container">
-							<a th:text ="${cart.productName}"></a><!--  th:href="@{/prodcut/productDetail(productNo=${cart.productNo})}" -->
-	                        <img src="/img/sample-img.jpg" width="150px">
-	                    </td>
-	                    <!-- 
-	                    <td class="product-info">
-	                        <span th:text="${like.productName}"></span><br>
-	                        <span th:text="${like.productPrice}"></span>
-	                    </td>
-	                    <td class="button-container">
-	                        <button type="button" class="removeBtn">삭제</button><br>
-	                        <button type="button" class="cartBtn">장바구니 담기 </button>
-	                    </td>
-	                     -->
-                    </tr>
-                </tbody>
-            </table>
-            </div>
-            </th:block>
 		</div>
-		<div id="pageNavi" th:utext="${pageNavi}"></div>
+			
+			<th:block th:if="${list.size == 0 && session.m!=null}">
+				<div class="empty-cart">
+					<span class="guid-ment">장바구니에 담긴 상품이 없습니다.</span>
+				</div>
+                 <div class="btn-line3">
+		             <button type="button"> <a href="/aboutUs" class="basic-btn">쇼핑하러 가기</a></button><!-- 상품페이지로 이동시킬거임 -->
+		         </div>
+			</th:block>
+			
+			<th:block th:if="${list.size != 0 && session.m!=null}">
+
+			<div class="full-cart">
+				<button type="button" class="normal-btn" style="margin-bottom:20px;">선택 삭제</button>
+				<table class="tbl notice-tbl">
+					<tbody>
+					<tr>
+						<th style="width: 10%;"><input type="checkbox" id="cartAll"></th>
+						<th style="width: 40%;">상품정보</th>
+						<th style="width: 20%;">수량</th>
+						<th style="width: 15%;">주문관리</th>
+						<th style="width: 15%;">가격</th>
+					</tr>
+					<tr th:each = "cart : ${list}">
+						<td>
+							<input type="checkbox" class="cartChk" name="cartNo" value="${cart.cartNo}">
+						</td>
+						<td style="text-align:left; padding-left:20px;">
+							<a th:href="@{/product/productDetail(productNo=${cart.productNo})}" class="cart-detail">
+							<span th:text="${cart.productName}"></span>
+							<span th:if="${cart.optionName} !=null">(옵션 : <span th:text="${cart.optionName}"></span>)</span>
+							</a>
+							</td>
+						<td class="option-count">
+							<span th:text="${cart.count}"></span>
+						</td>
+						<td>
+							<button type="button" id="changeOption" class="normal-btn option-modal" style="font-size:16px;" th:onclick="return checkValue([[${cart.cartNo}]],[[${cart.optionNo}]],[[${cart.productNo}]], [[${cart.count}]]);">옵션/수량 변경</button>
+						</td>
+						<td>
+							<s th:text="${cart.getPpc}+원"></s>
+							<p th:text="${cart.getPfpc}+원"></p>
+						</td>
+					</tr>
+					<tr style="border-top:1px solid #333;">
+						<td colspan="3">
+						무료 배송
+						<p class="guide-ment">ESSENTIAL#은 전 상품 무료배송입니다.</p>
+						</td>
+						<td colspan="2" class="cart-total" style="text-align:right; padding-right:25px; font-weight:bold; color:#A52502;">
+							총 가격 <span th:text="${#numbers.formatInteger(#aggregates.sum(list.![productFinalPrice*count]), 3, 'COMMA') + '원'}" style="color:#A52502;"></span>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3">
+						<p class="guide-ment">ㆍ적립금은 주문서에서 사용 가능합니다.</p>
+						<p class="guide-ment">ㆍ[주문완료]상태일 경우에만 주문취소가 가능합니다.</p>
+						<p class="guide-ment">ㆍ상품별로 적립금 지급 기준이 다를 수 있습니다.(제품 상세 페이지에서 확인 가능합니다.)</p>
+						<p class="guide-ment">ㆍ[마이페이지 > 주문취소/교환/반품]에서 주문을 취소하실 수 있습니다.</p>
+						</td>
+						<td colspan="2" style="padding-left:0;padding-right:20px;">
+							<div>
+							<button type="button" class="normal-btn">선택상품 주문</button>
+							<button type="button" class="normal-btn" style="color:#fff;background-color: #1C8394;margin-left:10px;">전체상품 주문</button>
+							</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+			</div>
+	</th:block>
+</div>
+		<th:block th:include="common/footer"></th:block>
+		
+		
+        <!-- 모달 -->
+        <div class="modal" id="writeFrmModal">
+            <div class="modal-content">
+                <div class="modal-title">옵션/수량 변경</div>
+                <div class="modal-detail">
+
+        <div class="product-detail-content3">
+            <div class="product-detail-info-option2">
+            	<span class="hidden-cartNo" style="display:none;"></span>
+            	<span>옵션  </span>
+                <select class="product-option2">
+                </select>
+            </div>
+            <div class="product-detail-info-optionbox2">
+	            <div class="option-count2">
+	              	<span>수량 </span>
+	                <button type="button" id="minus">-</button>
+	                <span class="count2"></span>
+	                <button type="button" id="plus">+</button>
+	            </div>
+            </div>
         </div>
 
-	<th:block th:include="common/footer"></th:block>
+
+                </div>
+                <div class="modalBtn-area">
+                    <button class="closeModalBtn" id="changeModal">변경</button>
+                    <button class="closeModalBtn" id="closeModal">닫기</button>
+                </div>
+            </div>
+        </div>	
+
+            
+            
+
+
+
+	<script src="/javascript/cart.js"></script>
+	<script src="/javascript/modal.js"></script>
 </body>
 </html>

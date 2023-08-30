@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.personalQna.model.dao.PersonalQnaDao;
 import kr.or.iei.personalQna.model.vo.PersonalQna;
 import kr.or.iei.personalQna.model.vo.PersonalQnaFile;
@@ -17,13 +18,25 @@ public class PersonalQnaService {
 	@Autowired
 	private PersonalQnaDao personalQnaDao;
 
-	public PersonalQnaListData selectPersonalQnaList(int reqPage) {
+	public PersonalQnaListData selectPersonalQnaList(int reqPage, Member m) {
 		int numPerPage = 10;
 		int end = reqPage * numPerPage;
 		int start = end - numPerPage +1;
-		List personalQnaList = personalQnaDao.selectPersonalQnaList(start,end);
-		//pageNavi 제작준비
-		int totalCount = personalQnaDao.selectPersonalQnaTotalCount();
+		List personalQnaList = null; 
+		int totalCount = 0;
+		if(m.getMemberLevel() == 1) {
+			//관리자인경우 이전과 동일.
+			personalQnaList = personalQnaDao.selectPersonalQnaList(start,end);
+			//pageNavi 제작준비
+			totalCount = personalQnaDao.selectPersonalQnaTotalCount();
+		}else {
+			//관리자가 아닌 경우 member의 id값을 필요로한다.(query문 변경)
+			personalQnaList = personalQnaDao.selectPersonalQnaMemberList(m,start,end);
+			//pageNavi 제작준비
+			totalCount = personalQnaDao.selectPersonalQnaMemberTotalCount(m);
+		}
+		
+		
 		int totalPage = (int)Math.ceil(totalCount/(double)numPerPage);
 		//pageNavi 사이즈(넘버 갯수 지정)
 		int pageNaviSize = 5;
@@ -91,6 +104,22 @@ public class PersonalQnaService {
 				result += personalQnaDao.insertPersonalQnaFile(file);
 			}
 		}
+		return result;
+	}
+
+	public PersonalQna getPersonalQna(int qnaNo) {
+		PersonalQna p = personalQnaDao.selectOnePersonalQna(qnaNo);
+		return p;
+	}
+
+	@Transactional
+	public int updatePersonalQna(PersonalQna p) {
+		int result = personalQnaDao.updatePersonalQna(p);
+		return result;
+	}
+
+	public int deletePersonalQna(int qnaNo) {
+		int result = personalQnaDao.deletePersonalQna(qnaNo);
 		return result;
 	}
 }

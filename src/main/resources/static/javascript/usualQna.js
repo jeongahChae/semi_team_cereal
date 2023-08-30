@@ -10,9 +10,9 @@ $("tr.showContent").click(function() {
     const usualQnaContent = $(this).next().find(".qnaContent");
     //컨텐츠가 visible(slideDown상태)인 경우
     if(usualQnaContent.is(':visible')){
+        //아무것도 하지 않는다.
         // usualQnaContent.slideUp();
         // usualQnaContent.fadeOut();
-        //  
     }else{
         usualQnaContent.fadeIn();
         // usualQnaContent.slideDown();

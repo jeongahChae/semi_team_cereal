@@ -92,8 +92,8 @@ public class UsualQnaService {
 	}
 
 	public UsualQna getUsualQna(int qnaNo) {
-		UsualQna q = usualQnaDao.selectOneUsualQna(qnaNo);
-		return q;
+		UsualQna u = usualQnaDao.selectOneUsualQna(qnaNo);
+		return u;
 	}
 
 	@Transactional

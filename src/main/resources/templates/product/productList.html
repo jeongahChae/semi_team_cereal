@@ -22,8 +22,8 @@
                         <div class="product-name" th:text="${product.productName}"></div>
                         <div class="product-brand">ESSENTIAL<span class="sharp">#</span></div>
                         <div class="product-price-info">
-                            <div class="product-final-price" th:text="${product.productFinalPrice}+${'원'}"></div>
-                            <div class="product-price" th:text="${product.productPrice}+${'원'}"></div>
+                            <div class="product-final-price" th:text="${#numbers.formatInteger(product.productFinalPrice, 3, 'COMMA') + '원'}"></div>
+                            <div class="product-price" th:text="${#numbers.formatInteger(product.productPrice, 3, 'COMMA') + '원'}"></div>
                             <div class="product-percent" th:text="${product.productPercent}+${'%'}"></div>
                         </div>
                         <div>

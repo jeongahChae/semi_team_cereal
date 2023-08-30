@@ -200,7 +200,13 @@
     justify-content: center;
     gap: 10px;
 }
-
+.btn-line3{
+    width: 130px;
+    padding: 20px 0px;
+    -webkit-box-pack: end;
+    margin : 0 auto;
+    gap: 10px;
+}
 /* basic-btn 버튼 기본 디자인 */
 .basic-btn{
     display: block;
@@ -216,6 +222,13 @@
     line-height: 50px;
     box-sizing: border-box;
     cursor: pointer;
+}
+.btn-line3>button{
+	margin:50px 0;
+	border:none;
+}
+.basic-btn:hover{
+	text-decoration: none;
 }
 .cancel-btn{
     display: block;

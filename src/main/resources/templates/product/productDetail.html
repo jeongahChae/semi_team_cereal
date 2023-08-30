@@ -9,117 +9,157 @@
     <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-    <div class="product-detail" th:each="p : ${p}">
-        <div class="product-detail-category">
-            <a href="#"><span class="product-detail-category-main">메인 카테고리</span></a>
-            <span class="product-detail-category-arrow">></span>
-            <a href="#"><span class="product-detail-category-sub">서브 카테고리</span></a>
-        </div>
-        <div class="product-detail-content1">
-            <div class="product-detail-subimg-box">
-                <div class="subimg-box1">
-                    <img th:src="@{/product/}+${p.fileList[0].filepath}">
-                </div>
-                <div class="subimg-box2">
-                    <img th:src="@{/product/}+${p.fileList[1].filepath}">
-                </div>
-                <div class="subimg-box3">
-                    <img th:src="@{/product/}+${p.fileList[2].filepath}">
-                </div>
-            </div>
-            <div class="product-detail-mainimg-box" >
-                <img th:src="@{/product/}+${p.fileList[3].filepath}">
-            </div>
-            <div class="product-detail-info">
-                <div class="detail-info1">
-                    <div class="product-detail-info-brand">ESSENTIAL<span class="sharp">#</span></div>
-                    <div class="product-detail-info-name" th:text="${p.productName}"></div>
-                </div>
-                <div class="product-detail-info-starrate"><span class="star">★</span> 4.7</div>
-                <div class="detail-info2">
-                    <div class="product-detail-info-percent" th:text="${p.productPercent}+${'%'}"></div>
-                    <div class="product-detail-info-price" th:text="${p.productPrice}+${'원'}"></div>
-                </div>
-                <div class="product-detail-info-final-price" th:text="${p.productFinalPrice}+${'원'}"></div>
-                <div class="detail-info3">
-                    <div class="product-detail-info-point">
-                        <div class="info-point-title">적립</div>
-                        <div class="info-point" th:text="${p.productPoint}+${'p'}"></div>
-                    </div>
-                    <div class="product-detail-info-del">
-                        <div class="info-del-title">배송</div>
-                        <div class="info-del">무료배송</div>
-                    </div>
-                </div>
-                <div class="product-detail-info-option">
-                    <select class="product-option">
-                        <option value="">옵션</option>
-                        <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionName}" th:text="${productOption.optionName}"></option>
-                    </select>
-                </div>
-                <div class="product-detail-info-optionbox">
-                </div>
-                <div class="product-detail-info-totalPrice">
-                    <div class="info-totalPrice-title">주문금액</div>
-                    <div class="info-totalPrice">총 가격</div>
-                </div>
-                <div class="product-detail-btn-box">
-                    <button id="cart-btn" th:onclick="addToCart([[${optionNo}]])">장바구니</button>
-                    <button id="purchase-btn">바로구매</button>
-                </div>
-            </div>
-        </div>
-        <div class="product-detail-content2">
-            <div class="product-detail-tab">
-                <div class="tab">
-                    <ul>
-                        <li class="active-tab">상품정보</li>
-                        <li>상품리뷰</li>
-                        <li>상품문의</li>
-                        <li>배송/교환/반품</li>
-                    </ul>
-                </div>
-                <div class="tab-content">
-                    <div class="product-detail-img">
-                        상세이미지
-                    </div>
-                    <div class="product-review">
-                        리뷰
-                    </div>
-                    <div class="product-qna">
-                        문의
-                    </div>
-                    <div class="product-etc">
-                        배송/반품
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="product-detail-content3">
-            <div class="product-detail-info-option2">
-                <select class="product-option2">
-                    <option value="">옵션</option>
-                    <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionName}" th:text="${productOption.optionName}"></option>
-                </select>
-            </div>
-            <div class="product-detail-info-optionbox2">
-                <div class="option-count2">
-                    <button type="button" id="plus">+</button>
-                    <div class="count2">1</div>
-                    <button type="button" id="minus">-</button>
-                </div>
-            </div>
-            <div class="product-detail-info-totalPrice">
-                <div class="info-totalPrice-title">주문금액</div>
-                <div class="info-totalPrice">총 가격</div>
-            </div>
-            <div class="product-detail-btn-box2">
-                <button id="cart-btn">장바구니</button>
-                <button id="purchase-btn">바로구매</button>
-            </div>
-        </div>
-
-    </div>
+	<th:block th:include="common/header"></th:block>
+	    <div class="product-detail" th:each="p : ${p}">
+	        <div class="product-detail-category">
+	            <a href="#"><span class="product-detail-category-main">메인 카테고리</span></a>
+	            <span class="product-detail-category-arrow">></span>
+	            <a href="#"><span class="product-detail-category-sub">서브 카테고리</span></a>
+	        </div>
+	        <div class="product-detail-content1">
+	            <div class="product-detail-subimg-box">
+	                <div class="subimg-box1">
+	                    <img th:src="@{/product/}+${p.fileList[0].filepath}">
+	                </div>
+	                <div class="subimg-box2">
+	                    <img th:src="@{/product/}+${p.fileList[1].filepath}">
+	                </div>
+	                <div class="subimg-box3">
+	                    <img th:src="@{/product/}+${p.fileList[2].filepath}">
+	                </div>
+	                <div class="subimg-box4">
+	                    <img th:src="@{/product/}+${p.fileList[3].filepath}">
+	                </div>
+	            </div>
+	            <div class="product-detail-mainimg-box" >
+	                <img th:src="@{/product/}+${p.fileList[0].filepath}">
+	            </div>
+	            <div class="product-detail-info">
+	                <div class="detail-info1">
+	                    <div class="product-detail-info-brand">ESSENTIAL<span class="sharp">#</span></div>
+	                    <div class="product-detail-info-name" th:text="${p.productName}"></div>
+	                </div>
+	                <div class="product-detail-info-starrate"><span class="star">★</span> 4.7</div>
+	                <div class="detail-info2">
+	                    <div class="product-detail-info-percent" th:text="${p.productPercent}+${'%'}"></div>
+	                    <div class="product-detail-info-price" th:text="${p.getPpc}+${'원'}"></div>
+	                </div>
+	                <div class="product-detail-info-final-price" th:text="${#numbers.formatInteger(p.productFinalPrice, 3, 'COMMA') + '원'}"></div>
+	                <input type="hidden" class="product-detail-info-final-price2" th:value="${p.productFinalPrice}"></input>
+	                <div class="detail-info3">
+	                    <div class="product-detail-info-point">
+	                        <div class="info-point-title">적립</div>
+	                        <div class="info-point" th:text="${p.productPoint}+${'p'}"></div>
+	                    </div>
+	                    <div class="product-detail-info-del">
+	                        <div class="info-del-title">배송</div>
+	                        <div class="info-del">무료배송</div>
+	                    </div>
+	                </div>
+	                <div class="product-detail-info-option">
+	                    <select class="product-option">
+	                        <option value="">옵션</option>
+	                        <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionName}" th:text="${productOption.optionName}"></option>
+	                    </select>
+	                </div>
+	                <div class="product-detail-info-optionbox">
+	                </div>
+	                <div class="product-detail-info-totalPrice">
+	                    <div class="info-totalPrice-title">주문금액</div>
+	                    <div class="info-totalPrice"></div>
+	                </div>
+	                <div class="product-detail-btn-box">
+	                    <button id="cart-btn" th:onclick="addToCart([[${optionNo}]])">장바구니</button>
+	                    <button id="purchase-btn">바로구매</button>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="product-detail-content2">
+	            <div class="product-detail-tab">
+	                <div class="tab">
+	                    <ul>
+	                        <li>상품정보</li>
+	                        <li>상품리뷰</li>
+	                        <li>상품문의</li>
+	                        <li>배송/교환/반품</li>
+	                    </ul>
+	                </div>
+	                <div class="tab-content">
+	                    <div class="product-detail-img">
+	                        <img th:each="productDetailFile : ${p.dfileList}" th:src="@{/product/}+${productDetailFile.filepath}">
+	                    </div>
+	                    <div class="product-review">
+	                    </div>
+	                    <div class="product-qna">
+	                    </div>
+	                    <div>
+	                        <table class="product-etc">
+	                            <tr>
+	                                <td>배송정보</td>
+	                                <td>
+	                                    <ul>
+	                                        <li>· 상품별로 상품 특성 및 배송지에 따라 배송유형 및 소요기간이 달라집니다.</li>
+	                                        <li>· 일부 주문상품 또는 예약상품의 경우 기본 배송일 외에 추가 배송 소요일이 발생될 수 있습니다.</li>
+	                                        <li>· 동일 브랜드의 상품이라도 상품별 출고일시가 달라 각각 배송될 수 있습니다.</li>
+	                                        <li>· 제주 및 도서산간 지역은 출고, 반품, 교환시 추가 배송비(항공, 도선료)가 부과 될 수 있습니다.</li>
+	                                        <li>· 상품의 배송비는 공급업체의 정책에 따라 다르오며 공휴일 및 휴일은 배송이 불가합니다.</li>
+	                                    </ul>                                
+	                                </td>
+	                            </tr>
+	
+	                            <tr>
+	                                <td>취소/반품/교환 안내</td>
+	                                <td>
+	                                    <ul>
+	                                        <li>· 동일 브랜드의 상품이라도 교환/반품 회수지가 다를 수 있습니다. 상품상세 정보 또는 회수지 정보를 확인하신 후 반드시 지정된 회수지로 보내주세요.</li>
+	                                        <li>· 상품을 지정된 회수지가 아닌곳으로 보내실 경우 택배 분실 또는 재발송에 따른 추가 비용이 발생할 수 있습니다.</li>
+	                                        <li><b>· 상품하자 이외 사이즈, 색상교환 등 단순 변심에 의한 교환/반품 택배비 고객부담으로 왕복택배비가 발생합니다. (전자상거래 등에서의 소비자보호에 관한 법률 제18조(청약 철회등)9항에 의거 소비자의 사정에 의한 청약 철회 시 택배비는 소비자 부담입니다.)</b></li>
+	                                        <li>· 주문완료 후 재고 부족 등으로 인해 주문 취소 처리가 될 수도 있는 점 양해 부탁드립니다.</li>
+	                                        <li>· 주문상태가 상품준비중인 경우 취소신청이 가능하며 판매자의 승인 여부(이미 배송을 했거나 포장을 완료한 경우)에 따라 취소가 불가능할 수 있습니다.</li>
+	                                        <li>· 교환 신청은 최초 1회에 한하며, 교환 배송 완료 후에는 추가 교환 신청은 불가합니다.</li>
+	                                        <li>· 반품/교환은 미사용 제품에 한해 배송완료 후 7일 이내 접수하여 주십시오.</li>
+	                                        <li>· 고객 부주의로 상품이 훼손, 변경된 경우 반품 / 교환이 불가능 합니다.</li>
+	                                        <li>· 상품하자, 오배송의 경우 택배비 무료로 교환/반품이 가능하지만 모니터의 색상차이, 착용감, 사이즈의 개인의 선호도는 상품의 하자 사유가 아닙니다.</li>
+	                                        <li>· 취소/반품 대금환불이 지연 시 전자상거래법에 의거하여 환불지연 배상처리 절차가 진행됩니다.</li>
+	                                    </ul>
+	                                </td>
+	                            </tr>
+	                            
+	                            <tr>
+	                                <td>A/S 안내</td>
+	                                <td>
+	                                    <ul>
+	                                        <li>· A/S 기준이나 가능여부는 브랜드와 상품에 따라 다르므로 관련 문의는 더블유컨셉 고객센터를 통해 부탁드립니다.</li>
+	                                        <li>· 상품불량에 의한 반품, 교환, A/S, 환불, 품질보증 및 피해보상 등에 관한 사항은 소비자분쟁해결기준(공정거래위원회 고시)에 따라 받으실 수 있습니다.</li>
+	                                    </ul>
+	                                </td>
+	                            </tr>
+	                        </table>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="product-detail-content3">
+	            <div class="product-detail-info-option2">
+	                <select class="product-option2">
+	                    <option value="">옵션</option>
+	                    <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionName}" th:text="${productOption.optionName}"></option>
+	                </select>
+	            </div>
+	            <div class="product-detail-info-optionbox2">
+	            </div>
+	            <div class="product-detail-info-totalPrice">
+	                <div class="info-totalPrice-title">주문금액</div>
+	                <div class="info-totalPrice2"></div>
+	            </div>
+	            <div class="product-detail-btn-box2">
+	                <button id="cart-btn">장바구니</button>
+	                <button id="purchase-btn">바로구매</button>
+	            </div>
+	        </div>
+	    </div>
+	    
     <script src="/javascript/productDetail.js"></script>
+    <th:block th:include="common/footer"></th:block>
 </body>
 </html>

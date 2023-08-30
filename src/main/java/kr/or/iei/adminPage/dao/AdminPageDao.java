@@ -32,6 +32,8 @@ public class AdminPageDao {
 	private OrderRowMapper orderRowMapper;
 	@Autowired
 	private OrderRowMapper2 orderRowMapper2;
+	@Autowired
+	private CategorySalesRowMapper categorySalesRowMapper;
 	
 	//회원 목록
 	public List selectAllMember(int start, int end) {

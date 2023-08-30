@@ -1,0 +1,150 @@
+/*************장바구니****************/
+.empty-cart{
+	width:80%;
+	margin:0 auto;
+	padding:100px 0;
+	border-top: 2px solid #333;
+	border-bottom: 2px solid #333;
+}
+.empty-cart>span{
+	display: block;
+	text-align:center;
+}
+.guide-ment{
+    color: rgb(155, 155, 155);
+    font-size: 0.8em;
+}
+.full-cart{
+	width:80%;
+	margin:0 auto;
+	border-bottom: 2px solid #333;
+	margin-bottom: 50px;
+}
+.full-cart [type=checkbox]{
+	width:18px;
+	height:18px;
+}
+.cart-detail{
+	text-decoration:none;
+}
+.full-cart [colspan='3']{
+	text-align:left;
+	padding-left:20px;
+}
+.normal-btn{
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 130px;
+    height: 50px;
+    color: #1C8394;
+    background-color: #fff;
+    border: 1px solid #1C8394;
+    line-height: 50px;
+    box-sizing: border-box;
+    cursor: pointer;
+    font-size:16px;
+}
+
+
+
+
+
+
+
+
+/* 모달 */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px 15px 0px 15px;
+    width: 300px;
+}
+.modal-title{
+    font-size: 16px;
+    padding: 20px 30px;
+    text-align: center;
+    /*border-bottom: 1px solid #eee;*/
+    font-weight: 600;
+    color: #1C8394;
+}
+.modal-detail{
+    text-align: center;
+}
+.modalBtn-area{
+    margin-top: 10px;
+    text-align: center;
+}
+.closeModalBtn{
+    background-color: transparent;
+    border: none;
+    font-size: 15px;
+    font-weight: 500;
+    color: #1C8394;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    padding: 15px 0px 15px 0px;
+}
+
+.product-option2{
+    width: 140px;
+    height: 40px;
+    border: 1px solid #e6e6e6;
+    padding-left: 8px;
+    margin-left:20px;
+}
+
+.product-option2:focus{
+    outline: none;
+}
+
+.product-detail-info-optionbox2{
+    width: 200px;
+    background-color: #fcfcfc;
+    border-top: 1px solid #e6e6e6;
+    /*border-bottom: 1px solid #e6e6e6;*/
+    padding: 10px;
+    overflow: hidden;
+    text-align:center;
+}
+
+
+.option-count2{
+    height: 30px;
+}
+.option-count2>button{
+    width: 30px;
+    height: 30px;
+    background-color: transparent;
+    border: none;
+    font-size: 20px;
+    line-height: 30px;
+}
+
+.count2{
+    text-align: center;
+    width: 50px;
+    height: 30px;
+    background-color: white;
+    border: 1px solid #929292;
+    font-size: 20px;
+    line-height: 30px;
+    padding:2px 15px;
+}
+.product-detail-content3 div{
+	margin:10px auto;
+}

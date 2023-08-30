@@ -26,18 +26,20 @@
 .resign-all-wrap{
     
     padding: 5px 0 15px 1px;
-    
+    margin: 0 auto;
     
 }
 .resign-content{
     width: 850px;
-    
+    justify-content: center;
     
 }
 #caution-title{
+    font-weight: 900;
     color:#1C8394;
 }
 .complain-wrap{
+    /* display:flex로 수직으로 제목올림 */
     display: flex;
     padding-top: 30px;
 }
@@ -47,6 +49,12 @@
 .resign-info-wrap{
     padding-top:20px;
     
+}
+.resign-info{
+    display: flex;
+}
+.resign-info>:nth-child(1){
+    justify-content: flex-start;
 }
 .input-password{
     padding-top: 30px;
@@ -59,7 +67,12 @@
     width: 200px !important;
     
 }
+.button-wrap{
+    text-align: center;
+    padding: 20px;
+}
 .button-wrap>button{
+    display: inline-block;
     width:150px;
     height: 50px;
     border-radius: 5px;
@@ -74,8 +87,12 @@ label{
 }
 .content-wrap{
     display: inline-block;
-    padding-top: 30px;
+    
     width: 580px;
+}
+.content-wrap>div{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .no-title-wrap{
     width:200px;
@@ -87,7 +104,7 @@ label{
 .input-password>div{
     float:left;
 }
-input[name="inputPw"]{
+input[id="inputPw"]{
     width: 400px;
     height: 50px;
     border-radius: 3px;
@@ -97,4 +114,9 @@ input[name="inputPw"]{
 li{
     list-style-type: none;
 }
-
+.star{
+    color: #A52502;
+}
+.comment-wrap{
+    padding-left: 210px;
+}
