@@ -93,4 +93,9 @@ public class PersonalQnaService {
 		}
 		return result;
 	}
+
+	public PersonalQna getPersonalQna(int qnaNo) {
+		PersonalQna p = personalQnaDao.selectOnePersonalQna(qnaNo);
+		return p;
+	}
 }
