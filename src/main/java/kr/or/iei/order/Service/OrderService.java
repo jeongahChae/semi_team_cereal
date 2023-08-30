@@ -1,6 +1,7 @@
 package kr.or.iei.order.Service;
 
 import java.util.List;
+import java.util.StringTokenizer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -43,6 +44,20 @@ public class OrderService {
 	@Transactional
 	public int updateOption(int cartNo, int newOptionNo, int newCount) {
 		int result = orderDao.updateOption(cartNo, newOptionNo, newCount);
+		return result;
+	}
+
+	public boolean deleteCart(String no, int memberNo) {
+		StringTokenizer sT1 = new StringTokenizer(no, "/");
+		boolean result = true;
+		while(sT1.hasMoreTokens()) {
+			int cartNo = Integer.parseInt(sT1.nextToken());
+			int changeResult = orderDao.deleteCart(memberNo, cartNo);	//레벨변경 재활용
+			if(changeResult == 0) {	//실패
+				result = false;
+				break;	//한 번이라도 실패가 일어나면 더 할 필요가 없으니까 내보냄
+			}
+		}
 		return result;
 	}
 }

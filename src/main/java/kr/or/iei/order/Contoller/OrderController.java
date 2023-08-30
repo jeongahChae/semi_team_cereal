@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
@@ -80,5 +81,26 @@ public class OrderController {
 	public int changeOption(int cartNo, int newOptionNo, int newCount) {
 		int result = orderService.updateOption(cartNo, newOptionNo, newCount);
 		return result;
+	}
+	
+	@PostMapping(value="/orderChk")
+	public String checkOrderPage(@SessionAttribute(required = false) Member m,Model model) {
+		
+		return "order/orderChk";
+	}
+	
+	@GetMapping(value="/delCart")
+	public String deleteCart(@SessionAttribute(required = false) Member m, String no, Model model) {
+		System.out.println(no+","+ m.getMemberNo());
+		boolean result = orderService.deleteCart(no, m.getMemberNo());
+		if(result) {
+			return "redirect:/order/cart";//html이 아니라 컨트롤러로 리다이렉트시킴
+		} else {
+			model.addAttribute("title", "장바구니 삭제 실패");
+			model.addAttribute("msg", "삭제를 실패했습니다. 시스템 관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+			model.addAttribute("loc", "/order/cart");
+			return "common/msg";
+		}
 	}
 }
