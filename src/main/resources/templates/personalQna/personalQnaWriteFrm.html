@@ -23,7 +23,7 @@
                             </td>
                             <td style="display: none;">
                                 <!-- 일단 value를 admin으로 넘기고 로그인 가능하게 되면 th:value로 수정 -->
-                                <input type="hidden" name="qnaWriter" value="admin">
+                                <input type="hidden" name="qnaWriter" th:value="${session.m.memberId}">
                             </td>
                         </tr>
                         <tr></tr>

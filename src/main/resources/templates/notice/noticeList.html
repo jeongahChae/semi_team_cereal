@@ -22,15 +22,14 @@
                     <th style="width: 15%;">작성일</th>
                 </tr>
                 <tr th:each="notice : ${noticeList}" th:onclick="noticeView([[${notice.noticeNo}]])" style="cursor: pointer;">
-                    <td th:text="${notice.noticeNo}"></td>
+                    <td th:text="${notice.noticeNo}" style="text-align: center;"></td>
                     <td th:text="${notice.noticeTitle}"></td>
-                    <td th:text="${notice.noticeWriter}"></td>
-                    <td th:text="${notice.regDate}"></td>
+                    <td th:text="${notice.noticeWriter}" style="text-align: center;"></td>
+                    <td th:text="${notice.regDate}" style="text-align: center;"></td>
                 </tr>
             </table>
             <div class="btn-line2">
-                <!-- th:if="${session.m != null && session.m.memberLevel == 1}" 잠시 제외 -->
-                <a class="basic-btn" href="/notice/writeFrm">작성하기</a>
+                <a th:if="${session.m != null && session.m.memberLevel == 1}" class="basic-btn" href="/notice/writeFrm">작성하기</a>
             </div>
             <div id="pageNavi" th:utext="${pageNavi}"></div>
         </div>

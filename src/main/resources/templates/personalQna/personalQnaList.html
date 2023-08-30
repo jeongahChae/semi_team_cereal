@@ -6,51 +6,49 @@
 <title>1:1문의 List</title>
 </head>
 <body>
-	<body>
-        <th:block th:include="common/header"></th:block>
-        <div class="wrap-content">
-            <th:block th:include="common/serviceCenterSide"></th:block>
-            <div class="page-content">
-                <div class="page-title">
-                    <div class="content-title">1:1 문의</div>
-                </div>
-                <table class="tbl notice-tbl">
-                    <tr>
-                        <th style="width: 70%;">제목</th>
-                        <th style="width: 15%;">작성일</th>
-                        <th style="width: 15%;">답변상태</th>
-                    </tr>
-                    <th:block th:each="personalQna : ${personalQnaList}">
-                        <tr class="showContent" style="cursor: pointer;">
-                            <td th:text="${personalQna.qnaTitle}"></td>
-                            <td th:text="${personalQna.regDate}" style="text-align: center;"></td>
-                            <td th:text="${personalQna.qnaStatus}" style="text-align: center;"></td>
-                        </tr>
-                        <tr>
-                            <td class="qnaContent" colspan="3" style="display: none; text-align: left">
-                                <span class="material-icons-outlined" style="float: left; color: #1C8394;">question_mark</span>
-                                <div th:utext="${personalQna.qnaContent}" style="padding-left: 30px;"></div>
-                                <!-- 수정삭제는 관리자 답글 달기 전에만 가능하도록 만들기 -->
-                                <div class="btn-line2">
-                                    <!-- <a class="basic-btn" th:href="@{/personalQna/updateFrm(qnaNo=${personalQna.qnaNo})}">수정</a> -->
-                                    <!-- <button class="cancel-btn" th:onclick="personalQnaDelete([[${personalQna.qnaNo}]])">삭제</button> -->
-                                </div>
-                                <span class="material-icons-outlined" style="float: left; color: #1C8394;">feedback</span>
-                                <!-- comment -->
-                            </td>
-                        </tr>
-                    </th:block>
-                </table>
-                <div class="btn-line2">
-                    <!-- th:if="${session.m != null && session.m.memberLevel == 2}" 회원(등급은 고객일경우에만 보임) 잠시 제외 -->
-                    <a class="basic-btn" href="/personalQna/writeFrm">문의하기</a>
-                </div>
-                <div id="pageNavi" th:utext="${pageNavi}"></div>
+    <th:block th:include="common/header"></th:block>
+    <div class="wrap-content">
+        <th:block th:include="common/serviceCenterSide"></th:block>
+        <div class="page-content">
+            <div class="page-title">
+                <div class="content-title">1:1 문의</div>
             </div>
+            <table class="tbl notice-tbl">
+                <tr>
+                    <th style="width: 70%;">제목</th>
+                    <th style="width: 15%;">작성일</th>
+                    <th style="width: 15%;">답변상태</th>
+                </tr>
+                <th:block th:each="personalQna : ${personalQnaList}">
+                    <tr class="showContent" style="cursor: pointer;">
+                        <td th:text="${personalQna.qnaTitle}"></td>
+                        <td th:text="${personalQna.regDate}" style="text-align: center;"></td>
+                        <td th:text="${personalQna.qnaStatus}" style="text-align: center;"></td>
+                    </tr>
+                    <tr>
+                        <td class="qnaContent" colspan="3" style="display: none; text-align: left">
+                            <span class="material-icons-outlined" style="float: left; color: #1C8394;">question_mark</span>
+                            <div th:utext="${personalQna.qnaContent}" style="padding-left: 30px;"></div>
+                            <!-- 수정삭제는 관리자 답글 달기 전에만 가능하도록 만들기 -->
+                            <div class="btn-line2">
+                                <a class="basic-btn" th:href="@{/personalQna/updateFrm(qnaNo=${personalQna.qnaNo})}">수정</a>
+                                <!-- <button class="cancel-btn" th:onclick="personalQnaDelete([[${personalQna.qnaNo}]])">삭제</button> -->
+                            </div>
+                            <span class="material-icons-outlined" style="float: left; color: #1C8394;">feedback</span>
+                            <!-- comment -->
+                        </td>
+                    </tr>
+                </th:block>
+            </table>
+            <div class="btn-line2">
+                <!-- th:if="${session.m != null && session.m.memberLevel == 2}" 회원(등급은 고객일경우에만 보임) 잠시 제외 -->
+                <a class="basic-btn" th:if="${session.m != null && session.m.memberLevel == 2}" href="/personalQna/writeFrm">문의하기</a>
+            </div>
+            <div id="pageNavi" th:utext="${pageNavi}"></div>
         </div>
-        <th:block th:include="common/footer"></th:block>
-    </body>
-    <link rel="stylesheet" href="/css/notice.css">
-    <script src="/javascript/personalQna.js"></script>
+    </div>
+    <th:block th:include="common/footer"></th:block>
 </body>
+<link rel="stylesheet" href="/css/notice.css">
+<script src="/javascript/personalQna.js"></script>
 </html>

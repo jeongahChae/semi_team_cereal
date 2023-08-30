@@ -67,8 +67,15 @@ public class PersonalQnaController {
 			}
 		}
 		int result = personalQnaService.insertPersonalQna(p,fileList);
-		model.addAttribute("btn", 3);
+		model.addAttribute("btn", 2);
 		return "redirect:/personalQna/list?reqPage=1";
+	}
+	@GetMapping(value = "/updateFrm")
+	public String updateFrm(int qnaNo, Model model) {
+		PersonalQna p = personalQnaService.getPersonalQna(qnaNo);
+		model.addAttribute("p", p);
+		model.addAttribute("btn", 2);
+		return "personalQna/personalQnaUpdateFrm";
 	}
 }
 

@@ -54,6 +54,12 @@ public class PersonalQnaDao {
 		int result = jdbc.update(query, params);
 		return result;
 	}
+
+	public PersonalQna selectOnePersonalQna(int qnaNo) {
+		String query = "select * from personal_qna where qna_no=?";
+		List list = jdbc.query(query, personalQnaRowMapper, qnaNo);
+		return (PersonalQna)list.get(0);
+	}
 	
 	
 	
