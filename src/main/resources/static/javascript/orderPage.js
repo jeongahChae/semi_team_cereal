@@ -76,6 +76,8 @@ function usePoint(point, memberNo){
 $("#pay-btn").on("click", function(){
 	const currTotalPrice = $("#currTotalPrice").text();
 	let finalPrice = (Number)(currTotalPrice);
+	const usePoint = $(#usePoint).text();
+	let point = (Number)(usePoint);
 	
 	//장바구니 번호 배열
 	let cartNos = $(".cartNo");
@@ -91,7 +93,8 @@ $("#pay-btn").on("click", function(){
 	url: "/order/createOrder",
 	type:"post",
 	data:{cart:cartStr,	//카트번호 들은 스트링배열
-		price:finalPrice},
+		price:finalPrice,
+		usePoint:point},
 	success:function(data){
 
 	}
