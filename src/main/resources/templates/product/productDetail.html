@@ -138,7 +138,7 @@
 	            <div class="product-detail-info-option2">
 	                <select class="product-option2">
 	                    <option value="">옵션</option>
-	                    <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionName}" th:text="${productOption.optionName}"></option>
+	                    <option th:each="productOption : ${p.optionList}" th:value="${productOption.optionNo}" th:text="${productOption.optionName}"></option><!-- 장바구니로 보낼 값으로 val만 name 에서 no으로 일단 수정 -->
 	                </select>
 	            </div>
 	            <div class="product-detail-info-optionbox2">

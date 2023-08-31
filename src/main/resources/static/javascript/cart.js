@@ -48,11 +48,10 @@ $("#changeModal").on("click",function(){
 		newOptionNo:newOptionNo,
 		newCount:newCount},
 	success:function(data){
-			console.log(data);
 		if(data>0){
-			alert("변경되었습니다.");
-		    $("#closeModal").click();
-		    location.href = "/order/cart";
+		alert("변경되었습니다.");
+	    $("#closeModal").click();
+	    location.href = "/order/cart";
 		}
 	}
 	});

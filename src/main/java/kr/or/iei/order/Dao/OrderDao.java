@@ -57,10 +57,11 @@ public class OrderDao {
 		return (Cart)list.get(0);
 	}
 
-	public int createOrder(int memberNo, int price) {
-		String query = "insert into order_tbl values(to_char(sysdate,'yyyymmddhhmi')+order_seq.nextval, ?, sysdate, ?, null, 2)";
-		Object[] params = {memberNo, price};
+	public int createOrder(int memberNo, int price, long orderNo) {
+		String query = "insert into order_tbl values(?, ?, sysdate, ?, null, 2, null)";
+		Object[] params = {orderNo, memberNo, price};
 		int result = jdbc.update(query, params);
+		System.out.println(result);
 		return result;
 	}
 
@@ -105,6 +106,18 @@ public class OrderDao {
 	public int createPointForOrder(int pointNo, long orderNo) {
 		String query = "insert into changep_reason values(chgP_seq.nextval, ?, ?, null)";
 		int result = jdbc.update(query, pointNo,orderNo);
+		return result;
+	}
+
+	public int updateMemberMinusPoint(int memberNo, int usePoint) {
+		String query = "update member_tbl set membership_point = membership_point - ? where member_no = ?";
+		int result = jdbc.update(query, usePoint, memberNo);
+		return result;
+	}
+
+	public int updateMemberPlusPoint(int memberNo, int productNo) {
+		String query = "update member_tbl set membership_point = membership_point + ? where member_no = ?";
+		int result = jdbc.update(query, productNo, memberNo);
 		return result;
 	}
 

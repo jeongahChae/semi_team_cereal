@@ -154,5 +154,6 @@ select2.change(function(){
 
 
 function addToCart(optionNo){
-    location.href="/order/cart";
+    const options = $(".product-option").val();
+    const optCount = $(".product-detail-info-optionbox").text();
 }

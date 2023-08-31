@@ -74,11 +74,12 @@ public class OrderService {
 	}
 
 	@Transactional
-	public int createOrder(int memberNo, int price, String cart, int usePoint) {
+	public int createOrder(int memberNo, int price, String cart, int usePoint, long orderNo) {
 		int result = 0;
-		result += orderDao.createOrder(memberNo, price);	//order
-        long orderNo = orderDao.selectOrderNo(memberNo);        //orderNo따옴
-        result += orderDao.usePoint(memberNo, usePoint);    //포인트 사용
+		result += orderDao.createOrder(memberNo, price, orderNo);	//order
+        //long orderNo = orderDao.selectOrderNo(memberNo);        //orderNo따옴
+        result += orderDao.usePoint(memberNo, usePoint);    //포인트 사용 이력
+        result += orderDao.updateMemberMinusPoint(memberNo,usePoint);	//멤버포인트 업데이트(-)
         int usePointNo = orderDao.selectPointNo(memberNo);
         int pointResult = orderDao.createPointForOrder(usePointNo, orderNo);//주문 관련적립/사용이력 업데이트용(사용이력)
         if (result > 1) {
@@ -86,10 +87,12 @@ public class OrderService {
             while (sT1.hasMoreTokens()) {
                 int cartNo = Integer.parseInt(sT1.nextToken());
                 Cart c = orderDao.selectCartInfo(cartNo);
+                System.out.println("c:"+c);
                 if (c != null) {
                     result += orderDao.createOrderedProduct(c, orderNo);    //order에 딸린 상품
                     result += productDao.updateOptionCount(c);              //상품재고 갱신
-                    result += orderDao.insertPoint(c);                  //포인트 적립
+                    result += orderDao.insertPoint(c);                  //포인트 적립 이력
+                    result += orderDao.updateMemberPlusPoint(memberNo, c.getProductNo());
                     int addPointNo = orderDao.selectPointNo(memberNo);
                     pointResult += orderDao.createPointForOrder(addPointNo, orderNo);   //주문 관련적립/사용이력 업데이트용(적립이력)
                     int delResult = orderDao.deleteCart(memberNo, cartNo);

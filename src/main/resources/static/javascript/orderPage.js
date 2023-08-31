@@ -78,6 +78,8 @@ function payingCreditCard(m){
 	let finalPrice = (Number)(currTotalPrice);
 	const d = new Date();	//주문번호 겹치지 않게 추가하기 위함
 	const date = d.getFullYear()+""+(d.getMonth()+1)+""+d.getDate()+""+d.getHours()+""+d.getMinutes()+""+d.getSeconds();
+	const orderNo = (Number)(date);
+	console.log(orderNo, isNaN(orderNo));
 	IMP.init("imp02326283");
 	IMP.request_pay({
 		pg : "html5_inicis",			//kg이니시스
@@ -103,7 +105,7 @@ function payingCreditCard(m){
 					cart.push(cartNo);
 				});
 				let cartStr = cart.join("/");
-				location.href="/order/createOrder?cartStr="+cartStr+"&price="+finalPrice+"&usePoint="+point;
+				location.href="/order/createOrder?cartStr="+cartStr+"&price="+finalPrice+"&usePoint="+point+"&orderNo="+orderNo;
 		} else {
 			alert("결제 실패");
 		}
