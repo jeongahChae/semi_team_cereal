@@ -18,7 +18,6 @@
 		</div>
 			
 	<th:block th:if="${list.size != 0 && session.m!=null}">
-
 	<div class="full-cart cart-no-bottom">
 		<table class="order-tbl">
 			<tr colspan="3">
@@ -157,11 +156,12 @@
 				</td>
 			</tr>
 			<tr>
-				<td colspan="3" style="text-align:center;"><button type="submit" id="pay-btn"><span id="price" th:text="${#numbers.formatInteger(#aggregates.sum(list.![productFinalPrice*count]), 3, 'COMMA')}"></span><span>원 카드 결제</span></button></td>
+				<td colspan="3" style="text-align:center;">
+				<button type="submit" id="pay-btn" th:onclick="payingCreditCard([[${session.m}]]);"><span id="price" th:text="${#numbers.formatInteger(#aggregates.sum(list.![productFinalPrice*count]), 3, 'COMMA')}"></span><span>원 카드 결제</span></button></td>
 			</tr>
 		</table>
-		
 	</div>
+		</form>
 	</th:block>
 </div>
 		<th:block th:include="common/footer"></th:block>
