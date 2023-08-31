@@ -71,11 +71,4 @@ public class OrderDao {
 		return (Cart)cartInfoList.get(0);
 	}
 
-	public int selectOrderNo(int memberNo) {
-		String query = "select max(order_no) from order_tbl where member_no=?";
-		int orderNo = jdbc.queryForObject(query, Integer.class);
-		return orderNo;
-	}
-
-
 }
