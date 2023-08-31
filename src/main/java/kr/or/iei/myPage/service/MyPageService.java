@@ -254,7 +254,7 @@ public class MyPageService {
 		*/
 		List orderList = new ArrayList<Order>();
 		while(st.hasMoreTokens()) {
-			int orderNO = Integer.parseInt(st.nextToken());
+			Long orderNO = Long.parseLong(st.nextToken());
 			Order order = myPageDao.selectNoOrderList(orderNO);
 			orderList.add(order);
 		}

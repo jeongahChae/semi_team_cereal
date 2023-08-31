@@ -38,14 +38,23 @@
 	                </thead>
 	                <tbody>
 	                    <tr th:each="order:${orderDetail}">
+	                       
 	                        <td class="img-container">
 	                            <img src="/img/sample-img.jpg" width="150px">
 	                        </td>
+	                        	
 	                        <td class="product-info">
 	                            <span th:text="${order.productName}"></span><br>
-	                            <span th:text="${order.totalPrice}"></span> | <span th:text="${order.count}"></span>
+	                            <span th:text="${order.totalPrice}"></span>원&nbsp;|&nbsp;<span th:text="${order.count}"></span>개
 	                        </td>
-	         
+	         				  <!-- 
+	         				 <td >
+	         				 	<span class="product-name" th:text="${order.productName}"></span>
+	         				 </td>
+	         				 <td>
+	         				 	 <span th:text="${order.totalPrice}"></span>원&nbsp;&nbsp;|&nbsp;&nbsp;<span th:text="${order.count}"></span><p>개</p>
+	         				 </td>
+	         				 -->
 	                         <th:block th:switch="${order.orderStatus}">
 			                        <td class="delivery-status" th:case="1">결제 대기</td>
 			                        <td class="delivery-status" th:case="2">결제 완료</td>

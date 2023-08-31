@@ -31,13 +31,14 @@
 	            <table>
 	                <thead>
 	                    <tr>
-	                        <th class="order-no">주문번호</th><th class="product-info" colspan="2">상품정보</th><th class="product-amount">수량</th><th class="change-or-return">구분</th>
+	                        <th class="order-no">주문번호</th><th class="product-info">상품정보</th><th class="product-amount">수량</th><th class="change-or-return">구분</th>
 	                    </tr>
 	                </thead>
 	                <tbody>
    	                    <tr th:each="cancel:${cancelList}">
 	                        <td class="order-no-text" th:text="${cancel.orderNo}"></td>
-	                        <td class="product-info-text" th:text="${cancel.productName}"></td><td class="product-info-text" th:text="${cancel.optionName}"></td>
+	                        <td class="product-info-text" th:text="${cancel.productName}"></td>
+	                        <!-- <td class="product-info-text" th:text="${cancel.optionName}"></td> -->
 	                        <td class="product-amount-text" th:text="${cancel.orderCount}"></td>
 	                        <th:block th:switch="${cancel.orderStatus}">
 	                        	<td class="change-or-return-text" th:case="3">주문 취소</td>

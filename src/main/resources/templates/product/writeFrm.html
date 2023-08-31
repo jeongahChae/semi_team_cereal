@@ -7,86 +7,102 @@
     <script src="/javascript/jquery-3.7.0.js"></script>
 </head>
 <body>
-    <div class="product-writeFrm">
-        <div class="product-writeFrm-title">상품 등록</div>
-        <hr>
-        <form action="/product/write" method="post" enctype="multipart/form-data">
-            <table class="product-writeFrm-tbl">
-                <tr>
-                    <th>상품명</th>
-                    <td>
-                        <input type="text" class="input-form" name="productName" placeholder="상품명을 입력하세요.">
-                    </td>
-                </tr>
-                <tr>
-                    <th>상품 카테고리</th>
-                    <td>
-                        <select id="main-category"></select>
-                        <select id="sub-category" name="categoryNo"></select>
-                    </td>
-                </tr>
-                <tr class="product-option-frm">
-                    <th>상품 옵션</th>
-                    <td>
-                        <input type="text" class="input-form" name="optionNameList[]" placeholder="색">
-                        <input type="text" class="input-form" name="optionAmountList[]" placeholder="재고(숫자만)">
-                        <button type="button" class="option-addBtn">추가</button>
-                    </td>
-                </tr>
-                <tr>
-                    <th>상품 가격</th>
-                    <td>
-                        <input type="text" class="input-form" name="productPrice" placeholder="상품 원 가격을 입력하세요.(숫자만)">
-                    </td>
-                </tr>
-                <tr>
-                    <th>할인율</th>
-                    <td>
-                        <input type="text" class="input-form" name="productPercent" placeholder="할인율 %를 입력하세요.(숫자만)">
-                    </td>
-                </tr>
-                <tr>
-                    <th>상품 이미지</th>
-                    <td>
-                        <div class="filebox">
-                            <input class="upload-name" value="" placeholder="이미지는 최대 4개까지 가능합니다.">
-                            <label for="file">파일첨부</label> 
-                            <input type="file" name="upfile" id="file" multiple>
-                        </div>
-                    </td>
-                </tr>
-                <tr></tr>
-                <tr></tr>
-                <tr class="product-detail">
-                    <th>상품 상세정보</th>
-                    <td>
-                        <textarea class="text-form" name="productContent"></textarea>
-                    </td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td>
-                        <div class="filebox">
-                            <input class="upload-name2" value="" placeholder="이미지는 최대 5개까지 가능합니다." readonly>
-                            <label for="file2">파일첨부</label> 
-                            <input type="file" name="upfile2" id="file2" multiple>
-                        </div>
-                    </td>
-                </tr>
-                <tr>
-                    <th></th>
-                    <td>
-                        <p>· 30MB 이하의 이미지만 업로드 가능합니다.</p>
-                        <p>· 사진은 최대 5개까지 등록 가능합니다.</p> 
-                    </td>
-                </tr>
-            </table>
-            <hr>
-            <div class="product-writeFrm-sumbitBtn">
-                <button>상품 등록</button>
-            </div>
-        </form>
-    </div>
+    
+    <th:block th:include="common/header"></th:block>
+    
+    <!---------------------------------------------------------------------------->
+	<div class="content-wrap">
+
+
+		<th:block th:include="adminPage/adminPageList"></th:block>
+
+
+			    <div class="product-writeFrm">
+			        <div class="product-writeFrm-title">상품 등록</div>
+			        <hr>
+			        <form action="/product/write" method="post" enctype="multipart/form-data">
+			            <table class="product-writeFrm-tbl">
+			                <tr>
+			                    <th>상품명</th>
+			                    <td>
+			                        <input type="text" class="input-form" name="productName" placeholder="상품명을 입력하세요.">
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <th>상품 카테고리</th>
+			                    <td>
+			                        <select id="main-category"></select>
+			                        <select id="sub-category" name="categoryNo"></select>
+			                    </td>
+			                </tr>
+			                <tr class="product-option-frm">
+			                    <th>상품 옵션</th>
+			                    <td>
+			                        <input type="text" class="input-form" name="optionNameList[]" placeholder="색">
+			                        <input type="text" class="input-form" name="optionAmountList[]" placeholder="재고(숫자만)">
+			                        <button type="button" class="option-addBtn">추가</button>
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <th>상품 가격</th>
+			                    <td>
+			                        <input type="text" class="input-form" name="productPrice" placeholder="상품 원 가격을 입력하세요.(숫자만)">
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <th>할인율</th>
+			                    <td>
+			                        <input type="text" class="input-form" name="productPercent" placeholder="할인율 %를 입력하세요.(숫자만)">
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <th>상품 이미지</th>
+			                    <td>
+			                        <div class="filebox">
+			                            <input class="upload-name" value="" placeholder="이미지는 최대 4개까지 가능합니다.">
+			                            <label for="file">파일첨부</label> 
+			                            <input type="file" name="upfile" id="file" multiple>
+			                        </div>
+			                    </td>
+			                </tr>
+			                <tr></tr>
+			                <tr></tr>
+			                <tr class="product-detail">
+			                    <th>상품 상세정보</th>
+			                    <td>
+			                        <textarea class="text-form" name="productContent"></textarea>
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <th></th>
+			                    <td>
+			                        <div class="filebox">
+			                            <input class="upload-name2" value="" placeholder="이미지는 최대 5개까지 가능합니다." readonly>
+			                            <label for="file2">파일첨부</label> 
+			                            <input type="file" name="upfile2" id="file2" multiple>
+			                        </div>
+			                    </td>
+			                </tr>
+			                <tr>
+			                    <th></th>
+			                    <td>
+			                        <p>· 30MB 이하의 이미지만 업로드 가능합니다.</p>
+			                        <p>· 사진은 최대 5개까지 등록 가능합니다.</p> 
+			                    </td>
+			                </tr>
+			            </table>
+			            <hr>
+			            <div class="product-writeFrm-sumbitBtn">
+			                <button>상품 등록</button>
+			            </div>
+			        </form>
+			    </div>
+
+	</div> <!-- <div class="content-wrap"> -->
+    <!---------------------------------------------------------------------------->
+    
+    <th:block th:include="common/footer"></th:block>
+    
     <script src="/javascript/product_writeFrm.js"></script>
 </body>
 </html>

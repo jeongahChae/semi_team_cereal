@@ -169,7 +169,7 @@ public class MyPageDao {
 
 	
 	//주문 내역 - 주문 번호로 조회
-	public Order selectNoOrderList(int orderNO) {
+	public Order selectNoOrderList(Long orderNO) {
 //		String query = "select * from order_tbl where order_no=?";
 		String query = "select order_no, product_name, count\r\n" + 
 				"from order_tbl\r\n" + 

@@ -114,7 +114,7 @@ public class AdminPageController {
     @GetMapping(value="/insertProduct")
     public String insertProduct(int btn, Model model) {
     	model.addAttribute("btn", btn);
-    	return "product/writeFrm_copy";
+    	return "product/writeFrm";
     }//insertProduct(int btn, Model model)
     
     
