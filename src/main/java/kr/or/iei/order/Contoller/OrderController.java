@@ -121,4 +121,10 @@ public class OrderController {
 		}
 	}
 	
+	@ResponseBody
+	@GetMapping(value="/addToCart")
+	public void addToCart(String optionName, String count, int productNo) {
+		System.out.println(optionName);
+		System.out.println(count);
+	}
 }
