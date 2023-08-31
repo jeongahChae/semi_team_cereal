@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/css/searchId.css"> 
+	<script src="/javascript/jquery-3.7.0.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+	<th:block th:include="common/header"></th:block>
+    <div class="search-whole-wrap">
+		<div class="search-wrap">
+			<div class="search-head">
+				<h2>아이디 찾기</h2>   			
+			</div>
+            <div class="search-title">
+                <h3>이메일 인증</h3>
+            </div>
+			<form action="/member/searchIdFrm" method="post">
+				<div class="search-content">
+					<div class="input-box">
+						<label for="memberName">이름</label> <input type="text" name="memberName"
+							id="memberName" class="search-input-form" placeholder="이름을 입력하세요">
+					</div>
+					<div class="input-box">
+						<label for="memberEmail">이메일</label> <input type="text"
+							name="memberEmail" id="signPw" class="search-input-form"
+							placeholder="이메일을 입력하세요">
+                    </div>					
+				</div>
+				<div class="search-foot">
+					<button type="submit" class="searchId-btn">확인</button>					
+				</div>
+			</form>
+		</div>
+	</div>
+	<th:block th:include="common/footer"></th:block>
+    <script src="/javascript/yeojeong_searchId.js"></script>
+</body>
+</html>

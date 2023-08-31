@@ -156,3 +156,7 @@ input[type=password]{
 .star{
     color: #A52502;
 }
+.button-wrap>button:hover {    
+    cursor: pointer;
+   
+  }

@@ -52,5 +52,11 @@ public class MemberService {
 		int result = memberDao.selectOneMemberPw(checkPw);
 		return result;
 	}
+
+	
+	public Member searchId(String searchName, String searchEmail) {
+		Member m = memberDao.searchId(searchName, searchEmail);
+		return m;
+	}
 	
 }

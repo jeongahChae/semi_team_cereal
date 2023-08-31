@@ -81,4 +81,14 @@ public class MemberDao {
 		return 1;
 	}
 
+	public Member searchId(String searchName, String searchEmail) {
+		String query ="select * from member_tbl where member_name=?, member_email=?";
+		List list = jdbc.query(query, memberRowMapper,searchName, searchEmail);
+		System.out.println(list.isEmpty());
+		if(list.isEmpty()) {
+			return null;
+		}
+		return (Member)list.get(0);
+	}
+
 }
