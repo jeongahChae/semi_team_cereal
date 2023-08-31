@@ -108,10 +108,10 @@ input[type=password]{
     float:left;
     width:33%;
 }
-.join-content>:nth-child(3)>:nth-child(21){
-    background-color:#A52502;
+/* .join-content>:nth-child(3)>:nth-child(21){
+  
    
-}
+} */
 .agree-whole-wrap{
     padding-top: 20px;
     width:800px;

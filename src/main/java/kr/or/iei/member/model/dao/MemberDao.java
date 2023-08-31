@@ -30,7 +30,7 @@ public class MemberDao {
 	public int insertMember(Member member) {
 		
 		String query = "insert into member_tbl values(member_tbl_seq.nextval,?,?,?,?,?,?,?,?,to_char(sysdate,'yyyy-mm-dd'),2,?,10000)";
-		Object[] params = {member.getMemberId(),member.getMemberPw(),member.getMemberName(),member.getMemberPhone(),member.getMemberEmail(),member.getMemberAddr(),member.getMemberGender(),member.getBirthDate(),member.getDetail(),member.getMembershipPoint()};
+		Object[] params = {member.getMemberId(),member.getMemberPw(),member.getMemberName(),member.getMemberPhone(),member.getMemberEmail(),member.getMemberAddr(),member.getMemberGender(),member.getBirthDate(),member.getDetail()};
 		int result = jdbc.update(query,params);		
 		return result;
 	}
