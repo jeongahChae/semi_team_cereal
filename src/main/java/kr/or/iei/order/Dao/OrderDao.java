@@ -77,7 +77,7 @@ public class OrderDao {
 	}
 
 	public int selectOrderNo() {
-		
+		String query = 
 		return 0;
 	}
 }
