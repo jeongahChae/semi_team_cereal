@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="/css/yeojeong_searchId.css"> 
+    <link rel="stylesheet" href="/css/yeojeong_searchPw.css"> 
 	<script src="/javascript/jquery-3.7.0.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
@@ -13,7 +13,7 @@
 		<div class="search-whole-wrap">
 			<div class="search-wrap">
 				<div class="search-head">
-					<h2>아이디 찾기</h2>   			
+					<h2>비밀번호 찾기</h2>   			
 				</div>
 				<div class="search-title">
 					<h3>이메일 인증</h3>
@@ -21,11 +21,11 @@
 				
 					<div class="search-content">
 						<div class="input-box">
-							<label for="memberName">이름</label> <input type="text" name="memberName"
-								id="memberName" class="search-input-form" placeholder="이름을 입력하세요">
+							<label for="memberId">아이디</label> <input type="text" name="memberId"
+								id="memberId" class="search-input-form" placeholder="아이디를 입력하세요">
 						</div>
 						<div class="comment-wrap">
-	                        <div id="name_comment" style="display: none;"></div> 
+	                        <div id="id_comment" style="display: none;"></div> 
 	                    </div>
 						<div class="input-box">
 							<label for="memberEmail">이메일</label> <input type="text"
@@ -37,14 +37,14 @@
 	                    </div>					
 					</div>
 					<div class="search-foot">
-						<button type="button" class="searchId-btn">확인</button>
+						<button type="button" class="searchPw-btn">확인</button>
 					</div>
 				
 			</div><!--search-wrap-->
 		</div><!--search-whole-wrap-->
 	</div><!--wrap-content-->
 	<!--모달-->
-	<div id="NEChkModal1" class="modalChk">
+	<div id="IEChkModal1" class="modalChk">
 		<div class="modal-body">				
 				<p class="conditionChk">가입하신 정보가 맞는지 확인해 주세요.</p>								
 				<div class="modalChk-foot">						
@@ -52,15 +52,15 @@
 				</div>			
 		</div>
 	</div>
-	<div id="NEChkModal2" class="modalChk">
+	<div id="IEChkModal2" class="modalChk">
 		<div class="modal-body">				
-				<p class="idChk">회원님의 아이디는 <span id="foundMemberId" style="color: #A52502; font-weight: bold;"></span> 입니다.</p>								
+				<p class="PwChk">회원님의 비밀번호는 이메일로 재발송했습니다.</p>								
 				<div class="modalChk-foot">						
 					<button type="button" class="chkBtn">확인</button>						
 				</div>			
 		</div>
 	</div>
 	<th:block th:include="common/footer"></th:block>
-    <script src="/javascript/yeojeong_searchId.js"></script>
+    <script src="/javascript/yeojeong_searchPw.js"></script>
 </body>
 </html>

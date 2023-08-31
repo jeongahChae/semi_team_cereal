@@ -1,18 +1,18 @@
-//이름 체크
-$("#memberName").on("keyup",function(){
-    const nameComment = $("#name_comment");    
-    const nameValue = $("#memberName").val();
+//아이디 체크
+$("#memberId").on("keyup",function(){
+    const idComment = $("#id_comment");    
+    const idValue = $("#memberId").val();
    
     
     
 
 
-    if(nameValue == ""){
+    if(idValue == ""){
         
         nameComment.css("display","inline");
-        nameComment.html("이름을 입력해주세요");
+        nameComment.html("아이디를 입력해주세요");
         nameComment.css("color"," #A52502");
-        console.log(nameComment);    
+         
        
     }else{
         
@@ -45,36 +45,36 @@ $("#memberEmail").on("keyup",function(){
     }
    
 });
-//확인 버튼을 눌렀을 때 이름과 이메일 조회
-$(".searchId-btn").on("click",function(){
+//확인 버튼을 눌렀을 때 아이디와 이메일 조회
+$(".searchPw-btn").on("click",function(){
   
     const emailValue = $("#memberEmail").val(); 
-    const nameValue= $("#memberName").val();
+    const IdValue= $("#memberId").val();
      
     $.ajax({
         type:"post",
-        url:"/member/searchId",
-        data:{checkEmail:emailValue, checkName:nameValue},
+        url:"/member/searchPw",
+        data:{checkEmail:emailValue, checkId:IdValue},
        
         success:function(result){
             
             if(result == "not found"){
                
-                $("#NEChkModal1").fadeIn(500);
+                $("#IEChkModal1").fadeIn(500);
             }else{
-                $("#NEChkModal2").fadeIn(500);
-                $("#foundMemberId").text(result);
+                $("#IEChkModal2").fadeIn(500);
+                
             }
         },
     });
 });
 $(document).mouseup(function (e){
   
-	if($("#NEChkModal1").has(e.target).length > 0){
+	if($("#IEChkModal1").has(e.target).length > 0){
         
 		$(".modalChk").fadeOut(400);
 	}
-    else if($("#NEChkModal2").has(e.target).length > 0){
+    else if($("#IEChkModal2").has(e.target).length > 0){
         
 		$(".modalChk").fadeOut(400);
 	}

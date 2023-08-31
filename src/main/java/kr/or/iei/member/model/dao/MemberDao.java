@@ -38,7 +38,6 @@ public class MemberDao {
 	public Member selectOneMember(String checkId) {
 		String query = "select * from member_tbl where member_id = ?";
 		List list = jdbc.query(query, memberRowMapper,checkId);
-		System.out.println(list.isEmpty());
 		if(list.isEmpty()) {
 			return null;
 		}
@@ -49,7 +48,6 @@ public class MemberDao {
 	public Member selectOneMemberEmail(String checkEmail) {
 		String query = "select * from member_tbl where member_email = ?";
 		List list = jdbc.query(query, memberRowMapper,checkEmail);
-		System.out.println(list.isEmpty());
 		if(list.isEmpty()) {
 			return null;
 		}
@@ -84,7 +82,16 @@ public class MemberDao {
 	public Member searchId(String checkName, String checkEmail) {
 		String query ="select * from member_tbl where member_name=? and member_email=?";
 		List list = jdbc.query(query, memberRowMapper,checkName, checkEmail);
-		System.out.println(list.isEmpty());
+		if(list.isEmpty()) {
+			return null;
+		}
+		return (Member)list.get(0);
+	}
+
+	public Member searchPw(String checkId, String checkEmail) {
+		String query ="select * from member_tbl where member_id=? and member_email=?";
+		List list = jdbc.query(query, memberRowMapper,checkId, checkEmail);
+		
 		if(list.isEmpty()) {
 			return null;
 		}

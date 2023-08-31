@@ -162,7 +162,7 @@ public class MemberController {
 		int result = memberService.deleteMember(m.getMemberId());
 		
 		if (result > 0) {
-			//session.invalidate(); -> 이거 쓰면 매개변수에 HttpSession session 추가
+			
 			return "redirect:/member/logout";
 
 
@@ -208,6 +208,25 @@ public class MemberController {
 	public String searchId(String checkName, String checkEmail) {
 		
 		Member member = memberService.searchId(checkName, checkEmail);
+		
+		if(member == null) {
+			
+			return "not found";
+		}else {
+			return member.getMemberId();
+		}
+		
+	}
+	@GetMapping(value = "/searchPwFrm")
+	public String searchPwFrm() {
+		
+		return "member/yeojeong_searchPw";
+	}
+	@PostMapping(value = "/searchPw")
+	@ResponseBody
+	public String searchPw(String checkId, String checkEmail) {
+		
+		Member member = memberService.searchPw(checkId, checkEmail);
 		
 		if(member == null) {
 			

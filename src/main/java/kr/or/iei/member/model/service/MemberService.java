@@ -58,5 +58,10 @@ public class MemberService {
 		Member m = memberDao.searchId(checkName, checkEmail);
 		return m;
 	}
+
+	public Member searchPw(String checkId, String checkEmail) {
+		Member m = memberDao.searchPw(checkId, checkEmail);
+		return m;
+	}
 	
 }
