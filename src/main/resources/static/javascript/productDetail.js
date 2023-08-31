@@ -126,6 +126,24 @@ function sum(){
     $(".info-totalPrice").text(totalPrice.toLocaleString()+"원");
 }
 
+function sum(){
+	    let sum = 0;
+    	$('.count').each(function(){
+        var text = $(this).text();
+        let text2 = (Number)(text);
+        sum += text2;
+        
+    });
+    let finalPrice = $(".product-detail-info-final-price2").val();
+    let totalPrice = sum * finalPrice;
+    console.log(totalPrice.toLocaleString());
+    $(".info-totalPrice").text(totalPrice.toLocaleString()+"원");
+}
+
+
+
+
+
 const select2 = $(".product-option2")
 select2.change(function(){
     const div = $("<div>");
@@ -167,6 +185,8 @@ select2.change(function(){
     let totalPrice = sum * finalPrice;
     // console.log(totalPrice.toLocaleString());
     $(".info-totalPrice2").text(totalPrice.toLocaleString()+"원");
+    
+
 });
 
 
