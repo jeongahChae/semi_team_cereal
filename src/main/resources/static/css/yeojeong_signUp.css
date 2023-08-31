@@ -172,7 +172,7 @@ input[type=password]{
 /* .comment-wrap{
     background-color: #A52502;
 } */
-.modal {
+.modalChk {
     position: fixed;
     top: 0;
     left: 0;
@@ -182,10 +182,10 @@ input[type=password]{
     background-color: rgba(0, 0, 0, 0.4);
     
 }
-.modal.show {
+.modalChk.show {
     display: block;
 }
-.modal_body {
+.modal-body {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -200,7 +200,7 @@ input[type=password]{
 }
 
 /* 아이디 중복확인 모달 css */
-.modal_body>p{
+.modal-body>p{
     font-size: 20px;
 }
 
@@ -208,20 +208,21 @@ input[type=password]{
     
     font-size: 18px;
     border: none;
-    color : #1C8394;
+    color : #fff;
     text-align: center;
-    background-color: #fff;
+    background-color: #1c8394;
+    border: 1px solid #1c8394; 
 }
 
 /*comment 창 수정*/
 .comment-wrap{
     padding-left: 210px;
 }
-.modal-foot>button{
-    width: ;
+.modalChk-foot>button{
+    width: 100px;
 }
 /* 이용약관 내용 */
-.modal-bg {
+.modal-Agree {
     position: fixed;
     top: 0;
     left: 0;
@@ -231,16 +232,16 @@ input[type=password]{
     background-color: rgba(0, 0, 0, 0.4);
     
 }
-.modal-bg.show {
+.modal-Agree.show {
     display: block;
 }
 .agree-explain{
-    width: 90%;
+    width: 400px;
     margin: 15px auto;    
-    height: 200px;
+    height: 500px;
     overflow: auto;
     padding: 10px;
-    font-size: 13px;
+    font-size: 16px;
     border: 1px solid #000;
     box-sizing: border-box;
 }
