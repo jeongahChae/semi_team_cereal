@@ -59,15 +59,15 @@
 		<table class="tbl notice-tbl">
 			<tbody>
 			<tr>
-				<th style="width: 10%;"><input type="checkbox" id="cartAll"></th>
+				<th style="width: 10%;">번호</th>
 				<th style="width: 40%;">상품정보</th>
 				<th style="width: 20%;">수량</th>
 				<th style="width: 15%;">적립금</th>
 				<th style="width: 15%;">가격</th>
 			</tr>
-			<tr th:each = "cart : ${list}">
+			<tr th:each = "cart, i : ${list}">
 				<td>
-					<input type="checkbox" class="cartChk" name="cartNo" value="${cart.cartNo}">
+					<span th:text = "${i.count}"></span>
 				</td>
 				<td style="text-align:left; padding-left:20px;">
 					<a th:href="@{/product/productDetail(productNo=${cart.productNo})}" class="cart-detail">
@@ -111,11 +111,10 @@
 				<th><span>상품 할인</span></th>
 				<td colspan="2"><span th:text="${#numbers.formatInteger(#aggregates.sum(list.![(productFinalPrice-productPrice)*count]), 3, 'COMMA') + '원'}" style="color:#1C8394;"></span></td>
 			</tr>
-			<!-- <tr>
-				<th><span>적립금 사용</span></th>적립금 있으면 최종 금액 추가해야 함
-				<td colspan="2"><span th:text="${session.m.memberEmail}"></span></td>
+			<tr>
+				<th><span>적립금 사용</span></th>
+				<td colspan="2"><span th:text="${session.m.membershipPoint}"></span></td>
 			</tr>
-			 -->
 			<tr>
 				<th><span>배송비</span></th>
 				<td><span style="color:#1C8394;">무료 배송</span></td>
