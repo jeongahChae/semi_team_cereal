@@ -58,7 +58,7 @@ public class OrderDao {
 	}
 
 	public int createOrder(int memberNo, int price) {
-		String query = "insert into order_tbl values(to_char(sysdate,'yyyymmddhhmi')+order_seq.nextval, ?, sysdate, ?, null, default)";
+		String query = "insert into order_tbl values(to_char(sysdate,'yyyymmddhhmi')+order_seq.nextval, ?, sysdate, ?, null, 2)";
 		Object[] params = {memberNo, price};
 		int result = jdbc.update(query, params);
 		return result;
@@ -71,13 +71,13 @@ public class OrderDao {
 		return (Cart)cartInfoList.get(0);
 	}
 
-	public int selectOrderNo(int memberNo) {
+	public long selectOrderNo(int memberNo) {
 		String query = "select max(order_no) from order_tbl where member_no=?";
-		int orderNo = jdbc.queryForObject(query, Integer.class);
+		long orderNo = jdbc.queryForObject(query, Long.class, memberNo);
 		return orderNo;
 	}
 
-	public int createOrderedProduct(Cart c, int orderNo) {
+	public int createOrderedProduct(Cart c, long orderNo) {
 		String query = "insert into ORDERED_PRODUCTS_TBL values (ORDERED_PRODUCTS_TBL_SEQ.NEXTVAL,?,?,?,?)";
 		Object[] params = {c.getOptionNo(),orderNo,c.getProductFinalPrice(),c.getCount()};
 		int result = jdbc.update(query, params);
@@ -98,11 +98,11 @@ public class OrderDao {
 
 	public int selectPointNo(int memberNo) {
 		String query = "select max(point_no) from point_tbl where member_no=?";
-		int pointNo = jdbc.queryForObject(query, Integer.class);
+		int pointNo = jdbc.queryForObject(query, Integer.class, memberNo);
 		return pointNo;
 	}
 
-	public int createPointForOrder(int pointNo, int orderNo) {
+	public int createPointForOrder(int pointNo, long orderNo) {
 		String query = "insert into changep_reason values(chgP_seq.nextval, ?, ?, null)";
 		int result = jdbc.update(query, pointNo,orderNo);
 		return result;
