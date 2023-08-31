@@ -154,7 +154,8 @@ public class ProductController {
 			model.addAttribute("msg", "상품 등록 실패");
 			model.addAttribute("icon", "error");
 		}
-		model.addAttribute("loc", "/product/productList?reqPage=1");
+		int productNo = productService.getProductNo();
+		model.addAttribute("loc", "/product/productDetail?productNo="+productNo);
 		return "common/msg";
 	}
 	

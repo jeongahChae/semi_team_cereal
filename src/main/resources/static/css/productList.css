@@ -13,15 +13,14 @@
 
 .product-list-content{
     width: 1200px;
-    margin: 0 auto;
-    padding-top: 20px;
-    
+    margin: 0 auto;    
 }
 
 .product-list-content>p{
     font-size: 50px;
     text-align: center;
-    margin: 30px 0;
+    margin: 80px 0;
+    
 }
 
 .product-list-content>ul{

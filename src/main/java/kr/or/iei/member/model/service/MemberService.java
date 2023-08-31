@@ -54,8 +54,8 @@ public class MemberService {
 	}
 
 	
-	public Member searchId(String searchName, String searchEmail) {
-		Member m = memberDao.searchId(searchName, searchEmail);
+	public Member searchId(String checkName, String checkEmail) {
+		Member m = memberDao.searchId(checkName, checkEmail);
 		return m;
 	}
 	

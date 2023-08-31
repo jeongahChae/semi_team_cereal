@@ -40,3 +40,63 @@ function searchAddress(){
 		}
 	}).open();
 }
+
+//적립금 사용
+function usePoint(point, memberNo){
+	let usePoint = $("#currPoint").val();
+	if(usePoint === ""){
+		usePoint = 0;
+	}
+	const currTotalPrice = (Number)($("#currTotalPrice").text());
+	
+	let regExp = /^[0-9]+$/;
+	const check = regExp.test(usePoint);
+	if(check){
+		if(usePoint>point){
+			alert("사용 가능한 적립금을 확인하세요.");
+		} else if(usePoint<5000){
+			alert("적립금은 5000원 이상부터 사용이 가능합니다.");
+		} else if(usePoint>currTotalPrice){
+			alert("적립금은 상품 금액 이내에서 사용이 가능합니다.");
+		}else{
+			$("#usePoint").text(usePoint+"P");
+			$("#final-price").text((currTotalPrice-usePoint));
+			$("#currTotalPrice").text((currTotalPrice-usePoint));
+			$("#price").text((currTotalPrice-usePoint));
+			alert(usePoint+"P 사용");
+		}
+	} else {
+		alert("적립금을 숫자로만 입력해주세요.");
+	}
+	
+
+}
+
+//결제 버튼 눌렀을 때
+$("#pay-btn").on("click", function(){
+	const currTotalPrice = $("#currTotalPrice").text();
+	let finalPrice = (Number)(currTotalPrice);
+	
+	//장바구니 번호 배열
+	let cartNos = $(".cartNo");
+	const cart = new Array();
+	cart.each(function(index, item){
+		const cartNo = $(item).text();
+		cart.push(cartNo);
+	});
+	let cartStr = cart.join("/");
+
+    $.ajax({
+	url: "/order/createOrder",
+	type:"post",
+	data:{cartStr:cart,	//카트번호 들은 스트링배열
+			finalPrice:price},
+	success:function(data){
+
+	}
+	});
+	
+	
+	
+
+});
