@@ -94,7 +94,6 @@ $(".del-cart").on("click", function(){
 
 		check.each(function(index,item){
 			const cartNo = $(item).next().val();
-			console.log(cartNo);
 			no.push(cartNo);
 		});
 		location.href="/order/delCart?no="+no.join("/");//js에서 배열을 구분자를 써서 하나의 긴 문자열로 빼주는 함수^^..
