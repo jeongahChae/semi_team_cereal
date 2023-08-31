@@ -202,22 +202,21 @@ public class MemberController {
 		
 		return "member/yeojeong_searchId";
 	}
+	
 	@PostMapping(value = "/searchId")
 	@ResponseBody
-	public int searchId(String searchName, String searchEmail) {
-		System.out.println("searchName : " + searchName);
-		System.out.println("searchEmail : " + searchEmail);
-		Member member = memberService.searchId(searchName, searchEmail);
-		int result = 0;
+	public String searchId(String checkName, String checkEmail) {
+		System.out.println("searchName : " + checkName);
+		System.out.println("searchEmail : " + checkEmail);
+		Member member = memberService.searchId(checkName, checkEmail);
+		
 		if(member == null) {
-			//중복된 아이디가 없음
-			result =  0;
+			
+			return null;
 		}else {
-			//중복된 아이디가 있음
-			result =  1;
+			return member.getMemberId();
 		}
 		
-		return result;
 	}
 }
 

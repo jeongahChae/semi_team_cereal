@@ -47,15 +47,17 @@ $("#memberEmail").on("keyup",function(){
 });
 //확인 버튼을 눌렀을 때 이름과 이메일 조회
 $("#searchId-btn").on("click",function(){
-    var emailValue = $("#memberEmail").val(); 
-    const emailComment = $("#email_comment");   
+    const emailValue = $("#memberEmail").val(); 
+    const nameValue= $("#memberName").val();
+     
     $.ajax({
         type:"post",
-        url:"/member/checkEmail",
-        data:{checkEmail:emailValue},
+        url:"/member/searchId",
+        data:{checkEmail:emailValue, checkName:nameValue},
+       
         success:function(result){
-            if(result ==0){
-                
+            if(result == "null"){
+                $("#NEChkModal").fadeIn(500);
             }else{
                 
                 //console.log(result);
