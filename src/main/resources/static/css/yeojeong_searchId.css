@@ -1,0 +1,63 @@
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+
+.notosanskr * { 
+ font-family: 'Noto Sans KR', sans-serif;
+}
+
+*{  
+    /*
+    #1C8394 #154B52 #000B0D #390D02 #A52502
+    */
+    margin:0;
+    padding:0;
+    color:#333333;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.search-whole-wrap{
+  width : 1200px
+}
+.search-wrap{
+  margin : 0 auto;
+  text-align: center;
+}
+
+ 
+  .input-box::placeholder{
+    font-size: 16px;
+  }
+
+  .search-foot>button {
+    
+    padding: 1rem;
+    display: block;
+    box-sizing: border-box;
+    transition-duration: 0.5s;
+    font-size: 16px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+    border-radius: 2px;
+    
+  }
+  .searchId-btn {
+    background-color: #1C8394;
+    color: #fff;
+    border: 2px solid #1C8394;
+    margin-bottom: 10px;
+  }
+ 
+  .search-foot>button:hover {    
+    cursor: pointer;
+   
+  }
+  .search-input-form {
+    width: 300px;
+    height: 70px;
+    display: block;
+    padding: 0.8rem;
+    background-color: #fff;
+    outline: none;
+    border: 1px solid #ccc;  
+    box-sizing: border-box;
+  }

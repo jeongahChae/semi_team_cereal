@@ -37,7 +37,7 @@
 			</th:block>
 				             
             </div> 
-	<script src="/javascript/header_default.js"></script>
+	<!-- <script src="/javascript/header_default.js"></script> -->
 	
         </div>
         <div class="header-bottom">
@@ -101,7 +101,7 @@
 							placeholder="비밀번호를 입력하세요">
 					</div>
 					<div class="input-box link-box">
-						<a href="#">아이디찾기</a><span>|</span><a href="#">비밀번호 찾기</a>
+						<a  th:href="@{/member/searchIdFrm}" class="si-btn">아이디찾기</a><span>|</span><a href="#">비밀번호 찾기</a>
 					</div>
 				</div>
 				<div class="modal-foot">
@@ -111,5 +111,6 @@
 			</form>
 		</div>
 	</div>
+    <script src="/javascript/header_default.js"></script>
  <th:block>
 </html>
