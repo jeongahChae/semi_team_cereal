@@ -141,7 +141,7 @@ public class MyPageDao {
 				"left join product using(product_no)\r\n" + 
 				"where order_no=?";
 		*/
-		String query = "select order_no, member_no, option_no\r\n" + 
+		String query = "select order_no, member_no, option_no, product_name\r\n" + 
 				"from order_tbl\r\n" + 
 				"left join ordered_products_tbl using(order_no)\r\n" + 
 				"left join option_tbl using(option_no)\r\n" + 
