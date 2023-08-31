@@ -56,4 +56,28 @@ public class OrderDao {
 		List list = jdbc.query(query, cartRowMapper, params);
 		return (Cart)list.get(0);
 	}
+
+	public int createOrder(int memberNo, int price) {
+		String query = "insert into order_tbl values(to_char(sysdate,'yyyymmddhhmi')+order_seq.nextval, ?, sysdate, ?, null, default)";
+		Object[] params = {memberNo, price};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
+	public Cart selectCartInfo(int cartNo) {
+		String query = "select* from (select * from(select * from cart where cart_no = ?) left join option_tbl using(option_no))\r\n" + 
+				"left join product using(product_no)";
+		List cartInfoList = jdbc.query(query, cartRowMapper, cartNo);
+		return (Cart)cartInfoList.get(0);
+	}
+
+	public int createOrderedProduct(Cart c) {
+		String query = 
+		return 0;
+	}
+
+	public int selectOrderNo() {
+		String query = 
+		return 0;
+	}
 }

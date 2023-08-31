@@ -1,6 +1,7 @@
 /* personalQnaList.html */
 //tr 클릭 시 slide되는 용도  <- 만약 시간이 된다면 tr이랑 text랑 각각 slideDown과 fadeOut을 줘서 디자인해보기
 $("tr.showContent").click(function() {
+    // console.log($(this).next().children().children().eq(5));
     //먼저 전체 슬라이드를 올려주는 코드
     const allContent = $(".qnaContent")
     // allContent.fadeOut();
@@ -15,6 +16,26 @@ $("tr.showContent").click(function() {
     }else{
         // usualQnaContent.fadeIn();
         usualQnaContent.slideDown();
+        //댓글이 있는 경우에만 qnaNo에 맞는 댓글 열어주는 코드
+        const qnaNo = $(this).find(".qna-no").val();
+        $.ajax({
+            url : "/personalQna/selectQnaNo",
+            type : "get",
+            data : {qnaNo : qnaNo},
+            success : function(data){
+                // console.log(data);
+                console.log(data=="");
+                console.log(qnaNo);
+                if(data == ""){
+                }else{
+                    const commentBox = $(this).next().children().children().eq(4);
+                    const result = $("<div>").append(data.personalCommentContent);
+                    commentBox.append(result);
+                    const inputCommentBox = $(this).next().children().children().eq(5);
+                    // inputCommentBox.remove();
+                }
+            }
+        });
     }
 });
 //삭제버튼 -> 시간이 난다면 모달창으로 처리하기
@@ -23,6 +44,9 @@ function personalQnaDelete(qnaNo){
         location.href = "/personalQna/delete?qnaNo="+qnaNo;
     }
 }
+
+$("#delete-inputFrm").on
+
 
 /* personalQnaWriteFrm.html */
 //파일 업로드 할 시 작은 이미지 옆으로 생성(미리보기)

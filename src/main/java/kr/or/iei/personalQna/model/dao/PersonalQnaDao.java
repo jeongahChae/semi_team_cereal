@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.personalQna.model.vo.PersonalQna;
+import kr.or.iei.personalQna.model.vo.PersonalQnaComment;
 import kr.or.iei.personalQna.model.vo.PersonalQnaCommentRowMapper;
 import kr.or.iei.personalQna.model.vo.PersonalQnaFile;
 import kr.or.iei.personalQna.model.vo.PersonalQnaFileRowMapper;
@@ -86,6 +87,24 @@ public class PersonalQnaDao {
 		Object[] params = {qnaNo};
 		int result = jdbc.update(query,params);
 		return result;
+	}
+
+	public int insertComment(PersonalQnaComment pc) {
+		String query = "insert into personal_qna_comment values(personal_qna_comment_seq.nextval,?,?,to_char(sysdate,'yyyy-mm-dd'),?)";
+		//comment가 0이면 null을 String타입으로 넣고 null이 아니면 문자타입으로 형변환 해서 commentNo로 받는다. 
+		String personalQnaCommentRef = pc.getPersonalQnaRef()==0?null:String.valueOf(pc.getPersonalQnaRef());
+		Object[] params = {pc.getPersonalCommentWriter(),pc.getPersonalCommentContent(),personalQnaCommentRef};
+		int result = jdbc.update(query,params);
+		return result;
+	}
+
+	public PersonalQnaComment selectOneComment(int qnaNo) {
+		String query = "select * from personal_qna_comment where personal_qna_ref=?";
+		List list = jdbc.query(query, personalQnaCommentRowMapper, qnaNo);
+		if(list.isEmpty()) {
+			return null;
+		}
+		return (PersonalQnaComment)list.get(0);
 	}
 
 	
