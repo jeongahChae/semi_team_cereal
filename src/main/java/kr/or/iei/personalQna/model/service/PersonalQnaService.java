@@ -132,4 +132,9 @@ public class PersonalQnaService {
 		PersonalQnaComment comment = personalQnaDao.selectOneComment(qnaNo);
 		return comment;
 	}
+
+	public int updatePersonalQna(PersonalQnaComment pc) {
+//		int result = personalQnaDao.updatePersonalQna(pc);
+		return 0;
+	}
 }

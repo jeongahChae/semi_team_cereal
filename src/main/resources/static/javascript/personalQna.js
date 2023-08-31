@@ -3,18 +3,20 @@
 $("tr.showContent").click(function() {
     // console.log($(this).next().children().children().eq(5));
     //먼저 전체 슬라이드를 올려주는 코드
-    const allContent = $(".qnaContent")
-    // allContent.fadeOut();
-    allContent.slideUp();
+    const qnaContent = $(".qnaContent")
+    qnaContent.slideUp();
     //내가 원하는 컨텐츠만 내려주는 코드
     const usualQnaContent = $(this).next().find(".qnaContent");
+
+    const commentBox = $(this).next().children().children().eq(4);
+    
+    const inputCommentBox = $(this).next().children().children().eq(5);
+    
+    const fixBtn = $(this).next().children().find(".fix-btn");
     //컨텐츠가 visible(slideDown상태)인 경우
     if(usualQnaContent.is(':visible')){
-        usualQnaContent.slideUp();
-        // usualQnaContent.fadeOut();
-        //  
+        
     }else{
-        // usualQnaContent.fadeIn();
         usualQnaContent.slideDown();
         //댓글이 있는 경우에만 qnaNo에 맞는 댓글 열어주는 코드
         const qnaNo = $(this).find(".qna-no").val();
@@ -23,16 +25,16 @@ $("tr.showContent").click(function() {
             type : "get",
             data : {qnaNo : qnaNo},
             success : function(data){
-                // console.log(data);
-                console.log(data=="");
-                console.log(qnaNo);
+                // console.log(qnaNo);
                 if(data == ""){
                 }else{
-                    const commentBox = $(this).next().children().children().eq(4);
-                    const result = $("<div>").append(data.personalCommentContent);
-                    commentBox.append(result);
-                    const inputCommentBox = $(this).next().children().children().eq(5);
-                    // inputCommentBox.remove();
+                    // const commentBox = $(this).next().children().children().eq(4);
+                    // console.log(commentBox);
+                    const p = $("<p>");
+                    const commentContent = (p).append(data.personalCommentContent);
+                    commentBox.append(commentContent);
+                    inputCommentBox.remove();
+                    fixBtn.remove();
                 }
             }
         });
@@ -44,6 +46,7 @@ function personalQnaDelete(qnaNo){
         location.href = "/personalQna/delete?qnaNo="+qnaNo;
     }
 }
+
 
 
 
