@@ -94,11 +94,9 @@ public class AdminPageDao {
 	//주문 현황 관리 - 단일 조회
 	public List selectOrderAdmin(long orderNO) {
 		//String query = "select * from order_tbl where order_no=?";
-		String query = "select order_no, product_name, member_name, member_addr, order_status, member_no\r\n" + 
+		String query = "select order_no, member_name, member_addr, order_status, member_no, product_no\r\n" + 
 				"from order_tbl\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
-				"left join ordered_products_tbl using(order_no)\r\n" + 
-				"left join product using(product_final_price)\r\n" + 
 				"where order_no=?";
 		List order = jdbc.query(query, orderRowMapper8, orderNO);
 		
