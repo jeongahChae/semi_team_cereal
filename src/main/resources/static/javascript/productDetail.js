@@ -76,6 +76,7 @@ select.change(function(){
         const currNum = $(this).next().text();
         console.log("az",currNum);
         $(this).next().text(Number(currNum)+1);
+        sum();
     });
     /*
     $(".plus").each(function(i, item){
@@ -93,7 +94,10 @@ select.change(function(){
             return;
         }
         $(this).prev().text(Number(currNum)-1);
+        sum();
 	});
+	sum();
+	/*
     let sum = 0;
     $('.count').each(function(){
         var text = $(this).text();
@@ -105,7 +109,22 @@ select.change(function(){
     let totalPrice = sum * finalPrice;
     console.log(totalPrice.toLocaleString());
     $(".info-totalPrice").text(totalPrice.toLocaleString()+"원");
+    */
 });
+
+function sum(){
+	    let sum = 0;
+    	$('.count').each(function(){
+        var text = $(this).text();
+        let text2 = (Number)(text);
+        sum += text2;
+        
+    });
+    let finalPrice = $(".product-detail-info-final-price2").val();
+    let totalPrice = sum * finalPrice;
+    console.log(totalPrice.toLocaleString());
+    $(".info-totalPrice").text(totalPrice.toLocaleString()+"원");
+}
 
 const select2 = $(".product-option2")
 select2.change(function(){
