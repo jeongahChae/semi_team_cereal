@@ -193,6 +193,7 @@ public class MyPageController {
 	//상품 후기
 	@GetMapping(value="productReview_1")
 	public String productReview(int btn, Model model, int reqPage) {
+		//주문내역 - 리뷰작성, 미작성 여부 판단
 		ProductListData pld = myPageService.selectAllreview(reqPage);
 		model.addAttribute("reviewList", pld.getProductList());
 		model.addAttribute("pageNavi", pld.getPageNavi());

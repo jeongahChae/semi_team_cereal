@@ -35,7 +35,7 @@ public class ProductService {
 		double point = price*0.05;
 		int productPoint = (int)Math.round(point);
 		p.setProductPoint(productPoint);
-		System.out.println(p);
+		// System.out.println(p);
 		/*
 
 		int productPoint = (int)(p.getProductPrice()*0.05);
@@ -50,7 +50,7 @@ public class ProductService {
 			o.setOptionName(o.getOptionNameList()[i]);
 			o.setOptionAmount(o.getOptionAmountList()[i]);
 			int option = productDao.insertOption(o, productNo);
-			System.out.println(option);
+			// System.out.println(option);
 		}
 		
 		if(fileList != null) {
@@ -90,7 +90,7 @@ public class ProductService {
 			Product p = (Product)productList.get(i);
 			List fileList = productDao.selectProductFile(p.getProductNo());
 			p.setFileList(fileList);
-			System.out.println(fileList);
+			// System.out.println(fileList);
 		}
 
 		// 2. 페이지 네비게이션 제작
@@ -108,7 +108,7 @@ public class ProductService {
 		// 이전 버튼 제작
 		if(pageNo != 1) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/product/productList?reqPage="+(pageNo-1)+"'>";
+			pageNavi += "<a class='page-item' href='/product/productList?categoryNo="+categoryNo+"&reqPage="+(pageNo-1)+"'>";
 			pageNavi += "<span class='material-icons'>chevron_left</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";
@@ -117,13 +117,13 @@ public class ProductService {
 		for(int i=0; i<pageNaviSize; i++) {
 			if(pageNo == reqPage) {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item active-page' href='/product/productList?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item active-page' href='/product/productList?categoryNo="+categoryNo+"&reqPage="+(pageNo)+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
 			}else {
 				pageNavi += "<li>";
-				pageNavi += "<a class='page-item' href='/product/productList?reqPage="+(pageNo)+"'>";
+				pageNavi += "<a class='page-item' href='/product/productList?categoryNo="+categoryNo+"&reqPage="+(pageNo)+"'>";
 				pageNavi += pageNo;
 				pageNavi += "</a>";
 				pageNavi += "</li>";
@@ -136,7 +136,7 @@ public class ProductService {
 		// 다음 버튼 제작
 		if(pageNo <= totalPage) {
 			pageNavi += "<li>";
-			pageNavi += "<a class='page-item' href='/product/productList?reqPage="+(pageNo)+"'>"; // 마지막 페이지에서 +1한 상태로 나왔기 때문에 그냥 pageNo
+			pageNavi += "<a class='page-item' href='/product/productList?categoryNo="+categoryNo+"&reqPage="+(pageNo)+"'>"; // 마지막 페이지에서 +1한 상태로 나왔기 때문에 그냥 pageNo
 			pageNavi += "<span class='material-icons'>chevron_right</span>";
 			pageNavi += "</a>";
 			pageNavi += "</li>";

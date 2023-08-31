@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>주문내역 / 배송현황</title>
     <link rel="stylesheet" href="/css/orderHistory-deliveryStatus_2.css">
+    <link rel="stylesheet" href="/css/productReview(modal)_2.css">
 </head>
 <body>
     
@@ -24,7 +25,7 @@
 	        <div class="order-no-wrap">
 	            <div class="order-no">주문번호 <span th:text="${orderNo}"></span></div> <!-- orderDetail.orderNo는 리스트에서 orderNo만 추출해야하므로, 반복문을 사용하지 않으면 사용불가 -->
 	            <div class="one-on-one-inquiry-wrap">
-	                배송 또는 상품에 문제가 있나요?<span> <a href="#">1:1 문의하기 ></a></span>
+	                배송 또는 상품에 문제가 있나요?<span> <a href="/personalQna/list?reqPage=1">1:1 문의하기 ></a></span>
 	            </div>
 	        </div> <!--<div class="order-no-wrap">-->
 	
@@ -44,7 +45,17 @@
 	                            <span th:text="${order.productName}"></span><br>
 	                            <span th:text="${order.totalPrice}"></span> | <span th:text="${order.count}"></span>
 	                        </td>
-	                        <td class="delivery-status" th:text="${order.orderStatus}"></td>
+	         
+	                         <th:block th:switch="${order.orderStatus}">
+			                        <td class="delivery-status" th:case="1">결제 대기</td>
+			                        <td class="delivery-status" th:case="2">결제 완료</td>
+			                        <td class="delivery-status" th:case="3">주문 취소</td>
+			                        <td class="delivery-status" th:case="4">배송 준비 중</td>
+			                        <td class="delivery-status" th:case="5">배송 중</td>
+			                        <td class="delivery-status" th:case="6">배송 완료</td>
+			                        <td class="delivery-status" th:case="7">교환</td>
+			                        <td class="delivery-status" th:case="8">반품</td>              
+		                        </th:block>
 	                        <td  class="button-container">
 	                            <button type="button" class="reviewBtn">후기작성</button><br>
 	                            <button type="button" class="cartBtn">장바구니 담기 </button>
@@ -62,7 +73,60 @@
 	</div> <!-- <div class="content-wrap"> -->
     <!---------------------------------------------------------------------------->
     
+    
+    
+        <div class="modal">
+        <div class="modal_body">
+    <!---------------------------------------------------------------------------->
+		    <div id="modal-write-review" class="modal-background">
+		        <div class="modal-write-review-wrap">
+		            <div class="modal-head">
+		                <h2 class="modal-h2">후기 작성</h2>
+		                <div class="modal-product-info">
+		                    <div class="modal-img-container">
+		                        <img src="/img/sample-img.jpg" width="150px">
+		                    </div>
+		                    <span class="modal-product-title">[ESSENTIAL#]유리 보틀</span>
+		                </div>
+		                <div class="modal-button-container">
+		                    <button type="button" class="modal-insert-file-btn">첨부파일</button>
+		                </div>
+		            </div> <!--<div class="modal-head">-->
+		            
+		            <div class="modal-body">
+		                <div class="modal-textarea-container">
+		                    <textarea class="modal-review-detail">상품 후기 상세 내용</textarea>
+		                </div>
+		                <div class="modal-registerBtn-wrap">
+		                    <button type="button" class="modal-registerBtn">작성완료</button>
+		                </div> <!--<div class="moreBtn-wrap">-->
+		            </div> <!--<div class="modal-body">-->
+		        </div> <!--<div class="write-review-modal-wrap">-->
+		    </div> <!--<div id="write-review-modal" class="modal-background">-->
+    <!---------------------------------------------------------------------------->
+    	</div>
+    </div>
+    
+    
+    
+    
     <th:block th:include="common/footer"></th:block>
     
+    
+     <script>
+	    $(".reviewBtn").click(function(){
+	    	$(".modal").fadeIn(500);
+	    });
+	
+	    $(document).mouseup(function (e){
+	    	if($(".modal").has(e.target).length === 0){
+	    		$(".modal").fadeOut(500);
+	    	}
+	    });
+
+		$(".modla-registerBtn").on("click", function(){
+			//작성 예정
+		});
+    </script>
 </body>
 </html>

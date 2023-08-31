@@ -18,7 +18,7 @@
 				<div class="search-title">
 					<h3>이메일 인증</h3>
 				</div>
-				<form action="/member/searchIdFrm" method="post">
+				<form name = "searchIdFrm" action="/member/searchId" method="post">
 					<div class="search-content">
 						<div class="input-box">
 							<label for="memberName">이름</label> <input type="text" name="memberName"
@@ -40,10 +40,18 @@
 						<button type="submit" class="searchId-btn">확인</button>					
 					</div>
 				</form>
-			</div>
+			</div>><!--search-wrap-->
+		</div>><!--search-whole-wrap-->
+	</div><!--wrap-content-->
+	<!--모달-->
+	<div id="NEChkModal" class="modalChk">
+		<div class="modal-body">				
+				<p class="conditionChk">가입하신 정보가 맞는지 확인해 주세요.</p>								
+				<div class="modalChk-foot">						
+					<button type="button" class="chkBtn">확인</button>						
+				</div>			
 		</div>
 	</div>
-   
 	<th:block th:include="common/footer"></th:block>
     <script src="/javascript/yeojeong_searchId.js"></script>
 </body>
