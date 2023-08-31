@@ -210,7 +210,6 @@ public class EventController {
 			model.addAttribute("msg", "관리자에게 문의하세요.");
 			model.addAttribute("icon", "error");
 		}
-		System.out.println(wb.getWinNo());
 		model.addAttribute("loc", "/event/winnerView?winNo=" + wb.getWinNo());
 		return "common/msg";
 	}

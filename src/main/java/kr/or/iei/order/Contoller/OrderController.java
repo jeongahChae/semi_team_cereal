@@ -108,6 +108,7 @@ public class OrderController {
 	@PostMapping(value="/createOrder")
 	public void createOrder(@SessionAttribute(required=false) Member m, String cart, int price) {
 		//order_tbl에 데이터 삽입
-		int orderTblResult = orderService.createOrder(m.getMemberNo(),price, cart);
+		System.out.println(cart);
+		//int orderTblResult = orderService.createOrder(m.getMemberNo(),price, cart);
 	}
 }

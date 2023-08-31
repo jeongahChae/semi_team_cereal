@@ -80,17 +80,18 @@ $("#pay-btn").on("click", function(){
 	//장바구니 번호 배열
 	let cartNos = $(".cartNo");
 	const cart = new Array();
-	cart.each(function(index, item){
+	cartNos.each(function(index, item){
 		const cartNo = $(item).text();
 		cart.push(cartNo);
 	});
 	let cartStr = cart.join("/");
 
+
     $.ajax({
 	url: "/order/createOrder",
 	type:"post",
-	data:{cartStr:cart,	//카트번호 들은 스트링배열
-			finalPrice:price},
+	data:{cart:cartStr,	//카트번호 들은 스트링배열
+		price:finalPrice},
 	success:function(data){
 
 	}

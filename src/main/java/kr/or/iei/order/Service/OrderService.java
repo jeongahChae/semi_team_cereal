@@ -26,7 +26,7 @@ public class OrderService {
 	}
 
 	@Transactional
-	public int updateCartCount(int cartNo, int count) {		//장바구니에 들은 상품개수 업데이트
+	public int updateCartCount(int cartNo, int count) { // 장바구니에 들은 상품개수 업데이트
 		int result = orderDao.updateCartCount(cartNo, count);
 		return result;
 	}
@@ -51,12 +51,12 @@ public class OrderService {
 	public boolean deleteCart(String no, int memberNo) {
 		StringTokenizer sT1 = new StringTokenizer(no, "/");
 		boolean result = true;
-		while(sT1.hasMoreTokens()) {
+		while (sT1.hasMoreTokens()) {
 			int cartNo = Integer.parseInt(sT1.nextToken());
-			int changeResult = orderDao.deleteCart(memberNo, cartNo);	//레벨변경 재활용
-			if(changeResult == 0) {	//실패
+			int changeResult = orderDao.deleteCart(memberNo, cartNo); // 레벨변경 재활용
+			if (changeResult == 0) { // 실패
 				result = false;
-				break;	//한 번이라도 실패가 일어나면 더 할 필요가 없으니까 내보냄
+				break; // 한 번이라도 실패가 일어나면 더 할 필요가 없으니까 내보냄
 			}
 		}
 		return result;
@@ -65,7 +65,7 @@ public class OrderService {
 	public List selectCartToOrder(String no) {
 		StringTokenizer sT1 = new StringTokenizer(no, "/");
 		List<Cart> list = new ArrayList<Cart>();
-		while(sT1.hasMoreTokens()) {
+		while (sT1.hasMoreTokens()) {
 			int cartNo = Integer.parseInt(sT1.nextToken());
 			Cart c = orderDao.selectCartToOrder(cartNo);
 			list.add(c);
@@ -73,20 +73,5 @@ public class OrderService {
 		return list;
 	}
 
-	@Transactional
-	public int createOrder(int memberNo, int price, String cart) {
-		int result = 0;
-		result += orderDao.createOrder(memberNo, price);
-		int orderNo = orderDao.selectOrderNo();
-		if(result>0) {
-			StringTokenizer sT1 = new StringTokenizer(cart, "/");
-			while(sT1.hasMoreTokens()) {
-				int cartNo = Integer.parseInt(sT1.nextToken());
-				Cart c = orderDao.selectCartInfo(cartNo);
-				if(c != null) {
-					result += orderDao.createOrderedProduct(c);
-				}
-		}
-		return result;
-	}
+
 }
