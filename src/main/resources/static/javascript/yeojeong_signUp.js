@@ -246,13 +246,13 @@ $("#signinBtn").on("click",function(){
 });
 
 //약관보기 클릭하면 모달창 뜨게 하기
-// $(function () {  
-//     $(document).on("click", ".modal-close", function () {
-//       console.log(2);
-//       $(this).parents(".modal-wrap").parent().css("display", "none");
-//     });  
-//     //$(".sub-navi").prev().after("<span class='material-icons dropdown'>expand_more</span>");
-//   });
+$(function () {  
+    $(document).on("click", ".agreeBtn", function () {
+      console.log(2);
+      $(this).parents(".modalAgree-body").parent().css("display", "none");
+    });  
+   
+  });
    
    $(".showMust").click(function(){
       
@@ -262,7 +262,7 @@ $("#signinBtn").on("click",function(){
        
         $("#privacyAgreeModal").fadeIn(500);  
     });
-    $(".showAgree").click(function(){
+    $(".showOptional").click(function(){
         
         $("#optionalAgreeModal").fadeIn(500);  
     });
