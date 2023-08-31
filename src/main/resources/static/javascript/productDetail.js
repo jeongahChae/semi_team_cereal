@@ -72,22 +72,27 @@ select.change(function(){
     
     const countList = $(".count");
 
-
+    plusButton.on("click",function(){
+        const currNum = $(this).next().text();
+        console.log("az",currNum);
+        $(this).next().text(Number(currNum)+1);
+    });
+    /*
     $(".plus").each(function(i, item){
         $(item).on("click",function(){
             const currNum = $(item).next().text();
             $(item).next().text(Number(currNum)+1);
         });
     });
-    
+    */
 	
-	$(".minus").on("click",function(){
-        const currNum = $(".count").text();
+	optionMinus.on("click",function(){
+        const currNum = $(this).prev().text();
         if(Number(currNum) == 1){
             alert("수량은 1개 이상만 가능합니다.");
             return;
         }
-        $(".count").text(Number(currNum)-1);
+        $(this).prev().text(Number(currNum)-1);
 	});
     let sum = 0;
     $('.count').each(function(){
@@ -108,28 +113,28 @@ select2.change(function(){
     const optionDetail = div.addClass("option-detail-box").text($(this).val());
     
     const optionCount = $("<div class='option-count2'>");
-    const plusButton = $("<button type='button' id='plus2'>+</button>");
+    const plusButton = $("<button type='button' class='plus'>+</button>");
     const optionPlus = optionCount.append(plusButton);
     const count = $("<div class='count2'>1</div>");
     const optionPlusCount = optionPlus.append(count);
-    const optionMinus = $("<button type='button' id='minus2'>-</button>");
+    const optionMinus = $("<button type='button' class='minus2'>-</button>");
     const optionCountbox = optionPlusCount.append(optionMinus);
     $(".product-detail-info-optionbox2").css("display","block");
     $(".product-detail-info-optionbox2").append(optionDetail);
     $(".product-detail-info-optionbox2").append(optionCountbox);
     
-    $("#plus2").on("click",function(){
-        const currNum = $(".count2").text();
-        $(".count2").text(Number(currNum)+1);
+    plusButton.on("click",function(){
+        const currNum = $(this).next().text();
+        $(this).next().text(Number(currNum)+1);
 	});
 	
-	$("#minus2").on("click",function(){
-        const currNum = $(".count2").text();
+	optionMinus.on("click",function(){
+        const currNum = $(this).prev().text();
         if(Number(currNum) == 1){
             alert("수량은 1개 이상만 가능합니다.");
             return;
         }
-        $(".count2").text(Number(currNum)-1);
+        $(this).prev().text(Number(currNum)-1);
 	});
 
     let sum = 0;
