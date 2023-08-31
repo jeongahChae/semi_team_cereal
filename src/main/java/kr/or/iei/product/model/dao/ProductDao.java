@@ -67,9 +67,9 @@ public class ProductDao {
 		return list;
 	}
 
-	public List selectProductList(int start, int end) {
-		String query = "select * from (select rownum as rnum, p.* from (select * from product order by 1 desc)p) where rnum between ? and ?";
-		List list = jdbc.query(query, productRowMapper, start, end);
+	public List selectProductList(int start, int end, int categoryNo) {
+		String query = "select * from (select rownum as rnum, p.* from (select * from product where product_category=? order by 1 desc)p) where rnum between ? and ?";
+		List list = jdbc.query(query, productRowMapper, categoryNo, start, end);
 		return list;
 	}
 
@@ -115,11 +115,14 @@ public class ProductDao {
 		String query = "select * from option_tbl where product_no=?";
 		List list = jdbc.query(query, optionRowMapper, productNo);
 		return list;
-	}	
+	}
 
-
-
-
-	
+	public String selectCategoryName(int categoryNo) {
+		String query = "select category_name from product_category where category_no=?";
+		Object[] params = {categoryNo};
+		String cateName = jdbc.queryForObject(query, String.class, params);
+		return cateName;
+	}
+		
 	
 }

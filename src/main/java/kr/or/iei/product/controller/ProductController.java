@@ -45,8 +45,10 @@ public class ProductController {
 	
 	
 	@GetMapping(value="/productList")
-	public String productList(Model model, int reqPage) {
-		ProductListData pld = productService.selectProductList(reqPage);
+	public String productList(Model model, int reqPage, int categoryNo) {
+		ProductListData pld = productService.selectProductList(reqPage, categoryNo);
+		String cateName = productService.selectCategoryName(categoryNo);
+		model.addAttribute("cateName", cateName);
  		model.addAttribute("productList", pld.getProductList());
 		model.addAttribute("pageNavi", pld.getPageNavi());
 		return "product/productList";
