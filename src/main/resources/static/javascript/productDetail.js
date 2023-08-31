@@ -148,5 +148,6 @@ select2.change(function(){
 
 
 
-
-
+function addToCart(optionNo){
+    location.href="/order/cart";
+}

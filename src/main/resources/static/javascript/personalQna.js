@@ -45,7 +45,6 @@ function personalQnaDelete(qnaNo){
     }
 }
 
-$("#delete-inputFrm").on
 
 
 /* personalQnaWriteFrm.html */
