@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import kr.or.iei.member.model.vo.Member;
+import kr.or.iei.order.vo.Cart;
 import kr.or.iei.product.model.vo.Option;
 import kr.or.iei.product.model.vo.OptionRowMapper;
 import kr.or.iei.product.model.vo.Product;
@@ -122,6 +123,12 @@ public class ProductDao {
 		Object[] params = {categoryNo};
 		String cateName = jdbc.queryForObject(query, String.class, params);
 		return cateName;
+	}
+
+	public int updateOptionCount(Cart c) {//주문 후 재고 삭감
+		String query = "update option_tbl set option_amount= option_amount-? where option_no = ?";
+		int result = jdbc.update(query, c.getOptionAmount(),c.getOptionNo());
+		return result;
 	}
 		
 	

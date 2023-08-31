@@ -1,18 +1,181 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>ESSENTIAL#</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="/css/main.css">
+    <script src="/javascript/jquery-3.7.0.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 </head>
 <body>
-	<h1>테스트</h1>
-	<h3><a href="/aboutUs">aboutUs</a></h3>
-	<h3><a href="/myPage/updateMemberInfo?btn=0&reqPage=1">myPage - 로그인 후 작동</a></h3>
-	<h3><a href="/adminPage/allMemberList?btn=0&reqPage=1">adminPage</a></h3>
-	<h3><a href="/adminPage/insertProduct?btn=3">상품등록</a></h3>
-	<h3><a href="/product/productList?reqPage=1">상품 리스트</a></h3>
-	<h3><a href="/notice/list?reqPage=1">noticeList</a></h3>
-	<h3><a href="/member/header">member</a></h3>	
-	<h3><a href="/modal.html">modal</a></h3>
+
+	<th:block th:include="common/header"></th:block>
+    <div class="main-content">
+        <div class="slide-wrap">
+            <!-- Slider main container -->
+            <div class="swiper">
+                <!-- Additional required wrapper -->
+                <div class="swiper-wrapper">
+                    <!-- Slides -->
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="/img/main1.jpg">
+                            <div class="main-slide-info">
+                                <p>ESSENTIAL# OUTLET</p>
+                                <p>UP TO -70%</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="/img/main2.jpg">
+                            <div class="main-slide-info">
+                                <p>NEW ARRIVAL</p>
+                                <p>ESSENTIAL# 신상전</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="/img/main3.jpg">
+                            <div class="main-slide-info">
+                                <p>공간 별 가구</p>
+                                <p>내게 맞는 가구</p>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="swiper-slide">
+                        <a href="#">
+                            <img src="/img/main4.jpg">
+                            <div class="main-slide-info">
+                                <p>첫 구매를 도와줄 구매가이드</p>
+                                <p>가구의 모든 것</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- If we need pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- If we need navigation buttons -->
+                <div class="swiper-button-prev button"></div>
+                <div class="swiper-button-next button"></div>
+            </div>
+        </div>
+        <div class="main-new">
+            <h1>NEW ARRIVAL<a href="#"></a></h1>
+            <div>
+                <!-- Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new1.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>애슐리 원목 전신거울</p>
+                                <p>32,700원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new2.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>토미 무헤드 4단 멀티 수납 침대 SS/Q</p>
+                                <p>259,900원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new3.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>유닛 1200 컴퓨터 책상+책장 데스크 세트</p>
+                                <p>134,900원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new4.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>베르 고무나무 심플 원목 미니 침대 옆 협탁 선반</p>
+                                <p>49,800원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new5.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>레벨업 높이조절 수납계단형 사다리형 철제 벙커침대 SS</p>
+                                <p>298,000원</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev button"></div>
+                    <div class="swiper-button-next button"></div>
+                </div>
+            </div>
+        </div>
+        <div class="main-new">
+            <h1>HOT FURNITURE<a href="#"></a></h1>
+            <div>
+                <!-- Swiper -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new1.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>애슐리 원목 전신거울</p>
+                                <p>32,700원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new2.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>토미 무헤드 4단 멀티 수납 침대 SS/Q</p>
+                                <p>259,900원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new3.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>유닛 1200 컴퓨터 책상+책장 데스크 세트</p>
+                                <p>134,900원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new4.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>베르 고무나무 심플 원목 미니 침대 옆 협탁 선반</p>
+                                <p>49,800원</p>
+                            </a>
+                        </div>
+                        <div class="swiper-slide">
+                            <a href="apparel_detail_1.html">
+                                <img src="/img/new5.jpg">
+                                <p>ESSENTIAL<span class="sharp">#</span></p>
+                                <p>레벨업 높이조절 수납계단형 사다리형 철제 벙커침대 SS</p>
+                                <p>298,000원</p>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination"></div>
+                    <!-- If we need navigation buttons -->
+                    <div class="swiper-button-prev button"></div>
+                    <div class="swiper-button-next button"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/javascript/main.js"></script>
+    <th:block th:include="common/footer"></th:block>
+
 </body>
 </html>
