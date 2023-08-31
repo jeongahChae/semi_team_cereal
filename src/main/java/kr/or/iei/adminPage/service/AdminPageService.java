@@ -229,7 +229,7 @@ public class AdminPageService {
 	}
 
 	//주문 현황 업데이트 - 조회
-	public List selectOrderAdmin(int orderNO) {
+	public List selectOrderAdmin(long orderNO) {
 		List order = adminPageDao.selectOrderAdmin(orderNO);
 		return order;
 	}

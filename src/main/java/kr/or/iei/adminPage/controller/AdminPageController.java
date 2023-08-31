@@ -61,7 +61,7 @@ public class AdminPageController {
     //주문 현황 관리 - 업데이트
     @GetMapping(value="orderUpdate")
     public String orderUpdate(int btn, int reqPage, Model model, String selectOrderStatus, String orderNo) {
-    	int orderNO = Integer.parseInt(orderNo);
+    	long orderNO = Long.parseLong(orderNo);
     	int orderStatus = Integer.parseInt(selectOrderStatus);
     	//조회 후 업데이트
     	List order = adminPageService.selectOrderAdmin(orderNO);

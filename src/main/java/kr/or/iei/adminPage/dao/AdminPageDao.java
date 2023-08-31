@@ -92,7 +92,7 @@ public class AdminPageDao {
 		return orderList;
 	}
 	//주문 현황 관리 - 단일 조회
-	public List selectOrderAdmin(int orderNO) {
+	public List selectOrderAdmin(long orderNO) {
 		//String query = "select * from order_tbl where order_no=?";
 		String query = "select order_no, product_name, member_name, member_addr, order_status, member_no\r\n" + 
 				"from order_tbl\r\n" + 
