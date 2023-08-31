@@ -234,7 +234,7 @@ public class AdminPageService {
 		return order;
 	}
 	//주문 현황 업데이트 - 업데이트
-	public int orderUpdate(int orderStatus, int orderNo) {
+	public int orderUpdate(int orderStatus, Long orderNo) {
 		int result = adminPageDao.orderUpdate(orderStatus, orderNo);
 		return result;
 	}

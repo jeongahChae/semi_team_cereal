@@ -402,9 +402,9 @@ public class MyPageService {
 
 	//주문취소/교환/반품 등록
 	@Transactional
-	public int insertOrderCancelList(int orderStatus, String reasonDetail, Long orderNo, int memberNo, int optionNo) {
+	public int insertOrderCancelList(int orderStatus, String reasonDetail, Long orderNo, String productName, String optionName, int orderCount, int memberNo) {
 		System.out.println("orderNo : "+orderNo);
-		int result = myPageDao.insertOrderCancelList(orderStatus, reasonDetail, orderNo, memberNo, optionNo);
+		int result = myPageDao.insertOrderCancelList(orderStatus, reasonDetail, orderNo, productName, optionName, orderCount, memberNo);
 		System.out.println("result: "+result);
 		return result;
 	}

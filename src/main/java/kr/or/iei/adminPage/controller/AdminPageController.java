@@ -65,7 +65,15 @@ public class AdminPageController {
     	int orderStatus = Integer.parseInt(selectOrderStatus);
     	//조회 후 업데이트
     	List order = adminPageService.selectOrderAdmin(orderNO);
+    	
+    	for(int i=0;i<order.size();i++) {
+    		System.out.println("order.get(i): "+order.get(i));
+    	}
+    	
     	Order orderList = (Order)order.get(0);
+    	
+    	System.out.println("order.get(0): "+order.get(0));
+    	
     	int result = adminPageService.orderUpdate(orderStatus, orderList.getOrderNo());
     	if(result > 0) {
     		System.out.println("업데이트 완료");
@@ -73,7 +81,9 @@ public class AdminPageController {
     		if(orderStatus==3 || orderStatus==7 || orderStatus==8) {
     			String reasonDetail = "관리자 관한으로 수행";
     			
-				int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOrderDate(), orderList.getOrderAmount(), orderList.getMemberName(), orderList.getMemberAddr());
+				//int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOrderDate(), orderList.getOrderAmount(), orderList.getMemberName(), orderList.getMemberAddr());
+    			System.out.println("orderList.getMemberNo(): "+orderList.getMemberNo());
+    			int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOptionName(), orderList.getCount(), orderList.getMemberNo());
     			if(result>0) {
 					System.out.println("insert 성공: "+result);			
 					

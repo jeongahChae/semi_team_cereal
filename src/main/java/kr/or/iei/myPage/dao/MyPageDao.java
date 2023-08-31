@@ -184,10 +184,10 @@ public class MyPageDao {
 	
 
 	//주문취소/교환/반품 등록
-	public int insertOrderCancelList(int orderStatus, String reasonDetail, Long orderNo, int memberNo, int optionNo) {
-	  //insert into order_cancel values(order_cancel_no.nextval, order_no, reason, member_no, option_no, orderStatus);
-		String query = "insert into order_cancel values(order_cancel_no.nextval, ?, ?, ?, ?, ?)";
-		Object[] params = {orderNo, reasonDetail, memberNo, optionNo, orderStatus}; 
+	public int insertOrderCancelList(int orderStatus, String reasonDetail, Long orderNo, String productName, String optionName, int orderCount, int memberNo) {
+	  //insert into order_cancel values(order_cancel_no.nextval, order_no, product_name, option_name, order_count, order_status, reason, member_no);
+		String query = "insert into order_cancel values(order_cancel_no.nextval, ?, ?, ?, ?, ?, ?, ?)";
+		Object[] params = {orderNo, productName, optionName, orderCount,orderStatus, reasonDetail, memberNo}; 
 		int result = jdbc.update(query, params);
 		return result;
 	}
@@ -219,15 +219,8 @@ public class MyPageDao {
 				")\r\n" + 
 				"n) where rnum between ? and ?";
 		*/
-		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
-				"(select order_no, order_status, product_name, count, option_name\r\n" + 
-				"from order_tbl\r\n" + 
-				"left join ordered_products_tbl using(order_no)\r\n" + 
-				"left join option_tbl using(option_no)\r\n" + 
-				"left join product using(product_no)\r\n" + 
-				"order by 1 desc) \r\n" + 
-				"n) where rnum between ? and ?";
-		List cancelList = jdbc.query(query, orderCancelRowMapper2, start, end);
+		String query = "select * from (select rownum as rnum, n. * from(select * from order_cancel order by 1 desc)n) where rnum between ? and ?";
+		List cancelList = jdbc.query(query, orderCancelRowMapper, start, end);
 		return cancelList;
 	}
 	//주문취소/교환/반품 전체 수
@@ -254,13 +247,7 @@ public class MyPageDao {
 				"where \r\n" + 
 				"ordered_pno in (select min(ordered_pno) from ordered_products_tbl group by order_no)";
 		*/
-		String query = "select count(*)\r\n" + 
-				"from order_cancel \r\n" + 
-				"left join member_tbl  using(member_no)\r\n" + 
-				"left join order_tbl using(order_no)\r\n" + 
-				"left join option_tbl  using(option_no)\r\n" + 
-				"left join product using(product_no)\r\n" + 
-				"left join ordered_products_tbl using(order_no)";
+		String query = "select count(*) from order_cancel";
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}

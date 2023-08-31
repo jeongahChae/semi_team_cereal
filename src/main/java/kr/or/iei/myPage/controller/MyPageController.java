@@ -105,7 +105,7 @@ public class MyPageController {
 				System.out.println("orderStatus: "+orderStatus); //3: 주문취소, 7: 교환, 8: 반품
 				if(orderStatus.equals("3")) {
 					//주문취소
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getMemberNo(), order.getOptionNo());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOptionName(), order.getCount(), order.getMemberNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);			
 						System.out.println("order.getOrderStatus(): "+order.getOrderStatus());
@@ -122,7 +122,7 @@ public class MyPageController {
 					}					
 				}else if(orderStatus.equals("7")) {
 					//교환
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getMemberNo(), order.getOptionNo());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOptionName(), order.getCount(), order.getMemberNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);	
 						
@@ -138,7 +138,7 @@ public class MyPageController {
 					}	
 				}else if(orderStatus.equals("8")) {
 					//반품
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getMemberNo(), order.getOptionNo());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOptionName(), order.getCount(), order.getMemberNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);		
 						
