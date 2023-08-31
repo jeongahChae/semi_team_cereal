@@ -71,17 +71,17 @@ select.change(function(){
     $(".product-detail-info-optionbox").append(optionCountbox);
     
     $("#plus").on("click",function(){
-	    const currNum = $(".count").text();
-	    $(".count").text(Number(currNum)+1);
+        const currNum = $(".count").text();
+        $(".count").text(Number(currNum)+1);
 	});
 	
 	$("#minus").on("click",function(){
-	    const currNum = $(".count").text();
-	    if(Number(currNum) == 1){
-	        alert("수량은 1개 이상만 가능합니다.");
-	        return;
-	    }
-	    $(".count").text(Number(currNum)-1);
+        const currNum = $(".count").text();
+        if(Number(currNum) == 1){
+            alert("수량은 1개 이상만 가능합니다.");
+            return;
+        }
+        $(".count").text(Number(currNum)-1);
 	});
     let sum = 0;
     $('.count').each(function(){
@@ -113,17 +113,17 @@ select2.change(function(){
     $(".product-detail-info-optionbox2").append(optionCountbox);
     
     $("#plus2").on("click",function(){
-	    const currNum = $(".count2").text();
-	    $(".count2").text(Number(currNum)+1);
+        const currNum = $(".count2").text();
+        $(".count2").text(Number(currNum)+1);
 	});
 	
 	$("#minus2").on("click",function(){
-	    const currNum = $(".count2").text();
-	    if(Number(currNum) == 1){
-	        alert("수량은 1개 이상만 가능합니다.");
-	        return;
-	    }
-	    $(".count2").text(Number(currNum)-1);
+        const currNum = $(".count2").text();
+        if(Number(currNum) == 1){
+            alert("수량은 1개 이상만 가능합니다.");
+            return;
+        }
+        $(".count2").text(Number(currNum)-1);
 	});
 
     let sum = 0;
