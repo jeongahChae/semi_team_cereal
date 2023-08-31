@@ -18,7 +18,7 @@
 				<div class="search-title">
 					<h3>이메일 인증</h3>
 				</div>
-				<form name = "searchIdFrm" action="/member/searchId" method="post">
+				
 					<div class="search-content">
 						<div class="input-box">
 							<label for="memberName">이름</label> <input type="text" name="memberName"
@@ -29,7 +29,7 @@
 	                    </div>
 						<div class="input-box">
 							<label for="memberEmail">이메일</label> <input type="text"
-								name="memberEmail" id="signPw" class="search-input-form"
+								name="memberEmail" id="memberEmail" class="search-input-form"
 								placeholder="이메일을 입력하세요">
 						</div>
 						<div class="comment-wrap">
@@ -37,16 +37,24 @@
 	                    </div>					
 					</div>
 					<div class="search-foot">
-						<button type="submit" class="searchId-btn">확인</button>					
+						<button type="button" class="searchId-btn">확인</button>
 					</div>
-				</form>
-			</div>><!--search-wrap-->
-		</div>><!--search-whole-wrap-->
+				
+			</div><!--search-wrap-->
+		</div><!--search-whole-wrap-->
 	</div><!--wrap-content-->
 	<!--모달-->
-	<div id="NEChkModal" class="modalChk">
+	<div id="NEChkModal1" class="modalChk">
 		<div class="modal-body">				
 				<p class="conditionChk">가입하신 정보가 맞는지 확인해 주세요.</p>								
+				<div class="modalChk-foot">						
+					<button type="button" class="chkBtn">확인</button>						
+				</div>			
+		</div>
+	</div>
+	<div id="NEChkModal2" class="modalChk">
+		<div class="modal-body">				
+				<p class="idChk">회원님의 아이디는 <span id="foundMemberId"></span> 입니다.</p>								
 				<div class="modalChk-foot">						
 					<button type="button" class="chkBtn">확인</button>						
 				</div>			
