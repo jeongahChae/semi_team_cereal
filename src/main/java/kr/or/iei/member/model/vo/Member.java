@@ -21,4 +21,5 @@ public class Member {
 	private int memberLevel;
 	private String memberPwnew;
 	private String detail;
+	private int membershipPoint;
 }

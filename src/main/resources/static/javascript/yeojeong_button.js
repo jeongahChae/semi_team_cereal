@@ -40,15 +40,15 @@ $(document).mouseup(function (e){
     console.log(e);
 	if($("#idChkModal1").has(e.target).length > 0){
         
-		$(".modal").fadeOut(400);
+		$(".modalChk").fadeOut(400);
 	}
     else if($("#idChkModal2").has(e.target).length > 0){
         
-		$(".modal").fadeOut(400);
+		$(".modalChk").fadeOut(400);
 	}
     else if($("#idChkModal3").has(e.target).length > 0){
         
-		$(".modal").fadeOut(400);
+		$(".modalChk").fadeOut(400);
         $("#idChkBtn").css("color","#ccc");
         $("#idChkBtn").attr("disabled",true);
         
@@ -94,15 +94,15 @@ $(document).mouseup(function (e){
     console.log(e);
 	if($("#emailChkModal1").has(e.target).length > 0){
         
-		$(".modal").fadeOut(400);
+		$(".modalChk").fadeOut(400);
 	}
     else if($("#emailChkModal2").has(e.target).length > 0){
         
-		$(".modal").fadeOut(400);
+		$(".modalChk").fadeOut(400);
 	}
     else if($("#emailChkModal3").has(e.target).length > 0){
         
-		$(".modal").fadeOut(400);
+		$(".modalChk").fadeOut(400);
         $("#emailChkBtn").css("color","#ccc");
         $("#emailChkBtn").attr("disabled",true);
         
