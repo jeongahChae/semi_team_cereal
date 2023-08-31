@@ -87,6 +87,7 @@ public class OrderController {
 	public String checkOrderPage(@SessionAttribute(required = false) Member m, String no, Model model) {
 		List list = orderService.selectCartToOrder(no);
 		model.addAttribute("list", list);
+		model.addAttribute("strNo", no);
 		return "order/orderChk";
 	}
 	
@@ -104,13 +105,16 @@ public class OrderController {
 		}
 	}
 	
-	@ResponseBody
-	@PostMapping(value="/createOrder")
-	public void createOrder(@SessionAttribute(required=false) Member m, String cart, int price, int usePoint) {
+
+	@GetMapping(value="/createOrder")
+	public String createOrder(@SessionAttribute(required=false) Member m, String cartStr, int price, int usePoint) {
 		//order_tbl에 데이터 삽입
-		int orderTblResult = orderService.createOrder(m.getMemberNo(),price, cart, usePoint);
-		if(orderTblResult>0) {
-			//옵션에서 상품 재고 수정
+		int result = orderService.createOrder(m.getMemberNo(),price, cartStr, usePoint);
+		System.out.println(result);
+		if(result>0) {
+			return "/";
 		}
+		return "/";
 	}
+	
 }

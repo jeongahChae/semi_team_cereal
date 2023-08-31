@@ -72,35 +72,44 @@ function usePoint(point, memberNo){
 
 }
 
-//결제 버튼 눌렀을 때
-$("#pay-btn").on("click", function(){
+
+function payingCreditCard(m){
 	const currTotalPrice = $("#currTotalPrice").text();
 	let finalPrice = (Number)(currTotalPrice);
-	const usePoint = $(#usePoint).text();
-	let point = (Number)(usePoint);
-	
-	//장바구니 번호 배열
-	let cartNos = $(".cartNo");
-	const cart = new Array();
-	cartNos.each(function(index, item){
-		const cartNo = $(item).text();
-		cart.push(cartNo);
+	const d = new Date();	//주문번호 겹치지 않게 추가하기 위함
+	const date = d.getFullYear()+""+(d.getMonth()+1)+""+d.getDate()+""+d.getHours()+""+d.getMinutes()+""+d.getSeconds();
+	IMP.init("imp02326283");
+	IMP.request_pay({
+		pg : "html5_inicis",			//kg이니시스
+		pay_method : "card",
+		merchant_uid : "상품번호_" +date,	//상점에서 관리하는 주문번호
+		name : "결제테스트",
+		amount : finalPrice,					//금액(콤마도없이 저스트 숫자만 들어가야함)
+		buyer_email : m.memberEmail,
+		buyer_name : m.memberName,
+		buyer_tel : m.memberPhone,
+		buyer_addr : m.memberAddr+","+m.detail
+	}, function(rsp){
+		if(rsp.success)	{
+			alert("결제성공");
+				const usePoint = $("#usePoint").text();
+				let point = (Number)(usePoint);
+				
+				//장바구니 번호 배열
+				let cartNos = $(".cartNo");
+				const cart = new Array();
+				cartNos.each(function(index, item){
+					const cartNo = $(item).text();
+					cart.push(cartNo);
+				});
+				let cartStr = cart.join("/");
+				location.href="/order/createOrder?cartStr="+cartStr+"&price="+finalPrice+"&usePoint="+point;
+		} else {
+			alert("결제 실패");
+		}
 	});
-	let cartStr = cart.join("/");
+};
 
 
-    $.ajax({
-	url: "/order/createOrder",
-	type:"post",
-	data:{cart:cartStr,	//카트번호 들은 스트링배열
-		price:finalPrice,
-		usePoint:point},
-	success:function(data){
-
-	}
-	});
-	
-	
 	
 
-});
