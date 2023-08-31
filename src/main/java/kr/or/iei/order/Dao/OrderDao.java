@@ -77,5 +77,37 @@ public class OrderDao {
 		return orderNo;
 	}
 
+	public int createOrderedProduct(Cart c, int orderNo) {
+		String query = "insert into ORDERED_PRODUCTS_TBL values (ORDERED_PRODUCTS_TBL_SEQ.NEXTVAL,?,?,?,?)";
+		Object[] params = {c.getOptionNo(),orderNo,c.getProductFinalPrice(),c.getCount()};
+		int result = jdbc.update(query, params);
+		return result;
+	}
+
+	public int insertPoint(Cart c) {
+		String query = "insert into point_tbl values(p_seq.nextval, ?,?,0)";
+		int result = jdbc.update(query, c.getMemberNo(), c.getPoint());
+		return result;
+	}
+
+	public int usePoint(int memberNo, int usePoint) {
+		String query = "insert into point_tbl values(p_seq.nextval, ?,0,?)";
+		int result = jdbc.update(query, memberNo, usePoint);
+		return result;
+	}
+
+	public int selectPointNo(int memberNo) {
+		String query = "select max(point_no) from point_tbl where member_no=?";
+		int pointNo = jdbc.queryForObject(query, Integer.class);
+		return pointNo;
+	}
+
+	public int createPointForOrder(int pointNo, int orderNo) {
+		String query = "insert into changep_reason values(chgP_seq.nextval, ?, ?, null)";
+		int result = jdbc.update(query, pointNo,orderNo);
+		return result;
+	}
+
+
 
 }

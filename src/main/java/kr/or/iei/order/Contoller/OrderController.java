@@ -106,9 +106,11 @@ public class OrderController {
 	
 	@ResponseBody
 	@PostMapping(value="/createOrder")
-	public void createOrder(@SessionAttribute(required=false) Member m, String cart, int price) {
+	public void createOrder(@SessionAttribute(required=false) Member m, String cart, int price, int usePoint) {
 		//order_tbl에 데이터 삽입
-		System.out.println(cart);
-		//int orderTblResult = orderService.createOrder(m.getMemberNo(),price, cart);
+		int orderTblResult = orderService.createOrder(m.getMemberNo(),price, cart, usePoint);
+		if(orderTblResult>0) {
+			//옵션에서 상품 재고 수정
+		}
 	}
 }
