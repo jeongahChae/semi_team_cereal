@@ -73,7 +73,7 @@ public class ProductService {
 		return list;
 	}
 
-	public ProductListData selectProductList(int reqPage) {
+	public ProductListData selectProductList(int reqPage, int categoryNo) {
 		// 1. 한 페이지 당 게시물 수 지정 -> 16
 		int numPerPage = 16;
 		// reqPage가 1 -> 1~16
@@ -81,7 +81,7 @@ public class ProductService {
 		// reqPage가 3 -> 33~48
 		int end = reqPage * numPerPage;
 		int start = end - numPerPage + 1;
-		List productList = productDao.selectProductList(start,end);
+		List productList = productDao.selectProductList(start,end, categoryNo);
 		/*
 		List에서 1개꺼내면 Product
 		그 Product에서 productNo
@@ -92,7 +92,7 @@ public class ProductService {
 			p.setFileList(fileList);
 			System.out.println(fileList);
 		}
-		
+
 		// 2. 페이지 네비게이션 제작
 		// 총 게시물 수 조회
 		int totalCount = productDao.selectProductTotalCount();
@@ -167,6 +167,11 @@ public class ProductService {
 		p.setDfileList(dfileList);
 		ProductDetailData pdd = new ProductDetailData(p);
 		return pdd;
+	}
+
+	public String selectCategoryName(int categoryNo) {
+		String cateName= productDao.selectCategoryName(categoryNo);
+		return cateName;
 	}
 
 

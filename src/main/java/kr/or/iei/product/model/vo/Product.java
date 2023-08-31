@@ -26,6 +26,7 @@ public class Product {
 	private String optionName;
 	private int optionAmount;
 	private List optionList;
+	private List categoryName;
 	//private String productOption;
 	//private int productAmount;
 	
