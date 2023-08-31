@@ -19,6 +19,7 @@ public class OrderRowMapper5 implements RowMapper<Order>{
 		o.setCount(rs.getInt("count"));
 		o.setTotalPrice(rs.getInt("total_price"));
 		o.setOrderStatus(rs.getInt("order_status"));
+		o.setMemberNo(rs.getInt("member_no"));
 		return o;
 	}
 

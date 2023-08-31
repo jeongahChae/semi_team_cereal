@@ -141,7 +141,7 @@ public class MyPageDao {
 				"left join product using(product_no)\r\n" + 
 				"where order_no=?";
 		*/
-		String query = "select order_no, product_name, total_price, count, order_status\r\n" + 
+		String query = "select order_no, product_name, total_price, count, order_status, member_no\r\n" + 
 				"from order_tbl\r\n" + 
 				"left join ordered_products_tbl using(order_no)\r\n" + 
 				"left join option_tbl using(option_no)\r\n" + 
@@ -284,7 +284,7 @@ public class MyPageDao {
 
 	//상품 후기 목록
 	public List selectAllreview(int start, int end) {
-		//String query = "select * from (select rownum as rnum, n. * from (select * from product_review order by 1 desc)n) where rnum between ? and ?";
+		String query = "select * from (select rownum as rnum, n. * from (select * from product_review order by 1 desc)n) where rnum between ? and ?";
 		/* where 포함
 		String query = "select \r\n" + 
 				"    order_no,\r\n" + 
@@ -293,12 +293,14 @@ public class MyPageDao {
 				"    (select count(*) from product_review where ordered_pno = (select ordered_pno from ordered_products_tbl op where ordered_pno in (select min(ordered_pno) from ordered_products_tbl where order_no = o.order_no))) as review_check\r\n" + 
 				"from order_tbl o where member_no = ?";
 		*/
+		/*
 		String query = "select * from (select \r\n" + 
 				"    order_no,\r\n" + 
 				"    (select count from ordered_products_tbl op where ordered_pno in (select min(ordered_pno) from ordered_products_tbl where order_no = o.order_no)) as count,\r\n" + 
 				"    (select product_name from product where product_no=(select product_no from option_tbl where option_no = (select option_no from ordered_products_tbl op where ordered_pno in (select min(ordered_pno) from ordered_products_tbl where order_no = o.order_no)))) as product_name,\r\n" + 
 				"    (select count(*) from product_review where ordered_pno = (select ordered_pno from ordered_products_tbl op where ordered_pno in (select min(ordered_pno) from ordered_products_tbl where order_no = o.order_no))) as review_check\r\n" + 
 				"from order_tbl o order by 1 desc)n) where rnum between ? and ?";
+		*/
 		List reviewList = jdbc.query(query, productReviewRowMapper, start, end); 
 		return reviewList;
 	}
