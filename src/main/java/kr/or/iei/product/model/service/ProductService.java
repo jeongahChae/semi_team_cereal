@@ -174,5 +174,10 @@ public class ProductService {
 		return cateName;
 	}
 
+	public int getProductNo() {
+		int productNo = productDao.getProductNo();
+		return productNo;
+	}
+
 
 }

@@ -102,6 +102,7 @@ public class MyPageController {
 			for(int j=0;j<list.size();j++){
 				Order order = (Order)list.get(j); //형변환 필요
 				
+				System.out.println("order.getMemberNo(): "+order.getMemberNo());
 				System.out.println("orderStatus: "+orderStatus); //3: 주문취소, 7: 교환, 8: 반품
 				if(orderStatus.equals("3")) {
 					//주문취소

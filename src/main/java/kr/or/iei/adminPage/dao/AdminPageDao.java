@@ -61,7 +61,7 @@ public class AdminPageDao {
 
 	//전체 등록 상품
 	public List selectAllProduct(int start, int end) {
-		String query = "select * from (select rownum as rnum, n. * from (select product_no, product_name, option_name, option_amount from product join option_tbl using(product_no))n) where rnum between ? and ?";
+		String query = "select * from (select rownum as rnum, n. * from (select product_no, product_name, option_name, option_amount from product join option_tbl using(product_no) order by 1 desc)n) where rnum between ? and ?";
 		List productList = jdbc.query(query, productRowMapper2, start, end);
 		return productList;
 	}
