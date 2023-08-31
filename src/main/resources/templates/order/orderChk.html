@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="/css/cart.css">
 <link rel="stylesheet" href="/css/event.css">
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
 </head>
 <body>
 	<th:block th:include="common/header"></th:block>
@@ -38,36 +39,42 @@
 			<tr>
 				<th><span>배송지</span></th>
 				<td><span th:text="${session.m.memberAddr}" id="memberAddr"></span><span> </span>
-				<input type="text" th:val="${session.m.detail}" id="detail" placeholder="상세 주소를 입력하세요."></td>
+				<input type="text" th:val="${session.m.detail}" id="detail" class="detail" placeholder="상세 주소를 입력하세요."></td>
 				<td class="addr-td"><button type="button" class="addr-btn" onclick="searchAddress();">배송지 변경</button></td>
 			</tr>
 		</table>
-		<!-- db에 포인트가 없어서 일단 보류
 		<table class="order-tbl">
 			<tr colspan="2">
 				<th>적립금</th>
 			</tr>
 			<tr>
 				<th><span>적립금 사용 </span></th>
-				<td><input type="text" th:placeholder="${session.m.point}"></td>
+				<td><input type="text" class="detail" th:placeholder="${session.m.membershipPoint}" id="currPoint" ></td>
+				<td class="addr-td"><button type="button" class="addr-btn point-btn" th:onclick="usePoint([[${session.m.membershipPoint}]], [[${session.m.memberNo}]]);">적립금 사용</button></td>
+			</tr>
+			<tr>
+				<th></th>
+				<td><span class="guide-ment">적립금은 5000P 이상부터 사용이 가능합니다.</span><br>
+				<span class="guide-ment" th:text = "${'적립금은 ' + session.m.membershipPoint + 'P 이내에서 사용이 가능합니다.'}"></span>
+				</td>
 			</tr>
 		</table>		
-		 -->
 	</div>
 
 	<div class="full-cart">
 		<table class="tbl notice-tbl">
 			<tbody>
 			<tr>
-				<th style="width: 10%;"><input type="checkbox" id="cartAll"></th>
+				<th style="width: 10%;">번호</th>
 				<th style="width: 40%;">상품정보</th>
 				<th style="width: 20%;">수량</th>
 				<th style="width: 15%;">적립금</th>
 				<th style="width: 15%;">가격</th>
 			</tr>
-			<tr th:each = "cart : ${list}">
+			<tr th:each = "cart, i : ${list}">
 				<td>
-					<input type="checkbox" class="cartChk" name="cartNo" value="${cart.cartNo}">
+					<span th:text = "${i.count}"></span>
+					<span th:text="${cart.cartNo}" style="display:none;" class="cartNo"></span>
 				</td>
 				<td style="text-align:left; padding-left:20px;">
 					<a th:href="@{/product/productDetail(productNo=${cart.productNo})}" class="cart-detail">
@@ -92,6 +99,7 @@
 				</td>
 				<td colspan="2" class="cart-total" style="text-align:right; padding-right:25px; font-weight:bold; color:#A52502;">
 					총 가격 <span th:text="${#numbers.formatInteger(#aggregates.sum(list.![productFinalPrice*count]), 3, 'COMMA') + '원'}" style="color:#A52502;"></span>
+					<span style="display:none;" id="currTotalPrice" th:text = "${#aggregates.sum(list.![productFinalPrice*count])}"></span>
 				</td>
 			</tr>
 				</tbody>
@@ -111,14 +119,18 @@
 				<th><span>상품 할인</span></th>
 				<td colspan="2"><span th:text="${#numbers.formatInteger(#aggregates.sum(list.![(productFinalPrice-productPrice)*count]), 3, 'COMMA') + '원'}" style="color:#1C8394;"></span></td>
 			</tr>
-			<!-- <tr>
-				<th><span>적립금 사용</span></th>적립금 있으면 최종 금액 추가해야 함
-				<td colspan="2"><span th:text="${session.m.memberEmail}"></span></td>
+			<tr>
+				<th><span>적립금 사용</span></th>
+				<td colspan="2"><span id="usePoint"></span></td>
+				<td></td>
 			</tr>
-			 -->
 			<tr>
 				<th><span>배송비</span></th>
 				<td><span style="color:#1C8394;">무료 배송</span></td>
+			</tr>
+			<tr>
+				<th><span style="color:#A52502;">최종 결제 금액</span></th>
+				<td><span style="color:#A52502;" id="final-price" th:text="${#numbers.formatInteger(#aggregates.sum(list.![productFinalPrice*count]), 3, 'COMMA')}"></span><span style="color:#A52502;">원</span></td>
 			</tr>
 		</table>
 	</div>
@@ -128,16 +140,27 @@
 				<th>결제 정보</th>
 			</tr>
 			<tr>
-				<th><span>결제 안내 </span></th>
-				<td colspan="2"><span th:text="${#numbers.formatInteger(#aggregates.sum(list.![productFinalPrice*count]), 3, 'COMMA') + '원'}"></span></td>
+				<th rowspan="2"><span>결제 안내 </span></th>
+			</tr>
+			<tr>
+				<td>
+					<p>안전 결제</p>
+					<span class="guide-ment">온라인 쇼핑시 주민등록번호, 비밀번호 등의 주요 개인정보를 입력하지 않고 고객님이 미리 설정한 안전결제 비밀번호만 입력, 결제하도록 하여 개인정보 유출 및 카드 도용을 방지하는 서비스입니다.</span>
+				</td>
 			</tr>
 			<tr>
 				<th><span>품절 시 환불 안내</span></th>
-				<td colspan="2">
-					<p>결제하신 수단으로 취소됩니다.</p>
+				<td>
+					<p class="guide-ment">결제하신 수단으로 취소됩니다.</p>
+					<p class="guide-ment">환불 받으신 날짜 기준으로 3~5일(주말 제외) 후 결제 대행사에서 직접 고객님의 계좌로 환불처리됩니다.</p>
+					<p class="guide-ment">품절시 빠르게 환불 처리해드립니다.</p>
 				</td>
 			</tr>
+			<tr>
+				<td colspan="3" style="text-align:center;"><button type="submit" id="pay-btn"><span id="price" th:text="${#numbers.formatInteger(#aggregates.sum(list.![productFinalPrice*count]), 3, 'COMMA')}"></span><span>원 카드 결제</span></button></td>
+			</tr>
 		</table>
+		
 	</div>
 	</th:block>
 </div>

@@ -72,4 +72,20 @@ public class OrderService {
 		}
 		return list;
 	}
+
+	@Transactional
+	public int createOrder(int memberNo, int price, String cart) {
+		int result = 0;
+		result += orderDao.createOrder(memberNo, price);
+		if(result>0) {
+			StringTokenizer sT1 = new StringTokenizer(cart, "/");
+			while(sT1.hasMoreTokens()) {
+				int cartNo = Integer.parseInt(sT1.nextToken());
+				Cart c = orderDao.selectCartInfo(cartNo);
+				if(c != null) {
+					
+				}
+		}
+		return result;
+	}
 }
