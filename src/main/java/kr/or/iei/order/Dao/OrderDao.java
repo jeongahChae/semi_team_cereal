@@ -71,13 +71,4 @@ public class OrderDao {
 		return (Cart)cartInfoList.get(0);
 	}
 
-	public int createOrderedProduct(Cart c) {
-		String query = 
-		return 0;
-	}
-
-	public int selectOrderNo() {
-		String query = 
-		return 0;
-	}
 }

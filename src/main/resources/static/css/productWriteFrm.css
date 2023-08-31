@@ -58,7 +58,7 @@
     float: left;
 }
 
-.input-form:not([name="optionName"]):not([name="optionAmount"]){
+.input-form:not([name="optionNameList[]"]):not([name="optionAmountList[]"]){
     width: 90%;
 }
 
