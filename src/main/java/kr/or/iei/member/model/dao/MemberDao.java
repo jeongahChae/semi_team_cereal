@@ -82,7 +82,7 @@ public class MemberDao {
 	}
 
 	public Member searchId(String checkName, String checkEmail) {
-		String query ="select member_id from member_tbl where member_name=? and member_email=?";
+		String query ="select * from member_tbl where member_name=? and member_email=?";
 		List list = jdbc.query(query, memberRowMapper,checkName, checkEmail);
 		System.out.println(list.isEmpty());
 		if(list.isEmpty()) {

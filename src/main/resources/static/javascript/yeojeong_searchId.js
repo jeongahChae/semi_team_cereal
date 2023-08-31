@@ -3,7 +3,7 @@ $("#memberName").on("keyup",function(){
     const nameComment = $("#name_comment");    
     const nameValue = $("#memberName").val();
    
-    console.log(nameValue);
+    
     
 
 
@@ -15,7 +15,7 @@ $("#memberName").on("keyup",function(){
         console.log(nameComment);    
        
     }else{
-        //idCommnet.css("display","inline");
+        
         nameComment.hide();
     }
    
@@ -28,7 +28,7 @@ $("#memberEmail").on("keyup",function(){
     const emailValue = $("#memberEmail").val();
     const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const check = emailReg.test(emailValue);
-    console.log(emailValue);
+    
     
 
 
@@ -37,16 +37,17 @@ $("#memberEmail").on("keyup",function(){
         emailComment.css("display","inline");
         emailComment.html("올바른 이메일 형식으로 입력해주세요");
         emailComment.css("color"," #A52502");
-        console.log(emailComment);    
+          
        
     }else{
-        //idCommnet.css("display","inline");
+        
         emailComment.hide();
     }
    
 });
 //확인 버튼을 눌렀을 때 이름과 이메일 조회
-$("#searchId-btn").on("click",function(){
+$(".searchId-btn").on("click",function(){
+  
     const emailValue = $("#memberEmail").val(); 
     const nameValue= $("#memberName").val();
      
@@ -56,18 +57,14 @@ $("#searchId-btn").on("click",function(){
         data:{checkEmail:emailValue, checkName:nameValue},
        
         success:function(result){
-            if(result == "null"){
-                $("#NEChkModal").fadeIn(500);
+            console.log(result);
+            if(result == "not found"){
+               
+                $("#NEChkModal1").fadeIn(500);
             }else{
-                
-                //console.log(result);
+                $("#NEChkModal2").fadeIn(500);
+                $("#foundMemberId").text(result);
             }
-            
-            
         },
-        
-         
-    }); 
-   
-	
+    });
 });
