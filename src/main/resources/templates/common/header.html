@@ -33,7 +33,8 @@
 			  <th:block th:if="${session.m != null}">			
 					<a href="/order/cart"><img src="/img/cart.png"></a>
 					<a href="/member/logout"><img src="/img/logout1.png"></a>
-					<a href="/myPage/updateMemberInfo?btn=0"><img src="/img/enroll.png"></a>
+					<a th:if="${session.m.memberLevel == 2}" href="/myPage/updateMemberInfo?btn=0"><img src="/img/enroll.png"></a>
+					<a th:if="${session.m.memberLevel == 1}" href="/adminPage/allMemberList?btn=0&reqPage=1"><img src="/img/enroll.png"></a>
 			</th:block>
 				             
             </div> 
