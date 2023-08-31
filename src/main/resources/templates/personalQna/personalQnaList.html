@@ -24,6 +24,7 @@
                         <td th:text="${personalQna.qnaTitle}"></td>
                         <td th:text="${personalQna.regDate}" style="text-align: center;"></td>
                         <td th:text="${personalQna.qnaStatus}" style="text-align: center;"></td>
+                        <input type="hidden" th:value="${personalQna.qnaNo}" class="qna-no">
                     </tr>
                     <tr>
                         <td class="qnaContent" colspan="3" style="display: none; text-align: left">
@@ -35,9 +36,30 @@
                                 <a class="basic-btn" th:if="${session.m != null && session.m.memberLevel == 2}" th:href="@{/personalQna/updateFrm(qnaNo=${personalQna.qnaNo})}">수정</a>
                                 <button class="cancel-btn" th:if="${session.m != null && session.m.memberLevel == 2}" th:onclick="personalQnaDelete([[${personalQna.qnaNo}]])">삭제</button>
                             </div>
-                            <span class="material-icons-outlined" style="float: left; color: #1C8394; transform: scaleX(-1);">feedback</span>
+
+                            <!-- 작성한 댓글 -->
                             
-                            <!-- comment -->
+                            <span class="material-icons-outlined feedback-icon" style="float: left; color: #1C8394; transform: scaleX(-1);">feedback</span>
+                            <div class="comment-box" style="padding-left: 30px;"></div>
+
+                            <!-- 댓글 작성 -->
+                            <div class="inputCommentBox" th:if="${session.m != null && session.m.memberLevel == 1}">
+                                <form action="/personalQna/insertComment" method="post">
+                                    <ul>
+                                        <li>
+                                            <input type="hidden" name="personalCommentWriter" th:value="${session.m.memberId}">
+                                            <input type="hidden" name="personalQnaRef" th:value="${personalQna.qnaNo}">
+                                            <textarea name="personalCommentContent" class="input-form" style="width: 900px; margin: 0 0 20px 40px;"></textarea>
+                                        </li>
+                                        <li>
+                                            <div class="btn-line2">
+                                                <button type="submit" class="basic-btn" id="delete-inputFrm">등록</button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </form>
+                            </div>
+
                         </td>
                     </tr>
                 </th:block>

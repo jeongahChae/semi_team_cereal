@@ -8,10 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -19,6 +19,7 @@ import kr.or.iei.FileUtil;
 import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.personalQna.model.service.PersonalQnaService;
 import kr.or.iei.personalQna.model.vo.PersonalQna;
+import kr.or.iei.personalQna.model.vo.PersonalQnaComment;
 import kr.or.iei.personalQna.model.vo.PersonalQnaFile;
 import kr.or.iei.personalQna.model.vo.PersonalQnaListData;
 
@@ -37,6 +38,7 @@ public class PersonalQnaController {
 	public String personalQnaList(Model model, int reqPage, @SessionAttribute Member m) {
 		PersonalQnaListData pld = personalQnaService.selectPersonalQnaList(reqPage,m);
 		model.addAttribute("personalQnaList", pld.getPersonalQnaList());
+		
 		model.addAttribute("pageNavi", pld.getPageNavi());
 		model.addAttribute("btn", 2);
 		return "personalQna/personalQnaList";
@@ -93,6 +95,22 @@ public class PersonalQnaController {
 		int result= personalQnaService.deletePersonalQna(qnaNo);
 		model.addAttribute("btn", 2);
 		return "redirect:/personalQna/list?reqPage=1";
+	}
+	
+	@PostMapping(value = "/insertComment")
+	public String insertComment(PersonalQnaComment pc,Model model) {
+		//매개변수로 받은 nc에는 댓글작성자, 댓글내용, 공지사항번호, 대댓글인 경우 댓글번호(댓글이면 0)
+		int result = personalQnaService.insertComment(pc);
+		model.addAttribute("btn", 2);
+		return "redirect:/personalQna/list?reqPage=1";
+	}
+	
+	@ResponseBody
+	@GetMapping(value="/selectQnaNo")
+	public PersonalQnaComment selectQnaNo(int qnaNo,Model model) {
+		PersonalQnaComment comment = personalQnaService.selectOneComment(qnaNo);
+		model.addAttribute("btn", 2);
+		return comment;
 	}
 }
 

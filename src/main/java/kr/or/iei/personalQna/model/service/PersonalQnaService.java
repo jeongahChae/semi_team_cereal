@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.personalQna.model.dao.PersonalQnaDao;
 import kr.or.iei.personalQna.model.vo.PersonalQna;
+import kr.or.iei.personalQna.model.vo.PersonalQnaComment;
 import kr.or.iei.personalQna.model.vo.PersonalQnaFile;
 import kr.or.iei.personalQna.model.vo.PersonalQnaListData;
 
@@ -115,8 +116,20 @@ public class PersonalQnaService {
 		return result;
 	}
 
+	@Transactional
 	public int deletePersonalQna(int qnaNo) {
 		int result = personalQnaDao.deletePersonalQna(qnaNo);
 		return result;
+	}
+
+	@Transactional
+	public int insertComment(PersonalQnaComment pc) {
+		int result = personalQnaDao.insertComment(pc);
+		return result;
+	}
+
+	public PersonalQnaComment selectOneComment(int qnaNo) {
+		PersonalQnaComment comment = personalQnaDao.selectOneComment(qnaNo);
+		return comment;
 	}
 }
