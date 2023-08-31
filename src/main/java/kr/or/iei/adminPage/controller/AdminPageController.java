@@ -83,7 +83,8 @@ public class AdminPageController {
     			
 				//int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOrderDate(), orderList.getOrderAmount(), orderList.getMemberName(), orderList.getMemberAddr());
     			System.out.println("orderList.getMemberNo(): "+orderList.getMemberNo());
-    			int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOptionName(), orderList.getCount(), orderList.getMemberNo());
+    			System.out.println("orderList.getProductNo(): "+orderList.getProductNo());
+    			int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getOptionName(), orderList.getCount(), orderList.getMemberNo(), orderList.getProductNo());
     			if(result>0) {
 					System.out.println("insert 성공: "+result);			
 					
