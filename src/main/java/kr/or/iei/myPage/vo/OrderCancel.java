@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 public class OrderCancel {
 	private int cancelNo;
-	private int orderNo;
+	private Long orderNo;
 	private String orderDate;
 	private int orderStatus;
 	private String reason;

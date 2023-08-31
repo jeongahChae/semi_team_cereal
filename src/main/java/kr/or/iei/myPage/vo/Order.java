@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class Order {
-	private int orderNo;
+	private long orderNo;
 	private String orderDate;
 	private int totalPrice;
 	private int totalPoint;

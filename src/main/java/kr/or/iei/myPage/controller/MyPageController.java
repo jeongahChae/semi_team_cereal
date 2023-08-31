@@ -59,7 +59,7 @@ public class MyPageController {
 	}//orderHistoryDeliveryStatus(int btn, Model model)
 	//주문내역 / 배송현황 2
 	@GetMapping(value="orderHistory-deliveryStatus_2")
-	public String orderHistoryDeliveryStatus2(int btn, int orderNo, Model model) {
+	public String orderHistoryDeliveryStatus2(int btn, Long orderNo, Model model) {
 		System.out.println(orderNo);
 		List orderDetail = myPageService.selectOrderHistory(orderNo);
 		model.addAttribute("orderNo", orderNo);
@@ -91,7 +91,7 @@ public class MyPageController {
 	}//registerOrderCancelChangeReturn(int btn, Model model)
 	//주문취소/교환/반품 - 접수 양식
 	@GetMapping(value="insertCancel")
-	public String insertCancel(int btn, int reqPage, Model model, String orderStatus, String reasonDetail, int[] orderNo) {
+	public String insertCancel(int btn, int reqPage, Model model, String orderStatus, String reasonDetail, Long[] orderNo) {
 		
 		for(int i=0;i<orderNo.length;i++) {
 			

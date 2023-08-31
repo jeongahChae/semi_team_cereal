@@ -15,7 +15,7 @@ public class OrderCancelRowMapper implements RowMapper<OrderCancel>{
 	public OrderCancel mapRow(ResultSet rs, int rowNum) throws SQLException {
 		OrderCancel oc = new OrderCancel();
 		oc.setCancelNo(rs.getInt("cancel_no"));
-		oc.setOrderNo(rs.getInt("order_no"));
+		oc.setOrderNo(rs.getLong("order_no"));
 		oc.setOrderDate(rs.getString("order_date"));
 		oc.setOrderStatus(rs.getInt("order_status_c"));
 		oc.setReason(rs.getString("reason"));

@@ -8,16 +8,15 @@ import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Component;
 
 @Component
-public class OrderRowMapper4 implements RowMapper<Order>{
+public class OrderRowMapper5 implements RowMapper<Order>{
 
 	@Override
 	@Nullable
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Order o = new Order();
-		//order_no, product_name, count
 		o.setOrderNo(rs.getLong("order_no"));
-		o.setProductName(rs.getString("product_name"));
-		o.setCount(rs.getInt("count"));
+		o.setMemberNo(rs.getInt("member_no"));
+		o.setOptionNo(rs.getInt("option_no"));
 		return o;
 	}
 

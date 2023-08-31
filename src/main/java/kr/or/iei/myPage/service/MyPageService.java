@@ -157,7 +157,7 @@ public class MyPageService {
 	
 	
 	//주문 내역 상세
-	public List selectOrderHistory(int orderNo) {
+	public List selectOrderHistory(Long orderNo) {
 		List orderDetail = myPageDao.selectOrderHistory(orderNo);
 		return orderDetail;
 	}//selectOrderHistory(int orderNo)
@@ -402,7 +402,7 @@ public class MyPageService {
 
 	//주문취소/교환/반품 등록
 	@Transactional
-	public int insertOrderCancelList(int orderStatus, String reasonDetail, int orderNo, int memberNo, int optionNo) {
+	public int insertOrderCancelList(int orderStatus, String reasonDetail, Long orderNo, int memberNo, int optionNo) {
 		System.out.println("orderNo : "+orderNo);
 		int result = myPageDao.insertOrderCancelList(orderStatus, reasonDetail, orderNo, memberNo, optionNo);
 		System.out.println("result: "+result);
@@ -476,7 +476,7 @@ public class MyPageService {
 	}
 
 	//주문내역에서 삭제
-	public int deleteOrderHistory(int orderNo) {
+	public int deleteOrderHistory(Long orderNo) {
 		int result = myPageDao.deleteOrderHistory(orderNo);
 		return result;
 	}
