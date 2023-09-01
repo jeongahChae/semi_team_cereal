@@ -148,7 +148,10 @@ select2.change(function(){
     let totalPrice = sum * finalPrice;
     console.log(totalPrice.toLocaleString());
     $(".info-totalPrice2").text(totalPrice.toLocaleString()+"원");
+    
+ 
 });
+
 
 
 
