@@ -6,8 +6,7 @@ $("#memberPw").on("keyup",function(){
     const mypwValue = $("#memberPwValue").val();
     
    
-    console.log(pwValue);
-    console.log(mypwValue);
+   
 
 
     if(pwValue != mypwValue){
@@ -29,8 +28,7 @@ $("#memberPwnew").on("keyup",function(){
     const pwReg = /^(?=.*[A-Za-z0-9])(?=.*[a-zA-Z!@#$%^&*()+=-])(?=.*[0-9!@#$%^&*()+=-]).{10,}$/;
     const pwValue = $("#memberPwnew").val();
     const check = pwReg.test(pwValue);
-    console.log(check);
-    console.log(pwValue);
+    
     
 
 
@@ -52,8 +50,7 @@ $("#memberPwnew").on("keyup",function(){
     const pwreComment = $("#pwnewre_comment");    
     const pwValue = $("#memberPwnew").val();
     const pwreValue = $("#memberPwNewre").val();
-    console.log(pwValue);
-    
+   
 
 
     if(pwValue != pwreValue){

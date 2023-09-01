@@ -103,13 +103,14 @@ public class MyPageController {
 				Order order = (Order)list.get(j); //형변환 필요
 				
 				System.out.println("order.getMemberNo(): "+order.getMemberNo());
+				System.out.println("order.getProductNo(): "+order.getProductNo());
 				System.out.println("orderStatus: "+orderStatus); //3: 주문취소, 7: 교환, 8: 반품
 				if(orderStatus.equals("3")) {
 					//주문취소
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOptionName(), order.getCount(), order.getMemberNo());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getCount(), order.getMemberNo(), order.getProductNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);			
-						System.out.println("order.getOrderStatus(): "+order.getOrderStatus());
+						System.out.println("order.getOrderNo(): "+order.getOrderNo());
 						//주문내역에서 삭제
 						int resultDelete = myPageService.deleteOrderHistory(order.getOrderNo());
 						if(result > 0) {
@@ -123,10 +124,10 @@ public class MyPageController {
 					}					
 				}else if(orderStatus.equals("7")) {
 					//교환
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOptionName(), order.getCount(), order.getMemberNo());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getCount(), order.getMemberNo(), order.getProductNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);	
-						
+						System.out.println("order.getOrderNo(): "+order.getOrderNo());
 						//주문내역에서 삭제
 						int resultDelete = myPageService.deleteOrderHistory(order.getOrderNo());
 						if(result > 0) {
@@ -139,10 +140,10 @@ public class MyPageController {
 					}	
 				}else if(orderStatus.equals("8")) {
 					//반품
-					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(), order.getOptionName(), order.getCount(), order.getMemberNo());
+					int result = myPageService.insertOrderCancelList(Integer.parseInt(orderStatus), reasonDetail, order.getOrderNo(), order.getProductName(),  order.getCount(), order.getMemberNo(), order.getProductNo());
 					if(result>0) {
 						System.out.println("insert 성공: "+result);		
-						
+						System.out.println("order.getOrderNo(): "+order.getOrderNo());
 						//주문내역에서 삭제
 						int resultDelete = myPageService.deleteOrderHistory(order.getOrderNo());
 						if(result > 0) {

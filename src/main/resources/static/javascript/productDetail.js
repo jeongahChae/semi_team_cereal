@@ -1,6 +1,6 @@
 $(window).scroll(function () { 
     var scrollValue = $(document).scrollTop(); 
-    console.log(scrollValue); 
+    // console.log(scrollValue); 
     if($(this).scrollTop() > 500) {
 		$(".product-detail-content3").css('position','fixed');
         $(".product-detail-content3").css('bottom','350px');
@@ -74,8 +74,9 @@ select.change(function(){
 
     plusButton.on("click",function(){
         const currNum = $(this).next().text();
-        console.log("az",currNum);
+        // console.log("az",currNum);
         $(this).next().text(Number(currNum)+1);
+        sum();
     });
     /*
     $(".plus").each(function(i, item){
@@ -93,7 +94,10 @@ select.change(function(){
             return;
         }
         $(this).prev().text(Number(currNum)-1);
+        sum();
 	});
+	sum();
+	/*
     let sum = 0;
     $('.count').each(function(){
         var text = $(this).text();
@@ -103,9 +107,42 @@ select.change(function(){
     });
     let finalPrice = $(".product-detail-info-final-price2").val();
     let totalPrice = sum * finalPrice;
+    // console.log(totalPrice.toLocaleString());
+    $(".info-totalPrice").text(totalPrice.toLocaleString()+"원");
+    */
+});
+
+function sum(){
+	    let sum = 0;
+    	$('.count').each(function(){
+        var text = $(this).text();
+        let text2 = (Number)(text);
+        sum += text2;
+        
+    });
+    let finalPrice = $(".product-detail-info-final-price2").val();
+    let totalPrice = sum * finalPrice;
     console.log(totalPrice.toLocaleString());
     $(".info-totalPrice").text(totalPrice.toLocaleString()+"원");
-});
+}
+
+function sum(){
+	    let sum = 0;
+    	$('.count').each(function(){
+        var text = $(this).text();
+        let text2 = (Number)(text);
+        sum += text2;
+        
+    });
+    let finalPrice = $(".product-detail-info-final-price2").val();
+    let totalPrice = sum * finalPrice;
+    console.log(totalPrice.toLocaleString());
+    $(".info-totalPrice").text(totalPrice.toLocaleString()+"원");
+}
+
+
+
+
 
 const select2 = $(".product-option2")
 select2.change(function(){
@@ -146,16 +183,38 @@ select2.change(function(){
     });
     let finalPrice = $(".product-detail-info-final-price2").val();
     let totalPrice = sum * finalPrice;
-    console.log(totalPrice.toLocaleString());
+    // console.log(totalPrice.toLocaleString());
     $(".info-totalPrice2").text(totalPrice.toLocaleString()+"원");
     
- 
 });
 
 
 
-
-
-function addToCart(optionNo){
-    location.href="/order/cart";
+//cart..(optionName을 가져오는 방법을 모르겠음 ㅠㅠ)
+function addToCart(productNo){
+    
+    // const optionName = $("").parent().prev().prev().children().eq(0).text();
+    // console.log(optionName);
+    // $.ajax({
+    //     url : "/order/cart",
+    //     type : "get",
+    //     data : {productNo : productNo, optionName:optionName},
+    //     success : function(data){
+            
+    //     }
+    // });
 }
+
+
+// $("#cart-btn").click(function(){
+//     console.log( $(this).parent().prev().prev().children().eq(0).text());
+//     const optionName = $(this).parent().prev().prev().children().eq(0).text();
+//     $.ajax({
+//         url : "/order/cart",
+//         type : "get",
+//         data : {productNo : productNo, optionName : optionName},
+//         success : function(data){
+//             console.log(data);
+//         }
+//     });
+// });

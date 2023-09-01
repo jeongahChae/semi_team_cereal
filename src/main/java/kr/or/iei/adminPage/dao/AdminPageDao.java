@@ -81,24 +81,22 @@ public class AdminPageDao {
 				"select order_no, product_name, member_name, member_addr, order_status\r\n" + 
 				"from order_tbl\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
-				"left join ordered_products_tbl using(order_no)\r\n" + 
-				"left join product using(product_final_price)\r\n" + 
+				"left join product using(product_no)\r\n" + 
 				"union\r\n" + 
 				"select order_no, product_name, member_name, member_addr, order_status \r\n" + 
 				"from order_cancel\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
+				"left join product using(product_no)\r\n" + 
 				"order by 1 desc)n) where rnum between ? and ?";
 		List orderList = jdbc.query(query, orderRowMapper6, start, end);
 		return orderList;
 	}
 	//주문 현황 관리 - 단일 조회
-	public List selectOrderAdmin(int orderNO) {
+	public List selectOrderAdmin(long orderNO) {
 		//String query = "select * from order_tbl where order_no=?";
-		String query = "select order_no, product_name, member_name, member_addr, order_status, member_no\r\n" + 
+		String query = "select order_no, member_name, member_addr, order_status, member_no, product_no\r\n" + 
 				"from order_tbl\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
-				"left join ordered_products_tbl using(order_no)\r\n" + 
-				"left join product using(product_final_price)\r\n" + 
 				"where order_no=?";
 		List order = jdbc.query(query, orderRowMapper8, orderNO);
 		
@@ -121,16 +119,16 @@ public class AdminPageDao {
 	public int selectOrderTotalCount() {
 		//String query = "select count(*) from (select order_no, product_name2, member_name, member_addr, order_status from order_tbl union select order_no, product_name2, member_name, member_addr, order_status from ORDER_CANCEL)";
 		String query = "select count(*)\r\n" + 
-				"from \r\n" + 
+				"from\r\n" + 
 				"(select order_no, product_name, member_name, member_addr, order_status\r\n" + 
 				"from order_tbl\r\n" + 
 				"left join member_tbl using(member_no)\r\n" + 
-				"left join ordered_products_tbl using(order_no)\r\n" + 
-				"left join product using(product_final_price)\r\n" + 
+				"left join product using(product_no)\r\n" + 
 				"union\r\n" + 
 				"select order_no, product_name, member_name, member_addr, order_status \r\n" + 
 				"from order_cancel\r\n" + 
-				"left join member_tbl using(member_no))";
+				"left join member_tbl using(member_no)\r\n" + 
+				"left join product using(product_no))";
 		int totalCount = jdbc.queryForObject(query, Integer.class);
 		return totalCount;
 	}

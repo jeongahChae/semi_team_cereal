@@ -61,7 +61,7 @@ public class AdminPageController {
     //주문 현황 관리 - 업데이트
     @GetMapping(value="orderUpdate")
     public String orderUpdate(int btn, int reqPage, Model model, String selectOrderStatus, String orderNo) {
-    	int orderNO = Integer.parseInt(orderNo);
+    	long orderNO = Long.parseLong(orderNo);
     	int orderStatus = Integer.parseInt(selectOrderStatus);
     	//조회 후 업데이트
     	List order = adminPageService.selectOrderAdmin(orderNO);
@@ -83,7 +83,8 @@ public class AdminPageController {
     			
 				//int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOrderDate(), orderList.getOrderAmount(), orderList.getMemberName(), orderList.getMemberAddr());
     			System.out.println("orderList.getMemberNo(): "+orderList.getMemberNo());
-    			int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getProductName(), orderList.getOptionName(), orderList.getCount(), orderList.getMemberNo());
+    			System.out.println("orderList.getProductNo(): "+orderList.getProductNo());
+    			int result2 = myPageService.insertOrderCancelList(orderStatus, reasonDetail, orderList.getOrderNo(), orderList.getOptionName(), orderList.getCount(), orderList.getMemberNo(), orderList.getProductNo());
     			if(result>0) {
 					System.out.println("insert 성공: "+result);			
 					

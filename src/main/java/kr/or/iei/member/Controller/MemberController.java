@@ -34,7 +34,7 @@ public class MemberController {
 		Member m = memberService.selectOneMember(signId, signPw);
 		if (m != null) {
 			session.setAttribute("m", m);
-			System.out.println(m.getMemberId());
+			
 			model.addAttribute("title", "로그인 성공");
 			model.addAttribute("msg", "로그인에 성공하셨습니다.");
 			model.addAttribute("icon", "success");
@@ -89,7 +89,7 @@ public class MemberController {
 	@PostMapping(value = "/checkId")
 	@ResponseBody
 	public int checkId(String checkId) {
-		System.out.println("checkId : " + checkId);
+		
 		Member member = memberService.selectOneMember(checkId);
 		int result = 0;
 		if(member == null) {
@@ -105,7 +105,7 @@ public class MemberController {
 	@PostMapping(value = "/checkEmail")
 	@ResponseBody
 	public int checkEmail(String checkEmail) {
-		System.out.println("checkEmail : " + checkEmail);
+		
 		Member member = memberService.selectOneMemberEmail(checkEmail);
 		int result = 0;
 		if(member == null) {
@@ -162,7 +162,7 @@ public class MemberController {
 		int result = memberService.deleteMember(m.getMemberId());
 		
 		if (result > 0) {
-			//session.invalidate(); -> 이거 쓰면 매개변수에 HttpSession session 추가
+			
 			return "redirect:/member/logout";
 
 
@@ -184,7 +184,7 @@ public class MemberController {
 	@PostMapping(value = "/checkPw")
 	@ResponseBody
 	public int checkPw(String checkPw) {
-		System.out.println("checkPw : " + checkPw);
+		
 		int result = memberService.selectOneMemberPw(checkPw);
 		
 		if(result == 0) {
@@ -206,13 +206,31 @@ public class MemberController {
 	@PostMapping(value = "/searchId")
 	@ResponseBody
 	public String searchId(String checkName, String checkEmail) {
-		System.out.println("searchName : " + checkName);
-		System.out.println("searchEmail : " + checkEmail);
+		
 		Member member = memberService.searchId(checkName, checkEmail);
 		
 		if(member == null) {
 			
-			return null;
+			return "not found";
+		}else {
+			return member.getMemberId();
+		}
+		
+	}
+	@GetMapping(value = "/searchPwFrm")
+	public String searchPwFrm() {
+		
+		return "member/yeojeong_searchPw";
+	}
+	@PostMapping(value = "/searchPw")
+	@ResponseBody
+	public String searchPw(String checkId, String checkEmail) {
+		
+		Member member = memberService.searchPw(checkId, checkEmail);
+		
+		if(member == null) {
+			
+			return "not found";
 		}else {
 			return member.getMemberId();
 		}

@@ -27,11 +27,14 @@ public class OrderController {
 	@Autowired
 	private ProductService productService;
 
+	//productNo, optionName 삭제.
 	@GetMapping(value = "/cart")
-	public String cartList(@SessionAttribute(required = false) Member m, Model model) {
+	public String cartList(int productNo, String optionName, @SessionAttribute(required = false) Member m, Model model) {
 		if (m != null) {
 			int memberNo = m.getMemberNo();
 			List list = orderService.selectCartInfoList(memberNo);
+
+//			int result = orderService.insertCart(productNo,memberNo,optionName);
 			
 			/*
 			for (int i = 0; i < list.size(); i++) {
@@ -107,14 +110,24 @@ public class OrderController {
 	
 
 	@GetMapping(value="/createOrder")
-	public String createOrder(@SessionAttribute(required=false) Member m, String cartStr, int price, int usePoint) {
+	public String createOrder(@SessionAttribute(required=false) Member m, String cartStr, int price, int usePoint, long orderNo, Model model) {
 		//order_tbl에 데이터 삽입
-		int result = orderService.createOrder(m.getMemberNo(),price, cartStr, usePoint);
-		System.out.println(result);
+		int result = orderService.createOrder(m.getMemberNo(),price, cartStr, usePoint, orderNo);
 		if(result>0) {
-			return "/";
+			return "redirect:/product/productList?categoryNo=5&reqPage=1";
+		} else {
+			model.addAttribute("title", "결제 성공 후 주문처리 실패");
+			model.addAttribute("msg", "시스템 관리자에게 문의하세요.");
+			model.addAttribute("icon", "error");
+			model.addAttribute("loc", "/order/cart");
+			return "common/msg";
 		}
-		return "/";
 	}
 	
+	@ResponseBody
+	@GetMapping(value="/addToCart")
+	public void addToCart(String optionName, String count, int productNo) {
+		System.out.println(optionName);
+		System.out.println(count);
+	}
 }

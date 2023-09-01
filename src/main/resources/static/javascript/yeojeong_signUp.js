@@ -24,9 +24,7 @@ $("#memberId").on("keyup",function(){
     const idReg = /^[a-z0-9]{6,16}$/;
     const idValue = $("#memberId").val();
     const check = idReg.test(idValue);
-    console.log(check);
-    console.log(idValue);
-    
+ 
 
 
     if(!check){
@@ -34,8 +32,7 @@ $("#memberId").on("keyup",function(){
         idComment.css("display","inline");
         idComment.html("6자이상 16자 이하의 영어 소문자와 숫자를 조합");
         idComment.css("color"," #A52502");
-        console.log(idComment);    
-       
+      
     }else{
         //idCommnet.css("display","inline");
         idComment.hide();
@@ -50,8 +47,7 @@ $("#memberPw").on("keyup",function(){
     const pwReg = /^(?=.*[A-Za-z0-9])(?=.*[a-zA-Z!@#$%^&*()+=-])(?=.*[0-9!@#$%^&*()+=-]).{10,}$/;
     const pwValue = $("#memberPw").val();
     const check = pwReg.test(pwValue);
-    console.log(check);
-    console.log(pwValue);
+  
     
 
 
@@ -60,7 +56,7 @@ $("#memberPw").on("keyup",function(){
         pwComment.css("display","inline");
         pwComment.html("영문/숫자/특수문자(공백 제외)만 허용하면, 2개이상 조합, 최소 10자리 이상");
         pwComment.css("color"," #A52502");
-        console.log(pwComment);    
+         
        
     }else{
         //pwComment.css("display","inline");
@@ -97,7 +93,7 @@ $("#memberPwre").on("keyup",function(){
     const pwreComment = $("#pwre_comment");    
     const pwValue = $("#memberPw").val();
     const pwreValue = $("#memberPwre").val();
-    console.log(pwValue);
+   
     
 
 
@@ -106,7 +102,7 @@ $("#memberPwre").on("keyup",function(){
         pwreComment.css("display","inline");
         pwreComment.html("비밀번호가 일치하지 않습니다.");
         pwreComment.css("color"," #A52502");
-        console.log(pwreComment);    
+         
        
     }else{
         //idCommnet.css("display","inline");
@@ -121,7 +117,7 @@ $("#memberPwre").on("keyup",function(){
         const pwreComment = $("#pwre_comment");    
         const pwValue = $("#memberPw").val();
         const pwreValue = $("#memberPwre").val();
-        console.log(pwValue);
+       
         
         if(pwreValue===""){
             pwreComment.hide();
@@ -131,7 +127,7 @@ $("#memberPwre").on("keyup",function(){
                 pwreComment.css("display","inline");
                 pwreComment.html("비밀번호가 일치하지 않습니다.");
                 pwreComment.css("color"," #A52502");
-                console.log(pwreComment);    
+                
                
             }else{
                 //idCommnet.css("display","inline");
@@ -148,7 +144,7 @@ $("#memberName").on("keyup",function(){
     const nameComment = $("#name_comment");    
     const nameValue = $("#memberName").val();
    
-    console.log(nameValue);
+    
     
 
 
@@ -157,7 +153,7 @@ $("#memberName").on("keyup",function(){
         nameComment.css("display","inline");
         nameComment.html("이름을 입력해주세요");
         nameComment.css("color"," #A52502");
-        console.log(nameComment);    
+  
        
     }else{
         //idCommnet.css("display","inline");
@@ -170,7 +166,7 @@ $("#memberPhone").on("keyup",function(){
     const phoneComment = $("#phone_comment");    
     const phoneValue = $("#memberPhone").val();
    
-    console.log(phoneValue);
+    
     
 
 
@@ -195,7 +191,7 @@ $("#memberEmail").on("keyup",function(){
     const emailValue = $("#memberEmail").val();
     const emailReg = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
     const check = emailReg.test(emailValue);
-    console.log(emailValue);
+   
     
 
 
@@ -248,7 +244,7 @@ $("#memberPwre").on("keyup",function(){
 //약관보기 클릭하면 모달창 뜨게 하기
 $(function () {  
     $(document).on("click", ".agreeBtn", function () {
-      console.log(2);
+     
       $(this).parents(".modalAgree-body").parent().css("display", "none");
     });  
    

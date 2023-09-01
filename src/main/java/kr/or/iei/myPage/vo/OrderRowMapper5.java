@@ -15,7 +15,7 @@ public class OrderRowMapper5 implements RowMapper<Order>{
 	public Order mapRow(ResultSet rs, int rowNum) throws SQLException {
 		Order o = new Order();
 		o.setOrderNo(rs.getLong("order_no"));
-		o.setProductName(rs.getString("product_name"));
+		o.setProductNo(rs.getInt("product_no"));
 		o.setCount(rs.getInt("count"));
 		o.setTotalPrice(rs.getInt("total_price"));
 		o.setOrderStatus(rs.getInt("order_status"));

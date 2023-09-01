@@ -60,11 +60,10 @@ public class AboutUsController {
 	}
 	
 	@GetMapping(value="/news/view")
-	public String newsView(int newsNo, int reqPage, Model model) {
+	public String newsView(int newsNo, Model model) {
 		News n = aboutUsService.selectOneNews(newsNo);// 삭제됐으면 null 아니면 조회결과
 		if (n != null) {
 			model.addAttribute("n", n);
-			model.addAttribute("reqPage", reqPage);
 			return "aboutUs/newsView";
 		}else {
 			model.addAttribute("title", "목록 불러오기 실패");

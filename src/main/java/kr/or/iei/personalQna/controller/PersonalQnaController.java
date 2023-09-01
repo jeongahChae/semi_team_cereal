@@ -99,6 +99,7 @@ public class PersonalQnaController {
 	
 	@PostMapping(value = "/insertComment")
 	public String insertComment(PersonalQnaComment pc,Model model) {
+//		int comment = personalQnaService.updatePersonalQna(pc);
 		//매개변수로 받은 nc에는 댓글작성자, 댓글내용, 공지사항번호, 대댓글인 경우 댓글번호(댓글이면 0)
 		int result = personalQnaService.insertComment(pc);
 		model.addAttribute("btn", 2);

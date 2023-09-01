@@ -64,7 +64,8 @@
 	                    <div class="info-totalPrice"></div>
 	                </div>
 	                <div class="product-detail-btn-box">
-	                    <button id="cart-btn" th:onclick="addToCart([[${optionNo}]])" style="cursor: pointer;">장바구니</button>
+						<!--  장바구니 -->
+	                    <button id="cart-btn" th:onclick="addToCart([[${p.productNo}]])" style="cursor: pointer;">장바구니</button>
 	                    <button id="purchase-btn">바로구매</button>
 	                </div>
 	            </div>
@@ -149,6 +150,7 @@
 	            </div>
 	            <div class="product-detail-btn-box2">
 	                <button id="cart-btn">장바구니</button>
+	                <span id="get-product-no" th:text = "${p.productNo}" style="display:none;"></span>
 	                <button id="purchase-btn">바로구매</button>
 	            </div>
 	        </div>
