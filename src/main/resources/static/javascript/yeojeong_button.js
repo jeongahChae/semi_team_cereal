@@ -37,7 +37,7 @@ $("#idChkBtn").click(function(){
 });
 
 $(document).mouseup(function (e){
-    console.log(e);
+    
 	if($("#idChkModal1").has(e.target).length > 0){
         
 		$(".modalChk").fadeOut(400);
