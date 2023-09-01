@@ -46,25 +46,25 @@ $("#memberPwnew").on("keyup",function(){
 });
 
 //새로운 비밀번호 일치 체크 
-$("#memberPwnew").on("keyup",function(){
-    const pwreComment = $("#pwnewre_comment");    
-    const pwValue = $("#memberPwnew").val();
-    const pwreValue = $("#memberPwNewre").val();
+// $("#memberPwnew").on("keyup",function(){
+//     const pwreComment = $("#pwnewre_comment");    
+//     const pwValue = $("#memberPwnew").val();
+//     const pwreValue = $("#memberPwNewre").val();
    
 
 
-    if(pwValue != pwreValue){
+//     if(pwValue != pwreValue){
         
-        pwreComment.css("display","inline");
-        pwreComment.html("비밀번호가 일치하지 않습니다.");
-        pwreComment.css("color"," #A52502");
+//         pwreComment.css("display","inline");
+//         pwreComment.html("비밀번호가 일치하지 않습니다.");
+//         pwreComment.css("color"," #A52502");
        
-    }else{
-        //pwComment.css("display","inline");
-        pwreComment.hide();
-    }
+//     }else{
+//         //pwComment.css("display","inline");
+//         pwreComment.hide();
+//     }
    
-});
+// });
 
 //새로운 비밀번호 일치 확인 체크(비밀번호 지웠을때)
 $("#memberPwNewre").on("keyup",function(){
@@ -88,6 +88,33 @@ $("#memberPwNewre").on("keyup",function(){
     }
    
 });
+  $("#memberPwnew").on("keyup",function(){
+        
+        const pwreComment = $("#pwnewre_comment");    
+        const pwValue = $("#memberPwnew").val();
+        const pwreValue = $("#memberPwNewre").val();
+       
+        
+        if(pwreValue===""){
+            pwreComment.hide();
+        }else{
+            if(pwValue != pwreValue){
+            
+                pwreComment.css("display","inline");
+                pwreComment.html("비밀번호가 일치하지 않습니다.");
+                pwreComment.css("color"," #A52502");
+                
+               
+            }else{
+                
+                pwreComment.hide();
+            }
+        }
+    
+        
+       
+    });
+
 //정보수정 버튼을 눌렀을때 새 비밀번호 입력안해도 기존비밀번호 값이 들어가기
 $("#updateBtn").on("click",function(){
     
@@ -99,6 +126,31 @@ $("#updateBtn").on("click",function(){
     
 });
 
-// $("#addrBtn").click(function(){
+$("#updateBtn").on("click",function(){
+    
+    const pwValue = $("#memberPw").val();    
+    const mypwValue = $("#memberPwValue").val();
+    console.log(pwValue);
+    console.log(mypwValue);
+   
+    
 
-// });
+    if(pwValue != mypwValue){
+
+        $("#confirmChkModal1").fadeIn(500);
+         
+       
+    }
+       
+    
+    
+});
+
+$(document).mouseup(function (e){
+    
+	if($("#confirmChkModal1").has(e.target).length > 0){
+        
+		$(".modalChk").fadeOut(400);
+	}
+   
+});

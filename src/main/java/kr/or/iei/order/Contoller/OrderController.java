@@ -1,5 +1,6 @@
 package kr.or.iei.order.Contoller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,9 @@ public class OrderController {
 			}
 			*/
 			model.addAttribute("list", list);				
+		}else {
+			List list = new ArrayList<Object>();
+			model.addAttribute("list", list);		
 		}
 		return "order/cart";
 	}
