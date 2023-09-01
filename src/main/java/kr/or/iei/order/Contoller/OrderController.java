@@ -1,5 +1,6 @@
 package kr.or.iei.order.Contoller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +30,7 @@ public class OrderController {
 
 	//productNo, optionName 삭제.
 	@GetMapping(value = "/cart")
-	public String cartList(int productNo, String optionName, @SessionAttribute(required = false) Member m, Model model) {
+	public String cartList(@SessionAttribute(required = false) Member m, Model model) {
 		if (m != null) {
 			int memberNo = m.getMemberNo();
 			List list = orderService.selectCartInfoList(memberNo);
@@ -68,6 +69,9 @@ public class OrderController {
 			}
 			*/
 			model.addAttribute("list", list);				
+		}else {
+			List list = new ArrayList<Object>();
+			model.addAttribute("list", list);		
 		}
 		return "order/cart";
 	}

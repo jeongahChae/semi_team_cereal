@@ -92,7 +92,7 @@ public class OrderService {
                     result += orderDao.createOrderedProduct(c, orderNo);    //order에 딸린 상품
                     result += productDao.updateOptionCount(c);              //상품재고 갱신
                     result += orderDao.insertPoint(c);                  //포인트 적립 이력
-                    result += orderDao.updateMemberPlusPoint(memberNo, c.getProductNo());
+                    result += orderDao.updateMemberPlusPoint(memberNo, c.getProductNo());	//멤버포인트 업데이트(+)
                     int addPointNo = orderDao.selectPointNo(memberNo);
                     pointResult += orderDao.createPointForOrder(addPointNo, orderNo);   //주문 관련적립/사용이력 업데이트용(적립이력)
                     int delResult = orderDao.deleteCart(memberNo, cartNo);
