@@ -20,10 +20,10 @@ $("#idChkBtn").click(function(){
             success:function(result){
                 if(result ==0){
                     $("#idChkModal3").fadeIn(500);
-                    console.log(result);
+                   
                 }else{
                     $("#idChkModal2").fadeIn(500);
-                    console.log(result);
+                   
                 }              
                 
             },
@@ -91,7 +91,7 @@ $("#emailChkBtn").click(function(){
 });
 
 $(document).mouseup(function (e){
-    console.log(e);
+    
 	if($("#emailChkModal1").has(e.target).length > 0){
         
 		$(".modalChk").fadeOut(400);
