@@ -96,7 +96,7 @@ function uploadImage(file,editor){
 $(function(){
     const qnaCategoryVal = $(".usualQna-category").attr("data");
     const option = $(".usualQna-category").children();
-    console.log(qnaCategoryVal);
+    // console.log(qnaCategoryVal);
     for(let i=0;i<option.length;i++){
         const optionVal = option.eq(i).val();
         if(qnaCategoryVal == optionVal){
