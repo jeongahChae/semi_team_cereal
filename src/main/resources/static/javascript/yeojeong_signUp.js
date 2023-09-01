@@ -1,4 +1,4 @@
-
+// const checkArr = [false,false,false, false,false,false,false,false];
 
 //이용약관 동의 
 const allAgreement = document.querySelector("#allAgreement");
@@ -32,10 +32,11 @@ $("#memberId").on("keyup",function(){
         idComment.css("display","inline");
         idComment.html("6자이상 16자 이하의 영어 소문자와 숫자를 조합");
         idComment.css("color"," #A52502");
-      
+        //checkArr[0] = false;
     }else{
         //idCommnet.css("display","inline");
         idComment.hide();
+        //checkArr[0] = true;
     }
    
 });
@@ -47,7 +48,7 @@ $("#memberPw").on("keyup",function(){
     const pwReg = /^(?=.*[A-Za-z0-9])(?=.*[a-zA-Z!@#$%^&*()+=-])(?=.*[0-9!@#$%^&*()+=-]).{10,}$/;
     const pwValue = $("#memberPw").val();
     const check = pwReg.test(pwValue);
-  
+ 
     
 
 
@@ -56,11 +57,12 @@ $("#memberPw").on("keyup",function(){
         pwComment.css("display","inline");
         pwComment.html("영문/숫자/특수문자(공백 제외)만 허용하면, 2개이상 조합, 최소 10자리 이상");
         pwComment.css("color"," #A52502");
-         
+        //checkArr[1] = false;
        
     }else{
         //pwComment.css("display","inline");
         pwComment.hide();
+        //checkArr[1] = true;
     }
    
 });
@@ -93,7 +95,7 @@ $("#memberPwre").on("keyup",function(){
     const pwreComment = $("#pwre_comment");    
     const pwValue = $("#memberPw").val();
     const pwreValue = $("#memberPwre").val();
-   
+    
     
 
 
@@ -102,11 +104,12 @@ $("#memberPwre").on("keyup",function(){
         pwreComment.css("display","inline");
         pwreComment.html("비밀번호가 일치하지 않습니다.");
         pwreComment.css("color"," #A52502");
-         
+        //checkArr[2] = false;
        
     }else{
         //idCommnet.css("display","inline");
         pwreComment.hide();
+        //checkArr[2] = true;
     }
    
 });
@@ -121,17 +124,19 @@ $("#memberPwre").on("keyup",function(){
         
         if(pwreValue===""){
             pwreComment.hide();
+            
         }else{
             if(pwValue != pwreValue){
             
                 pwreComment.css("display","inline");
                 pwreComment.html("비밀번호가 일치하지 않습니다.");
                 pwreComment.css("color"," #A52502");
-                
+                //checkArr[3] = false;
                
             }else{
                 //idCommnet.css("display","inline");
                 pwreComment.hide();
+                //checkArr[3] = true;
             }
         }
     
@@ -153,11 +158,12 @@ $("#memberName").on("keyup",function(){
         nameComment.css("display","inline");
         nameComment.html("이름을 입력해주세요");
         nameComment.css("color"," #A52502");
-  
+        //checkArr[4] = false;
        
     }else{
         //idCommnet.css("display","inline");
         nameComment.hide();
+        //checkArr[4] = true;
     }
    
 });
@@ -175,11 +181,12 @@ $("#memberPhone").on("keyup",function(){
         phoneComment.css("display","inline");
         phoneComment.html("전화번호를 입력해주세요");
         phoneComment.css("color"," #A52502");
-        console.log(phoneComment);    
+        //checkArr[5] = false;   
        
     }else{
         //idCommnet.css("display","inline");
         phoneComment.hide();
+        //checkArr[5] = true;
     }
    
 });
@@ -200,11 +207,12 @@ $("#memberEmail").on("keyup",function(){
         emailComment.css("display","inline");
         emailComment.html("이메일 형식으로 입력해주세요");
         emailComment.css("color"," #A52502");
-        console.log(emailComment);    
+        //checkArr[6] = false; 
        
     }else{
         //idCommnet.css("display","inline");
         emailComment.hide();
+        //checkArr[6] = true;
     }
    
 });
@@ -214,7 +222,7 @@ $("#memberPwre").on("keyup",function(){
     const pwreComment = $("#pwre_comment");    
     const pwValue = $("#memberPw").val();
     const pwreValue = $("#memberPwre").val();
-    console.log(pwValue);
+   
     
 
 
@@ -223,11 +231,13 @@ $("#memberPwre").on("keyup",function(){
         pwreComment.css("display","inline");
         pwreComment.html("비밀번호가 일치하지 않습니다.");
         pwreComment.css("color"," #A52502");
-        console.log(pwreComment);    
+         
+        //checkArr[7] = false; 
        
     }else{
         //idCommnet.css("display","inline");
         pwreComment.hide();
+        //checkArr[7] = true;
     }
    
 });
@@ -264,8 +274,22 @@ $(function () {
     });
 
 
+//한가지 조건이라도 충족하지 않으면 넘어가지 않음 
+// $("input[type=submit]").on("click",function(event){
+//     const check = checkArr[0] && checkArr[1] && checkArr[2] && checkArr[3] && checkArr[4] && checkArr[5] && checkArr[6] && checkArr[7];
+//     if(!check){
+//         event.preventDefault();
+//     }
+// });
+// function checkValue(){
+   
+//     for(let i = 0; i <checkArr.length; i++){
+//         if(!checkArr(i)){
+//             return false;
+//         }
+//     }
 
-
+// }
 
 
 
