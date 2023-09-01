@@ -145,3 +145,12 @@ $("#updateBtn").on("click",function(){
     
     
 });
+
+$(document).mouseup(function (e){
+    
+	if($("#confirmChkModal1").has(e.target).length > 0){
+        
+		$(".modalChk").fadeOut(400);
+	}
+   
+});

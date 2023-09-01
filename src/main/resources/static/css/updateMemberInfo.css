@@ -202,3 +202,8 @@ input[type=password]{
     background-color: #1c8394;
     border: 1px solid #1c8394; 
 }
+
+
+.buttonBox>button:hover{
+    cursor: pointer;
+}
