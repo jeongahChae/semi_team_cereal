@@ -27,14 +27,13 @@ public class OrderController {
 	@Autowired
 	private ProductService productService;
 
-	//productNo, optionName 삭제.
+	
 	@GetMapping(value = "/cart")
-	public String cartList(int productNo, String optionName, @SessionAttribute(required = false) Member m, Model model) {
+	public String cartList(@SessionAttribute(required = false) Member m, Model model) {
 		if (m != null) {
 			int memberNo = m.getMemberNo();
 			List list = orderService.selectCartInfoList(memberNo);
 
-//			int result = orderService.insertCart(productNo,memberNo,optionName);
 			
 			/*
 			for (int i = 0; i < list.size(); i++) {
@@ -129,5 +128,6 @@ public class OrderController {
 	public void addToCart(String optionName, String count, int productNo) {
 		System.out.println(optionName);
 		System.out.println(count);
+		System.out.println(productNo);
 	}
 }

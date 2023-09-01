@@ -192,18 +192,18 @@ select2.change(function(){
 
 
 //cart..(optionName을 가져오는 방법을 모르겠음 ㅠㅠ)
-function addToCart(productNo){
+function addToCart(productNo,obj){
     
-    // const optionName = $("").parent().prev().prev().children().eq(0).text();
-    // console.log(optionName);
-    // $.ajax({
-    //     url : "/order/cart",
-    //     type : "get",
-    //     data : {productNo : productNo, optionName:optionName},
-    //     success : function(data){
+    const optionName = $(obj).parent().prev().prev().children().eq(0).text();
+    console.log(optionName);
+    $.ajax({
+        url : "/order/addToCart",
+        type : "get",
+        data : {productNo : productNo, optionName : optionName},
+        success : function(data){
             
-    //     }
-    // });
+        }
+    });
 }
 
 
