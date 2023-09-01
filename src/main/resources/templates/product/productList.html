@@ -15,6 +15,7 @@
         <ul>
             <li th:each="product : ${productList}">
                 <a th:href="@{/product/productDetail(productNo=${product.productNo})}">
+                	<img src="/img/list-cart.png" class="list-cart">
                     <div class="product-img" th:each="productFile : ${product.fileList}">
                         <img th:src="@{/product/}+${productFile.filepath}">
                     </div>

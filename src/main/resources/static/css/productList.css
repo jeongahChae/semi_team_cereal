@@ -20,6 +20,7 @@
     font-size: 50px;
     text-align: center;
     margin: 80px 0;
+    color: #1C8394;
     
 }
 
@@ -96,7 +97,7 @@
     width: 30px;
     height: 30px;
     right: 60px;
-    bottom: 113px;
+    bottom: 105px;
 }
 
 #soldout{
@@ -148,6 +149,6 @@
     line-height: 40px;
 }
 .pagination .page-item.active-page {
-    background-color: #252a34;
+    background-color: #1C8394;
     color: #fff;
 }

@@ -30,11 +30,13 @@ public class WebConfig implements WebMvcConfigurer {
 	public void addInterceptors(InterceptorRegistry registry) {
 		//login인터셉터
 		registry.addInterceptor(new LoginInterceptor()).addPathPatterns(
-				"/personalQna/**","/notice/writeFrm","/notice/updateFrm","/usualQna/writeFrm","/usualQna/updateFrm"
+				"/personalQna/**","/notice/**"
 				)
 		//제외 항목
 		.excludePathPatterns(
-				""
+				"/notice/loginMsg","/notice/adminMsg",
+				"/notice/list","/notice/view","/notice/filedown","/personalQna/view"
+				
 				);
 		//admin 인터셉터
 		registry.addInterceptor(new AdminInterceptor()).addPathPatterns(
