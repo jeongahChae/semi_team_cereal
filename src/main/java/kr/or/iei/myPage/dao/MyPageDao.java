@@ -88,12 +88,9 @@ public class MyPageDao {
 		*/
 		String query = "select * from (select rownum as rnum, n. * from \r\n" + 
 				"(select order_no, product_name, count, total_price, order_status\r\n" + 
-				"from (select *\r\n" + 
 				"from order_tbl\r\n" + 
-				"left join ordered_products_tbl using(order_no))\r\n" + 
-				"left join option_tbl using(option_no)\r\n" + 
-				"left join member_tbl using(member_no)\r\n" + 
-				"left join product using(product_no)\r\n" + 
+				"left join ordered_products_tbl using(order_no) \r\n" + 
+				"left join product using(product_no) \r\n" + 
 				"where order_date between ? and ?\r\n" + 
 				"order by 1 desc)\r\n" + 
 				"n) where rnum between ? and ?";

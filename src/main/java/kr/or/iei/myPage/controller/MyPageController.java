@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
+import kr.or.iei.member.model.vo.Member;
 import kr.or.iei.myPage.service.MyPageService;
 import kr.or.iei.myPage.vo.LikeListData;
 import kr.or.iei.myPage.vo.Order;
@@ -24,10 +26,10 @@ public class MyPageController {
 	@Autowired
 	private MyPageService myPageService;
 	
-	@GetMapping(value="myPageList")
+	@GetMapping(value="sessionTest")
 	public String myPageList(int btn, Model model) {
 		model.addAttribute("btn", btn);
-		return "myPage/myPageList";
+		return "member/sessionTest";
 	}
 	
 	//개인정보수정
